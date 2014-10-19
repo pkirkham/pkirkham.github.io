@@ -27,4 +27,9 @@ title:
 		<h2 class="post-title">Oil and Gas Tools</h2>
 		<p class="post-excerpt">When I was younger one of my most prized possessions was a little Swiss army penknife. The Pyrus Suite is my personal version of this multi-purpose tool for oil and gas asset evaluation and contains various geophysical, reservoir engineering and economic assessment tools.</p>
 	</div><!-- /.tile -->
+
+	<div class="tile">
+		<h2 class="post-title">About Myself</h2>
+		<p class="post-excerpt">So far I've been fortunate to have a varied career that includes working for smaller independents, creating new start-up companies and project consulting. This work has taken me around the globe, living and working in Australia, Singapore, UK and USA. Along the way I've seen most aspects of exploration, development and production, both big and small.</p>
+	</div><!-- /.tile -->
 </div><!-- /.tiles -->
