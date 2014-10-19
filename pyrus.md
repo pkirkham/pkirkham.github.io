@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: Upstream Without A Paddle
+title: Pyrus Suite Of Oil And Gas Tools
 permalink: /pyrus/
 ---
 

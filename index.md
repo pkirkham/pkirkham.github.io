@@ -8,13 +8,13 @@ title:
 	<div class="wrap page-lead-content">
 		<h1>Peter Kirkham</h1>
 		<h2>Upstream Without A Paddle Blog</h2>
-		<a href="//pkirkham.github.io/blog/" class="btn-inverse">Blog</a> &nbsp; <a href="//pkirkham.github.io/analysis/" class="btn-inverse">Analysis Notes</a> &nbsp; <a href="//pkirkham.github.io/pyrus/" class="btn-inverse">Pyrus Suite</a>
+		<a href="//pkirkham.github.io/blog/" class="btn-inverse">Upstream Blog</a> &nbsp; <a href="//pkirkham.github.io/analysis/" class="btn-inverse">Analysis Notes</a> &nbsp; <a href="//pkirkham.github.io/pyrus/" class="btn-inverse">Pyrus Suite</a> &nbsp; <a href="//pkirkham.github.io/about/" class="btn-inverse">About Myself</a>
 	</div><!-- /.page-lead-content -->
 </div><!-- /.page-lead -->
 
 <div class="tiles">
 	<div class="tile">
-		  <h2 class="post-title">An Upstream Blog</h2>
+		  <h2 class="post-title">Upstream Musings</h2>
 		  <p class="post-excerpt">The oil and gas industry is a vibrant and diverse scene that spans most of the world and many different technical disciplines. Often stereotyped by outsiders to the industry, this blog attempts to give one man's insight to what it is like to work in the upstream side of the industry.</p>
 	</div><!-- /.tile -->
 
@@ -29,7 +29,7 @@ title:
 	</div><!-- /.tile -->
 
 	<div class="tile">
-		<h2 class="post-title">About Myself</h2>
+		<h2 class="post-title">Personal Profile</h2>
 		<p class="post-excerpt">So far I've been fortunate to have a varied career that includes working for smaller independents, creating new start-up companies and project consulting. This work has taken me around the globe, living and working in Australia, Singapore, UK and USA. Along the way I've seen most aspects of exploration, development and production, both big and small.</p>
 	</div><!-- /.tile -->
 </div><!-- /.tiles -->
