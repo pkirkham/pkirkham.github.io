@@ -27,6 +27,6 @@ owner:
     ad-slot: 
   bio: "Upstream jack-of-all-trades and master of some."
   avatar: 96x96avatar.jpg # image for author byline
-disqus-shortname: petermichaelkirkham
+disqus-shortname: pkirkham
 
 exclude: ["lib", "config.rb", ".sass-cache", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "*.sublime-project", "*.sublime-workspace", "Gemfile", "Gemfile.lock", "README.md", "LICENSE", "node_modules", "Gruntfile.js", "package.json"]
