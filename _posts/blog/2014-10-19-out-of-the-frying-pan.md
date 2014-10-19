@@ -1,7 +1,14 @@
 ---
 layout: article
 title: Out Of The Frying Pan
+modified:
 categories: blog
+excerpt: The start of a new phase in my career as I move back into the oil industry after a brief spell in consulting.
+tags: []
+image:
+  feature:
+  teaser:
+  thumb:
 ---
 
 After four years at [Independent Project Analysis (IPA)](www.ipaglobal.com) I've moved back into the oil industry. Truth be told, I never really left, but for the past four years or so I've been working at IPA as a project analyst. This role has given me (and my former colleagues) the rather unique opportunity to watch oil and gas projects as they evolve from the early stages of planning through execution and ultimately start-up. For those that are familiar with the TV programme _Grand Designs_, the analogy I often use should explain it well. Essentially an IPA project analyst is like being the Kevin McCloud of the industrial world. Like many of the houses being build on that programme, it turns out that many oil and gas projects might have a firm idea of how much it will cost and how long it will take before they start, but few of them achieve their goals. Through statistical analysis of data from hundreds of oil and gas projects, IPA has been able to develop an insight into what drives successful projects, and what is likely to lead to failure.
