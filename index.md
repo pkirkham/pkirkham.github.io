@@ -1,7 +1,7 @@
 ---
 layout: archive
 permalink: /
-title: "Latest Posts"
+title: 
 ---
 
 <div class="page-lead" style="background-image:url(//pkirkham.github.io/images/background-platform-sunset-1600x800.jpg)">
@@ -14,6 +14,6 @@ title: "Latest Posts"
 
 <div class="tiles">
 {% for post in site.posts %}
-	{% include post-grid.html %}
+	{% include post-list.html %}
 {% endfor %}
 </div><!-- /.tiles -->
