@@ -1,7 +1,7 @@
 # Site wide configuration
 title: "Peter Kirkham"
 description: "Assorted reminisces and personal notes related to the oil and gas industry"
-logo: 120x120logo.jpg # 120x120 px default image used for Twitter summary card
+logo: # 120x120 px default image used for Twitter summary card
 teaser: 400x250teaser.jpg  # 400x250 px default teaser image used in image archive grid
 locale:
 url: //pkirkham.github.io
@@ -27,6 +27,6 @@ owner:
     ad-slot: 
   bio: "Upstream jack-of-all-trades and master of some."
   avatar: 96x96avatar.jpg # image for author byline
-disqus-shortname:
+disqus-shortname: petermichaelkirkham
 
 exclude: ["lib", "config.rb", ".sass-cache", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "*.sublime-project", "*.sublime-workspace", "Gemfile", "Gemfile.lock", "README.md", "LICENSE", "node_modules", "Gruntfile.js", "package.json"]
