@@ -1,5 +1,5 @@
 ---
-layout: archive
+layout: default
 permalink: /
 title: 
 ---
@@ -12,8 +12,19 @@ title:
   </div><!-- /.page-lead-content -->
 </div><!-- /.page-lead -->
 
-<div class="tiles">
-{% for post in site.posts %}
-	{% include post-list.html %}
-{% endfor %}
+<div class="tile">
+  <h2 class="post-title">An Upstream Blog</h2>
+  <p class="post-excerpt">The oil and gas industry is a vibrant and diverse scene that spans most of the world and many different technical disciplines. Often stereotyped by outsiders to the industry, this blog attempts to give one man's insight to what it is like to work in the upstream side of the industry.</p>
+</div><!-- /.tile -->
+
+<div class="tile">
+  <h2 class="post-title">Evaluation Notebook</h2>
+  <p class="post-excerpt">With a large number of different disciplines involved in the industry, it can often be a challenge to keep up to speed with existing technology, let alone new and emerging technology. This notebook collects together guides on best practices for oil and gas asset evaluation.</p>
+</div><!-- /.tile -->
+
+<div class="tile">
+  <h2 class="post-title">Oil and Gas Tools</h2>
+  <p class="post-excerpt">When I was younger one of my most prized possessions was a little Swiss army penknife. The Pyrus Suite is my personal version of this multi-purpose tool for oil and gas asset evaluation and contains various geophysical, reservoir engineering and economic assessment tools.</p>
+</div><!-- /.tile -->
+
 </div><!-- /.tiles -->
