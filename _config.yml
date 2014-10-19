@@ -26,7 +26,7 @@ owner:
     ad-client: 
     ad-slot: 
   bio: "Upstream jack-of-all-trades and master of some."
-  avatar: bio-photo.jpg # 160x160 px image for author byline
+  avatar: 96x96avatar.jpg # image for author byline
 disqus-shortname:
 
 exclude: ["lib", "config.rb", ".sass-cache", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "*.sublime-project", "*.sublime-workspace", "Gemfile", "Gemfile.lock", "README.md", "LICENSE", "node_modules", "Gruntfile.js", "package.json"]
