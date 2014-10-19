@@ -1,14 +1,12 @@
 # Site wide configuration
-
 title: Upstream Without A Paddle
-description: Assorted reminisces from working in the oil and gas industry
-logo: # 120x120 px default image used for Twitter summary card
-teaser: # 400x250 px default teaser image used in image archive grid
+description: "Assorted reminisces from working in the oil and gas industry"
+logo: 120x120logo.gif # 120x120 px default image used for Twitter summary card
+teaser: 400x250teaser.gif  # 400x250 px default teaser image used in image archive grid
 locale:
-url:
+url://pkirkham.github.io
 
 # Jekyll configuration
-
 sass:
     sass_dir: _sass
     style: compressed
@@ -18,10 +16,9 @@ highlighter: pygments
 gems:
   - jekyll-sitemap
 
-
 # Site owner
 owner:
-  name:
+  name: Peter Kirkham
   email:
   twitter:
   google:
@@ -30,6 +27,5 @@ owner:
   bio: 
   avatar: bio-photo.jpg # 160x160 px image for author byline
 disqus-shortname:
-
 
 exclude: ["lib", "config.rb", ".sass-cache", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "*.sublime-project", "*.sublime-workspace", "Gemfile", "Gemfile.lock", "README.md", "LICENSE", "node_modules", "Gruntfile.js", "package.json"]
