@@ -1,16 +1,16 @@
 # Site navigation links
 
-- title:
-  url:
-  excerpt:
-  image:
+- title: Blog
+  url: /blog/
+  excerpt: "General musings on life working as an expat in the oil and gas industry with a focus on the upstream sector and AsiaPac region."
+  image: 300x200category-blog.jpg
   
- - title:
-  url:
-  excerpt:
-  image:
+ - title: Analysis
+  url: /analysis/
+  excerpt: "Collection of notes relevant to topics concerning the work I'm involved with."
+  image: 300x200category-analysis.jpg
   
- - title:
-  url:
-  excerpt:
-  image:
+ - title: Pyrus
+  url: /pyrus/
+  excerpt: "Software application with general purpose oil and gas tools written by me."
+  image: 300x200category-pyrus.jpg
