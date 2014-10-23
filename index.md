@@ -8,7 +8,7 @@ title:
 	<div class="wrap page-lead-content">
 		<h1>Peter Kirkham</h1>
 		<h2>Upstream Without A Paddle Blog</h2>
-		<a href="//pkirkham.github.io/blog/" class="btn-inverse">Upstream Blog</a> &nbsp; <a href="//pkirkham.github.io/analysis/" class="btn-inverse">Analysis Notes</a> &nbsp; <a href="//pkirkham.github.io/pyrus/" class="btn-inverse">Pyrus Suite</a> &nbsp; <a href="//pkirkham.github.io/about/" class="btn-inverse">About Myself</a>
+		<a href="{{ site.url }}/blog/" class="btn-inverse">Upstream Blog</a> &nbsp; <a href="{{ site.url }}/analysis/" class="btn-inverse">Analysis Notes</a> &nbsp; <a href="{{ site.url }}/pyrus/" class="btn-inverse">Pyrus Suite</a> &nbsp; <a href="{{ site.url }}/about/" class="btn-inverse">About Myself</a>
 	</div><!-- /.page-lead-content -->
 </div><!-- /.page-lead -->
 
