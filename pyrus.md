@@ -6,6 +6,10 @@ permalink: /pyrus/
 
 Pyrus is a suite of oil and gas tools that has been under sporadic development since 1999. The software is written in Java and is built on top of the [NetBeans rich client platform](https://netbeans.org/features/platform/index.html). Articles related to the development of the software are collected here.
 
+<div class="center">
+<a href="https://www.dropbox.com/s/cwq570i4wfje8wa/pyrus_suite-windows.exe?dl=0" class="btn">Download Pyrus Suite</a>
+</div>
+
 <div class="tiles">
 {% for post in site.categories.pyrus %}
   {% include post-grid.html %}

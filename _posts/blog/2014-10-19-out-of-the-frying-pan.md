@@ -7,7 +7,7 @@ excerpt: The start of a new phase in my career as I move back into the oil indus
 tags: [career, twinza, pasca]
 image:
   feature:
-  teaser: teaser-twinza-post-400x250.png
+  teaser: teaser-twinza-400x250.png
   thumb:
 comments: true
 ---

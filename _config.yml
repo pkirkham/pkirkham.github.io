@@ -17,21 +17,23 @@ sass:
     style: compressed
 permalink: /:categories/:title/
 markdown: kramdown
+kramdown:
+    input: GFM
 highlighter: pygments
 gems:
-  - jekyll-sitemap
+    - jekyll-sitemap
 
 # Site owner
 owner:
-  name: "Peter Kirkham"
-  email:
-  twitter:
-  linkedin: peterkirkham
-  google:
-    ad-client: 
-    ad-slot: 
-  bio: "Upstream jack-of-all-trades and master of some."
-  avatar: 96x96avatar.jpg # image for author byline
+    name: "Peter Kirkham"
+    email:
+    twitter:
+    linkedin: peterkirkham
+    google:
+        ad-client: 
+        ad-slot: 
+    bio: "Upstream jack-of-all-trades and master of some."
+    avatar: 96x96avatar.jpg # image for author byline
 disqus-shortname: pkirkham
 
 exclude: ["lib", "config.rb", ".sass-cache", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "*.sublime-project", "*.sublime-workspace", "Gemfile", "Gemfile.lock", "README.md", "LICENSE", "node_modules", "Gruntfile.js", "package.json"]
