@@ -31,7 +31,8 @@ owner:
     linkedin: peterkirkham
     google:
         ad-client: 
-        ad-slot: 
+        ad-slot:
+        analytics-id: UA-57245062-1 # Tracking ID for Google Analytics
     bio: "Upstream jack-of-all-trades and master of some."
     avatar: 96x96avatar.jpg # image for author byline
 disqus-shortname: pkirkham
