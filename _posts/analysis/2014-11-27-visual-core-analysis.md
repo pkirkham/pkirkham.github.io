@@ -24,15 +24,21 @@ Fortunately it was possible to locate most of the core, and thus there is hope t
 
 An example section from one of the core photographs is shown in Figure 1. This illustrates that there is visible macro porosity in the form of vugs, and this immediately suggests that the reservoir could have a significant porosity. These vugs are easily identified and are associated with flow of fluids through the reef post-deposition, which have contributed to dissolution porosity.
 
-![Evidence of vugs on core]({{ site.url }}/images/visual-core-analysis-slide1.png)
-
-**Figure 1: Evidence of vugs on core.**
+<figure>
+	<a href="{{ site.url }}/images/visual-core-analysis-slide1.png" data-lightbox="image-1" data-title="Evidence of vugs on core">
+		<img src="{{ site.url }}/images/visual-core-analysis-slide1.png" alt="Evidence of vugs on core"/>
+	</a>
+	<figcaption><strong>Figure 1: Evidence of vugs on core.</strong></figcaption>
+</figure>
 
 Another aspect of porosity development in carbonates is associated with formation of dolomite. Dolomite forms as a result of mineral alteration whereby calcium ions in calcite are replaced by magnesium ions. This is evidence of freshwater incursion into the reef, mixing with saline formation water. As a result of the dolomitization porosity is generated because of a volume reduction in the carbonate matrix.
 
-![Evidence of dolomitic porosity on core]({{ site.url }}/images/visual-core-analysis-slide2.png)
-
-**Figure 2: Evidence of dolomitic porosity on core.**
+<figure>
+	<a href="{{ site.url }}/images/visual-core-analysis-slide2.png" data-lightbox="image-2" data-title="Evidence of dolomitic porosity on core">
+		<img src="{{ site.url }}/images/visual-core-analysis-slide2.png" alt="Evidence of dolomitic porosity on core"/>
+	</a>
+	<figcaption><strong>Figure 2: Evidence of dolomitic porosity on core.</strong></figcaption>
+</figure>
 
 Analogue carbonate reservoirs with vuggy porosity can easily develop effective porosity of 20 percent or higher. So the apparent history concerning the porosity development is contrary to the 11 percent porosity determined from log interpretation. Is it possible to justify the use of a higher porosity upside in the Pasca A field based on the core? To answer this question it is first necessary to measure the visible porosity from the core photograph.
 
@@ -63,15 +69,21 @@ Generally the pore space in the core photograph will be darker. This is because 
 
 The results are shown in Figure 3.
 
-![Porosity identified from brightness threshold]({{ site.url }}/images/visual-core-analysis-slide3.png)
-
-**Figure 3: Porosity identified from brightness threshold.**
+<figure>
+	<a href="{{ site.url }}/images/visual-core-analysis-slide3.png" data-lightbox="image-3" data-title="Porosity identified from brightness threshold">
+		<img src="{{ site.url }}/images/visual-core-analysis-slide3.png" alt="Porosity identified from brightness threshold"/>
+	</a>
+	<figcaption><strong>Figure 3: Porosity identified from brightness threshold.</strong></figcaption>
+</figure>
 
 A similar strategy can be employed to distinguish the difference facies in the non-porosity areas of the image. In this instance the very lighter and darker areas of the image have been distinguished using the same threshold technique, but by adjusting the hue and saturation filters. Care has to be taken to avoid falsely identifying areas within the already identified porosity or identifying any pixel as belonging to two facies groups. This can be achieved through subtraction of one image from another using Process/Image Calculator... The results are shown in Figure 4.
 
-![Facies identified from saturation threshold]({{ site.url }}/images/visual-core-analysis-slide4.png)
-
-**Figure 4: Facies identified from saturation threshold.**
+<figure>
+	<a href="{{ site.url }}/images/visual-core-analysis-slide4.png" data-lightbox="image-4" data-title="Facies identified from saturation threshold">
+		<img src="{{ site.url }}/images/visual-core-analysis-slide4.png" alt="Facies identified from saturation threshold"/>
+	</a>
+	<figcaption><strong>Figure 4: Facies identified from saturation threshold.</strong></figcaption>
+</figure>
 
 Here we have categorised our original image into four different groups. The red areas represent porosity, with contribution from both the vugs and smaller pores. The green areas are the very light carbonate rock fabric which could be associated with biological matter. The yellow areas are the darker carbonate rock fabric which could be associated with dolotomisation and the blue area is simply what is left over. This is the base carbonate matrix.
 
@@ -91,9 +103,12 @@ Once the measurements have been selected calculation of porosity is simple:
 
 The calculated porosity using the porosity mask generated from our core photograph is shown in Figure 5. This indicates that porosity of the image shown is 10.4 percent.
 
-![Calculated porosity from binary porosity layer]({{ site.url }}/images/visual-core-analysis-slide5.png)
-
-**Figure 5: Calculated porosity from binary porosity layer.**
+<figure>
+	<a href="{{ site.url }}/images/visual-core-analysis-slide5.png" data-lightbox="image-5" data-title="Calculated porosity from binary porosity layer">
+		<img src="{{ site.url }}/images/visual-core-analysis-slide5.png" alt="Calculated porosity from binary porosity layer"/>
+	</a>
+	<figcaption><strong>Figure 5: Calculated porosity from binary porosity layer.</strong></figcaption>
+</figure>
 
 Note that this whilst this technique can quickly produce an indicative measurement for the porosity, it does have some shortcomings:
 
@@ -113,17 +128,23 @@ The core photograph shows a visual porosity measurement of 10.4 percent which ag
 
 The reef is not homogeneous, and other sections of core exhibit more prevalent vugginess. An example of this is shown in Figure 6. This core photograph has been analysed using the excluded area technique because part of the core was removed to take a core plug. Records indicate that the laboratory measured porosity for the core plug was just 7.8 percent; even lower than the 11 percent interpreted from the logs. Reliance on this core porosity without examination of the core might lead to a belief that the reef does not develop good porosity in the centre. Yet it can clearly be seen that there are extensive large vugs in the core.
 
-![Comparison of visual porosity estimate against measured core plug porosity]({{ site.url }}/images/visual-core-analysis-slide6.png)
-
-**Figure 6: Comparison of visual porosity estimate against measured core plug porosity.**
+<figure>
+	<a href="{{ site.url }}/images/visual-core-analysis-slide6.png" data-lightbox="image-6" data-title="Comparison of visual porosity estimate against measured core plug porosity">
+		<img src="{{ site.url }}/images/visual-core-analysis-slide6.png" alt="Comparison of visual porosity estimate against measured core plug porosity"/>
+	</a>
+	<figcaption><strong>Figure 6: Comparison of visual porosity estimate against measured core plug porosity.</strong></figcaption>
+</figure>
 
 The visual porosity estimate is 14.6 percent. This is nearly twice as high as the core measured porosity. Does this mean that the core measured porosity or the visual porosity estimate is wrong? Not at all. Any core plug is very likely to be taken from a section of the core that is competent and can from which porosity can easily be measured using laboratory techniques. The intent would therefore be to avoid taking a core plug through the vuggiest part of the core. As such the core plug is only measuring part of the porosity.
 
 In order to understand this more clearly, we can look at the porosity distribution. By taking our binary mask for porosity, we can filter the image based on the areas of discrete features. In Figure 7 we have assigned features into five different area bins: 0-49 pixels, 50-99 pixels, 100-149 pixels, 150-199 pixels and 200+ pixels.
 
-![Porosity distribution from pore size bins]({{ site.url }}/images/visual-core-analysis-slide7.png)
-
-**Figure 7: Porosity distribution from pore size bins.**
+<figure>
+	<a href="{{ site.url }}/images/visual-core-analysis-slide7.png" data-lightbox="image-7" data-title="Porosity distribution from pore size bins">
+		<img src="{{ site.url }}/images/visual-core-analysis-slide7.png" alt="Porosity distribution from pore size bins"/>
+	</a>
+	<figcaption><strong>Figure 7: Porosity distribution from pore size bins.</strong></figcaption>
+</figure>
 
 This porosity calculated for each bin image helps to understand the nature of the porosity distribution in the reef.
 

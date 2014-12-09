@@ -38,6 +38,7 @@
     </style>
 
     <link rel="stylesheet" href="{{ site.url }}/css/main.css">
+	<link href="{{ site.url }}/css/lightbox.css" rel="stylesheet" />
     <!-- HTML5 Shiv and Media Query Support for IE -->
     <!--[if lt IE 9]>
       <script src="{{ site.url }}/js/vendor/html5shiv.min.js"></script>
@@ -68,7 +69,8 @@
       {% include footer.html %}
     </div>
 
-    <script src="{{ site.url }}/js/vendor/jquery-1.9.1.min.js"></script>
+    <script src="{{ site.url }}/js/vendor/jquery-1.11.0.min.js"></script>
+	<script src="{{ site.url }}/js/vendor/lightbox.min.js"></script>
     <script src="{{ site.url }}/js/main.js"></script>
     
     {% if page.toc == true %}

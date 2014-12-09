@@ -4,7 +4,7 @@ title: Does Project Complexity Matter?
 modified:
 categories: blog
 excerpt: Complex projects are part of the fabric of the oil and gas industry. Is this a cause for concern?
-tags: [projects, complexity, spe-connect]
+tags: [projects, complexity, spe-connect, ipa, context, objectives, scope, organisation, technology, pep, fel, performance]
 image:
   feature: 
   teaser: teaser-complex-blackboard-400x250.jpg
@@ -32,10 +32,13 @@ This is good news. It means that we need not despair simply because we are faced
 
 One aspect of complexity that is hard to hide from is that the amount of effort involved in planning increases as a project increases in complexity. This means that it becomes harder to achieve the level of definition necessary to deliver a successful project. Furthermore the price of failure also increases. This is illustrated in Figure 1, taken from [Oil and Gas Industry Megaprojects: Our Recent Track Record](http://ipaglobal.com//getattachment/a5829440-4ac0-4b80-aaf7-2c0e26a882e3/Oil-and-Gas-Industry-Megaprojects--Our-Recent-Trac.aspx), a downloadable paper which summarises several of the key points raised in Ed's megaprojects book. The x-axis shown is Asset FEL which is a measure of project definition. Projects in the _Best_ or _Good_ category are those with superior project definition. The y-axis shown is cost growth for the project between the original estimate at sanction versus the actual cost spent, adjusted for escalation over the project execution phase. The relationships illustrate that if FEL is improved, then a project has a lower level of cost growth.
 
-![Cost growth versus FEL for E&P and non-E&P megaprojects]({{ site.url }}/images/ipa-megaprojects-2012-growth-vs-fel.png)
-
-**Figure 1: Cost growth versus FEL for E&P and non-E&P megaprojects.** Source: Oil and Gas Industry Megaprojects:
-Our Recent Track Record, Edward Merrow, Independent Project Analysis, SPE 2012
+<figure>
+	<a href="{{ site.url }}/images/ipa-megaprojects-2012-growth-vs-fel.png" data-lightbox="image-1" data-title="Cost growth versus FEL for E&P and non-E&P megaprojects">
+		<img src="{{ site.url }}/images/ipa-megaprojects-2012-growth-vs-fel.png" alt="Cost growth versus FEL for E&P and non-E&P megaprojects"/>
+	</a>
+	<figcaption><strong>Figure 1: Cost growth versus FEL for E&P and non-E&P megaprojects.</strong><br/> Source: Oil and Gas Industry Megaprojects:
+	Our Recent Track Record, Edward Merrow, Independent Project Analysis, SPE 2012</figcaption>
+</figure>
 
 E&P megaprojects tend to have worse outcomes, on average, compared to non-E&P megaprojects, even after controlling for FEL. This seems to suggest that complexity does play some role in project outcomes, since E&P projects generally tend to be more complex than non-E&P projects. We should therefore be concerned about complexity because if we get the project wrong, the more complex the project is, the worse the end result might be.
 
@@ -74,9 +77,12 @@ Layered on top of the foundation complexity for a project are three additional a
 
 By cross-referencing the basis of complexity against the sources of complexity, we can start to identify different types of complexity that arise. I have shown this graphically in Figure 2, where each type of complexity has been coded to reflect the significance of that complexity type with respect to successful capital project delivery. The shading is a subjective measure, based on my experience at IPA, of where E&P projects frequently encounter problems. All complexity types can generate problems for projects, but there are differences as to whether a complexity type is readily recognised and how severe the consequences of the complexity can be.
 
-![Black spots concerning basis and source of complexity]({{ site.url }}/images/project-complexity-drivers.png)
-
-**Figure 2: Black spots concerning basis and source of complexity.**
+<figure>
+	<a href="{{ site.url }}/images/project-complexity-drivers.png" data-lightbox="image-2" data-title="Black spots concerning basis and source of complexity">
+		<img src="{{ site.url }}/images/project-complexity-drivers.png" alt="Black spots concerning basis and source of complexity"/>
+	</a>
+	<figcaption><strong>Figure 2: Black spots concerning basis and source of complexity.</strong></figcaption>
+</figure>
 
 It can be seen that there are three complexity black spots. These are Objectives-Interdependence, Execution Planning-Interdependence and Execution Planning-Ambiguity.
 

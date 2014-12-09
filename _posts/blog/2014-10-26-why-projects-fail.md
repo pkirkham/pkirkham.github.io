@@ -41,9 +41,12 @@ Our approach was to use IPA's database of E&P projects and compare the actual ou
 
 The material we presented at UIBC is confidential, so I cannot share it here. However [IPA presented at the Offshore Technology Conference in 2014](http://www.ipaglobal.com/News-Room/Announcements/SlideShare--Why-Only-the-Most-Efficient-E-P-Projec) and that presentation used elements of the research Tom and I did for UIBC 2012. A histogram showing the NPV gain and loss for the several hundred projects that we evaluated is shown in Figure 1. Note that this shows the gain or loss of NPV divided by the estimated project capex, not the original estimated NPV. We needed to do this because there were more than a few marginal projects which had low estimated NPV (the so-called 'strategic' developments) and their low NPV meant that their relative change in NPV was huge.
 
-![Histogram of NPV erosion in E&P projects]({{ site.url }}/images/ipa-otc-2014-npv-value-erosion-histogram.png)
-
-**Figure 1: Histogram of NPV erosion in E&P projects.** Source: Declining Terms of Trade: Why Only The Most Efficient Will Survive The Cost Price Squeeze, Neeraj Nandurdikar, Independent Project Analysis, OTC 2014.
+<figure>
+	<a href="{{ site.url }}/images/ipa-otc-2014-npv-value-erosion-histogram.png" data-lightbox="image-1" data-title="Histogram of NPV erosion in E&P projects">
+		<img src="{{ site.url }}/images/ipa-otc-2014-npv-value-erosion-histogram.png" alt="Histogram of NPV erosion in E&P projects"/>
+	</a>
+	<figcaption><strong>Figure 1: Histogram of NPV erosion in E&P projects.</strong><br/> Source: Declining Terms of Trade: Why Only The Most Efficient Will Survive The Cost Price Squeeze, Neeraj Nandurdikar, Independent Project Analysis, OTC 2014</figcaption>
+</figure>
 
 There are several points to note from this chart:
 
@@ -53,9 +56,12 @@ There are several points to note from this chart:
 
 Why do so many projects lose value? Through statistical analysis of the data, we were able to then determine the main drivers of NPV gain or loss, in terms of changes in the various outcome metrics. The results were then presented as a tornado chart as shown in Figure 2. It should be noted that unlike classical sensitivity analyses which look at the effect of an arbitrary change in input variables on the outcome, this analysis was based on *actual project results*. In other words this is not a mere sensitivity test, it instead reveals the actual drivers of NPV loss in order of their importance.
 
-![Drivers of NPV erosion in E&P projects]({{ site.url }}/images/ipa-otc-2014-drivers-npv-erosion.png)
-
-**Figure 2: Drivers of NPV erosion in E&P projects.** Source: Declining Terms of Trade: Why Only The Most Efficient Will Survive The Cost Price Squeeze, Neeraj Nandurdikar, Independent Project Analysis, OTC 2014.
+<figure>
+	<a href="{{ site.url }}/images/ipa-otc-2014-drivers-npv-erosion.png" data-lightbox="image-2" data-title="Drivers of NPV erosion in E&P projects">
+		<img src="{{ site.url }}/images/ipa-otc-2014-drivers-npv-erosion.png" alt="Drivers of NPV erosion in E&P projects"/>
+	</a>
+	<figcaption><strong>Figure 2: Drivers of NPV erosion in E&P projects.</strong><br/> Source: Declining Terms of Trade: Why Only The Most Efficient Will Survive The Cost Price Squeeze, Neeraj Nandurdikar, Independent Project Analysis, OTC 2014</figcaption>
+</figure>
 
 The findings were not necessarily surprising, but they are definitely critical to understanding why projects fail:
 
