@@ -4,7 +4,7 @@ title: Visual Core Analysis
 modified:
 categories: analysis
 excerpt: Using ImageJ image processing software to determine visual porosity in carbonate cores.
-tags: [pasca, core_analysis, research, image_processing]
+tags: [pasca, analysis, core_analysis, research, image_processing, porosity, carbonate]
 image:
   feature: 
   teaser: teaser-visual-core-analysis-400x250.jpg

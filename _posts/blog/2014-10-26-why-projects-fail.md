@@ -4,7 +4,7 @@ title: Why Projects Fail
 modified:
 categories: blog
 excerpt: An article recently published in SPE's Oil and Gas Facilities references several of IPA's research articles, including one for which I was a co-author.
-tags: [ipa, projects, npv_erosion, research, spe]
+tags: [ipa, projects, npv_erosion, research, spe, facilities, npv, performance]
 image:
   feature:
   teaser: teaser-why-projects-fail-400x250.png

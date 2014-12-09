@@ -4,7 +4,7 @@ title: Out Of The Frying Pan
 modified:
 categories: blog
 excerpt: The start of a new phase in my career as I move back into the oil industry after a brief spell in consulting.
-tags: [career, twinza, pasca]
+tags: [career, twinza, pasca, oil_industry]
 image:
   feature:
   teaser: teaser-twinza-400x250.png

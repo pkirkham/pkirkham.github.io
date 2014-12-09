@@ -4,7 +4,7 @@ title: First Impressions of PNG
 modified:
 categories: blog
 excerpt: First visit to Papua New Guinea with Twinza to advance the Pasca A field development.
-tags: [png, pasca]
+tags: [png, pasca, twinza, opinion, travel]
 image:
   feature: feature-png-sunset-1024x256.jpg
   teaser: teaser-png-flag-400x250.jpg

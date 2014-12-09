@@ -4,7 +4,7 @@ title: Introducing The Pyrus Suite
 modified:
 categories: pyrus
 excerpt: An oil and gas software suite created in Java for asset evaluation including volumetrics, material balance and economics.
-tags: [pyrus_suite, java, netbeans, volumetrics, material_balance, economics, seismic_scanning]
+tags: [pyrus_suite, java, netbeans, volumetrics, material_balance, economics, npv, seismic_scanning, modelling, software]
 image:
   feature: feature-pyrus-1024x256.png
   teaser: teaser-pyrus-400x250.png

@@ -207,31 +207,47 @@
 			}
 		}
 	}
-	.ads {
+	.right-column {
 		position: relative;
-		text-align: center;
+		text-align: left;
 		margin-top: $gutter;
 		margin-left: -$gutter;
 		margin-right: -$gutter;
-		padding: 10px 0 20px;
+		padding: 10px;
 		background: lighten($border-color,5);
 		@include media($medium) {
 			@include span-columns(3);
 			margin-left: 0;
 			margin-right: 0;
 		}
-		&:after {
-			content: 'Advertisement';
-			position: absolute;
-			bottom: 0;
-			width: 100%;
-			text-align: center;
-			display: block;
-			@include font-size(9,no);
-			font-family: $alt-font;
-		}
 		ins {
 			border-width: 0;
+		}
+	}
+	.rel-post-col {
+		font-family: $alt-font;
+		li {
+			margin-top: 10px;
+			margin-right: 12px;
+		}
+		h3, h4 {
+			padding: 0px;
+		}
+		h3 {
+			@include font-size(18);
+			margin-top: 10px;
+			margin-bottom: 24px;
+		}
+		h4 {
+			@include font-size(16);
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+		p {
+			@include font-size(14,no);
+			color: lighten($black,20);
+			padding: 10px;
+			margin-top: 0px;
 		}
 	}
 }
