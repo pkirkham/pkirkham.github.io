@@ -1,10 +1,10 @@
 ---
 layout: article
 title: Visual Core Analysis
-modified:
+modified: 2015-01-17
 categories: analysis
 excerpt: Using ImageJ image processing software to determine visual porosity in carbonate cores.
-tags: [pasca, analysis, core_analysis, research, image_processing, porosity, carbonate]
+tags: [analysis, core_analysis, research, image_processing, porosity, carbonate]
 image:
   feature: 
   teaser: teaser-visual-core-analysis-400x250.jpg
@@ -12,17 +12,15 @@ image:
 comments: true
 ---
 
-The Pasca A field in the Gulf of Papua was first discovered in 1968. This is a carbonate pinnacle reef structure containing a liquids-rich gas-condensate. During drilling of an appraisal well during 1983 there was a loss of well control event when pulling out of hole prior to logging, and until recently it was believed (mistakenly) that the field no longer contained any recoverable hydrocarbons as a result.
+One of the uncertainties associated with the resource estimate for carbonate reservoirs is the average field porosity. When wells are drilled which experience large losses of mud into the formation, the mud and filtrate will fully invade the larger pore spaces deep into the formation, and thus the logs will fail to recognise the true porosity. Furthermore carbonates can be very heterogeneous, with many diagenetic processes affecting the porosity post-deposition.
 
-Twinza Oil believes that the field only suffered a minor loss of hydrocarbons, and that there remains a substantial undeveloped resource. The question of course is exactly how large is that resource. One of the uncertainties associated with the resource estimate is the average field porosity. Given that there are only logs available from two wells drilled in 1968 and 1969, plus core from the Pasca A-3 well drilled in 1983, there is not a huge amount of data available. Furthermore the geological model would indicate that the two wells which were logged, were drilled on the flanks of the reef and thus could be associated with a lower porosity than that in the centre of the reef. However the porosity measurements from the core plugs in Pasca A-3 suggest the very opposite; the porosity is lower in the centre of the reef.
+Having core can help mitigate the problems experienced with logs, but often the core plug measurements are taken on the best part of the core, which again gives a false impression of the overall porosity.
 
 ## The Core Analysis Challenge
 
-Best practice for any evaluation effort is to start with the raw data itself, and understand the limitations of how it was acquired and interpreted. In the case of Pasca A-3 this was not straightforward as the core recovery was not high to begin with, and the core has been stored in a warehouse in PNG for the last three decades.
+Best practice for any evaluation effort is to start with the raw data itself, and understand the limitations of how it was acquired and interpreted. Often this is not straightforward as the core recovery was not high to begin with, and the core may have been stored in uncertain conditions. It may also be the case that there is a limited amount of core, in which case the preference would be to use non-destructive analytical techniques, such as MRI or CT scanning to build up a picture of the pore space within the core. As a pre-cursor to these activities high resolution photographs of the core can be taken, to investigate whether the more expensive scanning techniques might yield any benefits.
 
-Fortunately it was possible to locate most of the core, and thus there is hope that further analysis may prove useful. Given that there is a limited amount of core, the preference is to use non-destructive analytical techniques, such as MRI or CT scanning to build up a picture of the pore space within the core. As a pre-cursor to these activities high resolution photographs of the core were taken, to investigate whether the more expensive scanning techniques would yield any benefits?
-
-An example section from one of the core photographs is shown in Figure 1. This illustrates that there is visible macro porosity in the form of vugs, and this immediately suggests that the reservoir could have a significant porosity. These vugs are easily identified and are associated with flow of fluids through the reef post-deposition, which have contributed to dissolution porosity.
+An example section from a carbonate core photograph is shown in Figure 1. This illustrates that there is visible macro porosity in the form of vugs, and this immediately suggests that the reservoir could have a significant porosity. These vugs are easily identified and are typically associated with flow of fluids through a reef post-deposition, which have contributed to dissolution porosity.
 
 <figure>
 	<a href="{{ site.url }}/images/visual-core-analysis-slide1.png" data-lightbox="image-1" data-title="Evidence of vugs on core">
@@ -40,7 +38,7 @@ Another aspect of porosity development in carbonates is associated with formatio
 	<figcaption><strong>Figure 2: Evidence of dolomitic porosity on core.</strong></figcaption>
 </figure>
 
-Analogue carbonate reservoirs with vuggy porosity can easily develop effective porosity of 20 percent or higher. So the apparent history concerning the porosity development is contrary to the 11 percent porosity determined from log interpretation. Is it possible to justify the use of a higher porosity upside in the Pasca A field based on the core? To answer this question it is first necessary to measure the visible porosity from the core photograph.
+Analogue carbonate reservoirs with vuggy porosity can easily develop effective porosity of 20 percent or higher. If we suspect that the log measured porosity is not fully capturing the true porosity because of fluid invastion, the question remains whether it is possible to justify the use of a higher porosity upside based on the core? To answer this question it is first necessary to measure the visible porosity from the core photograph.
 
 It should be noted that it is also expected that microporosity will be present in the carbonate matrix, but it is not possible to measure this through a simple visual technique. Therefore any visual porosity estimate technique will be an underestimate of the true porosity.
 
@@ -89,7 +87,7 @@ Here we have categorised our original image into four different groups. The red 
 
 The image reveals some interesting features of the reservoir. We can see that areas of dolomitisation tend to lie along linear trends which could represent fluid flow through the reservoir. These fluids have chemically altered the base rock matrix to cause the dolomotisation. Furthermore the fluid flow may have created vugs, and there are more vugs close to the potential fluid flow pathways. Small pore spaces are more prevalent in areas of dolotomisation and away from biological matter. This might be expected because the dolotomisation contributes to the formation of pore space as a result of fluid flow through the reservoir, but the biological matter restricts flow of fluids through the carbonate, so there is less dolomotisation in those areas. Vugs presents in areas of biological matter could be created through larger organisms that have decayed, and are thus different to the vugs in the dolotomised regions which might have resulted from fluid flow.
 
-Whilst the image analysis is a relatively straightfoward technique, it does help us to understand that there is very likely to have been fluid flow in the reservoir, and that therefore there is very likely to be good permeability in the reservoir. We can also recognise using our image processing the two main types of porosity that are revealed through visual examination of the core.
+Whilst the image analysis is a relatively straightfoward technique, it does help us to understand that there is very likely to have been fluid flow in the reservoir, and that therefore there is very likely to be good permeability in the reservoir. This can aid with putting together the diagenetic history for the reservoir. We can also recognise using our image processing the two main types of porosity that are revealed through visual examination of the core.
 
 ### Porosity Calculation From Binary Mask
 
@@ -101,7 +99,7 @@ Once the measurements have been selected calculation of porosity is simple:
 2. Run command Analyze/Measure
 3. Porosity is shown in the '%Area' column of the Results window that is produced
 
-The calculated porosity using the porosity mask generated from our core photograph is shown in Figure 5. This indicates that porosity of the image shown is 10.4 percent.
+The calculated porosity using the porosity mask generated from our core photograph is shown in Figure 5. This indicates that porosity for this particular image shown is 10.4 percent.
 
 <figure>
 	<a href="{{ site.url }}/images/visual-core-analysis-slide5.png" data-lightbox="image-5" data-title="Calculated porosity from binary porosity layer">
@@ -124,9 +122,9 @@ It may be necessary when calculating porosity to exclude certain parts of the im
 
 ### Understanding Porosity Distribution
 
-The core photograph shows a visual porosity measurement of 10.4 percent which agrees quite well with the log measured porosity of 11 percent. If the reservoir was relative homogeneous, then we might conclude that there is no apparent difference in porosity revealed by the core at the centre of the reef versus that interpreted from logs at the flanks of the reef.
+The previous core photograph shows a visual porosity measurement of 10.4 percent. Is this comparable to log or core measured porosity?
 
-The reef is not homogeneous, and other sections of core exhibit more prevalent vugginess. An example of this is shown in Figure 6. This core photograph has been analysed using the excluded area technique because part of the core was removed to take a core plug. Records indicate that the laboratory measured porosity for the core plug was just 7.8 percent; even lower than the 11 percent interpreted from the logs. Reliance on this core porosity without examination of the core might lead to a belief that the reef does not develop good porosity in the centre. Yet it can clearly be seen that there are extensive large vugs in the core.
+Generally carbonate is not homogeneous, and some sections of core (where recovered) can exhibit more prevalent vugginess. An example of this is shown in Figure 6. This core photograph has been analysed using the excluded area technique because part of the core was removed to take a core plug. Records indicate that the laboratory measured porosity for the core plug was just 7.8 percent. Reliance on this core porosity without examination of the core might lead to a belief that the carbonate has poor porosity development. Yet it can clearly be seen that there are extensive large vugs in the core.
 
 <figure>
 	<a href="{{ site.url }}/images/visual-core-analysis-slide6.png" data-lightbox="image-6" data-title="Comparison of visual porosity estimate against measured core plug porosity">
@@ -135,7 +133,7 @@ The reef is not homogeneous, and other sections of core exhibit more prevalent v
 	<figcaption><strong>Figure 6: Comparison of visual porosity estimate against measured core plug porosity.</strong></figcaption>
 </figure>
 
-The visual porosity estimate is 14.6 percent. This is nearly twice as high as the core measured porosity. Does this mean that the core measured porosity or the visual porosity estimate is wrong? Not at all. Any core plug is very likely to be taken from a section of the core that is competent and can from which porosity can easily be measured using laboratory techniques. The intent would therefore be to avoid taking a core plug through the vuggiest part of the core. As such the core plug is only measuring part of the porosity.
+The visual porosity estimate for the whole core image, excluding the core plug area, is 14.6 percent. This is nearly twice as high as the core measured porosity. Does this mean that the core measured porosity or the visual porosity estimate is wrong? Not at all. Any core plug is very likely to be taken from a section of the core that is competent and can from which porosity can easily be measured using laboratory techniques. The intent would therefore be to avoid taking a core plug through the vuggiest part of the core. As such the core plug is only measuring part of the porosity.
 
 In order to understand this more clearly, we can look at the porosity distribution. By taking our binary mask for porosity, we can filter the image based on the areas of discrete features. In Figure 7 we have assigned features into five different area bins: 0-49 pixels, 50-99 pixels, 100-149 pixels, 150-199 pixels and 200+ pixels.
 
@@ -146,15 +144,15 @@ In order to understand this more clearly, we can look at the porosity distributi
 	<figcaption><strong>Figure 7: Porosity distribution from pore size bins.</strong></figcaption>
 </figure>
 
-This porosity calculated for each bin image helps to understand the nature of the porosity distribution in the reef.
+This porosity calculated for each bin image helps to understand the nature of the porosity distribution in the carbonate reservoir.
 
 * There is more porosity contribution from very small pores than from medium sized pores. The overall porosity from small to medium size pores is 5.6 percent, which is in line with the core plug measured porosity of 7.8 percent.
 * Over half of the porosity is associated with larger pores and vugs.
 
-This reveals that porosity in the Pasca A reef is not a straightforward property to characterise, but there is evidence that the average porosity might be higher than that calculated from logs on the flanks of the reef. It should be noted that the poor core recovery, drilling breaks and loss of circulation during drilling are consistent with a porosity model that also includes some porosity contribution from very large dissolution features.
+This reveals that porosity in carbonates is not a straightforward property to characterise, and there is evidence that the average porosity in a carbonate reservoir may be higher than that indicated from wireline log and core measurements alone. Where data indicates poor core recovery, drilling breaks and loss of circulation during drilling, these are signs that are consistent with a porosity model that also includes some porosity contribution from very large dissolution features.
 
 ## Conclusions
 
-A visual technique has been used to estimate porosity in the Pasca A reef. The technique combines digital photographs of the core surface with image processing algorithms to calculate the porosity. The technique is also able to distinguish between different types of porosity, and the relative contribution from each.
+A visual technique has been used to estimate porosity from a core photograph. The technique combines digital photographs of the core surface with image processing algorithms to calculate the porosity. The technique is also able to distinguish between different types of porosity, and the relative contribution from each.
 
-The technique is non-destructive, cheap and fast. By examining the original core and using this simple first principles approach, a case can be made to support the use of more sophisticated techniques to image the core porosity in three dimensions. Doing so will help to understand the geological processes that were present post-deposition, and help understand the upside potential for porosity in the field.
+The technique is non-destructive, cheap and fast. By examining the original core and using this simple first principles approach, a case can be made to support the use of more sophisticated techniques to image the core porosity in three dimensions. Doing so will help to understand the geological processes that were present post-deposition, and help understand the upside potential for porosity in a field.
