@@ -19,7 +19,7 @@ permalink: /:categories/:title/
 markdown: kramdown
 kramdown:
     input: GFM
-highlighter: rouge
+highlighter: pygments
 gems:
     - jekyll-sitemap
 
