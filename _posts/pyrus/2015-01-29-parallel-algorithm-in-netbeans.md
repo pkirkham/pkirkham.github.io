@@ -64,67 +64,67 @@ public class ParallelAlgorithm {
      * Implement the framework to manage the running of the parallel algorithm.
      */
     private void parallelMethod() {
-	
-		// Calculate the total number of workunits that will be processed by this algorithm
-		final int[] workunits = new int[PROGRESS_PHASES];
-		for (int phase = 0; phase < PROGRESS_PHASES; phase++) {
-			workunits[phase] = iterations;
-		}
-		startProgress(workunits);
+
+        // Calculate the total number of workunits that will be processed by this algorithm
+        final int[] workunits = new int[PROGRESS_PHASES];
+        for (int phase = 0; phase < PROGRESS_PHASES; phase++) {
+            workunits[phase] = iterations;
+        }
+        startProgress(workunits);
 
         // Set up parallelisation to speed up calculation
         int num_threads = Runtime.getRuntime().availableProcessors();
         ExecutorService exec_pool = Executors.newFixedThreadPool(num_threads);
-		
+        
         // The parallel parts of the algorithm are run in stages or phases
         final AtomicInteger[] cumulative_progress = new AtomicInteger[PROGRESS_PHASES];
         for (int phase = 0; phase < PROGRESS_PHASES; phase++) {
-			final int ph = phase;
-			final CountDownLatch flag = new CountDownLatch(iterations);
-			cumulative_progress[phase] = new AtomicInteger(); // progress counter
-			final AtomicInteger aj = new AtomicInteger(); // loop from initial aj
-			final int nj = iterations; // loop up to nj - 1
-			Thread[] worker = new Thread[num_threads];
-			for (int thread = 0; thread < num_threads; ++thread) {
-				worker[thread] = new Thread(new Runnable() {
+            final int ph = phase;
+            final CountDownLatch flag = new CountDownLatch(iterations);
+            cumulative_progress[phase] = new AtomicInteger(); // progress counter
+            final AtomicInteger aj = new AtomicInteger(); // loop from initial aj
+            final int nj = iterations; // loop up to nj - 1
+            Thread[] worker = new Thread[num_threads];
+            for (int thread = 0; thread < num_threads; ++thread) {
+                worker[thread] = new Thread(new Runnable() {
 
-					@Override
-					public void run() {
-						for (int j = aj.getAndIncrement(); j < nj; j = aj.getAndIncrement()) {
-							double[] result = calculateIteration(ph);
-							for (int r = 0; r < results; r++) {
-								output[r][j] = result[r];
-							}
-							flag.countDown();
-							synchronized(ParallelAlgorithm.this) {
-								progress_contribs[ph].progress(
-										MathLib.min(cumulative_progress[ph].incrementAndGet(), workunits[ph] - 1));
-							}
-						}
-					}
-				});
-			exec_pool.execute(worker[thread]);
-			}
+                    @Override
+                    public void run() {
+                        for (int j = aj.getAndIncrement(); j < nj; j = aj.getAndIncrement()) {
+                            double[] result = calculateIteration(ph);
+                            for (int r = 0; r < results; r++) {
+                                output[r][j] = result[r];
+                            }
+                            flag.countDown();
+                            synchronized(ParallelAlgorithm.this) {
+                                progress_contribs[ph].progress(
+                                        MathLib.min(cumulative_progress[ph].incrementAndGet(), workunits[ph] - 1));
+                            }
+                        }
+                    }
+                });
+            exec_pool.execute(worker[thread]);
+            }
 
-			// Block until all interpolation calculations have completed
-			try {
-				flag.await();
-			} catch (InterruptedException e1) {
-				LOG.severe(e1.getMessage());
-			}
-			finishProgress(phase);
+            // Block until all interpolation calculations have completed
+            try {
+                flag.await();
+            } catch (InterruptedException e1) {
+                LOG.severe(e1.getMessage());
+            }
+            finishProgress(phase);
         }
         exec_pool.shutdown();
     }
 
     /**
      * Override this method to do the actual calculation work for the current iteration.
-	 *
-	 * @param phase the phase (or stage) at which the algorithm has reached
+     *
+     * @param phase the phase (or stage) at which the algorithm has reached
      * @return array of results for this iteration. Order depends on algorithm.
      */
     protected abstract double[] calculateIteration(int phase);
-    
+
     /**
      * We are likely to want to know how far along this process has got since it will be quite long running. This will
      * return a NetBeans platform object that can help monitor the progress.
