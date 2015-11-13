@@ -24,7 +24,7 @@ Over the weekend we spent time on Loloata Island, a small resort off the coast o
 	<a href="{{ site.url }}/images/team-pasca-loloata-island.jpg" data-lightbox="image-1" data-title="Team Pasca returning from Loloata Island">
 		<img src="{{ site.url }}/images/team-pasca-loloata-island.jpg" alt="Team Pasca returning from Loloata Island"/>
 	</a>
-	<figcaption><strong>Figure 1: Team Pasca returning from Loloata Island.</strong></figcaption>
+	<figcaption><strong>Team Pasca returning from Loloata Island.</strong></figcaption>
 </figure>
 
 I've always maintained that when it comes to holiday destinations, there are two kinds of people: "Beach" people and "Mountain" people. The beach contingent would rather spend their time lazing on a warm beach, perhaps punctuated with brief dips in the blue ocean, before retiring over several beers or wine to an evening that starts with a blazing red sunset. The mountain types are the active ones. Enjoyment is not just the endless vista at the top of a mountain peak, but overcoming the challenges involved in getting there in the first place. PNG is one of those wonderful countries that manages to give both, with steep hills rising right out of the ocean, and continuing to rise inland to over 4,000 metres. As a self-professed mountain man, an idea to climb the highest peak in PNG with my good friend Erick has already been discussed.
