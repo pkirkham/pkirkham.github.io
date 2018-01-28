@@ -4,7 +4,7 @@ title: Introducing Python Game Programming for Raspberry Pi
 modified:
 categories: scouting
 excerpt: Many budding old skool programmers learned their trade writing computer games that were laboriously hand typed from code in computer magazines and books. The Raspberry Pi computer and the Python programming language reintroduces this forgotten art to today's kids.
-tags: [rpi, python, scouting, progamming]
+tags: [rpi, python, scouting, progamming, raspberry_pi, cubs, digital_maker_badge]
 image:
   feature:
   teaser: teaser-python_starship-400x250.png
@@ -20,10 +20,10 @@ With the Raspberry Pi computer (or 'RPi' as it is often referred to in shorthand
 It is a small, low powered, cheap computer about the size of a credit card. The model B has about the same processing power as a Pentium II from the late 1990s (around the introduction of Windows 95 if you remember that) but can do a whole lot more. It was specifically designed to make computing and programming accessible for those that want to learn. Hooking up the RPi to interact with the physical world (such as responding to sensors and triggering responses) is surprisingly easy. There is a massive community of enthusiasts who have embraced the RPi and done all sorts of things with it.
 
 <figure>
-	<a href="{{ site.url }}/images/rpi2-modelb.jpeg" data-lightbox="image-1" data-title="Raspbery Pi Model B computer">
-		<img src="{{ site.url }}/images/rpi2-modelb.jpeg" alt="Raspbery Pi Model B computer"/>
+	<a href="{{ site.url }}/images/rpi2-modelb.jpeg" data-lightbox="image-1" data-title="Raspberry Pi Model B computer">
+		<img src="{{ site.url }}/images/rpi2-modelb.jpeg" alt="Raspberry Pi Model B computer"/>
 	</a>
-	<figcaption><strong>Raspbery Pi Model B computer.</strong></figcaption>
+	<figcaption><strong>Raspberry Pi Model B computer.</strong></figcaption>
 </figure>
 
 ### Why bother with such a low powered computer?
@@ -118,5 +118,12 @@ for c in range(10):
 		print("\n")
 		print("You failed")
 		print("The aliens got you")
-		
 ```
+
+Once you've entered the program and have it working, there are some additional challenges you might like to try, a few of which are listed in the original book.
+
+As an additional challenge you might consider the following:
+
+* How many possible numbers are there in each game?
+* What is the best strategy to guess the number in the least number of tries?
+* Is it possible to always win the game?

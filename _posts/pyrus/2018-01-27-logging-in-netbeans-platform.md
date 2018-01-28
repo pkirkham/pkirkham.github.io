@@ -4,7 +4,7 @@ title: Logging in NetBeans Platform
 modified:
 categories: pyrus
 excerpt: How to set up logging in the NetBeans platforms with single line formatting and capturing timestamp, class, method and level of the invoked logging call.
-tags: [java, netbeans, programming, snippet, netbeans_platform, logging]
+tags: [java, netbeans_platform, programming, snippet, logging, module_installer]
 image:
   feature: 
   teaser: teaser-netbeans-logging-400x250.jpg
@@ -16,17 +16,17 @@ The Pyrus Suite is built upon the NetBeans platform which provides a large amoun
 
 All that is required is to add a line to enable the logging in each class that you want to use. The line must identify the class specifically, so I have added this line into my blank class template in Tools/Templates -- just replace "MyClass" with "$(name)" in the template.
 
-{% highlight java %}
+```java
     /* == ENABLE LOGGING == */
     transient private static final java.util.logging.Logger LOG =
         java.util.logging.Logger.getLogger(MyClass.class.getName());
-{% endhighlight %}
+```
 
 Once you have enabled the logging, you can then start to control the logging output. For example the verbosity can be increased or decreased, allowing you to include different levels of debugging information. This is considered a good practice as you can have more detailed information, perhaps using timing calls for benchmarking code at the FINER and FINEST levels, and high level information for the user at the INFO level. To control the verbosity of the logging output that is recorded, you simply need to change the logging level.
 
 But where do I find this in my NetBeans platform application? The answer is to create your an Installer for the module, override the <code>restored()</code> method, and set the level of the logger applicable to your package.
 
-{% highlight java %}
+```java
 package logging.example;
 
 import java.util.logging.Level;
@@ -62,13 +62,13 @@ public class Installer extends ModuleInstall {
         root_logger.setLevel(Level.CONFIG);
     }
 }
-{% endhighlight %}
+```
 
 ## Formatting Logging Output on a Single Line
 
 This allows control of the logging level, but the formatting is another aspect that can be controlled. Standard logging output is to use two lines, but it is far easier to read if each logging message is output to a single line. Furthermore it is very useful if the time and calling class and method for the logging message can be identified (without having to manually insert it into the message for each and every log record). Fortunately the functionality to achieve this is built into the java.util.logging environment. What we need to do is create our own formatter, and then set this as the formatted for the NetBeans logging handler. All messages passed into the log are thus manipulated by the formatter to conform to our requirements.
 
-{% highlight java %}
+```java
 package logging.example;
 
 import java.text.DateFormat;
@@ -237,19 +237,18 @@ public class SingleLineFormatter extends Formatter {
     /* == ENABLE LOGGING == */
     transient private static final java.util.logging.Logger LOG
             = java.util.logging.Logger.getLogger(SingleLineFormatter.class.getName());
-
-{% endhighlight %}
+```
 
 In our <code>Installer</code> module we now add the SingleLineFormatter to the root logger handlers. This is done by adding the following to the <code>restored()</code> method:
 
-{% highlight java %}
+```java
         final SingleLineFormatter formatter = new SingleLineFormatter();
 		for (final Handler handler : root_logger.getHandlers()) {
             
             // Actions to be taken on the root loggers
             handler.setFormatter(formatter);
         }
-{% endhighlight %}
+```
 
 ### Where Are My Methods?
 
@@ -259,7 +258,7 @@ The big issue that you'll face with this code (assuming your mileage with the Ne
 
 So what we need to do is make sure that a call to `getSourceMethodName` is made before any other requests are made of the `LogRecord` by various handlers in the NetBeans platform. We can intercept our log messages by providing our own logging handler, and ensuring that this method call is made.
 
-{% highlight java %}
+```java
 package logging.example;
 
 import java.util.logging.Handler;
@@ -288,15 +287,15 @@ class CustomHandler extends Handler {
     public void close() throws SecurityException {
     }
 }
-{% endhighlight %}
+```
 
 Finally we need to add one last piece of code to our `Installer` class to ensure that the handler is assigned to our log records. This was surprisingly difficult to achieve as there doesn't appear to be much documentation about this -- at least my Google efforts were not very productive. Either I am the only programmer that has come across this issue (unlikely), or others don't seem to care much about it (more probable). In any event, I thought it would be worth recording my findings on this blog post in case they are of use to someone else.
 
-{% highlight java %}
+```java
         // Set a special handler for our modules
         CustomHandler custom_handler = new CustomHandler();
         example_root_logger.addHandler(custom_handler);
-{% endhighlight %}
+```
 
 If everything is working then in your logs you should see messages that look like:
 

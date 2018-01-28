@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Does Project Complexity Matter?
-modified:
+modified: 2018-01-28
 categories: blog
 excerpt: Complex projects are part of the fabric of the oil and gas industry. Is this a cause for concern?
 tags: [projects, complexity, spe-connect, ipa, context, objectives, scope, organisation, technology, pep, fel, performance]
@@ -30,7 +30,7 @@ A surprising consequence is that whereas FEL has been found to correlate very st
 
 This is good news. It means that we need not despair simply because we are faced with a challenging project. What it does mean is that we ought to be concerned about how we plan our projects.
 
-One aspect of complexity that is hard to hide from is that the amount of effort involved in planning increases as a project increases in complexity. This means that it becomes harder to achieve the level of definition necessary to deliver a successful project. Furthermore the price of failure also increases. This is illustrated in Figure 1, taken from [Oil and Gas Industry Megaprojects: Our Recent Track Record](http://ipaglobal.com//getattachment/a5829440-4ac0-4b80-aaf7-2c0e26a882e3/Oil-and-Gas-Industry-Megaprojects--Our-Recent-Trac.aspx), a downloadable paper which summarises several of the key points raised in Ed's megaprojects book. The x-axis shown is Asset FEL which is a measure of project definition. Projects in the _Best_ or _Good_ category are those with superior project definition. The y-axis shown is cost growth for the project between the original estimate at sanction versus the actual cost spent, adjusted for escalation over the project execution phase. The relationships illustrate that if FEL is improved, then a project has a lower level of cost growth.
+One aspect of complexity that is hard to hide from is that the amount of effort involved in planning increases as a project increases in complexity. This means that it becomes harder to achieve the level of definition necessary to deliver a successful project. Furthermore the price of failure also increases. This is illustrated in Figure 1, taken from [Oil and Gas Industry Megaprojects: Our Recent Track Record](https://www.spe.org/en/ogf/ogf-article-detail/?art=346), a downloadable paper which summarises several of the key points raised in Ed's megaprojects book. The x-axis shown is Asset FEL which is a measure of project definition. Projects in the _Best_ or _Good_ category are those with superior project definition. The y-axis shown is cost growth for the project between the original estimate at sanction versus the actual cost spent, adjusted for escalation over the project execution phase. The relationships illustrate that if FEL is improved, then a project has a lower level of cost growth.
 
 <figure>
 	<a href="{{ site.url }}/images/ipa-megaprojects-2012-growth-vs-fel.png" data-lightbox="image-1" data-title="Cost growth versus FEL for E&P and non-E&P megaprojects">

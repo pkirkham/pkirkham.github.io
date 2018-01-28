@@ -4,7 +4,7 @@ title: Parallel Algorithm In NetBeans
 modified:
 categories: pyrus
 excerpt: How to integrate a parallel algorithm and progress measurements into a NetBeans platform application.
-tags: [java, netbeans, programming, snippet, parallel_algorithm, parallel_processing, progress_handler, thread_handling]
+tags: [java, netbeans_platform, programming, snippet, parallel_algorithm, parallel_processing, progress_handler, thread_handling]
 image:
   feature: 
   teaser: teaser-parallel-algorithm-400x250.jpg
@@ -28,7 +28,7 @@ The code below contains boilerplate for a class that implements a parallel algor
 
 To implement the algorithm it is necessary to write an implementation for the <code>calculateIteration</code> method.
 
-{% highlight java %}
+```java
 package parallel.example;
 
 import java.util.concurrent.CountDownLatch;
@@ -172,4 +172,4 @@ public class ParallelAlgorithm {
     transient private static final java.util.logging.Logger LOG
             = java.util.logging.Logger.getLogger(ParallelAlgorithm.class.getName());
 }
-{% endhighlight %}
+```

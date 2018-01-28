@@ -7,7 +7,7 @@ excerpt: It has been just over three months since I joined Twinza and I believe 
 tags: [career, twinza, oil_industry, experience, linkedin]
 image:
   feature:
-  teaser: teaser-twinza-400x250.png
+  teaser: 
   thumb:
 comments: true
 ---

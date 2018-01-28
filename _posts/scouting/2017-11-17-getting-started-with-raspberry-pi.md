@@ -1,10 +1,10 @@
 ---
 layout: article
 title: Getting Started With Raspberry Pi
-modified:
+modified: 2018-01-28
 categories: scouting
 excerpt: Instructions for connecting the Raspberry Pi and booting up for the first time, and where to find replacement parts if lost?
-tags: [rpi, python, scouting, progamming]
+tags: [rpi, python, scouting, programming, raspberry_pi, cubs, digital_maker_badge]
 image:
   feature:
   teaser: teaser-raspberry-pi-logo-400x250.png
@@ -39,6 +39,13 @@ To create a fully working computer the Cubs need to provide:
 ### Hooking It Up
 
 Really simple. Put the MicroSD card into the RPi. Plug HDMI cable between RPi and TV. Plug in keyboard and mouse. Plug in power supply. That’s it!
+
+<figure>
+	<a href="{{ site.url }}/images/elias-raspberry-pi.jpg" data-lightbox="image-1" data-title="Elias hooking up the Raspberry Pi">
+		<img src="{{ site.url }}/images/elias-raspberry-pi.jpg" alt="Elias hooking up the Raspberry Pi"/>
+	</a>
+	<figcaption><strong>Figure 1: Elias hooking up the Raspberry Pi.</strong></figcaption>
+</figure>
 
 You should get a green light come on and everything will start to load. On the first boot you’ll need to select an operating system to install. Don’t worry about what this is at the moment. You might see a warning that this will overwrite everything on the card. This is OK as there is no operating system installed yet. Select ‘Raspbian’, and then let it sit and do its magic. It will take a long time!
 
