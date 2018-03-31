@@ -86,7 +86,7 @@ I'm running an ASRock X370 Killer SLI motherboard with Ryzen 7 1700 CPU and 2x 8
 	<figcaption><strong>ASRock X370 Killer SLI BIOS 4.60 Ryzen 7 1700 overclocked to 3750 MHz.</strong></figcaption>
 </figure>
 
-In the updated BIOS 4.60, to set p-state overclocking it is necessary to use AMD CBS mode for overclocking. This can be found at Advanced/AMD CBS/Zen Common Options/Custom Pstates. Set the CPU voltage to Offset mode, with Auto offset value. In the [path] set the P0 state to your desired overclock. Leave other p-states unchanged. The two values that you need to change are the VID and FID which are the voltage and frequency multipliers respectively. I have set VID to 1.375 volts (VID = 0x1C in hex) and FID to 37.5 (FID = 0x96 in hex).
+In the updated BIOS 4.60, to set p-state overclocking it is necessary to use AMD CBS mode for overclocking. This can be found at Advanced/AMD CBS/Zen Common Options/Custom Pstates. Set the CPU voltage to Offset mode, with Auto offset value.
 
 <figure>
 	<a href="{{ site.url }}/images/ASRock X370 Killer SLI BIOS Voltage.jpg" data-lightbox="image-5" data-title="ASRock X370 Killer SLI BIOS 4.60 voltage and CBS overclock settings.">
@@ -94,6 +94,8 @@ In the updated BIOS 4.60, to set p-state overclocking it is necessary to use AMD
 	</a>
 	<figcaption><strong>ASRock X370 Killer SLI BIOS 4.60 voltage and CBS overclock settings.</strong></figcaption>
 </figure>
+
+In the CBS settings, set the P0 state to your desired overclock. Leave other p-states unchanged. The two values that you need to change are the VID and FID which are the voltage and frequency multipliers respectively. I have set VID to 1.375 volts (VID = 0x1C in hex) and FID to 37.5 (FID = 0x96 in hex).
 
 <figure>
 	<a href="{{ site.url }}/images/ASRock X370 Killer SLI PState Timings.jpg" data-lightbox="image-6" data-title="ASRock X370 Killer SLI BIOS 4.60 p-state P0 setting.">
