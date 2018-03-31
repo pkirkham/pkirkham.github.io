@@ -49,8 +49,8 @@ There are a few aspects of the build that are a little more involved in comparis
 Putting it all together was straightforward. Everything fit first time around, probably because I was using a mid-size case. I settled on a turquoise and yellow colour scheme. This is a little unusual but looks striking.
 
 <figure>
-	<a href="{{ site.url }}/images/ryzen-watercooled-build.jpg" data-lightbox="image-1" data-title="Closeup of the build showing AIO watercooled Ryzen 7 with GTX 1080 and Sound Blaster ZxR.">
-		<img src="{{ site.url }}/images/ryzen-watercooled-build.jpg" alt=""/>
+	<a href="{{ site.url }}/images/ryzen-watercooled-build.JPG" data-lightbox="image-1" data-title="Closeup of the build showing AIO watercooled Ryzen 7 with GTX 1080 and Sound Blaster ZxR.">
+		<img src="{{ site.url }}/images/ryzen-watercooled-build.JPG" alt=""/>
 	</a>
 	<figcaption><strong>Closeup of the build showing AIO watercooled Ryzen 7 with GTX 1080 and Sound Blaster ZxR.</strong></figcaption>
 </figure>
@@ -58,8 +58,8 @@ Putting it all together was straightforward. Everything fit first time around, p
 One of the nice benefits is that moving from 2x 24" monitors to 1x 32" monitor frees up more desk space, and now allows the build to be displayed on the case. The more compact 10 keyless layout of the K-Type keyboard also allows the use of a larger mouse mat.
 
 <figure>
-	<a href="{{ site.url }}/images/desktop-setup-complete.jpg" data-lightbox="image-2" data-title="Colour co-ordinated desktop, PC, keyboard and mouse lighting.">
-		<img src="{{ site.url }}/images/desktop-setup-complete.jpg" alt=""/>
+	<a href="{{ site.url }}/images/desktop-setup-complete.JPG" data-lightbox="image-2" data-title="Colour co-ordinated desktop, PC, keyboard and mouse lighting.">
+		<img src="{{ site.url }}/images/desktop-setup-complete.JPG" alt=""/>
 	</a>
 	<figcaption><strong>Colour co-ordinated desktop, PC, keyboard and mouse lighting.</strong></figcaption>
 </figure>
@@ -67,8 +67,8 @@ One of the nice benefits is that moving from 2x 24" monitors to 1x 32" monitor f
 The build works well. Using CPU-Z to do a basic benchmark against our target Ryzen 7 1800X system, we can see that we have matched the performance of that processor with our cheaper 1700. Nice.
 
 <figure>
-	<a href="{{ site.url }}/images/CPU-Z Ryzen 7 1700 at 1800X speed.jpg" data-lightbox="image-3" data-title="Ryzen 1700 build matches 1800X in performance once overclocked.">
-		<img src="{{ site.url }}/images/CPU-Z Ryzen 7 1700 at 1800X speed.jpg" alt=""/>
+	<a href="{{ site.url }}/images/CPU-Z Ryzen 7 1700 at 1800X speed.JPG" data-lightbox="image-3" data-title="Ryzen 1700 build matches 1800X in performance once overclocked.">
+		<img src="{{ site.url }}/images/CPU-Z Ryzen 7 1700 at 1800X speed.JPG" alt=""/>
 	</a>
 	<figcaption><strong>Ryzen 1700 build matches 1800X in performance once overclocked.</strong></figcaption>
 </figure>
