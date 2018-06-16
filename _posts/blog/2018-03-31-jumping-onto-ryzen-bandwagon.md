@@ -124,7 +124,7 @@ The setting that seemed to have a large influence on whether or not the system w
 	<figcaption><strong>ASRock X370 Killer SLI BIOS 4.60 ProcODT setting.</strong></figcaption>
 </figure>
 
-In learning amount memory testing utilities I learned that it is possible to [install Ubuntu Linux on Windows 10](https://tutorials.ubuntu.com/tutorial/tutorial-ubuntu-on-windows#0). This is great as it allows access to a whole load of command line utilities on Linux that simply are not available on Windows. For memory testing, it allows the use of the `stressapptest` utility which is apparently used by Google to stress test the memory stability of their servers. To run it just open the Linux terminal and run the following command to stress test for an hour.
+In learning about memory testing utilities I learned that it is possible to [install Ubuntu Linux on Windows 10](https://tutorials.ubuntu.com/tutorial/tutorial-ubuntu-on-windows#0). This is great as it allows access to a whole load of command line utilities on Linux that simply are not available on Windows. For memory testing, it allows the use of the `stressapptest` utility which is apparently used by Google to stress test the memory stability of their servers. To run it just open the Linux terminal and run the following command to stress test for an hour.
 
 ```
 stressapptest -W -s 3600
