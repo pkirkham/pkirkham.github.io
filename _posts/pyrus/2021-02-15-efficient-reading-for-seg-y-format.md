@@ -27,10 +27,10 @@ However, the same rate cannot be achieved for non-sequential data i.e. to access
 The consequence is that to read a line perpendicular to the primary line direction, referred to as a "crossline", it is necessary to read a trace, seek to the start of the next trace, read that trace, seek to the next trace, read, seek, read, seek and so on... The sequential reads of each trace are still fast, but the addition of multiple seeks greatly slows down the overall read time for the crossline. The problem is compounded further if a planar line along the third axis, referred to as a "slice", is desired. In this situation only a single sample is read sequentially and a seek to the start of the next sample is needed for each and every sample that is read. In theory this could add up to hours of time on a large 3D dataset, but in practice it is much faster taking mere 'minutes'. For comparison an inline can be read in fractions of a second and a crossline in a few seconds.
 
 <figure>
-	<a href="{{ site.url }}/images/Pyrus/efficient-reading-for-seg-y-format1.png" data-lightbox="image-1" data-title="">
+	<a href="{{ site.url }}/images/Pyrus/efficient-reading-for-seg-y-format1.png" data-lightbox="image-1" data-title="Comparison of seeks and sequential reads for different planes in a 3D volume (seeks in red, sequential read in green)">
 		<img src="{{ site.url }}/images/Pyrus/efficient-reading-for-seg-y-format1.png" alt=""/>
 	</a>
-	<figcaption><strong>Figure 1: Comparison of seeks and sequential reads for different planes in a 3D volume (seeks in red, sequential read in green)</strong></figcaption>
+	<figcaption><strong>Figure 1: Comparison of seeks and sequential reads for different planes in a 3D volume (seeks in red, sequential read in green).</strong></figcaption>
 </figure>
 
 ## Solving the Slice Read Time Using Hardware
@@ -61,7 +61,7 @@ A comparison of the stated specifications for each drive in addition to the Inte
 | Data rate (Mbyte/s) | 128.75 | 530 | 3,500 | 1,450 |
 | **Read time (ns)** | **7.8** | **1.9** | **0.3** | **0.7** |
 
-It is immediately apparent that SSDs offer a large improvement compared to hard drives both in terms of latency and the sequential read data rate. Optane offers the lowest latencies of any of the technologies plus a sequential read data rate that is an order of magnitude faster than a hard drive, but slower than an NVMe SSD. In order to test the real-world speed comparison between the drive technologies a 3D post-stack seismic volume with dimensions 1,966 x 1,103 x 3,001 is used to test reading inlines, crosslines and slices. A small benchmark program is used to randomly read 100 inlines, crossline and partial slices and the average time to read each float is calculated. These measured times can be compared against the theoretical read times whichh are computed based on the number of seeks and sequential bytes that are read for each line. Time for a seek is 't_s' and time to read a sequential byte is 't_b'.
+It is immediately apparent that SSDs offer a large improvement compared to hard drives both in terms of latency and the sequential read data rate. Optane offers the lowest latencies of any of the technologies plus a sequential read data rate that is an order of magnitude faster than a hard drive, but slower than an NVMe SSD. In order to test the real-world speed comparison between the drive technologies a 3D post-stack seismic volume with dimensions 1,966 x 1,103 x 3,001 is used to test reading inlines, crosslines and slices. A small benchmark program is used to randomly read 100 inlines, crossline and partial slices and the average time to read each float is calculated. These measured times can be compared against the theoretical read times which are computed based on the number of seeks and sequential bytes that are read for each line. Time for a seek is 't_s' and time to read a sequential byte is 't_b'.
 
 Each inline contains n_y (1,103) traces each containing n_z (3,001) float samples with 4 bytes per floating point number. All bytes are stored sequentially, therefore the read time is:
 
