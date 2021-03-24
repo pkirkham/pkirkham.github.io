@@ -48,8 +48,8 @@ Optane has not caught on popularity and there are few consumer-level drives avai
 My PC has several different types of drives which allow for comparison of different code and hardware combinations. The drives currently installed include:
 
 * Conventional hard disk drive (Toshiba PC P300 2TB)
-* SATA III solid state drive (Crucial MX300 525 GB)
-* M.2 NVMe solid-state drive (Samsung 960 EVO 256 GB)
+* SATA III solid state drive (Crucial MX300 525GB)
+* M.2 NVMe solid-state drive (Samsung 960 EVO 250GB)
 
 A comparison of the stated specifications for each drive in addition to the Intel Optane 800p published specifications are as follows:
 

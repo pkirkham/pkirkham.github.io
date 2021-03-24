@@ -32,7 +32,7 @@ owner:
     google:
         ad-client: 
         ad-slot:
-        analytics-id: UA-57245062-1 # Tracking ID for Google Analytics
+        analytics-id: G-F12384RJMK # Tracking ID for Google Analytics (GA4)
     bio: "Upstream jack-of-all-trades and master of some."
     avatar: 96x96avatar.jpg # image for author byline
 disqus-shortname: pkirkham
