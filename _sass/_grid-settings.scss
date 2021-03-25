@@ -7,9 +7,9 @@ $visual_grid: false;
 // 240, 480, 640, 1024
 $short: new-breakpoint(max-height em(768) 12);
 $micro: new-breakpoint(min-width em(240) max-width em(480) 12);
-$small: new-breakpoint(min-width em(480) max-width em(1023) 12);
-$medium: new-breakpoint(min-width em(1024) 12);
-$large: new-breakpoint(min-width em(1920) 12);
+$small: new-breakpoint(min-width em(480) max-width em(1029) 12);
+$medium: new-breakpoint(min-width em(1030) 12);
+$large: new-breakpoint(min-width em(1428) 12);
 
 // $short: new-breakpoint(max-height em(768) 12);
 // $micro: new-breakpoint(min-width em(240) max-width em(480) 12);

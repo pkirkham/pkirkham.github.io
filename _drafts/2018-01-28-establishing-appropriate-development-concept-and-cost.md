@@ -20,6 +20,8 @@ This blog contains all the presentation slides that I shared with SPE, and some 
 
 ## Pasca A Case Study
 
+The basis for the talk is the field development planning undertaken for the Pasca A field offshore PNG whic is operated by Twinza Oil.
+
 <figure>
 	<a href="{{ site.url }}/images/18WM01 Peter Kirkham/Slide1.png" data-lightbox="image-1" data-title="">
 		<img src="{{ site.url }}/images/18WM01 Peter Kirkham/Slide1.png" alt=""/>

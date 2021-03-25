@@ -165,7 +165,9 @@
 				//@include span-columns(7 of 9);
 			}
 			@include media($large) {
-				@include span-columns(7 of 9);
+				@include row($direction: LTR);
+				@include span-columns(8 of 9);
+				//@include span-columns(7 of 9);
 			}
 			// larger font for intro paragraph
 			> p {
@@ -346,7 +348,7 @@
 	}
 	li {
 		@include media($micro) { @include font-size(16,no,18); }
-    @include media($small) { @include font-size(16,no,18); }
+		@include media($small) { @include font-size(16,no,18); }
 		@include font-size(12,no,16);
 		border-bottom: 1px solid $border-color;
 	}
