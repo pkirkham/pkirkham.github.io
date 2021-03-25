@@ -42,7 +42,7 @@ Many years later my father and I were chatting about his business, and he lament
 
 Whilst I had lost some of my youthful naivety, I was still ambitious. I knew I had a functioning set of tools that could be used to provide a framework for a front-end GUI for the seismic scanning software. We had the source code for the algorithms written in Fortran, and if there were any issues with understanding the logic, I could simply ask the man who devised the algorithms: my father. So I set to work on writing a graphical front-end to the Java code I had been updating for nearly a decade. In doing so Pyrus was born.
 
-Soon after I was approached by [Geertjan Wielenga](https://blogs.oracle.com/geertjan/entry/welcome_to_me) to write an [article on my use of NetBeans RCP for the Pyrus Suite](http://netbeans.dzone.com/nb-petroleum-engineering). This is a nice record of how I used the NetBeans platform, and there are some early screenshots. Since that article development has continued, and most of the seismic scanning functionality has now been successfully ported over.
+Soon after I was approached by [Geertjan Wielenga](https://blogs.oracle.com/geertjan/entry/welcome_to_me) to write an [article on my use of NetBeans RCP for the Pyrus Suite](https://dzone.com/articles/nb-petroleum-engineering). This is a nice record of how I used the NetBeans platform, and there are some early screenshots. Since that article development has continued, and most of the seismic scanning functionality has now been successfully ported over.
 
 ## The Future Of Pyrus
 
