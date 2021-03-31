@@ -55,7 +55,7 @@ bb.get(b_array);
 
 Comparison testing between the two methods using random reads on a large multi gigabyte file suggests that the wrapped approach is slightly faster both for single-threaded and parallel implementations. However, when applied to the reading of chunks from an HDF5 file, the wrapped approach exhibited **no speed benefit** from parallel versus single-thread and the mapped approach was overall faster. The reasons for this are not clear.
 
-For the moment it would appear that the [jHDF implementation is using a the fastest access method](https://github.com/jamesmudd/jhdf/blob/a7a933e5f242201798aafe9d0876a039e9bd4bca/jhdf/src/main/java/io/jhdf/dataset/chunked/ChunkedDatasetBase.java#L252) for file IO.
+For the moment it would appear that the [jHDF implementation is using the fastest access method](https://github.com/jamesmudd/jhdf/blob/a7a933e5f242201798aafe9d0876a039e9bd4bca/jhdf/src/main/java/io/jhdf/dataset/chunked/ChunkedDatasetBase.java#L252) for file IO.
 
 There is definitely raw performance to be gained as indicated by the superior performance of the HDF5 JNI library for small chunk sizes. For the moment we will remain satisfied that superior performance with larger chunk sizes is attainable ''as is'' with the jHDF library and move onto balancing the read times for inlines, crosslines and slices.
    
@@ -94,7 +94,7 @@ The influence of chunk size, chunk ratio and chunk asymmetry can be seen in Figu
 	<figcaption><strong>Figure 2: Optimising chunk size, flatness and asymmetry.</strong></figcaption>
 </figure>
 
-We find that the optimal chunk size is ~2 MB (2,048 KB). This corresponds to an average chunk dimension of ~77 which is close to the 80x80x80 chunk size that was previously found to be the fastest size for reading with the jHDF library. For a selected chunk size of 2 MB, a higher chunk ratio leads to a reduced slice read time at the expense of increased inline and crossline read times. At first glance it appears that a chunk ratio of 1.5x is optimal. Finally the chunk asymmetry clearly balances the inline and crossline read times.
+We find that the optimal chunk size is ~2 MB (2,048 KB). This corresponds to an average chunk dimension of ~77 which is close to the 80 x 80 x 80 chunk size that was previously found to be the fastest size for reading with the jHDF library. For a selected chunk size of 2 MB, a higher chunk ratio leads to a reduced slice read time at the expense of increased inline and crossline read times. At first glance it appears that a chunk ratio of 1.5x is optimal. Finally the chunk asymmetry clearly balances the inline and crossline read times.
 
 After some experimentation a chunk size of 2,048 KB, chunk ratio of 2.0x and chunk asymmetry of 2.5x was found to be optimal.
 
@@ -116,4 +116,4 @@ Overall this is a satisfactory performance. A sub-half second read time for all 
 
 Read performance on average is **over one hundred times faster** than using the SEG-Y format only.
 
-Incidentally similar performance can be achieved with a 40x40x40 chunk size using the HDF5 JNI library. Also, as previously noted, the fastest performance possible could be obtained by re-writing the entire volume three times so that inlines, crosslines and slices are all in the fast direction, and the storing all three volumes in memory using a RAM disk. This would blitz the solution provided here -- although a RAM disk could also be used with the HDF5 file...
+Incidentally similar performance can be achieved with a 40 x 40 x 40 chunk size using the HDF5 JNI library. Also, as previously noted, the fastest performance possible could be obtained by re-writing the entire volume three times so that inlines, crosslines and slices are all in the fast direction, and the storing all three volumes in memory using a RAM disk. This would blitz the solution provided here -- although a RAM disk could also be used with the HDF5 file...
