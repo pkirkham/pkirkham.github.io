@@ -4,7 +4,7 @@ title: Chunking with the HDF5 Format
 modified:
 categories: pyrus
 excerpt: Speeding up average read time for SEG-Y files through use of a different file structure.
-tags: [programming, hdf5, seismic, algorithm, segy, benchmark, java, big_data]
+tags: [programming, hdf5, seismic, algorithm, segy, benchmark, java, big_data, chunking]
 image:
   feature: 
   teaser: teaser-hdf5-chunking-400x250.png
@@ -101,8 +101,7 @@ We see that when dealing with unchunked volumes, improving the hardware alone le
 
 Having in theory found a potential solution to speed up **average** data access for large 3D volumes, the next challenge is to implement it. Whilst it is always possible to implement a custom solution, a better approach is to utilise an established format which is well documented and tested.
 
-Whilst it would be great to think that I had invented an innovative or unique approach to reading SEG-Y data, the reality is that there are many industries and scientific fields that must also deal with large data sets. Before the current 
-artificial intelligence" buzzphrase, "big data" was all the rage. Thankfully business' enamourment with big data has meant that a great deal of resources have been devoted to the topic. The approach of 'chunking', it turns out, is not new -- I merely happened to have independently discovered this approach that has widespread acceptance across numerous disciplines. Because of the many different needs for a solution, there exists a standard file format that was designed with chunking in mind. This is the [HDF5 hierarchical data format](https://www.hdfgroup.org/solutions/hdf5/).
+Whilst it would be great to think that I had invented an innovative or unique approach to reading SEG-Y data, the reality is that there are many industries and scientific fields that must also deal with large data sets. Before the current "artificial intelligence" buzzphrase, "big data" was all the rage. Thankfully business' enamourment with big data has meant that a great deal of resources have been devoted to the topic. The approach of ['chunking', it turns out, is not new](https://www.unidata.ucar.edu/blogs/developer/entry/chunking_data_why_it_matters) -- I merely happened to have independently discovered this approach that has widespread acceptance across numerous disciplines. Because of the many different needs for a solution, there exists a standard file format that was designed with chunking in mind. This is the [HDF5 hierarchical data format](https://www.hdfgroup.org/solutions/hdf5/).
 
 An attraction of HDF5 is that it is a defined format that implements a versatile data model. The data model is general and allows for a variety of different data types to be stored in an unlimited file size, yet the data volume can be expanded or contracted without compromising access speed. Perhaps the biggest attraction is that there are a number of software libraries which facilitate manipulation of the file format. Thus adoption of HDF5 means that the programmer can focus on the implementation of the data model rather than worrying about the nitty-gritty of file access.
 
