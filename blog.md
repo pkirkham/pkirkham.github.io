@@ -6,7 +6,7 @@ image:
   feature:
 ---
 
-General musings on life working as an expat in the oil and gas industry with a focus on the upstream sector and AsiaPac region. I've now lived and worked in four countries which has given me a fairly broad view of the world and where the industry fits into it, and yet this is merely scratching the surface.
+General musings on life working as an expat in the oil and gas industry with a focus on the upstream sector and AsiaPac region. Since work with no play isn't living life to its fullest, my thoughts on other endeavours is also covered. I've now lived and worked in four countries which has given me a fairly broad view of the world and where the industry fits into it, and yet this is merely scratching the surface.
 
 <div class="tiles">
 {% for post in site.categories.blog %}

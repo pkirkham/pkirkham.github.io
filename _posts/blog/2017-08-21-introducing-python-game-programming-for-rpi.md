@@ -2,7 +2,7 @@
 layout: article
 title: Introducing Python Game Programming for Raspberry Pi
 modified:
-categories: scouting
+categories: blog
 excerpt: Many budding old skool programmers learned their trade writing computer games that were laboriously hand typed from code in computer magazines and books. The Raspberry Pi computer and the Python programming language reintroduces this forgotten art to today's kids.
 tags: [rpi, python, scouting, progamming, raspberry_pi, cubs, digital_maker_badge]
 image:

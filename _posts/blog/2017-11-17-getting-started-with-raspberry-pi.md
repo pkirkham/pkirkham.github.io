@@ -2,7 +2,7 @@
 layout: article
 title: Getting Started With Raspberry Pi
 modified: 2018-01-28
-categories: scouting
+categories: blog
 excerpt: Instructions for connecting the Raspberry Pi and booting up for the first time, and where to find replacement parts if lost?
 tags: [rpi, python, scouting, programming, raspberry_pi, cubs, digital_maker_badge]
 image:
