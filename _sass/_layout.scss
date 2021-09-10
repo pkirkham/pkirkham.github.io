@@ -166,8 +166,9 @@
 			}
 			@include media($large) {
 				@include row($direction: LTR);
-				@include span-columns(8 of 9);
+				// Adjust number of span columns that the figure caption will occupy
 				//@include span-columns(7 of 9);
+				@include span-columns(7.7 of 9);
 			}
 			// larger font for intro paragraph
 			> p {
@@ -251,7 +252,7 @@
 			color: lighten($black,20);
 			padding: 0px 10px 0px 10px;
 			margin-top: 12px;
-			margin-bottom: 24px;
+			margin-bottom: 6px;
 		}
 	}
 }

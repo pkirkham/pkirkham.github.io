@@ -23,8 +23,8 @@ Where does one start when trying to determine whether it is possible to improve 
 This certainly makes physical sense when you consider [how data is stored on the platter of a hard drive](http://ntfs.com/hard-disk-basics.htm). Magnetic information is recorded onto the surface of a platter. As illustrated in Figure 1, this data is laid out in tracks so that sequential byte streams pass under the read head of the drive as it rotates. Data is accessed at the speed that the drive spins i.e. a 10,000 rpm drive will have a faster sequential read speed in comparison to a 5,400 rpm drive. To access non-contiguous data the read head must traverse across the platter to a different track and/or the platter must rotate to the position of the data on that track. The seek action has a latency associated with this physical movement which is much slower than the time between reading of consecutive bytes on a track. Therefore reading data that is stored in a contiguous fashion is much faster than reading the same volume of data if it is stored sparsely.
 
 <figure>
-	<a href="{{ site.url }}/images/Pyrus/chunking-with-hdf5-format4.png" data-lightbox="image-1" data-title="Data recorded in concentric tracks on surface of spinning hard disk platters">
-		<img src="{{ site.url }}/images/Pyrus/chunking-with-hdf5-format4.png" alt=""/>
+	<a href="{{ site.url }}/images/Pyrus/chunking-with-hdf5-format4.png" data-lightbox="image-1" data-title="Data recorded in concentric tracks on surface of spinning hard disk platters.">
+		<img src="{{ site.url }}/images/Pyrus/chunking-with-hdf5-format4.png" alt="Data recorded in concentric tracks on surface of spinning hard disk platters."/>
 	</a>
 	<figcaption><strong>Figure 1: Data recorded in concentric tracks on surface of spinning hard disk platters.</strong><br/> Source: <a href="https://en.wikipedia.org/wiki/Disk_read-and-write_head">Wikipedia</a></figcaption>
 </figure>
@@ -50,8 +50,8 @@ In effect it would be possible to read many inlines in the time that it takes to
 The kernel behind any solution must therefore be one where irrespective of the plane of data required, the number of seeks or skips through the dataset is minimised and most of the data can be read using sequential reads. One such structure to achieve this outcome would be if the volume were to be split into several smaller volumes or cubes. Each sub-volume would store its data contiguously, and the sub-volumes are arranged such that they can be formed into slabs that encompass inlines, crosslines and slices. An example of this structure is illustrated in Figure 2.
 
 <figure>
-	<a href="{{ site.url }}/images/Pyrus/chunking-with-hdf5-format3.png" data-lightbox="image-2" data-title="Reading a series of smaller sub-volumes to minimise number of seeks for trade-off of larger sequential data read including redundant data">
-		<img src="{{ site.url }}/images/Pyrus/chunking-with-hdf5-format3.png" alt=""/>
+	<a href="{{ site.url }}/images/Pyrus/chunking-with-hdf5-format3.png" data-lightbox="image-2" data-title="Reading a series of smaller sub-volumes to minimise number of seeks for trade-off of larger sequential data read including redundant data.">
+		<img src="{{ site.url }}/images/Pyrus/chunking-with-hdf5-format3.png" alt="Reading a series of smaller sub-volumes to minimise number of seeks for trade-off of larger sequential data read including redundant data."/>
 	</a>
 	<figcaption><strong>Figure 2: Reading a series of smaller sub-volumes to minimise number of seeks for trade-off of larger sequential data read including redundant data.</strong></figcaption>
 </figure>
@@ -89,8 +89,8 @@ In this particular example the total read time is **dominated** by the seek time
 To illustrate the theoretical advantage of chunking, we can plot the average read time for an inline, crossline and slice against the chunk dimension for different storage media using our equations. This is shown in Figure 3.
 
 <figure>
-	<a href="{{ site.url }}/images/Pyrus/chunking-with-hdf5-format1.png" data-lightbox="image-3" data-title="Theoretical improvement to average read speed for inline, crossline and slice planes through chunking on different media">
-		<img src="{{ site.url }}/images/Pyrus/chunking-with-hdf5-format1.png" alt=""/>
+	<a href="{{ site.url }}/images/Pyrus/chunking-with-hdf5-format1.png" data-lightbox="image-3" data-title="Theoretical improvement to average read speed for inline, crossline and slice planes through chunking on different media.">
+		<img src="{{ site.url }}/images/Pyrus/chunking-with-hdf5-format1.png" alt="Theoretical improvement to average read speed for inline, crossline and slice planes through chunking on different media."/>
 	</a>
 	<figcaption><strong>Figure 3: Theoretical improvement to average read speed for inline, crossline and slice planes through chunking on different media.</strong></figcaption>
 </figure>
@@ -108,8 +108,8 @@ An attraction of HDF5 is that it is a defined format that implements a versatile
 As a test, the 1,966 x 1,103 x 3,001 SEG-Y seismic volume was converted to HDF5 format using different chunk sizes. A benchmark was created to read random inlines, crosslines and slices from the SEG-Y and chunked HDF5 volumes. The average read times for these different permutations are shown in Figure 4.
 
 <figure>
-	<a href="{{ site.url }}/images/Pyrus/chunking-with-hdf5-format2.png" data-lightbox="image-4" data-title="Read speed improvements for chunked datasets using HDF5 versus SEG-Y">
-		<img src="{{ site.url }}/images/Pyrus/chunking-with-hdf5-format2.png" alt=""/>
+	<a href="{{ site.url }}/images/Pyrus/chunking-with-hdf5-format2.png" data-lightbox="image-4" data-title="Read speed improvements for chunked datasets using HDF5 versus SEG-Y.">
+		<img src="{{ site.url }}/images/Pyrus/chunking-with-hdf5-format2.png" alt="Read speed improvements for chunked datasets using HDF5 versus SEG-Y."/>
 	</a>
 	<figcaption><strong>Figure 4: Read speed improvements for chunked datasets using HDF5 versus SEG-Y.</strong></figcaption>
 </figure>

@@ -99,7 +99,7 @@
       @include span-columns(3);
       @include omega(4n);
     }
-    @media screen and (min-width: em(480)) and (max-width: em(999)) {
+    @media screen and (min-width: em(480)) and (max-width: em(1427)) {
       @include span-columns(3);
       @include omega(4n);
     }

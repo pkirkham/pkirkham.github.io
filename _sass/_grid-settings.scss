@@ -3,13 +3,18 @@
 // Change the grid settings
 $visual_grid: false;
 
-// Define your breakpoints
-// 240, 480, 640, 1024
+// Define the breakpoints for page resizing
+// Original settings: 240, 480, 640, 1024
+// 
+// When increasing sizing need to pay attention to related settings:
+//  - Need to also update _grid.scss in ./vendor/neat/settings
+//  - Need to adjust #main @at-root .page-content @include media($large)
 $short: new-breakpoint(max-height em(768) 12);
 $micro: new-breakpoint(min-width em(240) max-width em(480) 12);
 $small: new-breakpoint(min-width em(480) max-width em(1029) 12);
 $medium: new-breakpoint(min-width em(1030) 12);
 $large: new-breakpoint(min-width em(1428) 12);
+
 
 // $short: new-breakpoint(max-height em(768) 12);
 // $micro: new-breakpoint(min-width em(240) max-width em(480) 12);

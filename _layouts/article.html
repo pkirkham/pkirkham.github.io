@@ -47,6 +47,7 @@ layout: default
 							<li><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}"><img src="{{ site.url }}/images/{{ post.image.teaser }}" alt=""/></a></li>
 							<h4><a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a></h4>
 							<p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
+							<br clear="left">
 							{% capture hasSimilar %}{{ hasSimilar }}*{% endcapture %}
 							{% assign postHasSimilar = true %}
 						{% endif %}

@@ -31,7 +31,7 @@ Also shown in Figure 1 is the performance of the single-threaded jHDF implementa
 
 There are two main libraries for IO in Java. These are <code>java.io.*</code> and <code>java.nio.*</code>. Java IO effectively wraps the operating system native IO methods such that the JVM provides an OS-independent interface to file operations. This provides all the benefits of the strongly typed Java language at the cost of some overhead. Java **New IO** (NIO) provides methods for [accessing raw bytes stored in non-heap memory](https://www.kdgregory.com/index.php?page=java.byteBuffer) through a <code>ByteBuffer</code>. This enables fast random access to large byte arrays. To create a ByteBuffer using Java NIO, there are two principle approaches that can be used. My understanding of the differences between the two methods is summarised as follows:
 
-* **Wrap a Byte Array:** The byte array is created on the JVM heap and provides a backing array to the ByteBuffer. Because the data is read into the JVM heap, there are no array copies required.
+*  **Wrap a Byte Array:** The byte array is created on the JVM heap and provides a backing array to the ByteBuffer. Because the data is read into the JVM heap, there are no array copies required.
 
 ```java
 File infile = new File("/path/to/file");
@@ -42,7 +42,7 @@ ByteBuffer bb = ByteBuffer.wrap(b_array);
 fc.read(bb, address);
 ```
 
-* **Memory-mapped ByteBuffer:** Memory map the <code>ByteBuffer</code> using non-heap memory to the underlying <code>FileChannel</code>. This can provide a performance boost if the data being mapped already resides in memory as a result of being previously read. In addition, only data that needs to be copied into heap memory for the byte array is copied, in contrast to the wrapped byte array where the entire buffer is read into the heap.
+*  **Memory-mapped ByteBuffer:** Memory map the <code>ByteBuffer</code> using non-heap memory to the underlying <code>FileChannel</code>. This can provide a performance boost if the data being mapped already resides in memory as a result of being previously read. In addition, only data that needs to be copied into heap memory for the byte array is copied, in contrast to the wrapped byte array where the entire buffer is read into the heap.
 
 ```java
 File infile = new File("/path/to/file");
@@ -67,9 +67,9 @@ When reading chunks for crosslines and slices, all the bytes in the chunk are re
 
 The algorithm proposed is as follows:
 
-1. **Chunk Size:** Divides the seismic volume into an equal number of chunks along each axis, where the chunk has a target number of bytes. The target number of bytes is determined based on the optimal size taking into consideration the hardware latency, sequential read times and parallel read optimisation.
-2. **Chunk Ratio:** Chunk dimensions are manipulated by first squashing the chunk to reduce the size in the z-direction and increase along the x-direction and y-direction, whilst preserving the approximate number of bytes. This increases the number of samples per slice read with each chunk, thus improving the efficiency for reading slices.
-3. **Chunk Asymmetry:** Inline and crossline read times are then balanced by changing the relative lengths of the x-direction and y-direction. Since inline reads are comparatively fast, a short inline dimension (which leads to an increased number of seeks and thus higher latency) is an acceptable tradeoff for increasing the number of samples per crossline read with each chunk, which improves the efficiency of reading crosslines.
+1.  **Chunk Size:** Divides the seismic volume into an equal number of chunks along each axis, where the chunk has a target number of bytes. The target number of bytes is determined based on the optimal size taking into consideration the hardware latency, sequential read times and parallel read optimisation.
+2.  **Chunk Ratio:** Chunk dimensions are manipulated by first squashing the chunk to reduce the size in the z-direction and increase along the x-direction and y-direction, whilst preserving the approximate number of bytes. This increases the number of samples per slice read with each chunk, thus improving the efficiency for reading slices.
+3.  **Chunk Asymmetry:** Inline and crossline read times are then balanced by changing the relative lengths of the x-direction and y-direction. Since inline reads are comparatively fast, a short inline dimension (which leads to an increased number of seeks and thus higher latency) is an acceptable tradeoff for increasing the number of samples per crossline read with each chunk, which improves the efficiency of reading crosslines.
 
 ```java
 // Calculate the chunk sizing to use

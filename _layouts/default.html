@@ -34,11 +34,24 @@
       -ms-transform: translateX(100%);
       -o-transform: translateX(100%);
       transform: translateX(100%);
-    }
+	}
+	
+	.ig-thumbnail {
+      max-width: 300px;
+      height: 200px;
+	  object-fit: cover;
+	  padding: 5px; 
+	}
+	
+	.inline-gallery-container {
+	  height: 646px;
+	}
     </style>
 
     <link rel="stylesheet" href="{{ site.url }}/css/main.css">
 	<link href="{{ site.url }}/css/lightbox.css" rel="stylesheet" />
+	<link type="text/css" rel="stylesheet" href="https://unpkg.com/lightgallery@2.2.0/css/lightgallery-bundle.min.css" />
+
     <!-- HTML5 Shiv and Media Query Support for IE -->
     <!--[if lt IE 9]>
       <script src="{{ site.url }}/js/vendor/html5shiv.min.js"></script>
@@ -59,7 +72,10 @@
   <body>
     {% include header.html %}
     {% include navigation-sliding.html %}
-
+	
+	<!-- Must load lightGallery before content so that dynamic use of library is possible. -->
+	<script src="https://unpkg.com/lightgallery@2.2.0/lightgallery.min.js"></script>
+	
     <div id="page-wrapper">
       {% include browser-upgrade.html %}
 
@@ -67,11 +83,34 @@
 
       {% include footer.html %}
     </div>
-
+	
     <script src="{{ site.url }}/js/vendor/jquery-1.11.0.min.js"></script>
 	<script src="{{ site.url }}/js/vendor/lightbox.min.js"></script>
     <script src="{{ site.url }}/js/main.js"></script>
-    
+	<script type="text/javascript">
+	  lightGallery(document.getElementById('lightgallery'), {
+	    getCaptionFromTitleOrAlt: true,
+		speed: 1500,
+		mode: 'lg-slide',
+		cssEasing: 'cubic-bezier(0.250, 0.100, 0.250, 1.000)'
+	  });
+	  
+	  // Set the size of inline gallery container based on the content width allowing for top and bottom padding
+	  const lg = document.getElementById('inline-gallery-container');
+
+      // Perform any action just before opening the gallery
+      window.addEventListener('load', () => {
+        var width = $("#content").width();
+		
+	    // Resize based on caption height
+		lg.addEventListener('lgAfterOpen', () => {
+		  var toolbar_height = $("#lg-toolbar lg-group").height();
+	      var caption_height = $("#lg-components").height();
+	      lg.height((width * 0.6) + (toolbar_height + caption_height)) + "px";
+		});
+      });
+	</script>	
+	
     {% if page.toc == true %}
     <script type="text/javascript">
       $('.toc').toc({
