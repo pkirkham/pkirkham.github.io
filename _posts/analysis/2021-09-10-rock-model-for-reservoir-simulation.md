@@ -4,7 +4,7 @@ title: Rock Model for Reservoir Simulation
 modified:
 categories: analysis
 excerpt: Defining a basic rock model from which physically consistent static and dynamic reservoir model parameters can be derived without reliance on extensive core data.
-tags: [reservoir simulation, rock characterisation, rock properties, cementation exponent, pore throat size, porosity]
+tags: [reservoir simulation, rock characterisation, rock properties, cementation exponent, pore throat size, porosity, matrix, pore geometry, lithology]
 image:
   feature:
   teaser: teaser-rock-model-400x250.jpg
@@ -36,17 +36,17 @@ Conventionally resistivity logs are used to determine water saturation (and henc
 
 Consider [Archie’s equation](https://wiki.aapg.org/Archie_equation) ([Archie, 1942](https://doi.org/10.2118/942054-G)):
 
-![\frac{R_t}{R_w} = \frac{a}{\phi ^{m} \cdot {S_{w}}^{n}}](https://latex.codecogs.com/gif.latex?\frac{R_t}{R_w}&space;=&space;\frac{a}{\phi&space;^{m}&space;\cdot&space;{S_{w}}^{n}})
+![\frac{R_t}{R_w}=\frac{a}{\phi^{m}\cdot{S_{w}}^{n}}](https://latex.codecogs.com/gif.latex?\frac{R_t}{R_w}=\frac{a}{\phi^{m}\cdot{S_{w}}^{n}})
 
 Where:
 
 R<sub>t</sub> = Total resistivity measured by log, Ω∙m<br>
 R<sub>w</sub> = Water resistivity, Ω∙m<br>
-φ = rock porosity, fraction, fraction<br>
+φ = Rock porosity, fraction<br>
 S<sub>w</sub> = Water saturation, fraction<br>
 a = Tortuosity constant<br>
 m = Cementation exponent<br>
-n = Saturation exponent<br>
+n = Saturation exponent
 
 For carbonates a common approach is to assume a = 1 and m = n = 2, although it has long been recognised that the cementation exponent is related to pore geometry and varies in most carbonates with cementation exponents greater than 2 for vuggy rock. Through combination of the resistivity measurements and a determination of porosity, use of fixed Archie’s constants allows the unknown water saturation to be solved.
 
@@ -67,7 +67,7 @@ Our simplified rock model comprises three components. These are the rock matrix 
 
 In a water-wet rock, the irreducible water is bound to the surface of the rock matrix. As water is more conductive than hydrocarbon or rock, the electrical flow path follows the water around the matrix particles, crossing between rock particles at the pore throats. This is very similar to the fluid flow path which must also navigate around the rock particles via the pore throats. The electrical flow path is related to the cementation exponent ‘m’, which in turn is similar to the actual fluid flow path of length (L<sub>a</sub>) for a rock of size L. This allows tortuosity to be defined as:
 
-![\tau = \left ( \frac{L_{a}}{L} \right )^{2}](https://latex.codecogs.com/gif.latex?\tau&space;=&space;\left&space;(&space;\frac{L_{a}}{L}&space;\right&space;)^{2})
+![\tau=\left(\frac{L_{a}}{L}\right)^{2}](https://latex.codecogs.com/gif.latex?\tau=\left(\frac{L_{a}}{L}\right)^{2})
 
 Longer flow paths correspond to an increase in cementation exponent, along with an increase in the ratio between r<sub>b</sub> and r<sub>t</sub>. This means that there is a relationship between the cementation exponent and the pore geometry, and therefore it is only necessary to define one of r<sub>b</sub> and r<sub>t</sub> if the tortuosity is defined, since the ratio r<sub>b</sub>/r<sub>t</sub> will depend on the tortuosity.
 
@@ -86,11 +86,11 @@ The modified pore channel model is compared to a simple capillary tube model. It
 
 Where both the porosity and cementation exponent are known it is possible to calculate the r<sub>b</sub>/r<sub>t</sub> ratio and thus start to conceptualise the nature of the porosity in the reservoir. The initial step to establish the _f(r<sub>b</sub>/r<sub>t</sub>)_ value is straightforward:
 
-![f\left ( r_{b} / r_{t} \right ) = e^{\left( 1 - m \right ) \cdot \ln \phi}](https://latex.codecogs.com/gif.latex?f\left&space;(&space;r_{b}&space;/&space;r_{t}&space;\right&space;)&space;=&space;e^{\left(&space;1&space;-&space;m&space;\right&space;)&space;\cdot&space;\ln&space;\phi})
+![f\left(r_{b}/r_{t}\right)=e^{\left(1-m\right)\cdot\ln\phi}](https://latex.codecogs.com/gif.latex?f\left(r_{b}/r_{t}\right)=e^{\left(1-m\right)\cdot\ln\phi})
 
 Rather than solve for r<sub>b</sub>/r<sub>t</sub> directly a polynomial correlation between r<sub>b</sub>/r<sub>t</sub> and _f(r<sub>b</sub>/r<sub>t</sub>)_ is determined and used to mathematically relate the two values.
 
-![r_{b}/r_{t}=-1.924\times 10^{-12}x^{6}+2.05752\times 10^{-9}x^{5}-8.58132\times 10^{-7}x^{4}+1.78122\times 10^{-4}x^{3}-2.01093\times 10^{-2}x^{2}+1.77691x+1.8573](https://latex.codecogs.com/gif.latex?r_{b}/r_{t}=-1.924\times&space;10^{-12}x^{6}&plus;2.05752\times&space;10^{-9}x^{5}-8.58132\times&space;10^{-7}x^{4}&plus;1.78122\times&space;10^{-4}x^{3}-2.01093\times&space;10^{-2}x^{2}&plus;1.77691x&plus;1.8573)
+![r_{b}/r_{t}=-1.924\times10^{-12}x^{6}+2.05752\times10^{-9}x^{5}-8.58132\times10^{-7}x^{4}+1.78122\times10^{-4}x^{3}-2.01093\times10^{-2}x^{2}+1.77691x+1.8573](https://latex.codecogs.com/gif.latex?r_{b}/r_{t}=-1.924\times10^{-12}x^{6}&plus;2.05752\times10^{-9}x^{5}-8.58132\times10^{-7}x^{4}&plus;1.78122\times10^{-4}x^{3}-2.01093\times10^{-2}x^{2}&plus;1.77691x&plus;1.8573)
 
 Where:
 
