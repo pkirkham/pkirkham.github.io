@@ -31,9 +31,9 @@ The relationship reveals that permeability is a function of the rock porosity, t
 
 1.  The greater the pore volume in a rock, the higher the permeability. For a given lithology, an increase in porosity corresponds to an increase in permeability.
 2.  Complex (poorly sorted sandstones or highly heterogeneous carbonates) lithologies have a higher permeability that arises from the tortuous flow paths that the fluid must follow.
-3.  The narrowest points through which fluid must flow (pore throats) control permeability.
+3.  The narrowest points through which fluid must flow (pore throats) have a strong influence on permeability.
 
-### Modelled Permeability
+## Modelled Permeability
 
 The cementation exponent, being an electrically determined parameter, can be related to the flow path of electrical current through the more conductive water in the formation pore space. In this respect there is a physically similar basis between the cementation exponent and tortuosity. Since tortuosity is related to permeability through the theoretically derived Kozeny equation, it is reasonable to expect that there should also exist a relationship between the cementation exponent and permeability.
 
@@ -78,7 +78,7 @@ The result for Class 1 carbonate was achieved with m = 4 and r<sub>b</sub> = 60 
 
 The applied permeability model can therefore be used to generate porosity-permeability transforms for both sandstones and carbonates using the simplified rock characteristic model.
 
-### Validation of Permeability Model
+## Validation of Permeability Model
 
 To demonstrate the generality of the approach a variety of different sandstone and carbonate rock fabrics have been tested. The resulting porosity-permeability transforms are plotted to check that the values produced are reasonable and cover the expected range of values.
 

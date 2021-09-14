@@ -14,9 +14,9 @@ comments: true
 
 For a three-phase system, there are several endpoints that must be considered. These are the irreducible or residual saturations for a fluid where it is not possible to reduce the saturation below this value, and the critical saturations which are the saturation at which a fluid starts to flow.
 
-## Saturation Endpoints
+For our static modelling approach, the objective is to create a framework whereby all reservoir engineering properties can be derived directly, or indirectly, from a rock model that is defined by geology. Therefore variations in the rock properties with respect to the rock character can be defined and our saturation endpoints will adjust such that they are physically consistent with the rock model.
 
-### Irreducible Water Saturation
+## Irreducible Water Saturation
 
 The irreducible water saturation (S<sub>wirr</sub>) and the critical water saturation (S<sub>wcr</sub>) are usually taken as the same value. The irreducible water saturation can be determined using the Holmes-Buckles relationship. The Holmes-Buckles relationship is based on the classical Buckles equation where porosity times irreducible water saturation is a constant. The equation is modified to introduce a porosity exponent.
 
@@ -68,9 +68,9 @@ To determine the parameter Q the default value = 1.0 (as per the original Buckle
 
 This is perhaps not too surprising as Lucia’s rock fabric number (RFN) equations have a similar form to the Holmes-Buckles equation. It is encouraging that the Holmes-Buckles approach and the Lucia RFN approach do not contradict each other, and it lends support to the assertion that irreducible water saturation can be fundamentally derived from knowledge of the rock porosity and the nature of its pore geometry.
 
-The approach used here allows C and Q to be determined from the cementation exponent alone, so irreducible water saturation is a function of porosity and cementation exponent.
+The approach used here allows C and Q to be determined from the cementation exponent alone, so irreducible water saturation is a function of porosity and cementation exponent which implies that this property is physically dependent on porosity and the pore geometry only. It should be expected that pore throat size has some influence on irreducible water saturation, and that the Buckle's 'C' constant is therefore a function of both cementation exponent and pore throat size. As implemented, this dependency has not been considered. Since our rock model can be used to derive the irreducible water saturation without any other inputs, the rock properties are the only inputs that need to be defined within a static model cell.
 
-### Residual Gas Saturation
+## Residual Gas Saturation
 
 For our residual saturations, we are interested in the residual gas saturation (after water invasion) and the residual oil saturation (after both water invasion and gas invasion).
 
@@ -117,7 +117,9 @@ The range of curves generated fits the spread of data observations for different
 	<figcaption><strong>Figure 3: Validation that variation of maximum trapped gas saturation with porosity implied by Holtz equation is consistent with published datasets.</strong></figcaption>
 </figure>
 
-### Residual Oil Saturation
+The residual gas saturation is a function of porosity and initial gas saturation. The latter is directly related to the irreducible water saturation through a saturation height function, and therefore residual gas saturation is a function of the three properties that define our simple rock model: porosity, cementation exponent and pore size. Therefore, changing our rock model will affect the residual gas saturation in a physically consistent manner.
+
+## Residual Oil Saturation
 
 The residual oil saturation will vary depending upon whether the displacing fluid is water or gas. The wettability of the rock must also be taken into consideration. This gives us two different residual oil saturations:
 
@@ -136,6 +138,8 @@ Where:
 
 S<sub>org,imm</sub> = Residual oil saturation to gas under immiscible conditions, fraction<br>
 σ = Interfacial tension, dynes/cm<br>
-σ<sub>crit</sub> = Critical interfacial tension, dynes/cm
+σ<sub>crit</sub> = Critical interfacial tension = 0.15, dynes/cm
 
-This equation produces a relationship whereby there is a sharp reduction in S<sub>org</sub> below the critical IFT, and a nearly constant S<sub>org</sub> above this point. Measuring σ<sub>crit</sub> directly is difficult as it requires finding the IFT at which S<sub>org</sub> = S<sub>org,imm</sub> / 2. The recommended approach in the paper is to estimate it using two S<sub>org</sub> measurements. One at immiscible conditions and one at partially miscible conditions. This is not possible with a modelled approach as there are no actual measurements from which to derive the critical interfacial tension. Therefore, for the purposes of our model we will simplify this even further and observe that we are simply looking for a reduction in S<sub>org</sub> under miscible conditions. We set σcrit to a fixed value of 0.15 and from this we can determine the miscible S<sub>org</sub>.
+This equation produces a relationship whereby there is a sharp reduction in S<sub>org</sub> below the critical IFT, and a nearly constant S<sub>org</sub> above this point. Measuring σ<sub>crit</sub> directly is difficult as it requires finding the IFT at which S<sub>org</sub> = S<sub>org,imm</sub> / 2. The recommended approach in the paper is to estimate it using two S<sub>org</sub> measurements. One at immiscible conditions and one at partially miscible conditions. This is not possible with a modelled approach as there are no actual measurements from which to derive the critical interfacial tension. Therefore, for the purposes of our model we will simplify this even further and observe that we are simply looking for a reduction in S<sub>org</sub> under miscible conditions. We set σ<sub>crit</sub> to a fixed value of 0.15 and from this we can determine the miscible S<sub>org</sub>.
+
+Unlike irreducible water saturation or residual gas saturation, the residual oil saturation is a function of fluid properties only and is independent of any rock properties. Therefore, changing the rock model by altering porosity, cementation exponent or pore size should have no effect on the residual oil saturation. This makes sense as the residual oil saturation is related to miscibility between hydrocarbon phases in the pore volume, and is not related to wettability of the pore space within the rock.
