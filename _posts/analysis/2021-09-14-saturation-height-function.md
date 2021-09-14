@@ -106,10 +106,10 @@ HAGWC = Height above the gas-water contact, feet
 The saturation height functions for a 20% porosity carbonate (with a defined porosity-permeability transform) are shown below for oil-water and gas-water systems, assuming a factor β of 2.5.
 
 <figure>
-	<a href="{{ site.url }}/images/Analysis/SHF/shf-model.png" data-lightbox="image-2" data-title=".">
-		<img src="{{ site.url }}/images/Analysis/SHF/shf-model.png" alt="." />
+	<a href="{{ site.url }}/images/Analysis/SHF/shf-model.png" data-lightbox="image-2" data-title="Saturation height function showing decrease in water saturation versus height for oil-water and gas-water systems.">
+		<img src="{{ site.url }}/images/Analysis/SHF/shf-model.png" alt="Saturation height function showing decrease in water saturation versus height for oil-water and gas-water systems." />
 	</a>
-	<figcaption><strong>Figure 2: .</strong></figcaption>
+	<figcaption><strong>Figure 2: Saturation height function showing decrease in water saturation versus height for oil-water and gas-water systems.</strong></figcaption>
 </figure>
 
 To generate a saturation height function we re-arrange the equations using the familiar form of the Leverett J-Function. This creates an equation that describes the water saturation for a given porosity and height above the gas-water contact.
@@ -138,10 +138,10 @@ The irreducible water satuation Swirr can be estimated using the Holmes-Buckles 
 The equation allows a drainage saturation height function to be generated for any rock type using input of five parameters: (1) porosity, (2) permeability which can be derived from porosity using a porosity-permeability transform, (3) shape factor β as either a constant or varies depending on permeability k, (4) Buckles constant C from either log measurement or rock-type / facies basis and (5) Holmes-Buckles exponent Q from either log measurement or rock-type / facies basis.
 
 <figure>
-	<a href="{{ site.url }}/images/Analysis/SHF/drainage-curves.png" data-lightbox="image-3" data-title=".">
-		<img src="{{ site.url }}/images/Analysis/SHF/drainage-curves.png" alt="." />
+	<a href="{{ site.url }}/images/Analysis/SHF/drainage-curves.png" data-lightbox="image-3" data-title="Saturation height function for gas-water system in high permeability carbonate showing influence of porosity.">
+		<img src="{{ site.url }}/images/Analysis/SHF/drainage-curves.png" alt="Saturation height function for gas-water system in high permeability carbonate showing influence of porosity." />
 	</a>
-	<figcaption><strong>Figure 3: .</strong></figcaption>
+	<figcaption><strong>Figure 3: Saturation height function for gas-water system in high permeability carbonate showing influence of porosity.</strong></figcaption>
 </figure>
 
 Generally, this means that knowledge of porosity and the rock type alone is sufficient to generate a physically consistent and credible saturation height function. Because the saturations generated using this approach are based on underlying capillary pressures, using these predicted saturations in a static model should produce an initial reservoir condition that is in equilibrium.
@@ -152,15 +152,15 @@ The opposite of drainage is referred to as imbibition. In this scenario the rese
 
 One such scenario under which an imbibition curve might apply is associated with a deeper historical gas-water contact. This deeper contact would be associated with a drainage-type saturation height function. As the gas-water contact rises, either through gas leaking through a top-seal, or deeper burial of the reservoir which compresses the gas, the saturation height function above the current gas-water contact will become dependent on the history of the gas-water contact. The situation is not uncommon, and there are many reservoirs where the transition zone for a drainage-type saturation height function is longer than that observed on wireline logs. A specific indicator where this might be the case is where there are residual hydrocarbons evident below the interpreted free water level.
 
-An illustration of the phenomenon is shown below. This shows a carbonate reservoir with 20% porosity where the original gas-water contact (associated with the drainage water saturation profile shown in red) has risen by 500 feet. The application of an equivalent drainage saturation height function at the new depth would yield a saturation profile shown by the green dashed line. However, the imbibition behaviour means that below the new contact there will be residual gas and above the new contact the saturations will be lower and associated with a shorter transition zone than suggested by the drainage saturation height function.
+An illustration of the phenomenon is shown below. This shows a carbonate reservoir with uniform 20% porosity where the original or paleo gas-water contact (associated with the drainage water saturation profile shown in red) has risen by 500 feet. The current gas column is therefore located a a depth between 500 to 1,000 feet above the original gas-water contact. The application of an equivalent drainage saturation height function at the new depth would yield a saturation profile shown by the green dashed line. However, the imbibition behaviour whereby water is being drawn back into the formation as the contact rises and the capillary pressure is thus reduced, affects the gas saturation in the swept zone below the current gas-water contact and in the reservoir above it. Below the new contact the water encroachment displaces most of the gas, but there will be residual gas that cannot be displaced. The residual gas saturation is a function of the initial gas saturation and porosity. Above the new contact the reduction in capillary pressure leads to an increase in water saturation, but the overall water saturation is lower than it would be under a pure drainage situation. The result is that there is a shorter transition zone for the imbibition saturation height function than suggested by the drainage saturation height function.
 
 It is observed that the water saturation above the gas-water contact under an imbibition capillary pressure is lower than that under a drainage capillary pressure. Therefore, water saturations determined using a drainage saturation height function would underestimate the hydrocarbons in place.
 
 <figure>
-	<a href="{{ site.url }}/images/Analysis/SHF/imbibition-curves.png" data-lightbox="image-4" data-title=".">
-		<img src="{{ site.url }}/images/Analysis/SHF/imbibition-curves.png" alt="." />
+	<a href="{{ site.url }}/images/Analysis/SHF/imbibition-curves.png" data-lightbox="image-4" data-title="Imbibition saturation curve arising from rise in contact to current location from deeper paleo contact depth.">
+		<img src="{{ site.url }}/images/Analysis/SHF/imbibition-curves.png" alt="Imbibition saturation curve arising from rise in contact to current location from deeper paleo contact depth." />
 	</a>
-	<figcaption><strong>Figure 4: .</strong></figcaption>
+	<figcaption><strong>Figure 4: Imbibition saturation curve arising from rise in contact to current location from deeper paleo contact depth.</strong></figcaption>
 </figure>
 
 An empirical method to implement the imbibition saturation height function is described by Adams (2003). This is the “imbibition from drainage” method which is based on fitting a curve to the difference between drainage and imbibition measurements from laboratory data. The slope ‘s’ and intercept ‘int’ of the difference in water saturation is determined as follows:

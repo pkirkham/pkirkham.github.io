@@ -33,10 +33,10 @@ Simulators typically consider the oil-water and gas-oil relative permeability sy
 There are several elements that need to be captured when modelling two-phase relative permeability curves. The most important aspect is that any curves must be entirely consistent with all other modelled parameters. This means that endpoints must be derived using similar approaches to those used for saturation height modelling etc. Whilst the curves used are not derived from laboratory measurements, the form of the curves should also be consistent with those that are obtained from core measurements. Both drainage and imbibition curves should be derived in a manner where both curves are compatible with each other. Finally, consideration must be given to whether the rock is water-wet or oil-wet.
 
 <figure>
-	<a href="{{ site.url }}/images/Analysis/Permeability/oil-water-rel-perm-curve.png" data-lightbox="image-1" data-title=".">
-		<img src="{{ site.url }}/images/Analysis/Permeability/oil-water-rel-perm-curve.png" alt="." />
+	<a href="{{ site.url }}/images/Analysis/Permeability/oil-water-rel-perm-curve.png" data-lightbox="image-1" data-title="Modelled oil-water drainage and imbibition relative permeability curves for water-wet system. Key endpoints on curves are indicated.">
+		<img src="{{ site.url }}/images/Analysis/Permeability/oil-water-rel-perm-curve.png" alt="Modelled oil-water drainage and imbibition relative permeability curves for water-wet system. Key endpoints on curves are indicated." />
 	</a>
-	<figcaption><strong>Figure 1: .</strong></figcaption>
+	<figcaption><strong>Figure 1: Modelled oil-water drainage and imbibition relative permeability curves for water-wet system. Key endpoints on curves are indicated.</strong></figcaption>
 </figure>
 
 Starting with 100% water saturation (S<sub>w</sub> = 1.0) the relative permeability to water is 1.0 and to oil is zero. As the oil saturation increases the oil relative permeability increases and the water relative permeability decreases following the drainage lines until the irreducible water saturation (S<sub>wirr</sub>) is reached. At this point the relative permeability to oil at the critical water saturation (k<sub>rocw</sub>) is reached and water relative permeability is zero.
@@ -46,10 +46,10 @@ Note that oil does not flow until oil saturation is above a small critical oil s
 The relative permeability curves exhibit hysteresis, so as water saturation begins to increase again above the critical water saturation (S<sub>wcr</sub>), an imbibition line is followed. Under circumstances of increasing water saturation, the relative permeability to oil gradually decreases, and the relative permeability to water increases, until the residual oil saturation in the presence of water is reached (S<sub>orw</sub>). Note that the relative permeability to water at the residual oil saturation (k<sub>rwro</sub>) is less than 1.0.
 
 <figure>
-	<a href="{{ site.url }}/images/Analysis/Permeability/gas-oil-rel-perm-curve.png" data-lightbox="image-2" data-title=".">
-		<img src="{{ site.url }}/images/Analysis/Permeability/gas-oil-rel-perm-curve.png" alt="." />
+	<a href="{{ site.url }}/images/Analysis/Permeability/gas-oil-rel-perm-curve.png" data-lightbox="image-2" data-title="Modelled gas-oil drainage and imbibition relative permeability curves for water-wet system. Key endpoints on curves are indicated.">
+		<img src="{{ site.url }}/images/Analysis/Permeability/gas-oil-rel-perm-curve.png" alt="Modelled gas-oil drainage and imbibition relative permeability curves for water-wet system. Key endpoints on curves are indicated." />
 	</a>
-	<figcaption><strong>Figure 2: .</strong></figcaption>
+	<figcaption><strong>Figure 2: Modelled gas-oil drainage and imbibition relative permeability curves for water-wet system. Key endpoints on curves are indicated.</strong></figcaption>
 </figure>
 
 For the gas-oil system, starting with 100% oil saturation the initial relative permeability to gas is zero and to oil is k<sub>rocw</sub>, as gas saturation increases and displaces oil, the relative permeabilities follow their respective drainage curves until the maximum gas saturation allowing for irreducible water and residual oil is reached at 1.0 – (S<sub>wirr</sub> + S<sub>org</sub>). Whilst this is a two phase relative permeability curve for gas and oil, because reservoir rock will always contain irreducible water, its presence is also considered when calculating the gas saturation. Note that gas does not flow until gas saturation is above a small critical gas saturation (S<sub>gcr</sub>). This is not explicitly modelled as the use of LET curves allows some curvature in the lower part of the gas relative permeability curve and the upper part of the oil relative permeability curve which captures this phenomenon.
@@ -185,14 +185,14 @@ The LET empirical parameters have been determined through trial and error experi
 
 First let’s consider the saturation endpoints.
 
--   **S<sub>wirr</sub> or S<sub>wcr</sub>:** This can be obtained from the Holmes-Buckles equation and is related to the pore throat size relationship to the pore size.
--   **S<sub>grw</sub>:** The residual gas saturation after water invasion can be obtained from the Holtz-Land equation. An additional constraint must be considered where the value used cannot be larger than 0.9 × (1.0 − S<sub>wirr</sub>).
+-   **S<sub>wirr</sub> or S<sub>wcr</sub>:** This can be [obtained from the Holmes-Buckles equation](../modelling-saturation-endpoints#irreducible-water-saturation) and is related to the pore throat size relationship to the pore size.
+-   **S<sub>grw</sub>:** The residual gas saturation after water invasion can be [obtained from the Holtz-Land equation](../modelling-saturation-endpoints#residual-gas-saturation). An additional constraint must be considered where the value used cannot be larger than 0.9 × (1.0 − S<sub>wirr</sub>).
 -   **S<sub>orw</sub>:** For an oil-wet reservoir with a contact angle θ<sub>ow</sub> > 90°, we set the residual oil saturation to the same value calculated for the irreducible water saturation. In other words, if oil is the wetting phase, then it should behave similarly to water as the wetting phase. For a water-wet reservoir, we set the residual oil saturation to the same value as the residual gas saturation subject to an additional constraint where the value used cannot be larger than (1.0 − S<sub>grw</sub> − S<sub>wirr</sub>) ∕ 1.5.
--   **S<sub>org</sub>:** This is modelled using the Al-Nuaimi equation where S<sub>org,imm</sub> = S<sub>orw</sub>. We also consider the additional constraint that the value used cannot be larger than 0.9 − S<sub>grw</sub> − S<sub>wirr</sub> (or zero if the constraint is less than zero).
+-   **S<sub>org</sub>:** This is [modelled using the Al-Nuaimi equation](../modelling-saturation-endpoints#residual-oil-saturation) where S<sub>org,imm</sub> = S<sub>orw</sub>. We also consider the additional constraint that the value used cannot be larger than 0.9 − S<sub>grw</sub> − S<sub>wirr</sub> (or zero if the constraint is less than zero).
 
 Now we can also consider the relative permeability endpoints:
 
--   **k<sub>rocw</sub>:** Based on krow LET equation for oil-water drainage system at irreducible water saturation. This is equation [A4] in in Lomeland, Ebeltoft and Thomas (2005).<br>
+-   **k<sub>rocw</sub>:** Based on k<sub>row</sub> LET equation for oil-water drainage system at irreducible water saturation. This is equation [A4] in in Lomeland, Ebeltoft and Thomas (2005).<br>
     {% raw %}![k_{rocw}=\frac{\left(1-S_{wirr}\right)^{L_{o}^{w}}}{\left(1-S_{wirr}\right)^{L_{o}^{w}}+E_{o}^{w}\cdot{{S_{wirr}}^{T_{o}^{w}}}}](https://latex.codecogs.com/gif.latex?k_{rocw}=\frac{\left(1-S_{wirr}\right)^{L_{o}^{w}}}{\left(1-S_{wirr}\right)^{L_{o}^{w}}+E_{o}^{w}\cdot{{S_{wirr}}^{T_{o}^{w}}}}){% endraw %}
 -   **k<sub>rwt</sub>:** Equal to k<sub>rwro</sub> for an oil-wet system or 1.0 otherwise.
 -   **k<sub>rwro</sub>:** Based on k<sub>rwo</sub> (water-wet) LET equation for oil-water drainage system at effective saturation = 1.0 − S<sub>orw</sub> or zero if this is a negative result.<br>
@@ -213,10 +213,10 @@ These endpoints can be used to construct sets of oil-water and gas-oil two phase
 A consequence of how Pyrus models rock properties is that many parameters can be directly or indirectly linked to porosity. Ultimately the key inputs for Pyrus are the porosity and the nature of the rock fabric. From this are derived permeability, irreducible saturations, residual saturations etc. We should therefore expect a variation in the relative permeability curves to be observed.
 
 <figure>
-	<a href="{{ site.url }}/images/Analysis/Permeability/rel-perm-versus-porosity.png" data-lightbox="image-3" data-title=".">
-		<img src="{{ site.url }}/images/Analysis/Permeability/rel-perm-versus-porosity.png" alt="." />
+	<a href="{{ site.url }}/images/Analysis/Permeability/rel-perm-versus-porosity.png" data-lightbox="image-3" data-title="Comparison of oil-water and gas-oil relative permeability curves generated assuming different porosities.">
+		<img src="{{ site.url }}/images/Analysis/Permeability/rel-perm-versus-porosity.png" alt="Comparison of oil-water and gas-oil relative permeability curves generated assuming different porosities." />
 	</a>
-	<figcaption><strong>Figure 3: .</strong></figcaption>
+	<figcaption><strong>Figure 3: Comparison of oil-water and gas-oil relative permeability curves generated assuming different porosities.</strong></figcaption>
 </figure>
 
 As porosity decreases, the irreducible water saturation increases. This affects the endpoint for the relative permeability to oil at critical water saturation (k<sub>rocw</sub>) and the relative permeability to gas at critical water saturation (k<sub>rgcw</sub>) which both reduce. Note that the LET correlations ensure that the relative permeability curves retain a smooth function and that there are no discontinuities evident as porosity is changed.
@@ -226,10 +226,10 @@ As porosity decreases, the irreducible water saturation increases. This affects 
 The shape factor β is the same shape factor used for generation of the capillary pressure curves and introduces a consistent basis for a relationship between the capillary pressure curve and the relative permeability curve. Note that the value of is β somewhat arbitrary, although values closer to 1 are consistent with tight, shaley sandstones and values close to 3 are consistent with vuggy carbonate. As with capillary pressure curves, a default value of 2 should perform adequately when generating relative permeability curves.
 
 <figure>
-	<a href="{{ site.url }}/images/Analysis/Permeability/rel-perm-versus-shape-factor.png" data-lightbox="image-4" data-title=".">
-		<img src="{{ site.url }}/images/Analysis/Permeability/rel-perm-versus-shape-factor.png" alt="." />
+	<a href="{{ site.url }}/images/Analysis/Permeability/rel-perm-versus-shape-factor.png" data-lightbox="image-4" data-title="Comparison of oil-water and gas-oil relative permeability curves generated assuming different shape factors for a water-wet system.">
+		<img src="{{ site.url }}/images/Analysis/Permeability/rel-perm-versus-shape-factor.png" alt="Comparison of oil-water and gas-oil relative permeability curves generated assuming different shape factors for a water-wet system." />
 	</a>
-	<figcaption><strong>Figure 4: .</strong></figcaption>
+	<figcaption><strong>Figure 4: Comparison of oil-water and gas-oil relative permeability curves generated assuming different shape factors for a water-wet system.</strong></figcaption>
 </figure>
 
 The main difference between the curves as the shape factor increases is that the relative permeability at the point where water or gas flows preferentially to oil is decreased as the shape factor increases. In other words S<sub>ocr</sub> increases as the shape factor increases.
@@ -239,10 +239,10 @@ The main difference between the curves as the shape factor increases is that the
 A different family of curves is obtained for oil-wet systems. Here oil is the wetting phase and there is less hysteresis apparent between the oil drainage and imbibition curves as a result, and more hysteresis apparent between the water drainage and imbibition curves. No adjustment has been made to the irreducible water saturation for an oil-wet system although this would more likely be similar to residual oil saturation in a water-wet system.
 
 <figure>
-	<a href="{{ site.url }}/images/Analysis/Permeability/rel-perm-versus-wettability.png" data-lightbox="image-5" data-title=".">
-		<img src="{{ site.url }}/images/Analysis/Permeability/rel-perm-versus-wettability.png" alt="." />
+	<a href="{{ site.url }}/images/Analysis/Permeability/rel-perm-versus-wettability.png" data-lightbox="image-5" data-title="Comparison of oil-water and gas-oil relative permeability curves generated assuming different shape factors for an oil-wet system.">
+		<img src="{{ site.url }}/images/Analysis/Permeability/rel-perm-versus-wettability.png" alt="Comparison of oil-water and gas-oil relative permeability curves generated assuming different shape factors for an oil-wet system." />
 	</a>
-	<figcaption><strong>Figure 5: .</strong></figcaption>
+	<figcaption><strong>Figure 5: Comparison of oil-water and gas-oil relative permeability curves generated assuming different shape factors for an oil-wet system.</strong></figcaption>
 </figure>
 
 ### Miscibility
@@ -250,10 +250,10 @@ A different family of curves is obtained for oil-wet systems. Here oil is the we
 For the gas-oil system, the interfacial tension has an important influence on the relative permeability curves. Under miscible conditions, where interfacial tension decreases (especially lower than 0.1 dyne/cm<sup>2</sup>), the curves approach an “X” shape with endpoints close to effective saturations of 0.0 and 1.0. At higher IFTs the relative permeabilities exhibit more curvature and the critical oil saturation increases.
 
 <figure>
-	<a href="{{ site.url }}/images/Analysis/Permeability/rel-perm-versus-miscibility.png" data-lightbox="image-6" data-title=".">
-		<img src="{{ site.url }}/images/Analysis/Permeability/rel-perm-versus-miscibility.png" alt="." />
+	<a href="{{ site.url }}/images/Analysis/Permeability/rel-perm-versus-miscibility.png" data-lightbox="image-6" data-title="Comparison of gas-oil relative permeability curves generated assuming different gas-oil interfacial tension for water-wet and oil-wet systems.">
+		<img src="{{ site.url }}/images/Analysis/Permeability/rel-perm-versus-miscibility.png" alt="Comparison of gas-oil relative permeability curves generated assuming different gas-oil interfacial tension for water-wet and oil-wet systems." />
 	</a>
-	<figcaption><strong>Figure 6: .</strong></figcaption>
+	<figcaption><strong>Figure 6: Comparison of gas-oil relative permeability curves generated assuming different gas-oil interfacial tension for water-wet and oil-wet systems.</strong></figcaption>
 </figure>
 
 The behaviour of the generated curves is as expected. Note that the oil-water curves are not affected by gas-oil miscibility which is to be expected. As gas and oil become more miscible, the curves lose their curvature and both the critical oil saturation and residual oil saturation decrease. Note that for the water-wet rock, the gas imbibition curve saturation endpoint does not move. This is because the S<sub>grw</sub> (residual gas saturation after water invasion) is used and this value is unaffected by gas-oil miscibility. Since the two-phase relative permeability curve also captures the effect of irreducible water saturation, this is reasonable.
