@@ -136,7 +136,7 @@ T<sub>o</sub><sup>g</sup> = Top empirical parameter for oil phase with associate
 {% raw %}
 ![k_{rgo}=\frac{k_{rgrl}\left(1-S_{ln'}\right)^{L_{g}^{o}}}{\left(1-S_{ln'}\right)^{L_{g}^{o}}+E_{g}^{o}\cdot{{S_{ln'}}^{T_{g}^{o}}}}](https://latex.codecogs.com/gif.latex?k_{rgo}=\frac{k_{rgrl}\left(1-S_{ln'}\right)^{L_{g}^{o}}}{\left(1-S_{ln'}\right)^{L_{g}^{o}}+E_{g}^{o}\cdot{{S_{ln'}}^{T_{g}^{o}}}})
 
-![k_{rog}=\frac{k_{rorg}{S_{wn}}^{L_{o}^{g}}}{{S_{wn}}^{L_{o}^{g}}+E_{o}^{g}\cdot{\left(1-S_{wn}\right)}}](https://latex.codecogs.com/gif.latex?k_{rog}=\frac{k_{rorg}{S_{wn}}^{L_{o}^{g}}}{{S_{wn}}^{L_{o}^{g}}+E_{o}^{g}\cdot{\left(1-S_{wn}\right)}})
+![k_{rog}=\frac{k_{rorg}{S_{ln'}}^{L_{o}^{g}}}{{S_{ln'}}^{L_{o}^{g}}+E_{o}^{g}\cdot{\left(1-S_{ln'}\right)}}](https://latex.codecogs.com/gif.latex?k_{rog}=\frac{k_{rorg}{S_{ln'}}^{L_{o}^{g}}}{{S_{ln'}}^{L_{o}^{g}}+E_{o}^{g}\cdot{\left(1-S_{ln'}\right)}})
 {% endraw %}
 Where:
 
@@ -144,8 +144,7 @@ k<sub>rgo</sub> = Gas relative permeability in presence of oil, fraction<br>
 k<sub>rog</sub> = Oil relative permeability in presence of gas, fraction<br>
 k<sub>rgrl</sub> = Gas relative permeability at residual liquid saturation, fraction<br>
 k<sub>rorg</sub> = Oil relative permeability at residual gas saturation, fraction<br>
-S<sub>wn</sub> = Normalised water saturation, fraction<br>
-S<sub>ln</sub> = Normalised liquid saturation, fraction<br>
+S<sub>ln'</sub> = Normalised liquid saturation, fraction<br>
 L<sub>g</sub><sup>o</sup> = Lower empirical parameter for gas phase with associated oil phase, dimensionless<br>
 E<sub>g</sub><sup>o</sup> = Elevation empirical parameter for gas phase with associated oil phase, dimensionless<br>
 T<sub>g</sub><sup>o</sup> = Top empirical parameter for gas phase with associated oil phase, dimensionless<br>
