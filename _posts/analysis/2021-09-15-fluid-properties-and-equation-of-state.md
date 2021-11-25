@@ -304,7 +304,7 @@ The PPR78 binary interaction parameters were determined using the α-function of
 
 Where:
 
-!}[\delta_{i}^{original}=\frac{\sqrt{a_{c,i}\cdot\alpha_{i}^{original}}}{b_i}](https://latex.codecogs.com/gif.latex?\delta_{i}^{original}=\frac{\sqrt{a_{c,i}\cdot\alpha_{i}^{original}}}{b_i})<br>
-!}[\delta_{i}^{updated}=\frac{\sqrt{a_{c,i}\cdot\alpha_{i}^{updated}}}{b_i}](https://latex.codecogs.com/gif.latex?\delta_{i}^{updated}=\frac{\sqrt{a_{c,i}\cdot\alpha_{i}^{updated}}}{b_i})
+![\delta_{i}^{original}=\frac{\sqrt{a_{c,i}\cdot\alpha_{i}^{original}}}{b_i}](https://latex.codecogs.com/gif.latex?\delta_{i}^{original}=\frac{\sqrt{a_{c,i}\cdot\alpha_{i}^{original}}}{b_i})<br>
+![\delta_{i}^{updated}=\frac{\sqrt{a_{c,i}\cdot\alpha_{i}^{updated}}}{b_i}](https://latex.codecogs.com/gif.latex?\delta_{i}^{updated}=\frac{\sqrt{a_{c,i}\cdot\alpha_{i}^{updated}}}{b_i})
 
 Pina-Martinez et al. note that when they tested the effect on k<sub>ij</sub> for several binary systems, the change in value was small between the original and updated correlation. Thus the use of existing k<sub>ij</sub> values associated with the classical α-function for Peng-Robinson EoS could continue to be used although the authors note that updating the values is advised.
