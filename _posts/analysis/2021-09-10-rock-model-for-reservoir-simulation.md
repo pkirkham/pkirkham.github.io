@@ -71,7 +71,7 @@ In a water-wet rock, the irreducible water is bound to the surface of the rock m
 
 Longer flow paths correspond to an increase in cementation exponent, along with an increase in the ratio between r<sub>b</sub> and r<sub>t</sub>. This means that there is a relationship between the cementation exponent and the pore geometry, and therefore it is only necessary to define one of r<sub>b</sub> and r<sub>t</sub> if the tortuosity is defined, since the ratio r<sub>b</sub>/r<sub>t</sub> will depend on the tortuosity.
 
-To mathematically relate cementation exponent to the pore geometry a theoretical pore channel model was constructed by (Müller-Huber, Schön, & Börner, 2015) which includes a variable pore radius. This is a modification to the simple capillary tube model. The pore throat radius is defined as r<sub>t</sub> at the narrow end of the channel and this radius increases to a radius of r<sub>b</sub> at the pore body.
+To mathematically relate cementation exponent to the pore geometry a theoretical pore channel model was constructed by ([Müller-Huber, Schön, & Börner, 2015](http://dx.doi.org/10.1016/j.jappgeo.2015.03.011)) which includes a variable pore radius. This is a modification to the simple capillary tube model. The pore throat radius is defined as r<sub>t</sub> at the narrow end of the channel and this radius increases to a radius of r<sub>b</sub> at the pore body.
 
 <figure>
 	<a href="{{ site.url }}/images/Analysis/Rock Model/modified-pore-channel-model.png" data-lightbox="image-2" data-title="Mathematical basis for modified pore channel model relating pore throat and body radii to the cementation exponent.">

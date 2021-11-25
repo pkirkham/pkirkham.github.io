@@ -268,6 +268,12 @@ The L and M parameters are then determined based on acentric factor alone as fol
 
 ![M=0.176\omega^2+0.26\omega+0.8884](https://latex.codecogs.com/gif.latex?M=0.176\omega^2+0.26\omega+0.8884)
 
+Alternatively a generalised update to the Soave α-function in the Peng-Robinson EoS is proposed by [Pina-Martinez, Privat, Jaubert and Peng (2018)](https://doi.org/10.1016/j.fluid.2018.12.007) as follows:
+
+![m=0.3919+1.4996\omega-0.2721\omega^2+0.1063\omega^3](https://latex.codecogs.com/gif.latex?m=0.379642+1.48503\omega-0.164423\omega^2+0.016667\omega^3)
+
+This generalised α-function is more accurate the the original for very heavy molecules (acentric factor ω is larger than 0.9).
+
 #### Volume Translation
 
 The equation of state must be solved iteratively to determine the liquid and vapour phase fractions for each component such that the fugacity of each phase is equal. At this point equilibrium is obtained. This ‘flash’ calculation is computationally intensive and its details are not described here. Once equilibrium has been determined, the mole fractions that make up the composition of the liquid and vapour phases can be determined as x<sub>i</sub> for the liquid phase and y<sub>i</sub> for the vapour phase.
@@ -290,6 +296,15 @@ Guennec et al. also propose a generalised correlation for the volume shift based
 
 #### Modification to Binary Interaction Parameters
 
-The accuracy of any cubic EoS is affected by both a combination of the choice of α-function and the choice of mixing rules.
+The accuracy of any cubic EoS is affected by both a combination of the choice of Soave α-function and the choice of mixing rules.
 
-The PPR78 binary interaction parameters were determined using the α-function of the classical Peng-Robinson EoS. Therefore use of translated-consistent values requires that the BIPs are adjusted to correspond to the consistent α-function that is used.
+The PPR78 binary interaction parameters were determined using the α-function of the classical Peng-Robinson EoS. Therefore, as noted by [Pina-Martinez, Privat, Jaubert and Peng (2018)](https://doi.org/10.1016/j.fluid.2018.12.007) use of translated-consistent values requires that the BIPs are adjusted to correspond to the consistent α-function that is used. This is because the value of k<sub>ij</sub> is specific to the the choice of α-function.
+
+![k_{ij}^{updated}=\frac{2k_{ij}^{original}\delta_{i}^{original}\delta_{j}^{original}+(\delta_{i}^{original}-\delta_{j}^{original})^2-(\delta_{i}^{updated}-\delta_{j}^{updated})^2}{2\delta_{i}^{updated}\delta_{j}^{updated}}](https://latex.codecogs.com/gif.latex?k_{ij}^{updated}=\frac{2k_{ij}^{original}\delta_{i}^{original}\delta_{j}^{original}+(\delta_{i}^{original}-\delta_{j}^{original})^2-(\delta_{i}^{updated}-\delta_{j}^{updated})^2}{2\delta_{i}^{updated}\delta_{j}^{updated}})
+
+Where:
+
+!}[\delta_{i}^{original}=\frac{\sqrt{a_{c,i}\cdot\alpha_{i}^{original}}}{b_i}](https://latex.codecogs.com/gif.latex?\delta_{i}^{original}=\frac{\sqrt{a_{c,i}\cdot\alpha_{i}^{original}}}{b_i})<br>
+!}[\delta_{i}^{updated}=\frac{\sqrt{a_{c,i}\cdot\alpha_{i}^{updated}}}{b_i}](https://latex.codecogs.com/gif.latex?\delta_{i}^{updated}=\frac{\sqrt{a_{c,i}\cdot\alpha_{i}^{updated}}}{b_i})
+
+Pina-Martinez et al. note that when they tested the effect on k<sub>ij</sub> for several binary systems, the change in value was small between the original and updated correlation. Thus the use of existing k<sub>ij</sub> values associated with the classical α-function for Peng-Robinson EoS could continue to be used although the authors note that updating the values is advised.

@@ -116,7 +116,7 @@ To generate a saturation height function we re-arrange the equations using the f
 
 We define the Leverett J-Function as:
 
-![J\left(S_{w}\right)=\frac{4.61678\cdot{P_{c'}}}{\sigma\cdot{\cos\theta}}\sqrt{\frac{k}{\phi}}](https://latex.codecogs.com/gif.latex?J\left(S_{w}\right)=\frac{4.61678\cdot{P_{c'}}}{\sigma\cdot{\cos\theta}}\sqrt{\frac{k}{\phi}})
+![J\left(S_{w}\right)=\frac{0.216601\cdot{P_{c'}}}{\sigma\cdot{\cos\theta}}\sqrt{\frac{k}{\phi}}](https://latex.codecogs.com/gif.latex?J\left(S_{w}\right)=\frac{4.61678\cdot{P_{c'}}}{\sigma\cdot{\cos\theta}}\sqrt{\frac{k}{\phi}})
 
 Where:
 
@@ -126,7 +126,8 @@ k = Rock permeability, millidarcy<br>
 σ = Interfacial tension, dynes/cm<br>
 θ = Contact angle, degrees
 
-The constant 4.61678 is a result of the units chosen in the equation such that J is a dimensionless quantity.
+The constant 0.216601 = (1 / 4.61678) is a result of the units chosen in the equation such that J is a dimensionless quantity. If we convert our values in psia, mD and dyne to consistent units, we can derive a dimensionless J-Function. We note that 1 mD = 9.869233E-12 cm^2, 1 psia = 0.155 lbf/cm^2 and 1 dyne = 2.248089E-6 lbf. Therefore we need to multiply by (0.155 / 2.2481E-6) * SQRT(9.8692E-12) = 0.216601.
+
 The interfacial tension can be calculated using the Firoozabadi and Ramey (1988) correlation for oil-water or Sutton (2009) for gas-water. Sigma is typically 15 to 35 for oil-water IFT and 35 to 70 for gas-water IFT. We assume a contact angle θ for gas-water of 0° or 30° for oil-water. The equation to determine water saturation can be derived from a re-arrangement of the Wu capillary pressure function expressed in S<sub>w</sub> and substituting for J(S<sub>w</sub>) as follows:
 
 ![S_{w}=\frac{\left(1-S_{wirr}\right)}{e^{J^{\frac{1}{\beta}}}}+S_{wirr}](https://latex.codecogs.com/gif.latex?S_{w}=\frac{\left(1-S_{wirr}\right)}{e^{J^{\frac{1}{\beta}}}}+S_{wirr})
