@@ -18,7 +18,7 @@ Where porosity is the major parameter that influences static volumes, permeabili
 
 In the absence of extensive porosity-permeability measurements, an alternative approach to predict permeability from the rock character and porosity is required. Many models have been proposed to model permeability, both empirical and theoretical. One of the well-known fundamental correlations is the Kozeny equation which is derived by combining [Poiseuille’s equation](https://en.wikipedia.org/wiki/Hagen%E2%80%93Poiseuille_equation) with [Darcy’s law](https://en.wikipedia.org/wiki/Darcy%27s_law) and solving for permeability.
 
-![k=\frac{\phi}{8\tau}r^{2}](https://latex.codecogs.com/gif.latex?k=\frac{\phi}{8\tau}r^{2})
+![k=\frac{\phi}{8\tau}r^{2}](https://math.now.sh?from=k=\frac{\phi}{8\tau}r^{2} &color=black)
 
 Where:
 
@@ -39,7 +39,7 @@ The cementation exponent, being an electrically determined parameter, can be rel
 
 [Nooruddin and Hossain (2011)](http://dx.doi.org/10.2118/149047-MS) proposed a modification to improve the handling of the tortuosity term based on the relationship between tortuosity, formation resistivity factor and cementation exponent that was derived from theoretical approaches by Wyllie and Rose (1950). The new tortuosity term was validated using the dataset and substitution of the term into the permeability model proposed by Hagiwara (1986). This model can be shown to have a similar form to Kozeny’s equation. By regressing the revised model against Hagiwara’s dataset, Nooruddin and Hossain obtained the following equation:
 
-![k=78.7\left(\phi^{2m-1}r_{t}^{2}\right)](https://latex.codecogs.com/gif.latex?k=78.7\left(\phi^{2m-1}r_{t}^{2}\right))
+![k=78.7\left(\phi^{2m-1}r_{t}^{2}\right)](https://math.now.sh?from=k=78.7\left(\phi^{2m-1}r_{t}^{2}\right) &color=black)
 
 Where:
 

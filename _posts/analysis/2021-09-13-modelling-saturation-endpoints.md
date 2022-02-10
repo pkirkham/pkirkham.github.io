@@ -20,7 +20,7 @@ For our static modelling approach, the objective is to create a framework whereb
 
 The irreducible water saturation (S<sub>wirr</sub>) and the critical water saturation (S<sub>wcr</sub>) are usually taken as the same value. The irreducible water saturation can be determined using the Holmes-Buckles relationship. The Holmes-Buckles relationship is based on the classical Buckles equation where porosity times irreducible water saturation is a constant. The equation is modified to introduce a porosity exponent.
 
-![\phi^{Q}\times{S_{wirr}}=C](https://latex.codecogs.com/gif.latex?\phi^{Q}\times{S_{wirr}}=C)
+![\phi^{Q}\times{S_{wirr}}=C](https://math.now.sh?from=\phi^{Q}\times{S_{wirr}}=C &color=black)
 
 Where:
 
@@ -51,13 +51,13 @@ The values for C and Q should ideally be determined from petrophysical analysis.
 
 The following relationships for sandstones and carbonates have been devised by considering the recommended Buckles numbers for different rock types and comparing these against typical cementation exponents for those rock types. These relationships are designed to capture the expected behaviour of different rock types, but it is cautioned that they have not been extensively, let alone rigorously, tested against large rock datasets.
 
-![C=0.0759m^{3}-0.2269m^{2}+0.2467m-0.0951](https://latex.codecogs.com/gif.latex?C=0.0759m^{3}-0.2269m^{2}&plus;0.2467m-0.0951) for carbonate m < 1.76<br>
-![C=0.3144m^{-3.324}](https://latex.codecogs.com/gif.latex?C=0.3144m^{-3.324}) for carbonate m ≥ 1.76<br>
-![C=0.0243m^{-0.7}](https://latex.codecogs.com/gif.latex?C=0.0243m^{-0.7}) for sandstone
+![C=0.0759m^{3}-0.2269m^{2}+0.2467m-0.0951](https://math.now.sh?from=C%3D0.0759m%5E%7B3%7D-0.2269m%5E%7B2%7D%2B0.2467m-0.0951 &color=black) for carbonate m < 1.76<br>
+![C=0.3144m^{-3.324}](https://math.now.sh?from=C=0.3144m^{-3.324} &color=black) for carbonate m ≥ 1.76<br>
+![C=0.0243m^{-0.7}](https://math.now.sh?from=C=0.0243m^{-0.7} &color=black) for sandstone
 
-To determine the parameter Q the default value = 1.0 (as per the original Buckles equation) is used for sandstones. For carbonates, Lucia’s recommended relationship between rock fabric number and water saturation is used to establish a relationship between Q and C. The introduction of Q into the Holmes-Buckles equation, and use of the following equation to determine Q, allows an excellent match to Lucia’s published relationships.
+To determine the parameter Q the default value = 1.0 (as per the original Buckles equation) is used for sandstones. For carbonates, Lucia’s recommended relationship between rock fabric number and water saturation is used to establish a relationship between Q and C. As shown in Figure 1, the introduction of Q into the Holmes-Buckles equation, and use of the following equation to determine Q, allows an excellent match to Lucia’s published relationships.
 
-![Q=0.2018\ln{\left(\frac{1}{C}\right)}+0.442](https://latex.codecogs.com/gif.latex?Q=0.2018\ln{\left(\frac{1}{C}\right)}+0.442) 
+![Q=0.2018\ln{\left(\frac{1}{C}\right)}+0.442](https://math.now.sh?from=Q%3D0.2018%5Cln%7B%5Cleft%28%5Cfrac%7B1%7D%7BC%7D%5Cright%29%7D%2B0.442 &color=black) 
 
 <figure>
 	<a href="{{ site.url }}/images/Analysis/Saturation Endpoints/holmes-buckles-swirr.png" data-lightbox="image-1" data-title="Improvement to irreducible water saturation prediction using Holmes-Buckles equation and comparison to Lucia carbonate trends.">
@@ -68,7 +68,11 @@ To determine the parameter Q the default value = 1.0 (as per the original Buckle
 
 This is perhaps not too surprising as Lucia’s rock fabric number (RFN) equations have a similar form to the Holmes-Buckles equation. It is encouraging that the Holmes-Buckles approach and the Lucia RFN approach do not contradict each other, and it lends support to the assertion that irreducible water saturation can be fundamentally derived from knowledge of the rock porosity and the nature of its pore geometry.
 
-The approach used here allows C and Q to be determined from the cementation exponent alone, so irreducible water saturation is a function of porosity and cementation exponent which implies that this property is physically dependent on porosity and the pore geometry only. It should be expected that pore throat size has some influence on irreducible water saturation, and that the Buckle's 'C' constant is therefore a function of both cementation exponent and pore throat size. As implemented, this dependency has not been considered. Since our rock model can be used to derive the irreducible water saturation without any other inputs, the rock properties are the only inputs that need to be defined within a static model cell.
+In practice Lucia's relationships can lead to very high irreducible saturations. The consequence of this is that when creating a static grid using this relationship, the resultant SWCR value can be so high as to render the entire simulation unviable. A set of compromise relationships between the Buckles relationship and the Holmes-Buckles relationship that honours the Lucia relationship is therefore proposed:
+
+![Q=0.1489\ln{\left(\frac{1}{C}\right)}+0.4752](https://math.now.sh?from=Q%3D0.1489%5Cln%7B%5Cleft%28%5Cfrac%7B1%7D%7BC%7D%5Cright%29%7D%2B0.4752 &color=black) 
+
+Using this approach allows C and Q to be determined from the cementation exponent alone, so irreducible water saturation is a function of porosity and cementation exponent which implies that this property is physically dependent on porosity and the pore geometry only. It should be expected that pore throat size has some influence on irreducible water saturation, and that the Buckle's 'C' constant is therefore a function of both cementation exponent and pore throat size. As implemented, this dependency has not been considered. Since our rock model can be used to derive the irreducible water saturation without any other inputs, the rock properties are the only inputs that need to be defined within a static model cell.
 
 ## Residual Gas Saturation
 
@@ -82,7 +86,7 @@ For our purposes, we are more concerned with modelling a sensible behaviour that
 
 This is the basis for the Holtz equation given by:
 
-![S_{gr}=\frac{1}{\left[\left(\frac{1}{S_{gtmax}}-1\right)+\left(\frac{1-S_{wirr}}{S_{gi}}\right)\right]}](https://latex.codecogs.com/gif.latex?S_{gr}=\frac{1}{\left[\left(\frac{1}{S_{gtmax}}-1\right)+\left(\frac{1-S_{wirr}}{S_{gi}}\right)\right]}) 
+![S_{gr}=\frac{1}{\left[\left(\frac{1}{S_{gtmax}}-1\right)+\left(\frac{1-S_{wirr}}{S_{gi}}\right)\right]}](https://math.now.sh?from=S_%7Bgr%7D%3D%5Cfrac%7B1%7D%7B%5Cleft%5B%5Cleft%28%5Cfrac%7B1%7D%7BS_%7Bgtmax%7D%7D-1%5Cright%29%2B%5Cleft%28%5Cfrac%7B1-S_%7Bwirr%7D%7D%7BS_%7Bgi%7D%7D%5Cright%29%5Cright%5D%7D &color=black)
 
 Where:
 
@@ -93,7 +97,7 @@ S<sub>gi</sub> = Initial gas saturation, fraction
 
 Holtz suggests a simple relationship between S<sub>gtmax</sub> and porosity for use in the residual gas saturation equation:
 
-![S_{gtmax}=-0.9696\phi+0.5473](https://latex.codecogs.com/gif.latex?S_{gtmax}=-0.9696\phi+0.5473)
+![S_{gtmax}=-0.9696\phi+0.5473](https://math.now.sh?from=S_%7Bgtmax%7D%3D-0.9696%5Cphi%2B0.5473 &color=black)
 
 Where:
 
@@ -132,7 +136,7 @@ The situation for the residual oil saturation after gas invasion is different. I
 
 Al-Nuaimi et al. (2018) published an interesting approach to modelling the change in S<sub>org</sub> in relation to the interfacial tension (IFT) between gas and oil using a [Michaelis Menten Kinetics](https://en.wikipedia.org/wiki/Michaelis%E2%80%93Menten_kinetics) model. As IFT decreases, the residual oil saturation to gas approaches zero.
 
-![S_{org}=\frac{S_{org,imm}\cdot\sigma}{\sigma_{crit}+\sigma}](https://latex.codecogs.com/gif.latex?S_{org}=\frac{S_{org,imm}\cdot\sigma}{\sigma_{crit}+\sigma})
+![S_{org}=\frac{S_{org,imm}\cdot\sigma}{\sigma_{crit}+\sigma}](https://math.now.sh?from=S_%7Borg%7D%3D%5Cfrac%7BS_%7Borg%2Cimm%7D%5Ccdot%5Csigma%7D%7B%5Csigma_%7Bcrit%7D%2B%5Csigma%7D &color=black)
 
 Where:
 

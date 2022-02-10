@@ -36,7 +36,7 @@ Conventionally resistivity logs are used to determine water saturation (and henc
 
 Consider [Archie’s equation](https://wiki.aapg.org/Archie_equation) ([Archie, 1942](https://doi.org/10.2118/942054-G)):
 
-![\frac{R_t}{R_w}=\frac{a}{\phi^{m}\cdot{S_{w}}^{n}}](https://latex.codecogs.com/gif.latex?\frac{R_t}{R_w}=\frac{a}{\phi^{m}\cdot{S_{w}}^{n}})
+![\frac{R_t}{R_w}=\frac{a}{\phi^{m}\cdot{S_{w}}^{n}}](https://math.now.sh?from=\frac{R_t}{R_w}=\frac{a}{\phi^{m}\cdot{S_{w}}^{n}} &color=black)
 
 Where:
 
@@ -67,7 +67,7 @@ Our simplified rock model comprises three components. These are the rock matrix 
 
 In a water-wet rock, the irreducible water is bound to the surface of the rock matrix. As water is more conductive than hydrocarbon or rock, the electrical flow path follows the water around the matrix particles, crossing between rock particles at the pore throats. This is very similar to the fluid flow path which must also navigate around the rock particles via the pore throats. The electrical flow path is related to the cementation exponent ‘m’, which in turn is similar to the actual fluid flow path of length (L<sub>a</sub>) for a rock of size L. This allows tortuosity to be defined as:
 
-![\tau=\left(\frac{L_{a}}{L}\right)^{2}](https://latex.codecogs.com/gif.latex?\tau=\left(\frac{L_{a}}{L}\right)^{2})
+![\tau=\left(\frac{L_{a}}{L}\right)^{2}](https://math.now.sh?from=\tau=\left(\frac{L_{a}}{L}\right)^{2} &color=black)
 
 Longer flow paths correspond to an increase in cementation exponent, along with an increase in the ratio between r<sub>b</sub> and r<sub>t</sub>. This means that there is a relationship between the cementation exponent and the pore geometry, and therefore it is only necessary to define one of r<sub>b</sub> and r<sub>t</sub> if the tortuosity is defined, since the ratio r<sub>b</sub>/r<sub>t</sub> will depend on the tortuosity.
 
@@ -86,11 +86,11 @@ The modified pore channel model is compared to a simple capillary tube model. It
 
 Where both the porosity and cementation exponent are known it is possible to calculate the r<sub>b</sub>/r<sub>t</sub> ratio and thus start to conceptualise the nature of the porosity in the reservoir. The initial step to establish the _f(r<sub>b</sub>/r<sub>t</sub>)_ value is straightforward:
 
-![f\left(r_{b}/r_{t}\right)=e^{\left(1-m\right)\cdot\ln\phi}](https://latex.codecogs.com/gif.latex?f\left(r_{b}/r_{t}\right)=e^{\left(1-m\right)\cdot\ln\phi})
+![f\left(r_{b}/r_{t}\right)=e^{\left(1-m\right)\cdot\ln\phi}](https://math.now.sh?from=f\left(r_{b}/r_{t}\right)=e^{\left(1-m\right)\cdot\ln\phi} &color=black)
 
 Rather than solve for r<sub>b</sub>/r<sub>t</sub> directly a polynomial correlation between r<sub>b</sub>/r<sub>t</sub> and _f(r<sub>b</sub>/r<sub>t</sub>)_ is determined and used to mathematically relate the two values.
 
-![r_{b}/r_{t}=-1.924\times10^{-12}x^{6}+2.05752\times10^{-9}x^{5}-8.58132\times10^{-7}x^{4}+1.78122\times10^{-4}x^{3}-2.01093\times10^{-2}x^{2}+1.77691x+1.8573](https://latex.codecogs.com/gif.latex?r_{b}/r_{t}=-1.924\times10^{-12}x^{6}&plus;2.05752\times10^{-9}x^{5}-8.58132\times10^{-7}x^{4}&plus;1.78122\times10^{-4}x^{3}-2.01093\times10^{-2}x^{2}&plus;1.77691x&plus;1.8573)
+![r_{b}/r_{t}=-1.924\times10^{-12}x^{6}+2.05752\times10^{-9}x^{5}-8.58132\times10^{-7}x^{4}+1.78122\times10^{-4}x^{3}-2.01093\times10^{-2}x^{2}+1.77691x+1.8573](https://math.now.sh?from=r_%7Bb%7D%2Fr_%7Bt%7D%3D-1.924%5Ctimes10%5E%7B-12%7Dx%5E%7B6%7D%2B2.05752%5Ctimes10%5E%7B-9%7Dx%5E%7B5%7D-8.58132%5Ctimes10%5E%7B-7%7Dx%5E%7B4%7D%2B1.78122%5Ctimes10%5E%7B-4%7Dx%5E%7B3%7D-2.01093%5Ctimes10%5E%7B-2%7Dx%5E%7B2%7D%2B1.77691x%2B1.8573 &color=black)
 
 Where:
 

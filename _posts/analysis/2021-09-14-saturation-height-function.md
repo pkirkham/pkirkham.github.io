@@ -24,7 +24,7 @@ For floating mud cap drilling and pressurised mud cap drilling, and/or in the ab
 
 Wu determined a model for a drainage capillary pressure curve based on a form of equation originally proposed by Bentsen and Anli and implemented by Harris and Goldsmith (Harris & Goldsmith, 2001). Wu introduces a shape factor term β into the equation to modify the curvature of the P<sub>c</sub> versus S<sub>w</sub> curve. Combined with the displacement pressure equation above, this allows a synthetic mercury-air capillary pressure curve to be generated where σ is 485.0 dynes/cm and θ for mercury-air is 140°. In the future, this synthetic curve could be tuned to match actual rock capillary pressure measurements but otherwise, where fluids are known, the values for σ and θ can be determined using generic values or correlations. This means that the capillary pressure curve is reduced to a function of porosity and permeability and therefore it can be defined entirely using our simple rock model.
 
-![P_{c}=P_{d}+\sigma\cdot\cos\theta\sqrt{\frac{\phi}{k}}\left(\ln{\frac{1}{S_{e}}}\right)^{\beta}](https://latex.codecogs.com/gif.latex?P_{c}=P_{d}+\sigma\cdot\cos\theta\sqrt{\frac{\phi}{k}}\left(\ln{\frac{1}{S_{e}}}\right)^{\beta})
+![P_{c}=P_{d}+\sigma\cdot\cos\theta\sqrt{\frac{\phi}{k}}\left(\ln{\frac{1}{S_{e}}}\right)^{\beta}](https://math.now.sh?from=P_{c}=P_{d}+\sigma\cdot\cos\theta\sqrt{\frac{\phi}{k}}\left(\ln{\frac{1}{S_{e}}}\right)^{\beta} &color=black)
 
 Where:
 
@@ -39,12 +39,12 @@ Se = Effective saturation, fraction<br>
 
 The displacement pressure can be calculated using the empirical equation:
 
-![\ln{P_{d}}=5.458-1.255\ln{\sqrt{\frac{k}{\phi}}}+0.081\left(\ln{\sqrt{\frac{k}{\phi}}}\right)^{2}](https://latex.codecogs.com/gif.latex?\ln{P_{d}}=5.458-1.255\ln{\sqrt{\frac{k}{\phi}}}+0.081\left(\ln{\sqrt{\frac{k}{\phi}}}\right)^{2})
+![\ln{P_{d}}=5.458-1.255\ln{\sqrt{\frac{k}{\phi}}}+0.081\left(\ln{\sqrt{\frac{k}{\phi}}}\right)^{2}](https://math.now.sh?from=\ln{P_{d}}=5.458-1.255\ln{\sqrt{\frac{k}{\phi}}}+0.081\left(\ln{\sqrt{\frac{k}{\phi}}}\right)^{2} &color=black)
 
 
 The effective saturation, Se, is defined as:
 
-![S_{e}=\frac{S_{w}-S_{wirr}}{1-S_{wirr}}](https://latex.codecogs.com/gif.latex?S_{e}=\frac{S_{w}-S_{wirr}}{1-S_{wirr}})
+![S_{e}=\frac{S_{w}-S_{wirr}}{1-S_{wirr}}](https://math.now.sh?from=S_{e}=\frac{S_{w}-S_{wirr}}{1-S_{wirr}} &color=black)
 
 Wu tested the shape factor β using more than 200 samples and found that this varied in the range of one to three. The factor was found to depend on lithology, pore geometry and connection. It was noted that a default value of 2 worked well for a wide range of lithology and permeability. Wu also provided guidelines for choice of the β factor:
 
@@ -56,7 +56,7 @@ Wu tested the shape factor β using more than 200 samples and found that this va
 
 For simplicity we will define the shape factor based on the modelled permeability for the specific rock type at a porosity of 20%. The relationship used is a linear transform between log<sub>10</sub>(k) and β such that β = 3 at k ≥ 10,000 mD and β = 1 at k ≤ 0.01 mD.
 
-![\beta=0.3333\log_{10}\left(k_{20}\right)+1.6667](https://latex.codecogs.com/gif.latex?\beta=0.3333\log_{10}\left(k_{20}\right)+1.6667)
+![\beta=0.3333\log_{10}\left(k_{20}\right)+1.6667](https://math.now.sh?from=%5Cbeta%3D0.3333%5Clog_%7B10%7D%5Cleft%28k_%7B20%7D%5Cright%29%2B1.6667 &color=black)
 
 Where:
 
@@ -75,15 +75,15 @@ To extend to hydrocarbon-water fluids we must determine the interfacial tensions
 
 The water-oil interfacial tension (IFT) σ is determined using the Firoozabadi and Ramey (1988) correlation:
 
-![\sigma_{ow}=\left[2.6628\left(\rho_{w}-\rho_{o}\right)^{-0.9136}\times\left(\rho_{w}-\rho_{o}\right)\right]^{4}](https://latex.codecogs.com/gif.latex?\sigma_{ow}=\left[2.6628\left(\rho_{w}-\rho_{o}\right)^{-0.9136}\times\left(\rho_{w}-\rho_{o}\right)\right]^{4})
+![\sigma_{ow}=\left[2.6628\left(\rho_{w}-\rho_{o}\right)^{-0.9136}\times\left(\rho_{w}-\rho_{o}\right)\right]^{4}](https://math.now.sh?from=\sigma_{ow}=\left[2.6628\left(\rho_{w}-\rho_{o}\right)^{-0.9136}\times\left(\rho_{w}-\rho_{o}\right)\right]^{4} &color=black)
 
 The water-gas interfacial tension (IFT) σ is determined using the Sutton (2009) correlation modified from Firoozabadi and Ramey (1988) correlation:
 
-{% raw %}![\sigma_{gw}=\left[\frac{1.58\left(\rho_{w}-\rho_{g}\right)+1.76}{{T_{r}}^{0.3125}}\right]^4](https://latex.codecogs.com/gif.latex?\sigma_{gw}=\left[\frac{1.58\left(\rho_{w}-\rho_{g}\right)+1.76}{{T_{r}}^{0.3125}}\right]^4){% endraw %}
+{% raw %}![\sigma_{gw}=\left[\frac{1.58\left(\rho_{w}-\rho_{g}\right)+1.76}{{T_{r}}^{0.3125}}\right]^4](https://math.now.sh?from=%5Csigma_%7Bgw%7D%3D%5Cleft%5B%5Cfrac%7B1.58%5Cleft%28%5Crho_%7Bw%7D-%5Crho_%7Bg%7D%5Cright%29%2B1.76%7D%7B%7BT_%7Br%7D%7D%5E%7B0.3125%7D%7D%5Cright%5D%5E4 &color=black){% endraw %}
 
 Densities ρ<sub>w</sub>, ρ<sub>o</sub> and ρ<sub>g</sub> are in units g/cm<sup>3</sup>. Reduced temperature T<sub>r</sub> is determined from T / T<sub>pc</sub> where the pseudo-critical temperature in degrees Rankine is calculated using an equation of State or the method of Sutton:
 
-![T_{pc}=169.2+349.5\gamma_{g}-74.0{\gamma_{g}}^2](https://latex.codecogs.com/gif.latex?T_{pc}=169.2+349.5\gamma_{g}-74.0{\gamma_{g}}^2)
+![T_{pc}=169.2+349.5\gamma_{g}-74.0{\gamma_{g}}^2](https://math.now.sh?from=T_{pc}=169.2+349.5\gamma_{g}-74.0{\gamma_{g}}^2 &color=black)
 
 For example, for a field with reservoir temperature of 244.8 degrees Fahrenheit, gas specific gravity γ<sub>g</sub> of 0.944, density of formation water of 1.013 g/cm<sup>3</sup> and gas density gradient of approximately 0.125 psi/ft, the gas-water IFT is 39.2 dynes/cm.
 
@@ -93,9 +93,9 @@ The drainage saturation height function is applicable where the wetting phase (w
 
 To obtain a saturation height function from the capillary pressure in psia we can relate a given height above the gas-water contact (HAGWC) to the capillary pressure by adjusting for displacement pressure:
 
-![P_{c'}=P_{c}-P_{d}](https://latex.codecogs.com/gif.latex?P_{c'}=P_{c}-P_{d})
+![P_{c'}=P_{c}-P_{d}](https://math.now.sh?from=P_{c'}=P_{c}-P_{d} &color=black)
 
-![P_{c'}=\left(\rho_{w}-\rho_{h}\right)\times{HAGWC}](https://latex.codecogs.com/gif.latex?P_{c'}=\left(\rho_{w}-\rho_{h}\right)\times{HAGWC})
+![P_{c'}=\left(\rho_{w}-\rho_{h}\right)\times{HAGWC}](https://math.now.sh?from=P_{c'}=\left(\rho_{w}-\rho_{h}\right)\times{HAGWC} &color=black)
 
 Where:
 
@@ -116,7 +116,7 @@ To generate a saturation height function we re-arrange the equations using the f
 
 We define the Leverett J-Function as:
 
-![J\left(S_{w}\right)=\frac{0.216601\cdot{P_{c'}}}{\sigma\cdot{\cos\theta}}\sqrt{\frac{k}{\phi}}](https://latex.codecogs.com/gif.latex?J\left(S_{w}\right)=\frac{4.61678\cdot{P_{c'}}}{\sigma\cdot{\cos\theta}}\sqrt{\frac{k}{\phi}})
+![J\left(S_{w}\right)=\frac{0.216601\cdot{P_{c'}}}{\sigma\cdot{\cos\theta}}\sqrt{\frac{k}{\phi}}](https://math.now.sh?from=J\left(S_{w}\right)=\frac{0.216601\cdot{P_{c'}}}{\sigma\cdot{\cos\theta}}\sqrt{\frac{k}{\phi}} &color=black)
 
 Where:
 
@@ -126,15 +126,15 @@ k = Rock permeability, millidarcy<br>
 σ = Interfacial tension, dynes/cm<br>
 θ = Contact angle, degrees
 
-The constant 0.216601 = (1 / 4.61678) is a result of the units chosen in the equation such that J is a dimensionless quantity. If we convert our values in psia, mD and dyne to consistent units, we can derive a dimensionless J-Function. We note that 1 mD = 9.869233E-12 cm^2, 1 psia = 0.155 lbf/cm^2 and 1 dyne = 2.248089E-6 lbf. Therefore we need to multiply by (0.155 / 2.2481E-6) * SQRT(9.8692E-12) = 0.216601.
+The constant 0.216601 = (1 / 4.61678) is a result of the units chosen in the equation such that J is a dimensionless quantity. If we convert our values in psia, mD and dyne to consistent units e.g. length (L) in cm and mass (M) in lbf, we can derive a dimensionless J-Function. We note that 1 mD = 9.869233E-12 cm<sup>2</sup>, 1 psia = 0.155 lbf/cm<sup>2</sup> and 1 dyne = 2.248089E-06 lbf. Therefore we need to multiply by (0.155 / 2.2481E-06) \* SQRT(9.8692E-12) = 0.216601 to obtain a dimensionless J-Function.
 
-The interfacial tension can be calculated using the Firoozabadi and Ramey (1988) correlation for oil-water or Sutton (2009) for gas-water. Sigma is typically 15 to 35 for oil-water IFT and 35 to 70 for gas-water IFT. We assume a contact angle θ for gas-water of 0° or 30° for oil-water. The equation to determine water saturation can be derived from a re-arrangement of the Wu capillary pressure function expressed in S<sub>w</sub> and substituting for J(S<sub>w</sub>) as follows:
+The interfacial tension can be calculated using the Firoozabadi and Ramey (1988) correlation for oil-water or Sutton (2009) for gas-water. Sigma is typically 15 to 35 for oil-water IFT and 35 to 70 for gas-water IFT. We assume a contact angle θ for gas-water of 0° or 30° for oil-water. It does not matter whether we are considering a water-wet (θ = 30°) or oil-wet (θ = 150°) system, as the values of cos(θ) will be identical. The equation to determine water saturation can be derived from a re-arrangement of the Wu capillary pressure function expressed in S<sub>w</sub> and substituting for J(S<sub>w</sub>) as follows:
 
-![S_{w}=\frac{\left(1-S_{wirr}\right)}{e^{J^{\frac{1}{\beta}}}}+S_{wirr}](https://latex.codecogs.com/gif.latex?S_{w}=\frac{\left(1-S_{wirr}\right)}{e^{J^{\frac{1}{\beta}}}}+S_{wirr})
+![S_{w}=\frac{\left(1-S_{wirr}\right)}{e^{J^{\frac{1}{\beta}}}}+S_{wirr}](https://math.now.sh?from=S_{w}=\frac{\left(1-S_{wirr}\right)}{e^{J^{\frac{1}{\beta}}}}+S_{wirr} &color=black)
 
 The irreducible water satuation Swirr can be estimated using the Holmes-Buckles relationship where Porosity<sup>Q</sup> × Irreducible Water Saturation = Constant. Thus, the saturation height function is defined as:
 
-![S_{w}=\frac{\left(1-\frac{C}{\phi^Q}\right)}{e^{J^{\frac{1}{\beta}}}}+\frac{C}{\phi^Q}](https://latex.codecogs.com/gif.latex?S_{w}=\frac{\left(1-\frac{C}{\phi^Q}\right)}{e^{J^{\frac{1}{\beta}}}}+\frac{C}{\phi^Q})
+![S_{w}=\frac{\left(1-\frac{C}{\phi^Q}\right)}{e^{J^{\frac{1}{\beta}}}}+\frac{C}{\phi^Q}](https://math.now.sh?from=S_{w}=\frac{\left(1-\frac{C}{\phi^Q}\right)}{e^{J^{\frac{1}{\beta}}}}+\frac{C}{\phi^Q} &color=black)
 
 The equation allows a drainage saturation height function to be generated for any rock type using input of five parameters: (1) porosity, (2) permeability which can be derived from porosity using a porosity-permeability transform, (3) shape factor β as either a constant or varies depending on permeability k, (4) Buckles constant C from either log measurement or rock-type / facies basis and (5) Holmes-Buckles exponent Q from either log measurement or rock-type / facies basis.
 
@@ -166,11 +166,11 @@ It is observed that the water saturation above the gas-water contact under an im
 
 An empirical method to implement the imbibition saturation height function is described by Adams (2003). This is the “imbibition from drainage” method which is based on fitting a curve to the difference between drainage and imbibition measurements from laboratory data. The slope ‘s’ and intercept ‘int’ of the difference in water saturation is determined as follows:
 
-![S_{wI}=S_{wD}-\Delta{S_{w}}](https://latex.codecogs.com/gif.latex?S_{wI}=S_{wD}-\Delta{S_{w}})
+![S_{wI}=S_{wD}-\Delta{S_{w}}](https://math.now.sh?from=S_{wI}=S_{wD}-\Delta{S_{w}} &color=black)
 
-![\Delta{S_{w}}=s\cdot{S_{wD}}+int](https://latex.codecogs.com/gif.latex?\Delta{S_{w}}=s\cdot{S_{wD}}+int)
+![\Delta{S_{w}}=s\cdot{S_{wD}}+int](https://math.now.sh?from=%5CDelta%7BS_%7Bw%7D%7D%3Ds%5Ccdot%7BS_%7BwD%7D%7D%2Bint &color=black)
 
-![int=a+b\cdot{\ln{k}}+c\cdot{S_{wD,orig}}](https://latex.codecogs.com/gif.latex?int=a+b\cdot{\ln{k}}+c\cdot{S_{wD,orig}})
+![int=a+b\cdot{\ln{k}}+c\cdot{S_{wD,orig}}](https://math.now.sh?from=int%3Da%2Bb%5Ccdot%7B%5Cln%7Bk%7D%7D%2Bc%5Ccdot%7BS_%7BwD%2Corig%7D%7D &color=black)
 
 Where:
 
@@ -182,12 +182,12 @@ S<sub>wD,min</sub> = Minimum drainage water saturation at crest prior to imbibit
 
 Adams’ approach suggests that laboratory data are used to optimise the unknown variables. Using the published laboratory datapoints an approximation can be made. The slope is effectively constant and weakly correlated against the minimum water saturation and the permeability. Therefore, an average of the two regressions plotted by Adams is used to determine the slope s. To determine the co-efficients, a, b and c we note that at the crest of the reservoir the imbibition and drainage curves should match e.g., S<sub>wI</sub> = S<sub>wD</sub>. Therefore, we can re-arrange the equations to derive the following:
 
-![s=\frac{\left(0.0942\cdot{S_{wD,min}}+0.8323\right)+\left(-0.0077\cdot{\ln{k}}+0.9039\right)}{2}](https://latex.codecogs.com/gif.latex?s=\frac{\left(0.0942\cdot{S_{wD,min}}+0.8323\right)+\left(-0.0077\cdot{\ln{k}}+0.9039\right)}{2})
+![s=\frac{\left(0.0942\cdot{S_{wD,min}}+0.8323\right)+\left(-0.0077\cdot{\ln{k}}+0.9039\right)}{2}](https://math.now.sh?from=s%3D%5Cfrac%7B%5Cleft%280.0942%5Ccdot%7BS_%7BwD%2Cmin%7D%7D%2B0.8323%5Cright%29%2B%5Cleft%28-0.0077%5Ccdot%7B%5Cln%7Bk%7D%7D%2B0.9039%5Cright%29%7D%7B2%7D &color=black)
 
-![a=-\left(s+c\right)\cdot{S_{wD,min}}-b\cdot{\ln{k}}](https://latex.codecogs.com/gif.latex?a=-\left(s+c\right)\cdot{S_{wD,min}}-b\cdot{\ln{k}})
+![a=-\left(s+c\right)\cdot{S_{wD,min}}-b\cdot{\ln{k}}](https://math.now.sh?from=a%3D-%5Cleft%28s%2Bc%5Cright%29%5Ccdot%7BS_%7BwD%2Cmin%7D%7D-b%5Ccdot%7B%5Cln%7Bk%7D%7D &color=black)
 
-![b=0.0691](https://latex.codecogs.com/gif.latex?b=0.0691)
+![b=0.0691](https://math.now.sh?from=b=0.0691 &color=black)
 
-![c=-0.9381](https://latex.codecogs.com/gif.latex?c=-0.9381)
+![c=-0.9381](https://math.now.sh?from=c=-0.9381 &color=black)
 
 Adams recommends that this approach is used wherever reservoirs with residual hydrocarbon columns are apparent.

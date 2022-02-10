@@ -20,7 +20,7 @@ Several methods have been published in the literature to describe how relative p
 
 Absolute permeability is a property of the porous medium e.g., reservoir rock, and measures the medium’s capacity for fluid flow. Permeability is often measured using a single fluid type, such as air, and its value is equally applicable to other single phase fluid systems flowing through the porous medium. In the presence of two or more immiscible fluids, this relationship no longer holds as the fluid with the higher saturation will preferentially flow. Relative permeability describes the ability of one fluid to flow in the presence of one or more other fluids. The simplest form of relative permeability is therefore the relative flow between two fluids. Relative permeability is simply defined as the fractional permeability of a phase relative to the absolute permeability:
 
-![k_{rp}=\frac{k_{p}}{k}](https://latex.codecogs.com/gif.latex?k_{rp}=\frac{k_{p}}{k})
+![k_{rp}=\frac{k_{p}}{k}](https://math.now.sh?from=k_{rp}=\frac{k_{p}}{k} &color=black)
 
 Where:
 
@@ -66,11 +66,11 @@ There are several relative permeability curves in total to account for both drai
 
 **Drainage Oil-Water System**
 {% raw %}
-![k_{row}=\frac{k_{rocw}\left(1-S_{e}\right)^{L_{o}^{w}}}{\left(1-S_{e}\right)^{L_{o}^{w}}+E_{o}^{w}\cdot{{S_{e}}^{T_{o}^{w}}}}](https://latex.codecogs.com/gif.latex?k_{row}=\frac{k_{rocw}\left(1-S_{e}\right)^{L_{o}^{w}}}{\left(1-S_{e}\right)^{L_{o}^{w}}+E_{o}^{w}\cdot{{S_{e}}^{T_{o}^{w}}}})
+![k_{row}=\frac{k_{rocw}\left(1-S_{e}\right)^{L_{o}^{w}}}{\left(1-S_{e}\right)^{L_{o}^{w}}+E_{o}^{w}\cdot{{S_{e}}^{T_{o}^{w}}}}](https://math.now.sh?from=k_%7Brow%7D%3D%5Cfrac%7Bk_%7Brocw%7D%5Cleft%281-S_%7Be%7D%5Cright%29%5E%7BL_%7Bo%7D%5E%7Bw%7D%7D%7D%7B%5Cleft%281-S_%7Be%7D%5Cright%29%5E%7BL_%7Bo%7D%5E%7Bw%7D%7D%2BE_%7Bo%7D%5E%7Bw%7D%5Ccdot%7B%7BS_%7Be%7D%7D%5E%7BT_%7Bo%7D%5E%7Bw%7D%7D%7D%7D &color=black)
 
-![k_{rwo}\textrm{(water-wet)}=\frac{k_{rwt}{S_{e}}^{L_{w}^{o}}}{{S_{e}}^{L_{w}^{o}}+E_{w}^{o}\cdot{\left(1-S_{e}\right)^{T_{w}^{o}}}}](https://latex.codecogs.com/gif.latex?k_{rwo}\textrm{(water-wet)}=\frac{k_{rwt}{S_{e}}^{L_{w}^{o}}}{{S_{e}}^{L_{w}^{o}}+E_{w}^{o}\cdot{\left(1-S_{e}\right)^{T_{w}^{o}}}})
+![k_{rwo}\textrm{(water-wet)}=\frac{k_{rwt}{S_{e}}^{L_{w}^{o}}}{{S_{e}}^{L_{w}^{o}}+E_{w}^{o}\cdot{\left(1-S_{e}\right)^{T_{w}^{o}}}}](https://math.now.sh?from=k_%7Brwo%7D%5Ctextrm%7B%28water-wet%29%7D%3D%5Cfrac%7Bk_%7Brwt%7D%7BS_%7Be%7D%7D%5E%7BL_%7Bw%7D%5E%7Bo%7D%7D%7D%7B%7BS_%7Be%7D%7D%5E%7BL_%7Bw%7D%5E%7Bo%7D%7D%2BE_%7Bw%7D%5E%7Bo%7D%5Ccdot%7B%5Cleft%281-S_%7Be%7D%5Cright%29%5E%7BT_%7Bw%7D%5E%7Bo%7D%7D%7D%7D &color=black)
 
-![k_{rwo}\textrm{(oil-wet)}=\frac{k_{rwt}{S_{wn}}^{L_{w}^{o}}}{{S_{wn}}^{L_{w}^{o}}+E_{w}^{o}\cdot{\left(1-S_{wn}\right)^{T_{w}^{o}}}}](https://latex.codecogs.com/gif.latex?k_{rwo}\textrm{(oil-wet)}=\frac{k_{rwt}{S_{wn}}^{L_{w}^{o}}}{{S_{wn}}^{L_{w}^{o}}+E_{w}^{o}\cdot{\left(1-S_{wn}\right)^{T_{w}^{o}}}})
+![k_{rwo}\textrm{(oil-wet)}=\frac{k_{rwt}{S_{wn}}^{L_{w}^{o}}}{{S_{wn}}^{L_{w}^{o}}+E_{w}^{o}\cdot{\left(1-S_{wn}\right)^{T_{w}^{o}}}}](https://math.now.sh?from=k_%7Brwo%7D%5Ctextrm%7B%28oil-wet%29%7D%3D%5Cfrac%7Bk_%7Brwt%7D%7BS_%7Bwn%7D%7D%5E%7BL_%7Bw%7D%5E%7Bo%7D%7D%7D%7B%7BS_%7Bwn%7D%7D%5E%7BL_%7Bw%7D%5E%7Bo%7D%7D%2BE_%7Bw%7D%5E%7Bo%7D%5Ccdot%7B%5Cleft%281-S_%7Bwn%7D%5Cright%29%5E%7BT_%7Bw%7D%5E%7Bo%7D%7D%7D%7D &color=black)
 {% endraw %}
 Where:
 
@@ -89,11 +89,11 @@ T<sub>w</sub><sup>o</sup> = Top empirical parameter for water phase with associa
 
 **Imbibition Oil-Water System**
 {% raw %}
-![k_{row}=\frac{k_{rocw}\left(1-S_{wn}\right)^{L_{o}^{w}}}{\left(1-S_{wn}\right)^{L_{o}^{w}}+E_{o}^{w}\cdot{{S_{wn}}^{T_{o}^{w}}}}](https://latex.codecogs.com/gif.latex?k_{row}=\frac{k_{rocw}\left(1-S_{wn}\right)^{L_{o}^{w}}}{\left(1-S_{wn}\right)^{L_{o}^{w}}+E_{o}^{w}\cdot{{S_{wn}}^{T_{o}^{w}}}})
+![k_{row}=\frac{k_{rocw}\left(1-S_{wn}\right)^{L_{o}^{w}}}{\left(1-S_{wn}\right)^{L_{o}^{w}}+E_{o}^{w}\cdot{{S_{wn}}^{T_{o}^{w}}}}](https://math.now.sh?from=k_%7Brow%7D%3D%5Cfrac%7Bk_%7Brocw%7D%5Cleft%281-S_%7Bwn%7D%5Cright%29%5E%7BL_%7Bo%7D%5E%7Bw%7D%7D%7D%7B%5Cleft%281-S_%7Bwn%7D%5Cright%29%5E%7BL_%7Bo%7D%5E%7Bw%7D%7D%2BE_%7Bo%7D%5E%7Bw%7D%5Ccdot%7B%7BS_%7Bwn%7D%7D%5E%7BT_%7Bo%7D%5E%7Bw%7D%7D%7D%7D &color=black)
 
-![k_{rwo}\textrm{(water-wet)}=\frac{k_{rwro}{S_{wn}}^{L_{w}^{o}}}{{S_{wn}}^{L_{w}^{o}}+E_{w}^{o}\cdot{\left(1-S_{wn}\right)^{T_{w}^{o}}}}](https://latex.codecogs.com/gif.latex?k_{rwo}\textrm{(water-wet)}=\frac{k_{rwro}{S_{wn}}^{L_{w}^{o}}}{{S_{wn}}^{L_{w}^{o}}+E_{w}^{o}\cdot{\left(1-S_{wn}\right)^{T_{w}^{o}}}})
+![k_{rwo}\textrm{(water-wet)}=\frac{k_{rwro}{S_{wn}}^{L_{w}^{o}}}{{S_{wn}}^{L_{w}^{o}}+E_{w}^{o}\cdot{\left(1-S_{wn}\right)^{T_{w}^{o}}}}](https://math.now.sh?from=k_%7Brwo%7D%5Ctextrm%7B%28water-wet%29%7D%3D%5Cfrac%7Bk_%7Brwro%7D%7BS_%7Bwn%7D%7D%5E%7BL_%7Bw%7D%5E%7Bo%7D%7D%7D%7B%7BS_%7Bwn%7D%7D%5E%7BL_%7Bw%7D%5E%7Bo%7D%7D%2BE_%7Bw%7D%5E%7Bo%7D%5Ccdot%7B%5Cleft%281-S_%7Bwn%7D%5Cright%29%5E%7BT_%7Bw%7D%5E%7Bo%7D%7D%7D%7D &color=black)
 
-![k_{rwo}\textrm{(oil-wet)}=\frac{k_{rwro}{S_{wn}}^{0.9L_{w}^{o}}}{{S_{wn}}^{0.9L_{w}^{o}}+E_{w}^{o}\cdot{\left(1-S_{wn}\right)^{1.1T_{w}^{o}}}}](https://latex.codecogs.com/gif.latex?k_{rwo}\textrm{(oil-wet)}=\frac{k_{rwro}{S_{wn}}^{0.9L_{w}^{o}}}{{S_{wn}}^{0.9L_{w}^{o}}+E_{w}^{o}\cdot{\left(1-S_{wn}\right)^{1.1T_{w}^{o}}}})
+![k_{rwo}\textrm{(oil-wet)}=\frac{k_{rwro}{S_{wn}}^{0.9L_{w}^{o}}}{{S_{wn}}^{0.9L_{w}^{o}}+E_{w}^{o}\cdot{\left(1-S_{wn}\right)^{1.1T_{w}^{o}}}}](https://math.now.sh?from=k_%7Brwo%7D%5Ctextrm%7B%28oil-wet%29%7D%3D%5Cfrac%7Bk_%7Brwro%7D%7BS_%7Bwn%7D%7D%5E%7B0.9L_%7Bw%7D%5E%7Bo%7D%7D%7D%7B%7BS_%7Bwn%7D%7D%5E%7B0.9L_%7Bw%7D%5E%7Bo%7D%7D%2BE_%7Bw%7D%5E%7Bo%7D%5Ccdot%7B%5Cleft%281-S_%7Bwn%7D%5Cright%29%5E%7B1.1T_%7Bw%7D%5E%7Bo%7D%7D%7D%7D &color=black)
 {% endraw %}
 Where:
 
@@ -113,9 +113,9 @@ For a water-wet system where S<sub>wn</sub> = 1, then set k<sub>rwo</sub> (imbib
 
 **Drainage Gas-Oil System**
 {% raw %}
-![k_{rgo}=\frac{k_{rgcw}\left(1-S_{e}\right)^{L_{g}^{o}}}{\left(1-S_{e}\right)^{L_{g}^{o}}+E_{g}^{o}\cdot{{S_{e}}^{T_{g}^{o}}}}](https://latex.codecogs.com/gif.latex?k_{rgo}=\frac{k_{rgcw}\left(1-S_{e}\right)^{L_{g}^{o}}}{\left(1-S_{e}\right)^{L_{g}^{o}}+E_{g}^{o}\cdot{{S_{e}}^{T_{g}^{o}}}})
+![k_{rgo}=\frac{k_{rgcw}\left(1-S_{e}\right)^{L_{g}^{o}}}{\left(1-S_{e}\right)^{L_{g}^{o}}+E_{g}^{o}\cdot{{S_{e}}^{T_{g}^{o}}}}](https://math.now.sh?from=k_%7Brgo%7D%3D%5Cfrac%7Bk_%7Brgcw%7D%5Cleft%281-S_%7Be%7D%5Cright%29%5E%7BL_%7Bg%7D%5E%7Bo%7D%7D%7D%7B%5Cleft%281-S_%7Be%7D%5Cright%29%5E%7BL_%7Bg%7D%5E%7Bo%7D%7D%2BE_%7Bg%7D%5E%7Bo%7D%5Ccdot%7B%7BS_%7Be%7D%7D%5E%7BT_%7Bg%7D%5E%7Bo%7D%7D%7D%7D &color=black)
 
-![k_{rog}=\frac{k_{rocw}{S_{ln}}^{L_{o}^{g}}}{{S_{ln}}^{L_{o}^{g}}+E_{o}^{g}\cdot{\left(1-S_{ln}\right)^{T_{o}^{g}}}}](https://latex.codecogs.com/gif.latex?k_{rog}=\frac{k_{rocw}{S_{ln}}^{L_{o}^{g}}}{{S_{ln}}^{L_{o}^{g}}+E_{o}^{g}\cdot{\left(1-S_{ln}\right)^{T_{o}^{g}}}})
+![k_{rog}=\frac{k_{rocw}{S_{ln}}^{L_{o}^{g}}}{{S_{ln}}^{L_{o}^{g}}+E_{o}^{g}\cdot{\left(1-S_{ln}\right)^{T_{o}^{g}}}}](https://math.now.sh?from=k_%7Brog%7D%3D%5Cfrac%7Bk_%7Brocw%7D%7BS_%7Bln%7D%7D%5E%7BL_%7Bo%7D%5E%7Bg%7D%7D%7D%7B%7BS_%7Bln%7D%7D%5E%7BL_%7Bo%7D%5E%7Bg%7D%7D%2BE_%7Bo%7D%5E%7Bg%7D%5Ccdot%7B%5Cleft%281-S_%7Bln%7D%5Cright%29%5E%7BT_%7Bo%7D%5E%7Bg%7D%7D%7D%7D &color=black)
 {% endraw %}
 Where:
 
@@ -134,9 +134,9 @@ T<sub>o</sub><sup>g</sup> = Top empirical parameter for oil phase with associate
 
 **Imbibition Gas-Oil System**
 {% raw %}
-![k_{rgo}=\frac{k_{rgrl}\left(1-S_{ln'}\right)^{L_{g}^{o}}}{\left(1-S_{ln'}\right)^{L_{g}^{o}}+E_{g}^{o}\cdot{{S_{ln'}}^{T_{g}^{o}}}}](https://latex.codecogs.com/gif.latex?k_{rgo}=\frac{k_{rgrl}\left(1-S_{ln'}\right)^{L_{g}^{o}}}{\left(1-S_{ln'}\right)^{L_{g}^{o}}+E_{g}^{o}\cdot{{S_{ln'}}^{T_{g}^{o}}}})
+![k_{rgo}=\frac{k_{rgrl}\left(1-S_{ln'}\right)^{L_{g}^{o}}}{\left(1-S_{ln'}\right)^{L_{g}^{o}}+E_{g}^{o}\cdot{{S_{ln'}}^{T_{g}^{o}}}}](https://math.now.sh?from=k_%7Brgo%7D%3D%5Cfrac%7Bk_%7Brgrl%7D%5Cleft%281-S_%7Bln'%7D%5Cright%29%5E%7BL_%7Bg%7D%5E%7Bo%7D%7D%7D%7B%5Cleft%281-S_%7Bln'%7D%5Cright%29%5E%7BL_%7Bg%7D%5E%7Bo%7D%7D%2BE_%7Bg%7D%5E%7Bo%7D%5Ccdot%7B%7BS_%7Bln'%7D%7D%5E%7BT_%7Bg%7D%5E%7Bo%7D%7D%7D%7D &color=black)
 
-![k_{rog}=\frac{k_{rorg}{S_{ln'}}^{L_{o}^{g}}}{{S_{ln'}}^{L_{o}^{g}}+E_{o}^{g}\cdot{\left(1-S_{ln'}\right)}}](https://latex.codecogs.com/gif.latex?k_{rog}=\frac{k_{rorg}{S_{ln'}}^{L_{o}^{g}}}{{S_{ln'}}^{L_{o}^{g}}+E_{o}^{g}\cdot{\left(1-S_{ln'}\right)}})
+![k_{rog}=\frac{k_{rorg}{S_{ln'}}^{L_{o}^{g}}}{{S_{ln'}}^{L_{o}^{g}}+E_{o}^{g}\cdot{\left(1-S_{ln'}\right)}}](https://math.now.sh?from=k_%7Brog%7D%3D%5Cfrac%7Bk_%7Brorg%7D%7BS_%7Bln'%7D%7D%5E%7BL_%7Bo%7D%5E%7Bg%7D%7D%7D%7B%7BS_%7Bln'%7D%7D%5E%7BL_%7Bo%7D%5E%7Bg%7D%7D%2BE_%7Bo%7D%5E%7Bg%7D%5Ccdot%7B%5Cleft%281-S_%7Bln'%7D%5Cright%29%7D%7D &color=black)
 {% endraw %}
 Where:
 
@@ -160,15 +160,15 @@ For k<sub>rog</sub> (imbibition) we take the maximum of the LET equation for k<s
 
 Effective water saturation removes the effect of irreducible water saturation so that effective saturation varies from 0 to 1 between irreducible water saturation and 100% water saturation. Normalised water saturation removes the effect of both irreducible water saturation and residual hydrocarbon saturation, so that normalised saturation varies from 0 to 1 between irreducible water saturation and (1 – residual hydrocarbon saturation).
 
-![S_{e}=\frac{S_{w}-S_{wirr}}{1-S_{wirr}}](https://latex.codecogs.com/gif.latex?S_{e}=\frac{S_{w}-S_{wirr}}{1-S_{wirr}})
+![S_{e}=\frac{S_{w}-S_{wirr}}{1-S_{wirr}}](https://math.now.sh?from=S_{e}=\frac{S_{w}-S_{wirr}}{1-S_{wirr}} &color=black)
 
-![S_{wn}=\frac{S_{w}-S_{wirr}}{1-S_{orw}-S_{wirr}}](https://latex.codecogs.com/gif.latex?S_{wn}=\frac{S_{w}-S_{wirr}}{1-S_{orw}-S_{wirr}})
+![S_{wn}=\frac{S_{w}-S_{wirr}}{1-S_{orw}-S_{wirr}}](https://math.now.sh?from=S_{wn}=\frac{S_{w}-S_{wirr}}{1-S_{orw}-S_{wirr}} &color=black)
 
-![S_{ln}=1-\frac{1-S_{w}}{1-S_{org}-S_{wirr}}](https://latex.codecogs.com/gif.latex?S_{ln}=1-\frac{1-S_{w}}{1-S_{org}-S_{wirr}})
+![S_{ln}=1-\frac{1-S_{w}}{1-S_{org}-S_{wirr}}](https://math.now.sh?from=S_{ln}=1-\frac{1-S_{w}}{1-S_{org}-S_{wirr}} &color=black)
 
-![S_{ln'}\textrm{(water-wet)}=\frac{S_{w}-S_{org}-S_{wirr}}{1-S_{org}-S_{grw}-S_{wirr}}](https://latex.codecogs.com/gif.latex?S_{ln'}\textrm{(water-wet)}=\frac{S_{w}-S_{org}-S_{wirr}}{1-S_{org}-S_{grw}-S_{wirr}})
+![S_{ln'}\textrm{(water-wet)}=\frac{S_{w}-S_{org}-S_{wirr}}{1-S_{org}-S_{grw}-S_{wirr}}](https://math.now.sh?from=S_{ln'}\textrm{(water-wet)}=\frac{S_{w}-S_{org}-S_{wirr}}{1-S_{org}-S_{grw}-S_{wirr}} &color=black)
 
-![S_{ln'}\textrm{(oil-wet)}=\frac{S_{w}-S_{org}-S_{wirr}}{1-S_{org}-S_{gro}-S_{wirr}}](https://latex.codecogs.com/gif.latex?S_{ln'}\textrm{(oil-wet)}=\frac{S_{w}-S_{org}-S_{wirr}}{1-S_{org}-S_{gro}-S_{wirr}})
+![S_{ln'}\textrm{(oil-wet)}=\frac{S_{w}-S_{org}-S_{wirr}}{1-S_{org}-S_{gro}-S_{wirr}}](https://math.now.sh?from=S_{ln'}\textrm{(oil-wet)}=\frac{S_{w}-S_{org}-S_{wirr}}{1-S_{org}-S_{gro}-S_{wirr}} &color=black)
 
 ### LET Parameters
 
@@ -192,16 +192,16 @@ First let’s consider the saturation endpoints.
 Now we can also consider the relative permeability endpoints:
 
 -   **k<sub>rocw</sub>:** Based on k<sub>row</sub> LET equation for oil-water drainage system at irreducible water saturation. This is equation [A4] in in Lomeland, Ebeltoft and Thomas (2005).<br>
-    {% raw %}![k_{rocw}=\frac{\left(1-S_{wirr}\right)^{L_{o}^{w}}}{\left(1-S_{wirr}\right)^{L_{o}^{w}}+E_{o}^{w}\cdot{{S_{wirr}}^{T_{o}^{w}}}}](https://latex.codecogs.com/gif.latex?k_{rocw}=\frac{\left(1-S_{wirr}\right)^{L_{o}^{w}}}{\left(1-S_{wirr}\right)^{L_{o}^{w}}+E_{o}^{w}\cdot{{S_{wirr}}^{T_{o}^{w}}}}){% endraw %}
+    {% raw %}![k_{rocw}=\frac{\left(1-S_{wirr}\right)^{L_{o}^{w}}}{\left(1-S_{wirr}\right)^{L_{o}^{w}}+E_{o}^{w}\cdot{{S_{wirr}}^{T_{o}^{w}}}}](https://math.now.sh?from=k_%7Brocw%7D%3D%5Cfrac%7B%5Cleft%281-S_%7Bwirr%7D%5Cright%29%5E%7BL_%7Bo%7D%5E%7Bw%7D%7D%7D%7B%5Cleft%281-S_%7Bwirr%7D%5Cright%29%5E%7BL_%7Bo%7D%5E%7Bw%7D%7D%2BE_%7Bo%7D%5E%7Bw%7D%5Ccdot%7B%7BS_%7Bwirr%7D%7D%5E%7BT_%7Bo%7D%5E%7Bw%7D%7D%7D%7D &color=black){% endraw %}
 -   **k<sub>rwt</sub>:** Equal to k<sub>rwro</sub> for an oil-wet system or 1.0 otherwise.
 -   **k<sub>rwro</sub>:** Based on k<sub>rwo</sub> (water-wet) LET equation for oil-water drainage system at effective saturation = 1.0 − S<sub>orw</sub> or zero if this is a negative result.<br>
-    {% raw %}![k_{rwro}=\frac{\left(1-\frac{S_{orw}}{1-S_{wirr}}\right)^{L_{w}^{o}}}{\left(1-\frac{S_{orw}}{1-S_{wirr}}\right)^{L_{w}^{o}}+E_{w}^{o}\cdot{\left({\frac{S_{orw}}{1-S_{wirr}}}\right)^{T_{w}^{o}}}}](https://latex.codecogs.com/gif.latex?k_{rwro}=\frac{\left(1-\frac{S_{orw}}{1-S_{wirr}}\right)^{L_{w}^{o}}}{\left(1-\frac{S_{orw}}{1-S_{wirr}}\right)^{L_{w}^{o}}+E_{w}^{o}\cdot{\left({\frac{S_{orw}}{1-S_{wirr}}}\right)^{T_{w}^{o}}}}){% endraw %}
+    {% raw %}![k_{rwro}=\frac{\left(1-\frac{S_{orw}}{1-S_{wirr}}\right)^{L_{w}^{o}}}{\left(1-\frac{S_{orw}}{1-S_{wirr}}\right)^{L_{w}^{o}}+E_{w}^{o}\cdot{\left({\frac{S_{orw}}{1-S_{wirr}}}\right)^{T_{w}^{o}}}}](https://math.now.sh?from=k_%7Brwro%7D%3D%5Cfrac%7B%5Cleft%281-%5Cfrac%7BS_%7Borw%7D%7D%7B1-S_%7Bwirr%7D%7D%5Cright%29%5E%7BL_%7Bw%7D%5E%7Bo%7D%7D%7D%7B%5Cleft%281-%5Cfrac%7BS_%7Borw%7D%7D%7B1-S_%7Bwirr%7D%7D%5Cright%29%5E%7BL_%7Bw%7D%5E%7Bo%7D%7D%2BE_%7Bw%7D%5E%7Bo%7D%5Ccdot%7B%5Cleft%28%7B%5Cfrac%7BS_%7Borw%7D%7D%7B1-S_%7Bwirr%7D%7D%7D%5Cright%29%5E%7BT_%7Bw%7D%5E%7Bo%7D%7D%7D%7D &color=black){% endraw %}
 -   **k<sub>rgcw</sub>:** Based on k<sub>rgo</sub> LET equation for gas-oil drainage system at irreducible water saturation. This is equation [C4] in in Lomeland, Ebeltoft and Thomas (2005).<br>
-    {% raw %}![k_{rgcw}=\frac{\left(1-S_{wirr}\right)^{L_{g}^{o}}}{\left(1-S_{wirr}\right)^{L_{g}^{o}}+E_{g}^{o}\cdot{{S_{wirr}}^{T_{g}^{o}}}}](https://latex.codecogs.com/gif.latex?k_{rgcw}=\frac{\left(1-S_{wirr}\right)^{L_{g}^{o}}}{\left(1-S_{wirr}\right)^{L_{g}^{o}}+E_{g}^{o}\cdot{{S_{wirr}}^{T_{g}^{o}}}}){% endraw %}
+    {% raw %}![k_{rgcw}=\frac{\left(1-S_{wirr}\right)^{L_{g}^{o}}}{\left(1-S_{wirr}\right)^{L_{g}^{o}}+E_{g}^{o}\cdot{{S_{wirr}}^{T_{g}^{o}}}}](https://math.now.sh?from=k_%7Brgcw%7D%3D%5Cfrac%7B%5Cleft%281-S_%7Bwirr%7D%5Cright%29%5E%7BL_%7Bg%7D%5E%7Bo%7D%7D%7D%7B%5Cleft%281-S_%7Bwirr%7D%5Cright%29%5E%7BL_%7Bg%7D%5E%7Bo%7D%7D%2BE_%7Bg%7D%5E%7Bo%7D%5Ccdot%7B%7BS_%7Bwirr%7D%7D%5E%7BT_%7Bg%7D%5E%7Bo%7D%7D%7D%7D &color=black){% endraw %}
 -   **k<sub>rgrl</sub>:** Based on k<sub>rgo</sub> LET equation for gas-oil drainage system at effective saturation = 1.0 – S<sub>org</sub>.<br>
-    {% raw %}![k_{rgrl}=\frac{k_{rgcw}\left(1-\frac{S_{org}}{1-S_{wirr}}\right)^{L_{g}^{o}}}{\left(1-\frac{S_{org}}{1-S_{wirr}}\right)^{L_{g}^{o}}+E_{g}^{o}\cdot{\left({\frac{S_{org}}{1-S_{wirr}}}\right)^{T_{g}^{o}}}}](https://latex.codecogs.com/gif.latex?k_{rgrl}=\frac{k_{rgcw}\left(1-\frac{S_{org}}{1-S_{wirr}}\right)^{L_{g}^{o}}}{\left(1-\frac{S_{org}}{1-S_{wirr}}\right)^{L_{g}^{o}}+E_{g}^{o}\cdot{\left({\frac{S_{org}}{1-S_{wirr}}}\right)^{T_{g}^{o}}}}){% endraw %}
+    {% raw %}![k_{rgrl}=\frac{k_{rgcw}\left(1-\frac{S_{org}}{1-S_{wirr}}\right)^{L_{g}^{o}}}{\left(1-\frac{S_{org}}{1-S_{wirr}}\right)^{L_{g}^{o}}+E_{g}^{o}\cdot{\left({\frac{S_{org}}{1-S_{wirr}}}\right)^{T_{g}^{o}}}}](https://math.now.sh?from=k_%7Brgrl%7D%3D%5Cfrac%7Bk_%7Brgcw%7D%5Cleft%281-%5Cfrac%7BS_%7Borg%7D%7D%7B1-S_%7Bwirr%7D%7D%5Cright%29%5E%7BL_%7Bg%7D%5E%7Bo%7D%7D%7D%7B%5Cleft%281-%5Cfrac%7BS_%7Borg%7D%7D%7B1-S_%7Bwirr%7D%7D%5Cright%29%5E%7BL_%7Bg%7D%5E%7Bo%7D%7D%2BE_%7Bg%7D%5E%7Bo%7D%5Ccdot%7B%5Cleft%28%7B%5Cfrac%7BS_%7Borg%7D%7D%7B1-S_%7Bwirr%7D%7D%7D%5Cright%29%5E%7BT_%7Bg%7D%5E%7Bo%7D%7D%7D%7D &color=black){% endraw %}
 -   **k<sub>rorg</sub>:** Based on k<sub>rgo</sub> LET equation for gas-oil drainage system at normalised saturation = 1.0 − S<sub>grw</sub> or zero if S<sub>org</sub> + S<sub>grw</sub> + S<sub>wirr</sub> > 1.0.<br>
-    {% raw %}![k_{rorg}=\frac{\left(1-\frac{S_{grw}}{1-S_{org}-S_{wirr}}\right)^{L_{g}^{o}}}{\left(1-\frac{S_{grw}}{1-S_{org}-S_{wirr}}\right)^{L_{g}^{o}}+E_{g}^{o}\cdot{\left({\frac{S_{grw}}{1-S_{org}-S_{wirr}}}\right)^{T_{g}^{o}}}}](https://latex.codecogs.com/gif.latex?k_{rorg}=\frac{\left(1-\frac{S_{grw}}{1-S_{org}-S_{wirr}}\right)^{L_{g}^{o}}}{\left(1-\frac{S_{grw}}{1-S_{org}-S_{wirr}}\right)^{L_{g}^{o}}+E_{g}^{o}\cdot{\left({\frac{S_{grw}}{1-S_{org}-S_{wirr}}}\right)^{T_{g}^{o}}}}){% endraw %}
+    {% raw %}![k_{rorg}=\frac{\left(1-\frac{S_{grw}}{1-S_{org}-S_{wirr}}\right)^{L_{g}^{o}}}{\left(1-\frac{S_{grw}}{1-S_{org}-S_{wirr}}\right)^{L_{g}^{o}}+E_{g}^{o}\cdot{\left({\frac{S_{grw}}{1-S_{org}-S_{wirr}}}\right)^{T_{g}^{o}}}}](https://math.now.sh?from=k_%7Brorg%7D%3D%5Cfrac%7B%5Cleft%281-%5Cfrac%7BS_%7Bgrw%7D%7D%7B1-S_%7Borg%7D-S_%7Bwirr%7D%7D%5Cright%29%5E%7BL_%7Bg%7D%5E%7Bo%7D%7D%7D%7B%5Cleft%281-%5Cfrac%7BS_%7Bgrw%7D%7D%7B1-S_%7Borg%7D-S_%7Bwirr%7D%7D%5Cright%29%5E%7BL_%7Bg%7D%5E%7Bo%7D%7D%2BE_%7Bg%7D%5E%7Bo%7D%5Ccdot%7B%5Cleft%28%7B%5Cfrac%7BS_%7Bgrw%7D%7D%7B1-S_%7Borg%7D-S_%7Bwirr%7D%7D%7D%5Cright%29%5E%7BT_%7Bg%7D%5E%7Bo%7D%7D%7D%7D &color=black){% endraw %}
 	
 These endpoints can be used to construct sets of oil-water and gas-oil two phase relative permeability curves for both drainage and imbibition. The sets of curves generated are consistent with each other. Gas-water curves are not considered separately as conventional simulator inputs only expect a set of oil-water and gas-oil curves. Whilst it is recognised that the gas-water relative permeability curves would be slightly different, the gas curves from the gas-oil system and the water curves from the oil-water system can be combined to create a proxy for a set of gas-water curves.
 
