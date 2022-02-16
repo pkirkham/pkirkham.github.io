@@ -4,7 +4,7 @@ title: Running OPM Flow on Windows Subsystem for Linux
 modified: 2021-05-24
 categories: analysis
 excerpt: Running the open source reservoir simulator Open Porous Media (OPM) Flow on the Windows subsystem for Linux.
-tags: [simulation, software]
+tags: [simulation, software, OPM Flow]
 image:
   feature: 
   teaser: teaser-opm-flow-on-wsl-400x250.jpg
@@ -32,8 +32,8 @@ Updating from WSL 1 to WSL 2 was a little harder than expected as I came across 
 2. For enabling virtualization it was necessary to turn on SVM = Secure Virtual Machine in the BIOS, which is disabled by default. Instructions on how to do this are beyond the scope of this blog post, although I strongly suspect that if anyone reading this has an interest in running OPM Flow under WSL 2 then they probably possess the skills needed to work out how to do this on their own system. It should also be noted that OPM Flow will run under WSL 1, so this step is not a requirement.
 
 <figure>
-	<a href="{{ site.url }}/images/Analysis/opm-flow-on-wsl2.png" data-lightbox="image-1" data-title="Enabling WSL and virtual machine platform features in Windows 10">
-		<img src="{{ site.url }}/images/Analysis/opm-flow-on-wsl2.png" alt="Enabling WSL and virtual machine platform features in Windows 10"/>
+	<a href="{{ site.url }}/images/Analysis/opm-flow-on-wsl2.png" data-lightbox="image-1" data-title="Enabling WSL and virtual machine platform features in Windows 10.>
+		<img src="{{ site.url }}/images/Analysis/opm-flow-on-wsl2.png" alt="Enabling WSL and virtual machine platform features in Windows 10."/>
 	</a>
 	<figcaption><strong>Figure 1: Enabling WSL and virtual machine platform features in Windows 10.</strong></figcaption>
 </figure>
@@ -80,10 +80,10 @@ The basic command to run the flow simulator is:
 The output can be opened in the sister project [ResInsight](https://resinsight.org/) by importing the `.egrid` output file that was generated. The results generated and the completed flow simulation in an Ubuntu shell window, both running under Windows 10, are shown in Figure 2.
 
 <figure>
-	<a href="{{ site.url }}/images/Analysis/opm-flow-on-wsl1.png" data-lightbox="image-2" data-title="Successful run of SPE3 model on OPM flow visualised using ResInsight">
-		<img src="{{ site.url }}/images/Analysis/opm-flow-on-wsl1.png" alt="Successful run of SPE3 model on OPM flow"/>
+	<a href="{{ site.url }}/images/Analysis/opm-flow-on-wsl1.png" data-lightbox="image-2" data-title="Successful run of SPE3 model on OPM Flow visualised using ResInsight.">
+		<img src="{{ site.url }}/images/Analysis/opm-flow-on-wsl1.png" alt="Successful run of SPE3 model on OPM Flow."/>
 	</a>
-	<figcaption><strong>Figure 2: Successful run of SPE3 model on OPM flow visualised using ResInsight.</strong></figcaption>
+	<figcaption><strong>Figure 2: Successful run of SPE3 model on OPM Flow visualised using ResInsight.</strong></figcaption>
 </figure>
 
 Whilst not all keywords are implemented in OPM Flow, it is working at a functional level whereby it could be used for running real-world reservoir simulations. Best of all, it can be run from within Windows without use of a full-blown virtual machine setup or dual-boot environment.
@@ -101,8 +101,8 @@ This runs the [Norne reservoir model dataset](https://doi.org/10.2118/127538-MS)
 The results shown in Figure 3 demonstrate a speed up of the simulation run with parallel processing, albeit an improvement that is not linear with the number of cores available. Nonetheless, we shouldn't complain about running the simulation twice as fast simply through the use of a different command line.
 
 <figure>
-	<a href="{{ site.url }}/images/Analysis/opm-flow-on-wsl3.png" data-lightbox="image-3" data-title="Comparison of OPM Flow on single core versus octa-core">
-		<img src="{{ site.url }}/images/Analysis/opm-flow-on-wsl3.png" alt="Successful run of SPE3 model on OPM flow"/>
+	<a href="{{ site.url }}/images/Analysis/opm-flow-on-wsl3.png" data-lightbox="image-3" data-title="Comparison of OPM Flow on single core versus octa-core.">
+		<img src="{{ site.url }}/images/Analysis/opm-flow-on-wsl3.png" alt="Successful run of SPE3 model on OPM Flow."/>
 	</a>
 	<figcaption><strong>Figure 3: Comparison of OPM Flow on single core versus octa-core.</strong></figcaption>
 </figure>
