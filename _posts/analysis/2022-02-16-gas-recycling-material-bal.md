@@ -163,8 +163,6 @@ UDQ
    UNITS  FU_OGR   'STB/MSCF'                                                      /
    DEFINE FU_NGLR  FOPR * (FUNGLYLD / FURV)                                        / Condensate Production Rate
    UNITS  FU_NGLR  'STB/DAY'                                                       /
-   DEFINE FU_NGLRC FU_WGPR * FUNGLYLD                                              / Condensate Production Rate (Check)
-   UNITS  FU_NGLRC 'STB/DAY'                                                       /
    DEFINE FU_NGLT  FOPT * (FUNGLYLD / FURV)                                        / Condensate Produced Total
    UNITS  FU_NGLT  'STB'                                                           /
    DEFINE FU_NGLY  FU_NGLR / (FGPR + FUDELTA)                                      / Producing Condensate Yield
