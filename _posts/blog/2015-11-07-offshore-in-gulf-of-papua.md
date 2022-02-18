@@ -4,7 +4,7 @@ title: Offshore in the Gulf of Papua
 modified:
 categories: blog
 excerpt: First visit offshore to Gulf of Papua for Pasca A field development.
-tags: [png, pasca, twinza, opinion, travel, offshore, gulf-of-papua, remote, ocean]
+tags: [png, pasca, twinza, opinion, travel, offshore, gulf_of_papua, remote, ocean]
 image:
   feature: feature-gulf-of-papua-1024x256.jpg
   teaser: teaser-gulf-of-papua-400x250.jpg

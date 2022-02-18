@@ -4,7 +4,7 @@ title: Gas-Recycling Simulation with OPM Flow
 modified:
 categories: analysis
 excerpt: Using OPM Flow modified black oil model to simulate a gas-condensate recycling scheme without tracers.
-tags: [dynamic modelling, simulation, OPM Flow, black oil, gas recycling]
+tags: [dynamic_modelling, simulation, OPM_Flow, black_oil, gas_recycling]
 image:
   feature: feature-gas-recycling-material-bal-1024x256.png
   teaser: teaser-gas-recycling-material-bal-400x256.png

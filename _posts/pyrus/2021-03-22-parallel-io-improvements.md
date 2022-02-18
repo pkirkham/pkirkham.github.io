@@ -29,8 +29,8 @@ Drive performance for IOPS can be benchmarked using [Anvil's Storage Benchmarks]
 The NVMe drive is currently the [fastest NAND-based flash drive available](https://www.tweaktown.com/reviews/9664/wd-black-sn850-1tb-nvme-2-ssd/index.html#Final-Thoughts). In theory the WD SN850 can reach random read speeds of 1,000,000 IOPS, which exceeds the random read for the Intel Optane 800P of 250,000 IOPS. Whilst this is a PCIe Gen4 drive, it is installed in a M.2 slot with 4x PCIe Gen3 lanes. This will limit the absolute maximum sequential speeds attainable, but for our use case involving multiple random reads, there should be plenty of headroom. In addition [online results published for Intel Optane 800P 118GB drive](https://www.legitreviews.com/intel-optane-ssd-800p-58gb-118gb-ssd-review_203320/3) are included for comparison. The results are shown in Figure 1.
 
 <figure>
-	<a href="{{ site.url }}/images/Pyrus/parallel-io-improvements3.png" data-lightbox="image-1" data-title="IOPS Performance Versus Queue Depth">
-		<img src="{{ site.url }}/images/Pyrus/parallel-io-improvements3.png" alt=""/>
+	<a href="{{ site.url }}/images/Pyrus/parallel-io-improvements3.png" data-lightbox="image-1" data-title="IOPS Performance Versus Queue Depth.">
+		<img src="{{ site.url }}/images/Pyrus/parallel-io-improvements3.png" alt="IOPS Performance Versus Queue Depth."/>
 	</a>
 	<figcaption><strong>Figure 1: IOPS Performance Versus Queue Depth.</strong><br/> Source: <a href="https://www.legitreviews.com/wp-content/uploads/2018/03/anvil-800p-read.jpg">Legit Reviews (Optane)</a></figcaption>
 </figure>
@@ -403,7 +403,7 @@ As shown in Figure 2, using a SATA III SSD (drive letter S:) the HDF5 JNI approa
 Switching to a parallel read method (with 16 threads) increases the queue depth to more than 12 as shown in Figure 3. The relevance of this can be seen immediately in the read speed which increases more than 10x to nearly 330 million bytes per second. The process associated with the file IO is now 'java.exe' indicating that the IO commands are now being issued from the Java Virtual Machine rather than through native system calls. 
 
 <figure>
-	<a href="{{ site.url }}/images/Pyrus/parallel-io-improvements1.png" data-lightbox="image-3" data-title="Parallel IO implementation using JHDF library reading with queue depth >12 from SSD">
+	<a href="{{ site.url }}/images/Pyrus/parallel-io-improvements1.png" data-lightbox="image-3" data-title="Parallel IO implementation using JHDF library reading with queue depth >12 from SSD.">
 		<img src="{{ site.url }}/images/Pyrus/parallel-io-improvements1.png" alt=""/>
 	</a>
 	<figcaption><strong>Figure 3: Parallel IO implementation using JHDF library reading with queue depth >12 from SSD.</strong></figcaption>
@@ -422,7 +422,7 @@ A more thorough test of the parallel Java IO methods involves comparison between
 A series of HDF5 files were created with different chunk sizes and then tested with both the HDF5 JNI library (indicated as 'Chunked') and the jHDF library (indicated as 'Parallel'). Parallel processing was conducted using 16 threads. The chunked read times are compared against the unchunked e.g. SEG-Y read times. For all cases the read time shown is the average of the inline, crossline and slice float read time.
 
 <figure>
-	<a href="{{ site.url }}/images/Pyrus/parallel-io-improvements4.png" data-lightbox="image-4" data-title="Comparison of chunked and parallel chunked reading versus unchunked dataset">
+	<a href="{{ site.url }}/images/Pyrus/parallel-io-improvements4.png" data-lightbox="image-4" data-title="Comparison of chunked and parallel chunked reading versus unchunked dataset.">
 		<img src="{{ site.url }}/images/Pyrus/parallel-io-improvements4.png" alt=""/>
 	</a>
 	<figcaption><strong>Figure 4: Comparison of chunked and parallel chunked reading versus unchunked dataset.</strong></figcaption>

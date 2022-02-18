@@ -4,7 +4,7 @@ title: Saturation Height Function Model
 modified:
 categories: analysis
 excerpt: Combining permeability and saturation endpoints to derive capillary pressure and thus water saturation variation based on height above free water level.
-tags: [static modelling, water saturation, capillary pressure, saturation height function, irreducible water saturation, transition zone, free water level, oil water contact, gas water contact, gas oil contact]
+tags: [static_modelling, water_saturation, capillary_pressure, saturation_height_function, irreducible_water_saturation, transition_zone, free_water_level, oil_water_contact, gas_water_contact, gas_oil_contact]
 image:
   feature:
   teaser: teaser-shf-400x250.png

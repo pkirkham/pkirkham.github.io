@@ -4,7 +4,7 @@ title: Running OPM Flow on Windows Subsystem for Linux
 modified: 2021-05-24
 categories: analysis
 excerpt: Running the open source reservoir simulator Open Porous Media (OPM) Flow on the Windows subsystem for Linux.
-tags: [simulation, software, OPM Flow]
+tags: [simulation, software, OPM_Flow]
 image:
   feature: 
   teaser: teaser-opm-flow-on-wsl-400x250.jpg

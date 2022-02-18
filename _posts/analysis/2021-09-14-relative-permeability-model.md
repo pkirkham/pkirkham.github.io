@@ -4,7 +4,7 @@ title: Relative Permeability Model
 modified:
 categories: analysis
 excerpt: Generating physically consistent relative permeability curves for reservoir simulation based on a simple rock model and fluid EoS.
-tags: [static modelling, rock characterisation, rock properties, relative permeability, hysteresis, wettability, miscibility, saturation endpoints, reservoir simulation]
+tags: [static_modelling, rock_characterisation, rock_properties, relative_permeability, hysteresis, wettability, miscibility, saturation_endpoints, reservoir_simulation]
 image:
   feature:
   teaser: teaser-rel-perm-model-400x250.png

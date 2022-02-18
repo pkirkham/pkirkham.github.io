@@ -4,7 +4,7 @@ title: Fluid Properties and Equation of State
 modified:
 categories: analysis
 excerpt: Properties required for reservoir simulation and the basis for the cubic equation of state applied to predict them.
-tags: [static modelling, fluid properties, density, formation volume factor, viscosity, equation of state, ppr78]
+tags: [static_modelling, fluid_properties, density, formation_volume_factor, viscosity, equation_of_state, ppr78]
 image:
   feature:
   teaser: teaser-fluid-properties-400x250.png

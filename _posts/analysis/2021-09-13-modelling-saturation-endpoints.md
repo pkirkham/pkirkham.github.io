@@ -4,7 +4,7 @@ title: Modelling Saturation Endpoints
 modified:
 categories: analysis
 excerpt: Using a basic rock model to derive permeability from porosity and pore geometry for different lithologies.
-tags: [static modelling, rock characterisation, rock properties, irreducible water saturation, residual gas saturation, residual oil saturation, saturation endpoint]
+tags: [static_modelling, rock_characterisation, rock_properties, irreducible_water_saturation, residual_gas_saturation, residual_oil_saturation, saturation_endpoint]
 image:
   feature:
   teaser: teaser-saturation-endpoints-400x250.png

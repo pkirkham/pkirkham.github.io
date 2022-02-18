@@ -4,7 +4,7 @@ title: Rock Model for Reservoir Simulation
 modified:
 categories: analysis
 excerpt: Defining a basic rock model from which physically consistent static and dynamic reservoir model parameters can be derived without reliance on extensive core data.
-tags: [reservoir simulation, rock characterisation, rock properties, cementation exponent, pore throat size, porosity, matrix, pore geometry, lithology]
+tags: [reservoir_simulation, rock_characterisation, rock_properties, cementation_exponent, pore_throat_size, porosity, matrix, pore_geometry, lithology]
 image:
   feature:
   teaser: teaser-rock-model-400x250.jpg

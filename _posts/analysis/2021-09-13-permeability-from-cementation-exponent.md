@@ -4,7 +4,7 @@ title: Deriving Permeability from Cementation Exponent
 modified:
 categories: analysis
 excerpt: Using a basic rock model to derive permeability from porosity and pore geometry for different lithologies.
-tags: [static modelling, rock characterisation, rock properties, cementation exponent, pore throat size, tortuosity, porosity, permeability]
+tags: [static_modelling, rock_characterisation, rock_properties, cementation_exponent, pore_throat_size, tortuosity, porosity, permeability]
 image:
   feature:
   teaser: teaser-perm-model-400x250.jpg
