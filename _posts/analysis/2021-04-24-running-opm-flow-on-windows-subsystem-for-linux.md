@@ -32,7 +32,7 @@ Updating from WSL 1 to WSL 2 was a little harder than expected as I came across 
 2. For enabling virtualization it was necessary to turn on SVM = Secure Virtual Machine in the BIOS, which is disabled by default. Instructions on how to do this are beyond the scope of this blog post, although I strongly suspect that if anyone reading this has an interest in running OPM Flow under WSL 2 then they probably possess the skills needed to work out how to do this on their own system. It should also be noted that OPM Flow will run under WSL 1, so this step is not a requirement.
 
 <figure>
-	<a href="{{ site.url }}/images/Analysis/opm-flow-on-wsl2.png" data-lightbox="image-1" data-title="Enabling WSL and virtual machine platform features in Windows 10.>
+	<a href="{{ site.url }}/images/Analysis/opm-flow-on-wsl2.png" data-lightbox="image-1" data-title="Enabling WSL and virtual machine platform features in Windows 10.">
 		<img src="{{ site.url }}/images/Analysis/opm-flow-on-wsl2.png" alt="Enabling WSL and virtual machine platform features in Windows 10."/>
 	</a>
 	<figcaption><strong>Figure 1: Enabling WSL and virtual machine platform features in Windows 10.</strong></figcaption>

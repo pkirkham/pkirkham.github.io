@@ -157,7 +157,7 @@ UDQ
    UNITS  FU_DGPT  'MSCF'                                                          /
    DEFINE FU_WGPR  FOPRS / FU_RVPVT                                                / Wet Gas Production Rate
    UNITS  FU_WGPR  'MSCF/DAY'                                                      /
-   DEFINE FU_DGPR  FGPR - FU_WGPR                                                  / Wet Gas Production Rate
+   DEFINE FU_DGPR  FGPR - FU_WGPR                                                  / Dry Gas Production Rate
    UNITS  FU_DGPR  'MSCF/DAY'                                                      /
    DEFINE FU_OGR   1.0 / FGOR                                                      / Current Producing Oil-Gas Ratio
    UNITS  FU_OGR   'STB/MSCF'                                                      /
