@@ -108,7 +108,7 @@ The model appears to have been imported but there are several issues:
 
 ## Improving the Python Script
 
-In Windows the Python script can be found in the "%APPDATA%\Blender Foundation\Blender\3.2\scripts\addons\sketchup_importer" folder and is called "__init__.py" -- note double underscore characters either side of the 'init'.
+In Windows the Python script can be found in the "%APPDATA%\Blender Foundation\Blender\3.2\scripts\addons\sketchup_importer" folder and is called `__init__.py` -- note double underscore characters either side of the 'init'.
 
 Given that Python is not a language I use often, there was a [learning curve to go up](https://wiki.python.org/moin/MovingToPythonFromOtherLanguages) in understanding how this worked. Fortunately, with both the [SketchUp API SDK documentation](https://extensions.sketchup.com/developers/sketchup_c_api/sketchup/index.html) and [Blender API reference](https://docs.blender.org/api/current/index.html) documents, it is possible to figure out what is going on. With some modifications to the script it was possible to preserve the hierarchy, and fix importing of the non-visible tagged objects and scenes.
 
@@ -121,6 +121,8 @@ Given that Python is not a language I use often, there was a [learning curve to 
 
 Overall this is looking like a good improvement although some testing is still needed. A colleague of mine has let me know that some components in a different model are not located correctly. This can happen with deeply nested components and groups. Nonetheless, this updated script is a good start.
 
+<div class="notice-info">**UPDATE 22-Aug-2022:** I've continued to work on the import script and have solved the issues with nesting of groups and components. The issue turned out to be related to a mix of objects with the same name not being recognised as separate entities, and with transformations not being correctly applied to groups containing both nested loose mesh data and groups. These problems have been fixed and the importer is now a lot more robust. I've noticed that there are still some occasional import issues. This occurs where groups have had a few transformations applied. The solution is to explode and re-group the geometry in SketchUp which seems to reset the transformations and fixes the import problems.</div>
+
 Once the model has been imported into Blender, it is now possible to use Cycles for rendering. An example using the camera set to Scene 1 and with the 'Excluded' table set not to show in the render is below. There are no lights in the model so the render is a little on the dark side (environmental lighting only).
 
 <figure>
@@ -132,8 +134,8 @@ Once the model has been imported into Blender, it is now possible to use Cycles 
 
 ### Download the Modified Script
 
-If you'd like to try preserving the hierarchy of your SketchUp model when importing from SketchUp into Blender, the "__init__.py" file can be downloaded. Simply replace the file found in the Blender add-on folder "%APPDATA%\Blender Foundation\Blender\3.2\scripts\addons\sketchup_importer" and restart Blender.
+If you'd like to try preserving the hierarchy of your SketchUp model when importing from SketchUp into Blender, the `__init__.py` file can be downloaded. Simply replace the file found in the Blender add-on folder "%APPDATA%\Blender Foundation\Blender\3.2\scripts\addons\sketchup_importer" and restart Blender.
 
-<a href="{{ site.url }}/downloads/__init__.py" class="btn-inverse">Download `__init.py__`</a>
+<a href="{{ site.url }}/downloads/__init__.py" class="btn-inverse">Download `__init__.py` (22-Aug-2022 version)</a>
 
 It doesn't look as if the original script by martijnberger has been updated on GitHub for a while. If I ever get around to testing this more thoroughly I'll look at creating a pull request to update the original script, or create my own fork.

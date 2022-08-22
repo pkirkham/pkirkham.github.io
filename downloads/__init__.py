@@ -30,7 +30,7 @@ from bpy.props import (BoolProperty, EnumProperty, FloatProperty, IntProperty,
 from bpy.types import AddonPreferences, Operator
 from bpy_extras.io_utils import (ExportHelper, ImportHelper, unpack_face_list,
                                  unpack_list)
-from mathutils import Matrix, Quaternion, Vector
+from mathutils import Matrix, Euler, Quaternion, Vector
 
 from . import sketchup
 from .SKPutil import *
@@ -620,7 +620,7 @@ class SceneImporter():
 
     #
     # Recursively import all the mesh objects. Groups containing no mesh
-    # information are  imported as empty objects and can contain nested
+    # information are imported as empty objects and can contain nested
     # groups or components. This approach preserves the hierarchy from the
     # SketchUp outliner.
     #
@@ -646,34 +646,65 @@ class SceneImporter():
         me, alpha = self.write_mesh_data(entities=entities, name=name,
                                          default_material=default_material)
 
-        # Create a new object containing the mesh or use an empty object if
-        # there is no mesh in this group
-        if me:
+        # If there are no further nested groups or components, then we can
+        # create an object containing the mesh. Otherwise we create a new
+        # empty object and place an object containing the loose geometry as
+        # a mesh within this group.
+        nested_groups = 0
+        for group in entities.groups:
+            nested_groups += 1  # count groups (brute force approach)
+        nested_comps = 0
+        for comp in entities.instances:
+            nested_comps += 1  # count components (brute force approach)
+        nested_count = nested_groups + nested_comps
+        hide_empty = False
+        if nested_count == 0 or name == "_(Loose Entity)":
             ob = bpy.data.objects.new(name, me)
             ob.matrix_world = parent_transform
-            if alpha > 0.01 and alpha < 1.0:
+            if 0.01 < alpha < 1.0:
                 ob.show_transparent = True
-            me.update(calc_edges=True)
+            if me:
+                me.update(calc_edges=True)
         else:
-            ob = bpy.data.objects.new(name, None)  # empty object if no mesh
+            ob = bpy.data.objects.new(name, None)  # empty object to hold group
+            ob.matrix_world = parent_transform
+            #ob.hide_viewport = True  # disable empties in viewport
+            hide_empty = True
+            if me:
+                ob_mesh = bpy.data.objects.new("_" + name + " (Loose Mesh)",
+                                               me)
+                ob_mesh.matrix_world = parent_transform
+                if 0.01 < alpha < 1.0:
+                    ob_mesh.show_transparent = True
+                me.update(calc_edges=True)
+                ob_mesh.parent = ob
+                ob_mesh.location = Vector((0, 0, 0))
+                bpy.context.collection.objects.link(ob_mesh)
 
         # Nested adjustments to the world matrix
         loc = ob.location
         nested_location = Vector((loc[0], loc[1], loc[2]))
 
         # Nest the object by assigning it to the parent object
-        if parent_name != None and parent_name != "_(Loose Entity)":
+        if parent_name is not None and parent_name != "_(Loose Entity)":
             ob.parent = bpy.data.objects[parent_name]
             ob.location -= parent_location
+        if nested_count > 0:
+            ob.rotation_mode = 'QUATERNION'  # change from default mode of xyz
+            ob.rotation_quaternion = Vector((1, 0, 0, 0))
+            ob.scale = Vector((1, 1, 1))
         bpy.context.collection.objects.link(ob)
+        ob.hide_set(hide_empty)  # enable but do not show empties in viewport
 
         for group in entities.groups:
             if group.hidden:
                 continue
             if self.layers_skip and group.layer in self.layers_skip:
                 continue
-            gname = "G-" + group_safe_name(group.name)
-            print(f"     Grp: {gname} in {ob.name}")
+            temp_ob = bpy.data.objects.new(group.name, None)
+            gname = "G-" + group_safe_name(temp_ob.name)
+            if DEBUG:
+                print(f"     Grp: {gname} in {ob.name}")
             self.write_entities(group.entities,
                                 gname,
                                 parent_transform @ Matrix(group.transform),
@@ -695,7 +726,8 @@ class SceneImporter():
                 cname = "C-" + cdef.name
             else:
                 cname = instance.name + " (C-" + cdef.name + ")"
-            print(f"     Cmp: {cname} in {ob.name}")
+            if DEBUG:
+                print(f"     Cmp: {cname} in {ob.name}")
             self.write_entities(cdef.entities,
                                 cname,
                                 parent_transform @ Matrix(instance.transform),
@@ -734,8 +766,9 @@ class SceneImporter():
             if (name, default_material) in self.component_skip:
                 return
             else:
-                skp_log("Write instance definition as group {} {}".format(
-                    group.name, default_material))
+                if DEBUG:
+                    skp_log("Write instance definition as group {} {}".format(
+                        group.name, default_material))
                 self.component_skip[(name, default_material)] = True
         if etype == EntityType.component and (
                 name, default_material) in self.component_skip:
