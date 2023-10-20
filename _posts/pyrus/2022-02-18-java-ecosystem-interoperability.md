@@ -172,7 +172,7 @@ run.args.extra=\
     -J--add-exports=java.desktop/sun.java2d=ALL-UNNAMED
 ```
 
-Note that line continuation is indicated by the '\' character in the "platform.properties" file and that JVM options must be preceded with '-J'. Adding these parameters to the JVM runtime eliminates the errors that were encountered with JogAmp 2.3.2.
+Note that line continuation is indicated by the <code>\<\code> character in the "platform.properties" file and that JVM options must be preceded with '-J'. Adding these parameters to the JVM runtime eliminates the errors that were encountered with JogAmp 2.3.2.
 
 ### Nearly There... Felix? What is Going On?
 
