@@ -29,7 +29,7 @@ These are just some of the many questions that any sane rational person might ha
 
 I was once asked at a party, by a very educated and intelligent chap, whether I agreed that the climate emergency was the most important challenge mankind faced and that we had to do something about it. I respectfully disagreed, which was at first somewhat affronting to my questioner, but thankfully he wasn't a blind zealot, and what followed was a frank and considered debate. Instead of telling me I was wrong and that I didn't know what I was talking about (sadly a common reproach I have become accustomed to) he simply asked what I did consider as more important.
 
-This put me on the spot as I'd not formally considered it before; it was simply obvious that climate change could't possibly be at the top of the list. Thinking aloud, it wasn't long before I was spewing forth a long list of candidates: that the world's population was on average not as well off as those in the western world, with access to clean water, hunger, crime, healthcare, real pollution (as in toxic, not harmless like carbon dioxide), education, and so on, being areas where more meaningful immediate impact to the overall welfare of humanity might be more readily achieved. I went on to point out that the cost associated with addressing many of these other issues would be far less than the cost associated with reaching net zero, and that the consequences of pursuing net zero goals would likely have an unintended consequence of making life worse for much of the world's population as a result of increased energy prices and their knock-on effects. When you look at the history of the western world, we live in societies that have benefited from the industrial revolution, originally fuelled by coal. Who are we to tell others that we've changed our minds? Whilst institutions such as the International Monetary Fund have a mandate to help countries build and develop strong economies, surely it is hypocritical for them to refuse to fund power generation projects if they are based on fossil fuels?
+This put me on the spot as I'd not formally considered it before; it was simply obvious that climate change could't possibly be at the top of the list. Thinking aloud, it wasn't long before I was spewing forth a long list of candidates: that the world's population was on average not as well off as those in the western world, with access to clean water, hunger, crime, healthcare, real pollution (as in toxic, not harmless like carbon dioxide), education, and so on, being areas where more meaningful immediate impact to the overall welfare of humanity might be more readily achieved. I went on to point out that the cost associated with addressing many of these other issues would be far less than the cost associated with reaching net zero, and that the consequences of pursuing net zero goals would likely have an unintended consequence of making life worse for many of the world's population as a result of increased energy prices and their knock-on effects. When you look at the history of the western world, we live in societies that have benefited from the industrial revolution, originally fuelled by coal. Who are we to tell others that we've changed our minds? Whilst institutions such as the International Monetary Fund have a mandate to help countries build and develop strong economies, surely it is hypocritical for them to refuse to fund power generation projects if they are based on fossil fuels?
 
 My answer spurred an long and welcome debate into these issues. Whilst we didn't solve the all the world's problems, we did manage to find a common ground. That there are many issues that face the many societies in the world, and addressing them should take into consideration many different and conflicting consequences.
 
@@ -102,6 +102,8 @@ Milankovitch cycles?
 
 Sun spots?
 
+Different Solar Irradiation measurements. IPCC appears to have selected just one when determining that observed temperature records cannot be attributed to natural causes.
+
 
 ## The Role of the Planet's Mass
 
@@ -109,7 +111,9 @@ Sun spots?
 
 ### Changes in Planetary Temperature
 
-Specific heat capacity
+Specific heat capacity.
+
+Reliability of temperature records. Heat island effects.
 
 ### Changing Tilt of Earth's Spin
 

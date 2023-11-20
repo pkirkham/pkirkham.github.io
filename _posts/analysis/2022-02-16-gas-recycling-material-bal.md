@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Gas-Recycling Simulation with OPM Flow
-modified:
+modified: 20 November 2023
 categories: analysis
 excerpt: Using OPM Flow modified black oil model to simulate a gas-condensate recycling scheme without tracers.
 tags: [dynamic_modelling, simulation, OPM_Flow, black_oil, gas_recycling]
@@ -94,6 +94,8 @@ Since only dry gas is injected, the R<sub>v</sub> for wet gas in the reservoir m
 
 Re-arranging gives: FU_WGIP = FOIPG / FU_RVPVT. FOIPG can be obtained from the simulator and FU_RVPVT is the known R<sub>v</sub> for the gas at a specific reservoir pressure. This means that it is possible to determine the wet gas-in-place precisely and from this all other wet and dry gas volumes are derived.
 
+<div class="notice-info">Since this post was originally written, it has been discovered that the approach described does not work as expected. In particular the wet gas in place determined by this method appears to be lower than the actual wet gas in place, leading to a decrease in dry gas in place that does not match the dry gas produced. Therefore a slightly different approach has been implemented based on the wet gas produced rate FU_WGPR = FOPRS / FU_RVPVT. Combination of the rate and the TIMESTEP allows the cumulative wet gas produced total (FU_WGPT) to be tracked, and from this all other parameters can be determined.</div>
+
 ### Correlating PVTG Below Dew Point
 
 For the FU_RVPVT variable to be properly defined, it is necessary to derive a relationship between the reservoir pressure and the vaporised oil-gas ratio. Above dew point pressure this is a constant value. Below dew point pressure this will vary and the simulator will look up the value using a pre-computed lookup table which is usually input using the PVTG keyword. Unfortunately there is no way to access a lookup value from this table within a user defined quantity, and an alternative approach is required to obtain the R<sub>v</sub> for wet gas at a known pressure.
@@ -115,7 +117,7 @@ Note that the correlated polynomial equation cannot be entered on a single line 
 
 Because our FU_RVPVT varible comprises two parts, one value if above dew point pressure and another if below, a trick is used with a flag variable. This flag variable (FUFLAGDP) is set to either 0.0 (above dew point) or 1.0 (below dew point). The final FU_RVPVT value is built from both the values, but through the flag only the appropriate value is applied. The flag is set using an ACTIONX keyword that checks for when the field pressure (FPR) falls below the dew point pressure (FUDEWPRS -- defined in the UDQ keyword).
 
-In addition to calculating the total volumes and rates for the various wet and dry gas quantities as shown in Figure 2, the following snippet contains user defined quantities for calculation of related yields and recovery factors. These are provided without further explanation, although it is hoped they should be self-explanatory.
+In addition to calculating the total volumes and rates for the various wet and dry gas quantities as shown in Figure 2, the following snippet contains user defined quantities for calculation of related yields and recovery factors. These are provided without further explanation, although it is hoped they should be self-explanatory. The script below has been modified to account for an improved method of calculating the wet gas and dry gas quanitities from R<sub>v</sub>.
 
 ```
 --
@@ -125,7 +127,7 @@ In addition to calculating the total volumes and rates for the various wet and d
 --
 -- ------------------------------- DEFINE VARIABLES -------------------------------
 UDQ
-   ASSIGN FUDEWPRS 3000.0                                                          / Dewpoint Pressure for Wet Gas (psia)
+   ASSIGN FUDEWPRS 3073.831                                                        / Dewpoint Pressure for Wet Gas (psia)
    ASSIGN FURV     0.08446                                                         / PVT Sample Oil-Gas Ratio (stb per Mscf)
    ASSIGN FUNGLYLD 0.08294                                                         / Condensate Gas Plant Yield (stb per Mscf)
    ASSIGN FULPGYLD 0.07251                                                         / LPG Gas Plant Yield (stb per Mscf)
@@ -141,42 +143,37 @@ UDQ
    DEFINE FU_RVD   FU_RVA + FU_RVB - FU_RVC + 7.048255E-02                         / FU_RVPVT Polynomial Equation Part D
    DEFINE FU_RVPVT FU_RVD * FUFLAGDP + FURV * (1 - FUFLAGDP)                       / Actual Wet Gas Oil-Gas Ratio (stb per Mscf)
    UNITS  FU_RVPVT 'STB/MSCF'                                                      /
-   DEFINE FUOGASIP FGIPG + FGPT - FGIT                                             / Original Field Gas In-Place
-   UNITS  FUOGASIP 'MSCF'                                                          /
-   DEFINE FUONGLIP FUOGASIP * FUNGLYLD                                             / Original Condensate In-Place
-   UNITS  FUONGLIP 'STB'                                                           /
-   DEFINE FUOLPGIP FUOGASIP * FULPGYLD                                             / Original LPG In-Place
-   UNITS  FUOLPGIP 'BBL'                                                           /
-   DEFINE FU_WGIP  FOIPG / FU_RVPVT                                                / Field Wet Gas In-Place
-   UNITS  FU_WGIP  'MSCF'                                                          /
-   DEFINE FU_DGIP  FGIPG - FU_WGIP                                                 / Field Dry Gas In-Place
-   UNITS  FU_DGIP  'MSCF'                                                          /
-   DEFINE FU_WGPT  FUOGASIP - FU_WGIP                                              / Wet Gas Produced Total
-   UNITS  FU_WGPT  'MSCF'                                                          /
-   DEFINE FU_DGPT  FGPT - FU_WGPT                                                  / Dry Gas Produced Total
-   UNITS  FU_DGPT  'MSCF'                                                          /
    DEFINE FU_WGPR  FOPRS / FU_RVPVT                                                / Wet Gas Production Rate
    UNITS  FU_WGPR  'MSCF/DAY'                                                      /
    DEFINE FU_DGPR  FGPR - FU_WGPR                                                  / Dry Gas Production Rate
    UNITS  FU_DGPR  'MSCF/DAY'                                                      /
+   DEFINE FU_DGPTS FU_DGPR * TIMESTEP                                              / Dry Gas Produced Total (total for timestep from rate)
+   UNITS  FU_DGPTS 'MSCF'                                                          /
+   ASSIGN FU_DGPT  0.0                                                             / Dry Gas Produced Total
+   DEFINE FU_DGPT  FU_DGPT + FU_DGPTS                                              /
+   UNITS  FU_DGPT  'MSCF'                                                          /
+   DEFINE FU_WGPT  FGPT - FU_DGPT                                                  / Wet Gas Produced Total
+   UNITS  FU_WGPT  'MSCF'                                                          /
+   DEFINE FU_DGIP  FGIT - FU_DGPT                                                  / Field Dry Gas In-Place
+   UNITS  FU_DGIP  'MSCF'                                                          /
+   DEFINE FU_WGIP  FGIPG - FU_DGIP                                                 / Field Wet Gas In-Place
+   UNITS  FU_WGIP  'MSCF'                                                          /
    DEFINE FU_OGR   1.0 / FGOR                                                      / Current Producing Oil-Gas Ratio
    UNITS  FU_OGR   'STB/MSCF'                                                      /
    DEFINE FU_NGLR  FOPR * (FUNGLYLD / FURV)                                        / Condensate Production Rate
    UNITS  FU_NGLR  'STB/DAY'                                                       /
+   DEFINE FU_NGLRC FU_WGPR * FUNGLYLD                                              / Condensate Production Rate (Check)
+   UNITS  FU_NGLRC 'STB/DAY'                                                       /
    DEFINE FU_NGLT  FOPT * (FUNGLYLD / FURV)                                        / Condensate Produced Total
    UNITS  FU_NGLT  'STB'                                                           /
    DEFINE FU_NGLY  FU_NGLR / (FGPR + FUDELTA)                                      / Producing Condensate Yield
    UNITS  FU_NGLY  'STB/MSCF'                                                      /
-   DEFINE FU_NGLRF (FU_NGLT / FUONGLIP) * 100.0                                    / Condensate Recovery Factor
-   UNITS  FU_NGLRF '%'                                                             /
    DEFINE FU_LPGR  FU_WGPR * FULPGYLD                                              / LPG Production Rate
    UNITS  FU_LPGR  'BBL/DAY'                                                       /
    DEFINE FU_LPGT  FU_WGPT * FULPGYLD                                              / LPG Produced Total
    UNITS  FU_LPGT  'BBL'                                                           /
    DEFINE FU_LPGY  FU_LPGR / (FGPR + FUDELTA)                                      / Producing LPG Yield
    UNITS  FU_LPGY  'BBL/MSCF'                                                      /
-   DEFINE FU_LPGRF (FU_LPGT / FUOLPGIP) * 100.0                                    / LPG Recovery Factor
-   UNITS  FU_LPGRF '%'                                                             /
    DEFINE FU_NGPR  FGPR - (FU_WGPR * FUTOTSHK)                                     / Post-Processing Net Gas Production Rate
    UNITS  FU_NGPR  'MSCF/DAY'                                                      /
    DEFINE FU_SGPR  FU_NGPR * FUFLAGGS                                              / Sales Gas Production Rate
@@ -185,6 +182,12 @@ UDQ
    UNITS  FU_GIR   'MSCF/DAY'                                                      /
    DEFINE FU_NGPT  FGPT - (FU_WGPT * FUTOTSHK)                                     / Post-Processing Net Gas Produced Total
    UNITS  FU_NGPT  'MSCF'                                                          /
+   DEFINE FUOGASIP FGIPG + FGPT - FGIT                                             / Original Field Gas In-Place
+   UNITS  FUOGASIP 'MSCF'                                                          /
+   DEFINE FUONGLIP FUOGASIP * FUNGLYLD                                             / Original Condensate In-Place
+   UNITS  FUONGLIP 'STB'                                                           /
+   DEFINE FUOLPGIP FUOGASIP * FULPGYLD                                             / Original LPG In-Place
+   UNITS  FUOLPGIP 'BBL'                                                           /
    DEFINE FU_SGPT  (FU_NGPT - FGIT) * FUFLAGGS                                     / Gas Sales Produced Total
    UNITS  FU_SGPT  'MSCF'                                                          /
    DEFINE FU_GASRF (1.0 - (FGIPG / FUOGASIP)) * 100.0                              / Gas Recovery Factor
@@ -193,6 +196,10 @@ UDQ
    UNITS  FU_WGRF  '%'                                                             /
    DEFINE FU_SGRF  (FU_SGPT / (FUOGASIP * (1.0 - FUTOTSHK))) * 100.0               / Sales Gas Recovery Factor
    UNITS  FU_SGRF  '%'                                                             /
+   DEFINE FU_NGLRF (FU_NGLT / FUONGLIP) * 100.0                                    / Condensate Recovery Factor
+   UNITS  FU_NGLRF '%'                                                             /
+   DEFINE FU_LPGRF (FU_LPGT / FUOLPGIP) * 100.0                                    / LPG Recovery Factor
+   UNITS  FU_LPGRF '%'                                                         /
 / End of UDQ Keyword
 --
 -- ------------------------- DEFINE GLOBAL CUSTOM ACTIONS -------------------------
@@ -219,7 +226,19 @@ ACTIONX
                   FPR  <= FUDEWPRS     /
 /
 UDQ
-   ASSIGN FUFLAGDP 1.0                                                             / Logical flag for below dew point
+   DEFINE FUFLAGDP 1.0                                                             / Logical flag for below dew point
+/ End of UDQ Keyword
+ENDACTIO
+--
+-- Turn off updates to original gas in place UDQ.
+ACTIONX
+   LOCKOGIP        1                   /
+                 FGPT   > 0.0          /
+/
+UDQ
+   UPDATE FUOGASIP OFF                                                             /
+   UPDATE FUONGLIP OFF                                                             /
+   UPDATE FUOLPGIP OFF                                                             /
 / End of UDQ Keyword
 ENDACTIO
 ```
