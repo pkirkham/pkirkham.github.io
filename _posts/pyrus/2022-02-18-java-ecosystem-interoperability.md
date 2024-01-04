@@ -3,7 +3,7 @@ layout: article
 title: Getting the Java Ecosystem to Play Nicely Together
 modified:
 categories: pyrus
-excerpt: As the Java ecosystem continues to evolve the its the little bits under the hood that need looking after.
+excerpt: As the Java ecosystem continues to evolve its the little bits under the hood that need looking after.
 tags: [pyrus_suite, java, netbeans, java_fx, adoptium, jdk, jogamp, jogl]
 image:
   feature: 

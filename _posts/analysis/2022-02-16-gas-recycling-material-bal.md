@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Gas-Recycling Simulation with OPM Flow
-modified: 20 November 2023
+modified: 20 December 2023
 categories: analysis
 excerpt: Using OPM Flow modified black oil model to simulate a gas-condensate recycling scheme without tracers.
 tags: [dynamic_modelling, simulation, OPM_Flow, black_oil, gas_recycling]
@@ -66,7 +66,7 @@ Let's first consider the material balance for the known and unknown quantities o
 | FU_DGPT | **Field dry gas produced total**. Once lean gas breakthrough occurs, part of the reinjected dry gas will be produced. |
 | FU_DGIP | **Field dry gas-in-place**. The balance of the reinjected dry gas that has not been produced back is, by definition, in-place within the reservoir. Thus FU_DGIP = FGIT - FU_DGPT. |
 | FGIPG | **Field gas-in-place for gas component**. This is the total gas-in-place for the reservoir including both wet and dry gas. Note that it would technically be more correct to use FGIP which includes both the gas and oil components in the modified black oil model e.g. free gas and solution gas. Testing with OPM Flow led to errors using the FGIP variable, so as a compromise the FGIPG variable which is the free gas-in-place only was used. |
-| FGPT | **Field gas produced total**. Includes both wet and dry gas. This is the total amount of gas component that is produced, irrespective of whether the gas is associated with wet gas (R<sub>v</sub> &gt; 0.0) or dry gas (R<sub>v</sub> = 0.0). |
+| FU_IPGPT | **Field in-place gas produced total**. Includes both wet and dry gas. This is the total amount of gas component that is produced, irrespective of whether the gas is associated with wet gas (R<sub>v</sub> &gt; 0.0) or dry gas (R<sub>v</sub> = 0.0). Note that the calculation based on the addition of wet and dry gas produced totals is more accurate than the summary variable FGPT "Field gas produced total" . |
 
 The volumetric relationships between these quantities is shown in Figure 2. The figure illustrates the relative volume for a given category of gas on a horizontal scale. The breakdown of a particular component into sub-components is shown using the same horizontal scale. Note that these volumes are for the gas component at standard conditions. Colour coding for the components is the same as used in the line plots for Figure 1 in order to aid comparison between the two figures.
 
@@ -94,7 +94,9 @@ Since only dry gas is injected, the R<sub>v</sub> for wet gas in the reservoir m
 
 Re-arranging gives: FU_WGIP = FOIPG / FU_RVPVT. FOIPG can be obtained from the simulator and FU_RVPVT is the known R<sub>v</sub> for the gas at a specific reservoir pressure. This means that it is possible to determine the wet gas-in-place precisely and from this all other wet and dry gas volumes are derived.
 
-<div class="notice-info">Since this post was originally written, it has been discovered that the approach described does not work as expected. In particular the wet gas in place determined by this method appears to be lower than the actual wet gas in place, leading to a decrease in dry gas in place that does not match the dry gas produced. Therefore a slightly different approach has been implemented based on the wet gas produced rate FU_WGPR = FOPRS / FU_RVPVT. Combination of the rate and the TIMESTEP allows the cumulative wet gas produced total (FU_WGPT) to be tracked, and from this all other parameters can be determined.</div>
+<div class="notice-info">Since this post was originally written, it has been discovered that the approach described does not work as expected. In particular the wet gas-in-place determined by this method appears to be lower than the actual wet gas-in-place, leading to a decrease in dry gas-in-place that does not match the dry gas produced. Therefore a slightly different approach has been implemented based on the wet gas produced rate FU_WGPR = FOPRS / FU_RVPVT which appears to be more accurate than reliance on the totals. Combination of the rate and the TIMESTEP allows the cumulative wet gas produced total (FU_WGPT) to be tracked, and from this all other parameters can be determined.<br>
+<br>
+Furthermore, the field gas produced total (FGPT) is appears higher than the real volume of gas produced. An additional variable for the in-place gas produced total, FU_IPGPT = FU_WGPT + FU_DGPT, was introduced to ensure all values reconcile. Note that FU_IPGPT != FGPT.</div>
 
 ### Correlating PVTG Below Dew Point
 
@@ -143,6 +145,12 @@ UDQ
    DEFINE FU_RVD   FU_RVA + FU_RVB - FU_RVC + 7.048255E-02                         / FU_RVPVT Polynomial Equation Part D
    DEFINE FU_RVPVT FU_RVD * FUFLAGDP + FURV * (1 - FUFLAGDP)                       / Actual Wet Gas Oil-Gas Ratio (stb per Mscf)
    UNITS  FU_RVPVT 'STB/MSCF'                                                      /
+   DEFINE FUOGASIP FGIPG + FGPT - FGIT                                             / Original Field Gas In-Place
+   UNITS  FUOGASIP 'MSCF'                                                          /
+   DEFINE FUONGLIP FUOGASIP * FUNGLYLD                                             / Original Condensate In-Place
+   UNITS  FUONGLIP 'STB'                                                           /
+   DEFINE FUOLPGIP FUOGASIP * FULPGYLD                                             / Original LPG In-Place
+   UNITS  FUOLPGIP 'BBL'                                                           /
    DEFINE FU_WGPR  FOPRS / FU_RVPVT                                                / Wet Gas Production Rate
    UNITS  FU_WGPR  'MSCF/DAY'                                                      /
    DEFINE FU_DGPR  FGPR - FU_WGPR                                                  / Dry Gas Production Rate
@@ -152,12 +160,14 @@ UDQ
    ASSIGN FU_DGPT  0.0                                                             / Dry Gas Produced Total
    DEFINE FU_DGPT  FU_DGPT + FU_DGPTS                                              /
    UNITS  FU_DGPT  'MSCF'                                                          /
-   DEFINE FU_WGPT  FGPT - FU_DGPT                                                  / Wet Gas Produced Total
-   UNITS  FU_WGPT  'MSCF'                                                          /
    DEFINE FU_DGIP  FGIT - FU_DGPT                                                  / Field Dry Gas In-Place
    UNITS  FU_DGIP  'MSCF'                                                          /
    DEFINE FU_WGIP  FGIPG - FU_DGIP                                                 / Field Wet Gas In-Place
    UNITS  FU_WGIP  'MSCF'                                                          /
+   DEFINE FU_WGPT  FUOGASIP - FU_WGIP                                              / Wet Gas Produced Total
+   UNITS  FU_WGPT  'MSCF'                                                          /
+   DEFINE FU_IPGPT FU_WGPT + FU_DGPT                                               / In-Place Gas Produced Total
+   UNITS  FU_IPGPT 'MSCF'                                                          /
    DEFINE FU_OGR   1.0 / FGOR                                                      / Current Producing Oil-Gas Ratio
    UNITS  FU_OGR   'STB/MSCF'                                                      /
    DEFINE FU_NGLR  FOPR * (FUNGLYLD / FURV)                                        / Condensate Production Rate
@@ -180,14 +190,8 @@ UDQ
    UNITS  FU_SGPR  'MSCF/DAY'                                                      /
    DEFINE FU_GIR   FU_NGPR * (1 - FUFLAGGS)                                        / Gas Re-Injection Rate
    UNITS  FU_GIR   'MSCF/DAY'                                                      /
-   DEFINE FU_NGPT  FGPT - (FU_WGPT * FUTOTSHK)                                     / Post-Processing Net Gas Produced Total
+   DEFINE FU_NGPT  FU_IPGPT - (FU_WGPT * FUTOTSHK)                                 / Post-Processing Net Gas Produced Total
    UNITS  FU_NGPT  'MSCF'                                                          /
-   DEFINE FUOGASIP FGIPG + FGPT - FGIT                                             / Original Field Gas In-Place
-   UNITS  FUOGASIP 'MSCF'                                                          /
-   DEFINE FUONGLIP FUOGASIP * FUNGLYLD                                             / Original Condensate In-Place
-   UNITS  FUONGLIP 'STB'                                                           /
-   DEFINE FUOLPGIP FUOGASIP * FULPGYLD                                             / Original LPG In-Place
-   UNITS  FUOLPGIP 'BBL'                                                           /
    DEFINE FU_SGPT  (FU_NGPT - FGIT) * FUFLAGGS                                     / Gas Sales Produced Total
    UNITS  FU_SGPT  'MSCF'                                                          /
    DEFINE FU_GASRF (1.0 - (FGIPG / FUOGASIP)) * 100.0                              / Gas Recovery Factor
@@ -199,7 +203,7 @@ UDQ
    DEFINE FU_NGLRF (FU_NGLT / FUONGLIP) * 100.0                                    / Condensate Recovery Factor
    UNITS  FU_NGLRF '%'                                                             /
    DEFINE FU_LPGRF (FU_LPGT / FUOLPGIP) * 100.0                                    / LPG Recovery Factor
-   UNITS  FU_LPGRF '%'                                                         /
+   UNITS  FU_LPGRF '%'                                                             /
 / End of UDQ Keyword
 --
 -- ------------------------- DEFINE GLOBAL CUSTOM ACTIONS -------------------------
