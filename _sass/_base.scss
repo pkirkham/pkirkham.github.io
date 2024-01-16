@@ -104,9 +104,55 @@ blockquote {
 }
 
 // Code
-tt, code, kbd, samp, pre {
+tt, code, samp, pre {
 	font-family: $code-font;
 }
+
+// Keyboard keys based on https://dylanatsmith.com/wrote/styling-the-kbd-element
+kbd {
+  background-color: $kbd-background-color;
+  color: $kbd-text-color;
+
+  // Round off the corners like physical keys have
+  border-radius: 0.25rem;
+
+  // Add a simple border
+  border: 1px solid $kbd-border-color;
+
+  // A sharp shadow (with no blur) really gives the old school keyboard look
+  box-shadow: 0 2px 0 1px $kbd-border-color;
+
+  // Remove the text cursor — totally optional but looks good with hover effect
+  cursor: default;
+
+  // By default, browsers style <kbd> with a monospace typeface
+  font-family: $code-font;
+
+  // If we do all this with the default font size it’ll look massive
+  font-size: 0.75em;
+
+  // Remove any extra space so I can accurately tweak the padding
+  line-height: 1;
+
+  // Make narrow numbers and letters look less odd
+  min-width: 0.75rem;
+  // Keep the characters centred when narrower than the `max-width`
+  text-align: center;
+
+  // Seemed to look more key-like with more horizontal padding
+  padding: 2px 5px;
+
+  // These two lines pull the whole element up now that they’re bottom-heavy due to the `box-shadow`. This looks better against the cap height of regular paragraph text.
+  position: relative;
+  top: -1px;
+
+  // This is my favourite part of the whole thing. The key gets “pushed” down and the shadow gets reduced so it looks like it might when typing on a physical keyboard.
+  &:hover {
+    box-shadow: 0 1px 0 0.5px $kbd-border-color;
+    top: 1px;
+  }
+}
+
 pre {
 	overflow-x: auto; // add scrollbars to wide code blocks
 	-webkit-tab-size: 4;

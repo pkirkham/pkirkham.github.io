@@ -48,6 +48,7 @@ Tokens recognised by the lexer are automatically coloured according to their typ
 
 | Token Type | Colour |
 |---|---|
+| Section Keyword | Bold Magenta |
 | Keyword | Red |
 | Mathematical Operation Keyword | Bronze |
 | User Defined Quantity Keyword | Cyan |
