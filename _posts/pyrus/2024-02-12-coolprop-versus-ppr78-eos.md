@@ -12,13 +12,30 @@ image:
 comments: true
 ---
 
-In the Pyrus Suite I have included equations of state from both the [open-source CoolProp library](http://www.coolprop.org/) and my own implementation for a cubic equation of state (EOS) that can be adjusted to use many different varieties, including the [Enhanced Predictive Peng-Robinson EPPR78 EOS](https://doi.org/10.1016/j.fluid.2022.113456). The main driver for including the CoolProp library has been to get an accurate equation of state for pure carbon dioxide that can then be applied to carbon dioxide capture and sequestration simulation studies. Once incorporated into Pyrus, this presents an opportunity to compare the results from my own implementation of the EPPR78 equation of state (and other cubics) against the [Helmholtz excess energy approach for mixtures](http://www.coolprop.org/fluid_properties/Mixtures.html#mixtures), [and the traditional cubic Soave-Redlich-Kwong and Peng-Robinson](http://www.coolprop.org/coolprop/Cubics.html) equations of state, all of which are included with CoolProp.
+In the Pyrus Suite I have included equations of state from both the [open-source CoolProp library](http://www.coolprop.org/) and my own implementation for a cubic equation of state (EOS) that can be adjusted to use many different varieties, including the [Enhanced Predictive Peng-Robinson EPPR78 EOS](https://doi.org/10.1016/j.fluid.2022.113456). [A paper covering CoolProp has been published in the Journal Industrial & Engineering Chemistry Research](https://doi.org/10.1021/ie4033999) with an OpenAccess license.The main driver for including the CoolProp library has been to get an accurate equation of state for pure carbon dioxide that can then be applied to carbon dioxide capture and sequestration simulation studies. Once incorporated into Pyrus, this presents an opportunity to compare the results from my own implementation of the EPPR78 equation of state (and other cubics) against the [Helmholtz excess energy approach for mixtures](http://www.coolprop.org/fluid_properties/Mixtures.html#mixtures), [and the traditional cubic Soave-Redlich-Kwong and Peng-Robinson](http://www.coolprop.org/coolprop/Cubics.html) equations of state, all of which are included with CoolProp.
 
 CoolProp is an interesting piece of software. Written in C/C++, in itself it is a library rather than a complete front end graphical user interface. The emphasis is on the accuracy and functionality of the calculations performed rather than presenting a fancy front end. It has a large number of wrappers for other languages which means the library can be incorporated into a wide range of other software. With the Excel add-in and Python wrapper, it allows easy and rapid prototyping to help understand the behaviour of different fluids. Despite the excellent documentation, there were still a few snags along the way that I encountered in getting CoolProp to work within a NetBeans rich client platform application. Some pointers to help others trying to install in this environment are given here.
 
 ## CoolProp HEOS Versus Pyrus Implementation of PPR78 Equation of State
 
-Let's jump to the end leaving the technical details for later.
+Let's jump to the end leaving the technical details for later. How does CoolProp compare to the cubic equation of state tools that I've been writing for Pyrus? The quick answer is that they are complementary and have different strengths. CoolProp is particularly good for single pure or pseudo-pure fluids. The EOS in Pyrus had not been written to cope with single component mixtures, so being able to leverage CoolProp in the event that a pure fluid is needed (such as pure methane or carbon dioxide) is very useful. On the other hand, mixtures are openly recognised by the CoolProp lead developer and creator as a weak point of the library. In Pyrus, implementing the best possible solution for hydrocarbon mixtures is the primary objective.
+
+The definition of 'best' is somewhat subjective, but generally improvements to the three axes of accuracy, robustness and speed represent positive outcomes. Accuracy is measured against how well the EOS is able to replicate laboratory measured results for known mixtures. Robustness measures how well the EOS is able to cope with a wide range of different mixture compositions across a range of temperatures, pressures and different fluid property predictions. Finally speed is simply how quickly the EOS is capable of delivering a result. In some ways this is another trilemma -- we want all three, but you get to pick two. There are trade-offs to consider. If the algorithm is fast and accurate, then it is probably quite specialised and narrow in application and won't be able to cope with generalised situations. On the other hand, if it is fast and can cope with a wide range of different compositions and conditions, then it is likely to sacrifice some accuracy. Finally, if you want it both accurate and robust, then it is probably going to be slow as the algorithm is going to be complex in order to deliver on both those axes.
+
+To compare CoolProp against Pyrus, I've picked two mixtures with published compositions that can be used to crudely compare the results. These mixtures are both taken from [Generalized Phase Boundary Determination Algorithm for Multicomponent Mixtures](https://doi.org/10.1021/ie901830c) (Ortiz-Vega, Cristancho and Hall, 2011). They consist of a hydrocarbon-only mixture and a hydrocarbon mixture plus nitrogen and carbon dioxide inerts. The mixtures comprise pure components only, and there is no pseudo-pure fluid for a C7+ fraction or similar.
+
+<figure>
+	<a href="{{ site.url }}/images/Pyrus/coolprop-vs-ppr78_4.png" data-lightbox="image-1" data-title="Comparison of published, CoolProp and Pyrus phase envelope / flash calculation heatmaps.">
+		<img src="{{ site.url }}/images/Pyrus/coolprop-vs-ppr78_4.png" alt="Comparison of published, CoolProp and Pyrus phase envelope / flash calculation heatmaps."/>
+	</a>
+	<figcaption><strong>Figure 1: Comparison of published, CoolProp and Pyrus phase envelope / flash calculation heatmaps.</strong></figcaption>
+</figure>
+
+The figures above take the phase envelopes and experimental points from the paper and show a heatmap of the vapour fraction calculated using CoolProp's HEOS method and Pyrus' tc-EPPR78 implementation. The heatmap calculates the flash vapour fraction across a grid of points within the boundaries of the scales shown (which are the same as those in the published charts). Red indicates vapour = 100% and green is 0%. A white, or no colour, indicates that the flash calculation did not return a value e.g., an exception occurred or in the case of CoolProp, the answer lies outside the two-phase region. For the Pyrus results a phase envelope has been crudely drawn superimposed on top of the values to aid with visualisation of the boundary. The experimental results from the published paper are also superimposed on the CoolProp and Pyrus results.
+
+It is observed that the published, HEOS and tc-EPPR78 methods all produce similar envelope boundaries, none of which are are expansive as the experimental results obtained. The tc-EPPR78 implementation appears to be both faster (by two orders of magnitude) and more robust in comparison to the CoolProp HEOS method. However, the HEOS method appears to give more accurate results close to the bubble point line in the vicinity of the critical point. Thus the theoretical trilemma discussed above appear to have some validity.
+
+As implemented, CoolProp is used in the Pyrus suite to provide results for single component mixtures e.g., pure or pseudo-pure fluids, and the cubic EoS is used to provide results for multi-component mixtures.
 
 ## Getting CoolProp to Work Within a NetBeans Platform RCP Application
 
@@ -37,6 +54,8 @@ Before we can get CoolProp integrated with NetBeans as a module, we need to get 
 	 * **[C++ compiler](https://isocpp.org/get-started)**: Compiles the source code into a native binary library whose methods can then be accessed by the Java Native Iterface.
 	 * **[SWIG](https://swig.org)**: This isn't mentioned as a pre-requisite on the CoolProp website, but it is needed to generate the wrappers.
 
+    Note that these instructions presume that a Java Development Kit is already installed on the system being used to build CoolProp; logically why would you be compiling the Java wrappers for CoolProp if you weren't already developing for Java? That said, when I was compiling these native libraries I had to ask a colleague to use his Macbook Air to compile the MacOS native library for me. This meant I had to get the JDK installed on his system. At the time of writing, the simplest way I've found to achieve this is to use the [Azul Zulu builds of OpenJDK](https://www.azul.com/downloads/) which conveniently provide installers for a range of operating systems and architectures in one place. You should be able to confirm that Java is installed by running `java --version` from the command line.
+
 	<u>Windows</u><br>
     The CoolProp website explains the [prerequisites that must be installed for Windows](http://www.coolprop.org/coolprop/wrappers/index.html#windows). Installing [CMake](https://cmake.org/download/), [Git](https://gitforwindows.org/) and [7-Zip](https://7-zip.org/) are straightforward as there are installers available which simplify the process. From a Command Prompt or PowerShell terminal, the installation can be checked using `cmake --version`, `git --version` and `7z`.
 
@@ -50,7 +69,7 @@ Before we can get CoolProp integrated with NetBeans as a module, we need to get 
     The CoolProp website explains the [prerequisites that must be installed for Linux](http://www.coolprop.org/coolprop/wrappers/index.html#linux). A single command should suffice: `sudo apt-get install cmake git p7zip g++ python3 swig`. It may be necessary to additionally run `pip install six` to install the `six` package for Python. The installations can be checked using `cmake --version`, `git --version`, `7z`, `g++ --version`,  `python3 --version` and `swig -version`.
 
 	<u>MacOS</u><br>
-    The CoolProp website explains the [prerequisites that must be installed for MacOS](http://www.coolprop.org/coolprop/wrappers/index.html#osx). Installation of Git, CMake, 7-Zip and SWIG is recommended [via Homebrew](https://brew.sh/). Once Homebrew is installed the command `brew install cmake git p7zip swig` should install CMake, Git, 7-Zip and SWIG. A C++ compiler `clang` should already be built into MacOS. From a Command Prompt or PowerShell terminal, these installations can be checked using `cmake --version`, `git --version`,  `7z`, `swig -version`, and `clang --version`.
+    The CoolProp website explains the [prerequisites that must be installed for MacOS](http://www.coolprop.org/coolprop/wrappers/index.html#osx). Installation of Git, CMake, 7-Zip and SWIG is recommended [via Homebrew](https://brew.sh/). This requires the presence of the bourne again shell (bash) on the system, and if bash is available, then Homebrew can be installed with the one line command `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`. Once Homebrew is installed the command `brew install cmake git p7zip swig` should install CMake, Git, 7-Zip and SWIG. A C++ compiler `clang` should already be built into MacOS. From a Command Prompt or PowerShell terminal, these installations can be checked using `cmake --version`, `git --version`,  `7z`, `swig -version`, and `clang --version`.
 
 	That leaves Python. Python can be installed using a [Miniconda installer](https://docs.conda.io/projects/miniconda/en/latest/index.html) for MacOS. Just pick the correct architecture (Intel x86 or Apple M1). It will be necessary to install the `six` package for Python using `pip install six`. The list of installed packages can then be checked using `conda list` and the installed version can be checked with `conda --version`.
  
@@ -62,7 +81,7 @@ Before we can get CoolProp integrated with NetBeans as a module, we need to get 
 
     This should make a new folder 'CoolProp' in the directory from which the command was run.
  
- 3. Make a build subfolder in the 'CoolProp' directory using your file explorer of choice. I've managed to build from the same files on Windows and Linux using Windows Subsystem for Linux, so I made two folders: 'build-win' and 'build-linux'. Alternatively you can do this from the command line.
+ 3. Make a build subfolder in the 'CoolProp' directory using your file explorer of choice. I've managed to build from the same files on Windows and Linux using Windows Subsystem for Linux, so I made two folders: 'build-win' and 'build-linux'. For MacOS you could make a directory 'build-macos' instead. Alternatively you can do this from the command line.
 
 	<pre>
 	cd CoolProp
@@ -71,10 +90,10 @@ Before we can get CoolProp integrated with NetBeans as a module, we need to get 
 	</pre>
  
 	<figure>
-		<a href="{{ site.url }}/images/Pyrus/coolprop-vs-ppr78_1.png" data-lightbox="image-1" data-title="Folder structure after cloning respository from GitHub and creating two build directories for Windows and Linux.">
+		<a href="{{ site.url }}/images/Pyrus/coolprop-vs-ppr78_1.png" data-lightbox="image-2" data-title="Folder structure after cloning respository from GitHub and creating two build directories for Windows and Linux.">
 			<img src="{{ site.url }}/images/Pyrus/coolprop-vs-ppr78_1.png" alt="Folder structure after cloning respository from GitHub and creating two build directories for Windows and Linux."/>
 		</a>
-		<figcaption><strong>Figure 1: Folder structure after cloning respository from GitHub and creating two build directories for Windows and Linux.</strong></figcaption>
+		<figcaption><strong>Figure 2: Folder structure after cloning respository from GitHub and creating two build directories for Windows and Linux.</strong></figcaption>
 	</figure>
 
  4. Build the source code to generate native libraries and Java source files that wrap the native libraries. These files can then be incorporated into a java application. 
@@ -95,7 +114,7 @@ Before we can get CoolProp integrated with NetBeans as a module, we need to get 
 	 * The platform-independent Java wrappers using Java Native Interface are located in the 'platform-independent.7z' folder in the ''./build-win' folder.
 
     <u>Linux and MacOS</u><br>
-	Open a Terminal. Change to the '/CoolProp/build-linux' or '/CoolProp/build-macos' directory and run the following two commands.
+	Open a Terminal. Change to the appropriate '/CoolProp/build-linux' or '/CoolProp/build-macos' directory and run the following two commands.
 
 	<pre>
 	cmake .. -DCOOLPROP_JAVA_MODULE=ON -DBUILD_TESTING=ON -DCOOLPROP_SWIG_OPTIONS="-package org.coolprop"
@@ -104,24 +123,26 @@ Before we can get CoolProp integrated with NetBeans as a module, we need to get 
 
 	Under WSL2 (Linux subsystem for Windows) this seems to take a long longer to compile using the GNU C compilers in comparison to the Microsoft Visual Studio C compilers on Windows. It gets there eventually. The generated files are slightly different:
 
-	 * The native libraries is located in the 'build-linux' directory as 'libCoolProp.so' or the 'build-macos' directory as 'libCoolProp.dylib'.
+	 * The native libraries is located in the 'build-linux' directory as 'libCoolProp.so' or the 'build-macos' directory as 'libCoolProp.jnilib'.
 	 * The platform-independent Java wrappers using Java Native Interface are located in the 'platform-independent.7z' folder in the './build-linux' or './build-macos' folder.
+
+    <div class="notice-info">During the initial attempted builds for MacOS, an error was encountered: `jni.h:45:10: fatal error: 'jni_md.h' file not found`. This arises from the inability of the build script to find the machine-dependent java native interface libraries. The solution was to add the location of these libraries into the CoolProp build script; they were present for Windows and Linux but MacOS was missing. [A pull request was submitted to the CoolProp project to fix the issue](https://github.com/CoolProp/CoolProp/pull/2347) and has been incorporated into the master codebase, so this should not happen in the future.</div>
 
 ### Wrapping CoolProp into a NetBeans Module
 
 Having compiled all the source code, it's not a simple case of just adding a <code>\*.jar</code> library to your NetBeans project in order to gain access to the CoolProp functions. There are a few steps that need to be taken to include the CoolProp library in its own NetBeans module. Alternatively, the final module is also available for download if you don't want to go through the steps yourself.
 
-Module must be given the name CoolProp and the package base org.coolprop. This is because the native libraries and wrappers are compiled with the expectation that the package is org.coolprop. The native libraries also use the name 'CoolProp' in their filenames, so it makes sense to use this for the module. We give the module a specification version that matches the version number of the CoolProp source that we compiled, which in the case of this example is 6.6.1. We must also ensure that the module exposes the org.coolprop package as a public package.
+Module must be given the name CoolProp and the package base org.coolprop. This is because the native libraries and wrappers are compiled with the expectation that the package is org.coolprop. This is one reason why we had to compile our own collection of binaries for the module, because otherwise they are compiled with the default package and this will not work as a NetBeans module. The native libraries also use the name 'CoolProp' in their filenames, so it makes sense to use this for the module. We give the module a specification version that matches the version number of the CoolProp source that we compiled, which in the case of this example is 6.6.1. We must also ensure that the module exposes the org.coolprop package as a public package.
 
 The native libraries should be placed in the module's './release/modules/lib/' folder and all the Java files from the 'platform-independent.7z' file are unpacked into an 'org.coolprop' package folder within the source folders.
 
 The location of the generated Java wrapper files and the native libraries is shown in Figure 2 below.
 
 <figure>
-	<a href="{{ site.url }}/images/Pyrus/coolprop-vs-ppr78_2.png" data-lightbox="image-2" data-title="Setup of NetBeans module for CoolProp library.">
+	<a href="{{ site.url }}/images/Pyrus/coolprop-vs-ppr78_2.png" data-lightbox="image-3" data-title="Setup of NetBeans module for CoolProp library.">
 		<img src="{{ site.url }}/images/Pyrus/coolprop-vs-ppr78_2.png" alt="Setup of NetBeans module for CoolProp library."/>
 	</a>
-	<figcaption><strong>Figure 2: Setup of NetBeans module for CoolProp library.</strong></figcaption>
+	<figcaption><strong>Figure 3: Setup of NetBeans module for CoolProp library.</strong></figcaption>
 </figure>
 
 It is necessary to load the native libraries when the NetBeans RCP starts. This can be achieved by subclassing ModuleInstall and overriding the `restored()` method which is executed when the module is loaded. Unfortunately the code is a little more complex than just calling `System.loadLibrary("CoolProp");` which we might get away with for a smaller Java program. This works fine for the deployed version of the module, but what if we are testing code using the CoolProp library. We would also like to be able to write unit tests and run small snippets of code that also use the CoolProp library. In this scenario the `System::loadLibrary` call will fail. What we must do instead is use `System::load` and pass an absolute path to the library location which is somewhat convoluted as it requires us to know the location of the module when it is being run (which will vary from installation to installation), and also to be aware of the operating system so that the correct native file is requested. This leads to the rather imposing looking code below that first attempts to divine the location of the class, gets the filepath from this and appends the 'lib' location, and finally then appends the appropriate native library name. If this approach fails, then it is because the application has been deployed and we can instead use `System::loadLibrary` as per usual.
@@ -278,10 +299,10 @@ Once the module is created we can test that the native libraries are correctly l
 If everthing is working, you should get the following:
 
 <figure>
-	<a href="{{ site.url }}/images/Pyrus/coolprop-vs-ppr78_3.png" data-lightbox="image-2" data-title="Successful test of CoolProp library running in a NetBeans module.">
+	<a href="{{ site.url }}/images/Pyrus/coolprop-vs-ppr78_3.png" data-lightbox="image-4" data-title="Successful test of CoolProp library running in a NetBeans module.">
 		<img src="{{ site.url }}/images/Pyrus/coolprop-vs-ppr78_3.png" alt="Successful test of CoolProp library running in a NetBeans module."/>
 	</a>
-	<figcaption><strong>Figure 3: Successful test of CoolProp library running in a NetBeans module.</strong></figcaption>
+	<figcaption><strong>Figure 4: Successful test of CoolProp library running in a NetBeans module.</strong></figcaption>
 </figure>
 
 ### Fixing the Functionality of Mixtures

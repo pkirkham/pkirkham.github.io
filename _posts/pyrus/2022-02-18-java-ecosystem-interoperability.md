@@ -161,7 +161,7 @@ With JogAmp it was again [known that there are some issues with JOGL and newer J
 
 Interestingly the problems had been resolved on JDK 11 but had re-appeared on JDK 17. Rather than run on an older JDK it was a better approach to see if the JVM runtime parameters could be used to solve the problems with JDK 17.
 
-To add the JVM parameters, it should be possible to [add these to a module manifest](https://stackoverflow.com/questions/69841785/how-to-specify-java-manifest-add-exports-for-named-modules) via the line <code>Add-Exports: java.base/java.lang java.desktop/sun.awt java.desktop/sun.java2d</code>. However it doesn't work. What is needed is to pass the JVM options at application launch. How to achieve this using NetBeans RCP?
+To add the JVM parameters, it should be possible to [add these to a module manifest](https://stackoverflow.com/questions/69841785/how-to-specify-java-manifest-add-exports-for-named-modules) via the line `Add-Exports: java.base/java.lang java.desktop/sun.awt java.desktop/sun.java2d`. However it doesn't work. What is needed is to pass the JVM options at application launch. How to achieve this using NetBeans RCP?
 
 The answer lies with the "platform.properties" file of the main application. Add the option <code>run.args.extra</code> to pass JVM options:
 
@@ -172,7 +172,7 @@ run.args.extra=\
     -J--add-exports=java.desktop/sun.java2d=ALL-UNNAMED
 ```
 
-Note that line continuation is indicated by the <code>\<\code> character in the "platform.properties" file and that JVM options must be preceded with '-J'. Adding these parameters to the JVM runtime eliminates the errors that were encountered with JogAmp 2.3.2.
+Note that line continuation is indicated by the `\` character in the "platform.properties" file and that JVM options must be preceded with '-J'. Adding these parameters to the JVM runtime eliminates the errors that were encountered with JogAmp 2.3.2.
 
 ### Nearly There... Felix? What is Going On?
 
