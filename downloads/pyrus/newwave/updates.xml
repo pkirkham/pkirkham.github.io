@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE module_updates PUBLIC "-//NetBeans//DTD Autoupdate Catalog 2.8//EN" "https://netbeans.apache.org/dtds/autoupdate-catalog-2_8.dtd">
+<module_updates timestamp="52/24/03/28/02/2024">
+
+
+
+<module_group name="Geophysics">
+
+<module codenamebase="au.com.newwavegeo.resurrect" distribution="au-com-newwavegeo-resurrect.nbm" downloadsize="1182551" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2024/02/28">
+        
+    <manifest AutoUpdate-Show-In-Client="true" OpenIDE-Module="au.com.newwavegeo.resurrect" OpenIDE-Module-Display-Category="Geophysics" OpenIDE-Module-Implementation-Version="240228" OpenIDE-Module-Java-Dependencies="Java &gt; 21" OpenIDE-Module-Long-Description="Conversion of image data into digital data. Current implementation includes support for conversion of scanned black and white seismic sections (variable area or variable area plus wiggle) into SEG-Y format. Conversion is able to handle traces displayed with and without troughs provided peaks are displayed. Tools to convert high resolution colour photos into a suitable black and white format that can then be used for the conversion process are also included.&#10;&lt;p&gt;&#10;&lt;font color='#ff0000'&gt;&lt;b&gt;REQUIRES A LICENSE TO RUN&lt;/b&gt;&lt;/font&gt;" OpenIDE-Module-Module-Dependencies="au.com.newwavegeo.graphics &gt; 1.0.9, au.com.newwavegeo.imageviewer &gt; 1.0, au.com.newwavegeo.jai &gt; 1.1.3.3, au.com.newwavegeo.mathlib &gt; 1.0.6, au.com.newwavegeo.peteng &gt; 1.0.1, au.com.newwavegeo.pyruscore &gt; 1.0.15, au.com.newwavegeo.sectionviewer &gt; 1.0.8, au.com.newwavegeo.sj &gt; 1.0.3, com.formdev &gt; 3.2.5, com.google.common &gt; 1.0.0, com.google.protobuf &gt; 2.5.0, com.jhlabs.image &gt; 1.0, com.sun.media.imageioimpl.common &gt; 1.1.3, javax.help &gt; 2.0.5, javax.measure &gt; 0.9.4, javolution &gt; 5.4.3, net.java.dev.truelicense &gt; 1.29, org.apache.commons &gt; 1.1.4, org.jdesktop &gt; 1.0, org.jscience &gt; 4.3.1, org.netbeans.api.progress/1 &gt; 1.16.1.1, org.netbeans.api.progress.compat8 &gt; 1.52, org.netbeans.api.progress.nb &gt; 1.46.1, org.netbeans.api.templates &gt; 1.13, org.netbeans.modules.autoupdate.services &gt; 1.16.1, org.netbeans.modules.javahelp/1 &gt; 2.15.1, org.netbeans.modules.projectapi/1 &gt; 1.28.1, org.netbeans.modules.projectuiapi/1 &gt; 1.40.1.6, org.netbeans.modules.projectuiapi.base/1 &gt; 1.90.0.9, org.netbeans.modules.settings/1 &gt; 1.22.1.1, org.openide.actions &gt; 6.12.1.1, org.openide.awt &gt; 7.19.1.1, org.openide.dialogs &gt; 7.13.1, org.openide.filesystems &gt; 7.32.1.1.1, org.openide.filesystems.compat8 &gt; 9.14, org.openide.filesystems.nb &gt; 9.7.1, org.openide.loaders &gt; 7.10.1, org.openide.modules &gt; 7.13.1, org.openide.nodes &gt; 7.12.1.1, org.openide.text &gt; 6.27.1, org.openide.util &gt; 7.31.1.1, org.openide.util.lookup &gt; 8.3.1, org.openide.util.ui &gt; 9.4.1, org.openide.windows &gt; 6.30.1" OpenIDE-Module-Name="Resurrect" OpenIDE-Module-Requires="org.netbeans.api.javahelp.Help, org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="Seismic scanning capabilities" OpenIDE-Module-Specification-Version="1.0.17"/>
+        
+
+    <message_digest algorithm="SHA-512" value="876f09f6bf356d2261e6dee337844d98d15dfb96a0a3a8f6a0394bbba5424d409584597fe5a1378ee899393d2c754a3d659e654299d749c3449051d3bb36f176"/>
+</module>
+
+</module_group>
+
+<module_group name="Pyrus Base">
+
+<module codenamebase="au.com.newwavegeo.newwavecore" distribution="au-com-newwavegeo-newwavecore.nbm" downloadsize="4012" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2024/02/28">
+        
+    <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="au.com.newwavegeo.newwavecore" OpenIDE-Module-Display-Category="Pyrus Base" OpenIDE-Module-Implementation-Version="240228" OpenIDE-Module-Java-Dependencies="Java &gt; 1.8" OpenIDE-Module-Long-Description="Core functionality to support New Wave extension modules for the Pyrus Suite." OpenIDE-Module-Name="New Wave Core" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="New Wave Core Extensions" OpenIDE-Module-Specification-Version="1.0.0"/>
+        
+
+    <message_digest algorithm="SHA-512" value="ff96e897e9d2acc4d184fb77b3eeb0fde43be8f389e0c8a65217a4df8b07f61d8dfe449fa8e2a8445ea8268b8d56c1288156a08e70c691f8c22140a1d473322d"/>
+</module>
+
+</module_group>
+
+<license name="AD9FBBC9" url="licenses/AD9FBBC9.license"/>
+</module_updates>
+
