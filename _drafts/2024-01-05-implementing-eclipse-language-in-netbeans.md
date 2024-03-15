@@ -28,7 +28,7 @@ So, given that I was going to be diving in at the deep end already, it was decid
 
 One downside of sticking with JavaCC is that there does not appear to be a plugin for NetBeans that will do syntax highlighting etc. for the .jj files. This is somewhat ironic as I'm writing the grammar to enable syntax highlighting and other features for another language, but the tools themselves don't benefit from those features. Whilst it's a little painful editing plain text files, the silver lining is that it only has to be done once.
 
-Before jumping into the how I have implemented the lexing and parsing for ECLIPSE language, there are a few good resources on JavaCC that really helped me which I should mention:
+Before jumping into how I have implemented the lexing and parsing for ECLIPSE language, there are a few good resources on JavaCC that really helped me which I should mention:
 
 * [**Official JavaCC Grammar Documentation:**](https://github.com/javacc/javacc/blob/master/docs/documentation/grammar.md)  The official documentation that explains how a .jj grammar file should be structured.
 * [**Getting Started with JavaCC:**](http://eriklievaart.com/web/javacc1.html) An excellent series of blog posts with practical examples on how to do most of the things that you could want to do when defining your grammar.
@@ -91,7 +91,7 @@ The problem is that there are many other character sequences that would fall und
 
 Comments should, in theory, be quite simple to define. A comment is all text up to the end of line after a "&minus;&minus;" sequence of characters. In addition all text after the last '/' character on a line is treated as a character. However, in the wild, what happens is that sometimes it is useful to use text containing a '/' character after the terminating slash on a line. This is illegal because it means that the terminating slash is no longer the last slash on a line, but is in fact the penultimate slash. 
 
-As an example, consider the line `ASSIGN FULPGYLD 0.065775 / LPG Sep Gas Yield (stb/Mscf)`. This assigns the value 0.065775 to the UDQ variable `FULPGYLD`, and the comment after the terminating slash simply notes that this is in units of stock tank barrels per thousand standard cubic feet. It looks innocent enough, except that the text "stb/Mscf" contains a slash character, so the actual terminating slash is not the actual terminating slash. One possible workaround would be to use a more sophisticated method of determining whether the slash should be a terminating slash or not based on the preceding tokens. However, the line does not execute in *OPM Flow* and causes an error. The accepted workaround (as per advice from David Baxendale and included in the manual) is to use a "&minus;&minus;" after the terminating slash, and thus the "stb/Mscf" will be part of a comment and the slash character in that block of text is ignored. In other words, to restate the line as `ASSIGN FULPGYLD 0.065775 / -- LPG Sep Gas Yield (stb/Mscf)`. This format is acceptable for *OPM Flow*.
+As an example, consider the line `ASSIGN FULPGYLD 0.065775 / LPG Sep Gas Yield (stb/Mscf)`. This assigns the value 0.065775 to the UDQ variable `FULPGYLD`, and the comment after the terminating slash simply notes that this is in units of stock tank barrels per thousand standard cubic feet. It looks innocent enough, except that the text "stb/Mscf" contains a slash character, so the actual terminating slash is not recognised as the terminating slash. One possible workaround would be to use a more sophisticated method of determining whether the slash should be a terminating slash or not based on the preceding tokens. However, the line does not execute in *OPM Flow* and causes an error. The accepted workaround (as per advice from David Baxendale and included in the manual) is to use a "&minus;&minus;" after the terminating slash, and thus the "stb/Mscf" will be part of a comment and the slash character in that block of text is ignored. In other words, to restate the line as `ASSIGN FULPGYLD 0.065775 / -- LPG Sep Gas Yield (stb/Mscf)`. This format is acceptable for *OPM Flow*.
 
 What that means is that this real world practice must be considered when defining the lexical rules for comments.
 
@@ -110,7 +110,7 @@ The `TERMINATING_SLASH` starts with the `SLASH` token (which is simply the '/' c
 
 For our lexer this means that there are precisely three, and only three, ways that a line can end. These are:
 
-  1. the `EOL` token.
+  1. the `EOL` token, which could be the end of a `KEYWORD`. OK, so that might be two ways, but I'm counting it as one.
   2. the `SINGLE_LINE_COMMENT` token, which includes an `EOL` token at its end.
   3. the `TERMINATING_SLASH` token, which includes either an `EOL` or a `SINGLE_LINE_COMMENT` at its end.
 
