@@ -8,15 +8,15 @@ Pyrus is the biological genus for the pear tree. So what? Well the initial incar
 
 ## Download
 
-The Pyrus software can simply be downloaded, unzipped to any destination and run from the appropriate executable in the `/bin` folder of the unzipped folder. Whilst this software is not open-source, it is made available free of charge as a courtesy to other engineers that may find it useful.
+The Pyrus software can simply be downloaded, unzipped to any destination and run from the appropriate executable in the `/bin` folder of the unzipped folder. For the Linux and MacOSX versions, it may be necessary to change the permissions on the shell file to be executable.  Whilst this software is not open-source, it is made available free of charge as a courtesy to other engineers that may find it useful.
 
-<a href="https://www.dropbox.com/t/aWCbIyPlfntctYwG" class="btn-inverse">Download `pyrus_suite-win_x64.zip` (15-Mar-2024 version for Windows x64 architecture)</a>
+<a href="https://www.dropbox.com/s/d5zipke5254lsq2/pyrus_suite-win_x64.zip?dl=1" class="btn-inverse">Download `pyrus_suite-win_x64.zip` (18-Mar-2024 version for Windows x64 architecture)</a>
 
-<a href="https://www.dropbox.com/t/D0Pi8oGFDFffinwm" class="btn-inverse">Download `pyrus_suite-linux_x64.zip` (15-Mar-2024 version for Linux x64 architecture)</a>
+<a href="https://www.dropbox.com/s/spqcf5qyqvix9wg/pyrus_suite-linux_x64.zip?dl=1" class="btn-inverse">Download `pyrus_suite-linux_x64.zip` (18-Mar-2024 version for Linux x64 architecture)</a>
 
-<a href="https://www.dropbox.com/t/HEAb7QJX1N5DCqyM" class="btn-inverse">Download `pyrus_suite-macosx_x64.zip` (15-Mar-2024 version for MacOS x64 architecture)</a>
+<a href="https://www.dropbox.com/s/o74pjvte51q9xty/pyrus_suite-macosx_x64.zip?dl=1" class="btn-inverse">Download `pyrus_suite-macosx_x64.zip` (18-Mar-2024 version for MacOSX x64 architecture)</a>
 
-<a href="https://www.dropbox.com/t/X6i1rQXM7K99h0n0" class="btn-inverse">Download `pyrus_suite-macosx_aarch64.zip` (15-Mar-2024 version for MacOS ARM architecture)</a>
+<a href="https://www.dropbox.com/s/iau0qt4dih0nom7/pyrus_suite-macosx_aarch64.zip?dl=1" class="btn-inverse">Download `pyrus_suite-macosx_aarch64.zip` (18-Mar-2024 version for MacOSX ARM architecture)</a>
 
 ## Features
 
