@@ -2,13 +2,15 @@
 layout: archive
 title: Pyrus Suite Of Oil And Gas Tools
 permalink: /pyrus/
+image:
+  feature: feature-pyrus-1024x256.png
 ---
 
-Pyrus is the biological genus for the pear tree. So what? Well the initial incarnation of this suite of software tools was referred to as somewhat more cumbersome "Petroleum Economics And Resources" or P.E.A.R. Pyrus just seems like a better option.
+Pyrus is the biological genus for the pear tree. So what? Well the initial incarnation of this suite of software tools was referred to as somewhat more cumbersome "Petroleum Economics And Resources" which has the acronym P.E.A.R. Rather than calling to software "Pear", the biological genus sounds more sophisticated and just seemed like a better option.
 
 ## Download
 
-The Pyrus software can simply be downloaded, unzipped to any destination and run from the appropriate executable in the `/bin` folder of the unzipped folder. For the Linux and MacOSX versions, it may be necessary to change the permissions on the shell file to be executable.  Whilst this software is not open-source, it is made available free of charge as a courtesy to other engineers that may find it useful.
+The Pyrus software can simply be downloaded, unzipped to any destination and run from the appropriate executable in the `/bin` folder of the unzipped folder. For the Linux and MacOSX versions, it may be necessary to change the permissions on the shell file to be executable. Whilst this software is not open-source, it is made available free of charge as a courtesy to other engineers that may find it useful.
 
 <a href="https://www.dropbox.com/s/d5zipke5254lsq2/pyrus_suite-win_x64.zip?dl=1" class="btn-inverse">Download `pyrus_suite-win_x64.zip` (18-Mar-2024 version for Windows x64 architecture)</a>
 
