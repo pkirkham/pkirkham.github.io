@@ -6,7 +6,7 @@ image:
   feature: feature-pyrus-1024x256.png
 ---
 
-Pyrus is the biological genus for the pear tree. So what? Well the initial incarnation of this suite of software tools was referred to as somewhat more cumbersome "Petroleum Economics And Resources" which has the acronym P.E.A.R. Rather than calling the software "Pear", the biological genus "Pyrus" sounds more sophisticated and just seemed like a better option.
+Pyrus is the [biological genus for the pear tree](https://en.wikipedia.org/wiki/Pear). So what? Well the initial incarnation of this suite of software tools was referred to as somewhat more cumbersome "Petroleum Economics And Resources" which has the acronym P.E.A.R. Rather than calling the software "Pear", the biological genus "Pyrus" sounds more sophisticated and just seemed like a better option.
 
 ## Download
 
