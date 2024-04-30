@@ -12,21 +12,22 @@ Pyrus is the [biological genus for the pear tree](https://en.wikipedia.org/wiki/
 
 The Pyrus software can simply be downloaded, unzipped to any destination and run from the appropriate executable in the `/bin` folder of the unzipped folder. For the Linux and MacOSX versions, it may be necessary to change the permissions on the shell file to be executable. Whilst this software is not open-source, it is made available free of charge as a courtesy to other engineers that may find it useful.
 
-<a href="https://www.dropbox.com/s/d5zipke5254lsq2/pyrus_suite-win_x64.zip?dl=1" class="btn-inverse">Download `pyrus_suite-win_x64.zip` (18-Mar-2024 version for Windows x64 architecture)</a>
+<a href="https://www.dropbox.com/s/d5zipke5254lsq2/pyrus_suite-win_x64.zip?dl=1" class="btn-inverse">Download `pyrus_suite-win_x64.zip` (version for Windows x64 architecture)</a>
 
-<a href="https://www.dropbox.com/s/spqcf5qyqvix9wg/pyrus_suite-linux_x64.zip?dl=1" class="btn-inverse">Download `pyrus_suite-linux_x64.zip` (18-Mar-2024 version for Linux x64 architecture)</a>
+<a href="https://www.dropbox.com/s/spqcf5qyqvix9wg/pyrus_suite-linux_x64.zip?dl=1" class="btn-inverse">Download `pyrus_suite-linux_x64.zip` (version for Linux x64 architecture)</a>
 
-<a href="https://www.dropbox.com/s/o74pjvte51q9xty/pyrus_suite-macosx_x64.zip?dl=1" class="btn-inverse">Download `pyrus_suite-macosx_x64.zip` (18-Mar-2024 version for MacOSX x64 architecture)</a>
+<a href="https://www.dropbox.com/s/o74pjvte51q9xty/pyrus_suite-macosx_x64.zip?dl=1" class="btn-inverse">Download `pyrus_suite-macosx_x64.zip` (version for MacOSX x64 architecture)</a>
 
-<a href="https://www.dropbox.com/s/iau0qt4dih0nom7/pyrus_suite-macosx_aarch64.zip?dl=1" class="btn-inverse">Download `pyrus_suite-macosx_aarch64.zip` (18-Mar-2024 version for MacOSX ARM architecture)</a>
+<a href="https://www.dropbox.com/s/iau0qt4dih0nom7/pyrus_suite-macosx_aarch64.zip?dl=1" class="btn-inverse">Download `pyrus_suite-macosx_aarch64.zip` (version for MacOSX ARM architecture)</a>
 
 ## Features
 
-There are only a few features implemented in the current version of the Pyrus Suite. It is anticipated that the number of tools will grow quickly as several of these have already been developed, but lack the necessary graphical user interface to be incorporated into a proper application.
+There are only a few features implemented in the current version of the Pyrus Suite. It is anticipated that the number of tools will grow quickly as several of these have already been developed, but lack the necessary graphical user interface to be incorporated into a proper application. Help on features included in the current release can be accessed through the built-in help tool which is accessed using the <kbd>F1</kbd> key. Parts of this are still being written, in particular how the equation of state tool works. An initial draft for the Eclipse language editor help pages has been completed.
+
 
 ### Implemented Tools
 
- - **Eclipse Language Editor:** An integrated development environment for Eclipse language reservoir simulation decks. A number of standard code editing features have already been implemented, including syntax highlighting, code completion, error highlighting and an in-built Eclipse language manual. Various keyboard shortcuts for text manipulation are also available. Work is underway on automatic code formatting, improvements to the error highlighting, code templating and integration with other aspects of the Pyrus suite e.g., automatic generation of PVT and VFP tables based on other Pyrus objects.
+ - **Eclipse Language Editor:** An integrated development environment for Eclipse language reservoir simulation decks. A number of standard code editing features have already been implemented, including syntax highlighting, code folding, code completion, code formatting, error highlighting and an in-built Eclipse language manual. Various keyboard shortcuts for text manipulation are also available. Work is underway on improvements to the error highlighting, code templating and integration with other aspects of the Pyrus suite e.g., automatic generation of PVT and VFP tables based on other Pyrus objects.
  - **Cubic Equation of State:** Cubic equations of state (EOS) are a computationally efficient way to model the pressure, volume and temperature (PVT) relationships for arbitrary compositions. In this respect they are much more powerful and useful in comparison to correlations. I am not aware of many free tools for modelling fluids using cubic equations of state. This tool implements the translated-consistent enhanced predictive Peng-Robinson EOS, which is a very recent and thorough implementation. Integration with the open-source CoolProp library has also been implemented, which provides properties for pure fluids such as carbon dioxide.
 
 ### Upcoming Tools
@@ -44,7 +45,7 @@ The software is written in [Java](https://openjdk.org/) and is built on top of t
  - **OS Platform:** The software should run on a wide variety of platforms. Four versions have been pre-packaged for Windows, Linux, and MacOS (on x64 architecture e.g., Intel and AMD chips) and a separate MacOS distribution for the AArch64 architecture (ARM chips a.k.a. M1 etc.). With an suitable Java virtual machine, there is no reason why the software couldn't run on other combinations.
  - **CPU and Memory Hardware:** The Java Runtime Environment itself needs up to 4 GB of RAM, which is pretty paltry for modern machines. The software does take advantage of parallel processing for both maintaining a responsive graphical user interface, and for demanding computational loads. The software should automatically detect and utilise all the cores available to it.
  - **Graphics Hardware:** Whilst no 3D features are included in the current release, development using OpenGL is underway for 3D seismic visualisation and interpretation. This means that a range of graphics cards are supported.
- - **Storage Requirements:** Modern software has become increasingly bloated. The Pyrus
+ - **Storage Requirements:** Modern software has become increasingly bloated and the Pyrus software is no exception. This is because in addition to the modular functionality that Pyrus creates, the software is built on top of many other libraries, not all portions of which are used by Pyrus. These libraries include the Java runtime environment that is distributed with the application, the NetBeans platform that provides the main framework, and open source utility libraries for image manipulation, data access, 3D graphics etc. In comparison to the size of the datasets commonly encountered in the oil and gas industry, the download size for the software is not large.
  - **Internet Connection:** Obviously an internet connection is needed to download the files. The software does not need an active internet connection to run. Indeed, it should be possible to run directly off a USB stick. If an internet connection is available, then the software can be set up to check for updates which can be downloaded and updated in-place without any need to re-download the full application distribution.
 
 ## Background
@@ -62,8 +63,6 @@ Anyway, this meant that Java seemed like a good idea at the time, despite all th
 Over the years the various parts that I started off using, including the Java language, the NetBeans platform framework and various libraries providing useful support and functionality, have not only stood the test of time but have flourished. Other languages and frameworks have come in and out of fashion -- today Python seems to be popular, particularly with machine learning tasks. With such an established base of code, there is no compelling reason to switch.
 
 ## Documentation
-
-There is a fledgling framework for a user guide built into the Pyrus Suite which can be accessed through the <kbd>F1</kbd> key. However, this is still being written. For the moment, users will just need to experiment and discover how the editor and equation of state tool work.
 
 Articles related to the development of the software are collected here.
 
