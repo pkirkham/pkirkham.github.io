@@ -16,14 +16,86 @@ Language-aware text editing for Eclipse files has been implemented using the Net
 
 | Feature | Description |
 | --- | --- |
+| [**Editing Assistance**](#editing-assistance) | Pyrus uses the built-in text editing component provided by the NetBeans platform. This means it leverages and benefits from the editing assistance tools that are already incorporated into the editor. These include a range of keyboard shortcuts for common text editing tasks, bookmarks, macros and more. |
 | [**Syntax Highlighting**](#syntax-highlighting) | The editor is syntactically aware of the format used for the Eclipse simulation deck. This allows the functional purpose of different text to be highlighted in a different colour, to help convey the meaning of the data better. Unlike simplistic syntax highlighting used in many generalised text editors, the syntax highlighting used can distinguish between similar looking tokens, such as the difference between keywords, array variable names, summary variable names and unquoted strings (all of which comprise up to eight capital letters). |
-| [**Code Folding**](#code-folding) | Reservoir simulation decks containing many keywords can become quite large, particularly for arrays, tabulated or columnar data. The ability to collapse or expand keyword blocks to a single line is known as cold folding. This can make it easier to scroll through large input decks by collapsing the lines shown down to just the keywords themselves. |
+| [**Code Folding**](#code-folding) | Reservoir simulation decks containing many keywords can become quite large, particularly for arrays, tabulated or columnar data. The ability to collapse or expand keyword blocks to a single line is known as code folding. This can make it easier to scroll through large input decks by collapsing the lines shown down to just the keywords themselves. |
 | [**Code Completion**](#code-completion) | When typing a partial keyword within a section, the editor can suggest possible keywords that match the starting letters already typed and complete the entire syntax for the keyword based using default or dummy values. When used in combination with the build-in language manual and the code formatting option, this makes it very quick to add a new keyword into a input deck. |
 | [**Code Formatting**](#code-formatting) | Given the free-form nature of a text file, and the lack of any required formatting standard according to the Eclipse language, the input deck can easily become inconsistent with regards to its formatting. Whilst this does not (or should not) affect the ability to run the deck using a simulator, it reduces readability of the input deck. By applying a standard format to column spacing, numerical and string formatting, and the addition of column headers and units within keywords, the efficiency of user interaction with an input deck is improved. |
 | [**Keyword Navigation**](#keyword-navigation) | Navigation within the document is aided by showing a listing of all the keywords contained within each section. Double clicking on a keyword will jump to that part of the document. This can reduce the time taken to locate a specific keyword or section within an input deck. |
 | [**Error Highlighting**](#error-highlighting) | The Eclipse language expects a certain syntax for each keyword. Typographic errors in the input deck are typically not picked up until an attempt is made to run the simulation deck. Error highlighting is a feature that continuously checks the input deck for the expected syntax and highlights errors that are found, before the deck is run. The error highlighting is also aware of basic constraints on columnar inputs, so if for example a negative integer is found where only positive integers are allowed, this will be highlighted as an error. |
 | [**Diff Versioning**](#diff-versioning) | Changes to an input deck are recorded locally and the option to wind-back to an earlier point in time is possible. Multiple versions of the same input file do not need to be saved. |
 | [**Language Manual**](#language-manual) | Given the age of the Eclipse language (since the 1980s), there have been many developments and enhancements which has led to growth in the number of permissible keywords. The formats for these keywords are mostly consistent, but there are differences between them. Referring the the manual is often necessary, but it can be time consuming to find the information needed. With Pyrus the Eclipse language manual automatically syncs to the current caret location in the document. If you edit a keyword or type a new one, the manual (if shown) will automatically update to display the entry for that keyword. The manual implemented is based on the official OPM Flow manual. |
+
+## Editing Assistance
+
+The Eclipse editor leverages the NetBeans platform to deliver a wide range of useful editing shortcuts for working with text documents. Some of these shortcuts are common to many different applications, and others are specific to the NetBeans platform. Common commands such as cut, copy, paste, undo, redo, find and replace use the same shortcuts that are typically found in other applications with similar functionality.
+
+Less commonly encountered, but arguably more powerful shortcuts, are related to moving lines of text. Lines can easily be moved up or down, duplicated or removed using the shortcuts described below.
+
+In the ECLIPSE language, a line comment starts with `--`. Rather than adding this to each line manually, if it is needed to comment out part of a simulation deck (typically when developing and testing the deck) then the shortcut <kbd>CTRL</kbd> + <kbd>/</kbd> can be used to toggle the commenting or uncommenting of all selected lines in one go. 
+
+<div class="notice-info">Note that the shortcuts shown below use the nomenclature specific to Windows and Linux versions of Pyrus. The shortcuts will work on Macintosh versions, but the mapping for the modifier keys is different as Macs use the <kbd>ALT</kbd> key as a compose key for international languages. Therefore on Macintosh, the <kbd>ALT</kbd> modifiers below map to <kbd>CTRL</kbd> and the <kbd>CTRL</kbd> modifiers map to <kbd>COMMAND</kbd>.</div>
+
+All keyboard shortcuts can be viewed and edited using the Tools / Options / Keymap options dialog that can be accessed using the menu located at the top of the application window.
+
+### Bookmarks
+
+Bookmarks can be toggled on and off in open documents using the <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>M</kbd> keyboard shortcut or by right-clicking on the line number and selecting Bookmark / Toggle Bookmark. It is possible to jump between bookmarks using <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>.</kbd> and <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>,</kbd>. To see all bookmarks in the IDE, select the menu Window / IDE Tools / Bookmarks.
+
+### Macros
+
+Macros can be recorded using the record macro button in the editor window toolbar, or from the Edit / Start Macro Recording file menu. The macro records all the keystrokes that take place in addition to typing. A shortcut can be assigned to the macro once recording has stopped.
+
+To see all recorded macros and edit their shortcuts, it is necessary to open Tools / Options / Editor / Macros dialog from the menu.
+
+### Arranging Windows
+
+All windows in the IDE can be moved around to suit personal preferences. This is done simply by dragging and dropping the individual window tabs. A preview of where the new window will be placed is shown as a faint red outline. The functionality is fairly intuitive.
+
+### Rectangular Selection Mode
+
+Usually when selecting between a starting and ending caret location in a text editor, the behaviour is to select all characters after the starting location to the very end of a line, and every line after that, up to the ending caret location. Effectively this is selecting sequential characters in the text file.
+
+An alternative selection method that is more visual in nature, is to select a rectangular section of the document. This ignores the endings of lines. It is particularly useful to make multiple consistent edits to several lines at once, as if multiple lines are selected, the edits are applied to each and every line simultaneously.
+
+Rectangular selection mode is toggled on and off using the <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>R</kbd> keyboard shortcut.
+
+<div class="notice-warning">Care should be taken when using rectangular selection mode if word wrap is turned on as the rectangular selection will apply to the text as it is displayed. If rectangular selection is being used to edit multiple lines, then it will be necesary to ensure that the lines are not displayed with word wrapping, as otherwise the edits will apply to wrapped lines as well as actual new lines.</div>
+
+### Quick Reference
+
+Keyboard shortcuts applicable to editing assistance:
+
+| Shortcut | Action |
+| --- | --- |
+| <kbd>CTRL</kbd> + <kbd>X</kbd> | Cut selected text. |
+| <kbd>CTRL</kbd> + <kbd>C</kbd> | Copy selected text. |
+| <kbd>CTRL</kbd> + <kbd>V</kbd> | Paste the previously cut or copied text selection. |
+| <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>UP-ARROW</kbd> | Duplicate the selected lines above. |
+| <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>DOWN-ARROW</kbd> | Duplicate the selected lines below. |
+| <kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>UP-ARROW</kbd> | Move the selected lines up. |
+| <kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>DOWN-ARROW</kbd> | Move the selected lines down. |
+| <kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>RIGHT-ARROW</kbd> | Indent line by adding spaces. |
+| <kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>LEFT-ARROW</kbd> | Unindent line. |
+| <kbd>TAB</kbd> | Indent line by adding spaces. |
+| <kbd>SHIFT</kbd> + <kbd>ENTER</kbd> | Add blank line below current line. |
+| <kbd>CTRL</kbd> + <kbd>BACKSPACE</kbd> | Delete word before cursor. |
+| <kbd>CTRL</kbd> + <kbd>DELETE</kbd> | Delete word after cursor. |
+| <kbd>SHIFT</kbd> + <kbd>DELETE</kbd> | Delete (remove) a line. |
+| <kbd>CTRL</kbd> + <kbd>E</kbd> | Elide (remove) a line. |
+| <kbd>CTRL</kbd> + <kbd>F</kbd> | Find matching text in document, optionally using regular expressions. |
+| <kbd>CTRL</kbd> + <kbd>H</kbd> | Replace matching text in document, optionally using regular expressions. |
+| <kbd>CTRL</kbd> + <kbd>G</kbd> | Goto a line number. |
+| <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>R</kbd> | Toggle rectangular selection mode. |
+| <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>C</kbd> | Toggle comment / uncomment selected lines. |
+| <kbd>CTRL</kbd> + <kbd>/</kbd> | Toggle comment / uncomment selected lines. |
+| <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>M</kbd> | Toggle bookmark at current line. |
+| <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>.</kbd> | Move to next bookmark. |
+| <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>,</kbd> | Move to previous bookmark. |
+| <kbd>CTRL</kbd> + <kbd>Q</kbd> | Jump to the last edited document location. |
+| <kbd>CTRL</kbd> + <kbd>Z</kbd> | Undo previous action. |
+| <kbd>CTRL</kbd> + <kbd>Y</kbd> | Redo last undone action. |
+
 
 ## Syntax Highlighting
 
