@@ -107,18 +107,18 @@ Syntax highlighting can improve readability of the simulation deck by conveying 
 
 A list of types that are recognised in the Eclipse language and their default colours are as follows:
 
- * Section keywords are <span style="color:#c10087">**medium violet red**</span>.
- * Standard keywords are <span style="color:red">**red**</span>.
- * Arithmetic operations on grid cell array variables are <span style="color:#cd7f32">**bronze**</span>.
- * Summary variables are <span style="color:#6b8e23">**olive drab**</span>.
- * User-defined actions and quantities are <span style="color:#008080">**teal**</span>.
- * OPM Flow-specific keywords are <span style="color:red">**_red italic_**</span>.
- * Recognised but ignored keywords are <span style="color:gray">**_grey italic_**</span>.
- * Unquoted string parameters use the colour scheme default.
- * Single quoted string parameters use the colour scheme default.
- * Numerical parameters use the colour scheme default.
- * Mathematical operators use the colour scheme default.
- * Comments use the colour scheme default.
+  * Section keywords are <span style="color:#c10087">**medium violet red**</span>.
+  * Standard keywords are <span style="color:red">**red**</span>.
+  * Arithmetic operations on grid cell array variables are <span style="color:#cd7f32">**bronze**</span>.
+  * Summary variables are <span style="color:#6b8e23">**olive drab**</span>.
+  * User-defined actions and quantities are <span style="color:#008080">**teal**</span>.
+  * OPM Flow-specific keywords are <span style="color:red">**_red italic_**</span>.
+  * Recognised but ignored keywords are <span style="color:gray">**_grey italic_**</span>.
+  * Unquoted string parameters use the colour scheme default.
+  * Single quoted string parameters use the colour scheme default.
+  * Numerical parameters use the colour scheme default.
+  * Mathematical operators use the colour scheme default.
+  * Comments use the colour scheme default.
 
 ### Colour Schemes
 
@@ -337,13 +337,13 @@ Keywords are visually identified by their type.
 
 The syntax for each keyword is also indicated on the icon.
 
- * No overlay indicates that no additional data records are expected.
- * A single horizontal line indicates a single row vector keyword.
- * Two equal horizontal lines indicate a multiple or repeated row vector keyword.
- * Two equal vertical horizontal lines indicate a muliple of repeated columnar vector keyword.
- * Two unequal horizontal lines indicate a tabular data keyword.
- * A single row of three blocks indicates an options keyword.
- * A series of three rows of three blocks each indicates an array keyword.
+  * No overlay indicates that no additional data records are expected.
+  * A single horizontal line indicates a single row vector keyword.
+  * Two equal horizontal lines indicate a multiple or repeated row vector keyword.
+  * Two equal vertical horizontal lines indicate a muliple of repeated columnar vector keyword.
+  * Two unequal horizontal lines indicate a tabular data keyword.
+  * A single row of three blocks indicates an options keyword.
+  * A series of three rows of three blocks each indicates an array keyword.
 
 The possible combinations and existing keywords gives rise to the following keyword icons and general syntax for each keyword type:
 
@@ -441,10 +441,10 @@ The Pyrus Suite includes a built-in manual for the Eclipse language that is base
 
 The Eclipse language manual opens as a separate window in the Pyrus Suite. Only one Eclipse language manual window can be open at any time. The window can be moved and docked into different positions within the application windowing system framework. Typically, having the manual open in a separate window to the Eclipse editor means that the Eclipse simulation input deck and the manual can be viewed concurrently. This allows the full benefit of the synchronisation of between the editor and the page displayed in the manual to be realised. There are several ways that the Eclipse language manual can be opened:
 
- * **Keyboard shortcut:** <kbd>CTRL</kbd> + <kbd>F1</kbd>.
- * **Context popup menu:** Right-click in an Eclipse editor window and select the Eclipse Language Manual option.
- * **Menu:** Select Eclipse Language Manual from the Help menu located at the top of the application window.
- * **Toolbar:** Eclipse language manual button is found on the Tools toolbar. If this is not showing, then check that the Tools toolbar is active by right clicking on the toolbar area. There should be a blue tick next to the Tools entry to indicate that it is active.
+  * **Keyboard shortcut:** <kbd>CTRL</kbd> + <kbd>F1</kbd>.
+  * **Context popup menu:** Right-click in an Eclipse editor window and select the Eclipse Language Manual option.
+  * **Menu:** Select Eclipse Language Manual from the Help menu located at the top of the application window.
+  * **Toolbar:** Eclipse language manual button is found on the Tools toolbar. If this is not showing, then check that the Tools toolbar is active by right clicking on the toolbar area. There should be a blue tick next to the Tools entry to indicate that it is active.
 
 ### Navigating Eclipse Language Manual
 
