@@ -1,7 +1,7 @@
 ---
 layout: article
 title: PVT Fluid Properties Tool
-modified:
+modified: 2024-09-23
 categories: pyrus
 excerpt: Features of the PVT fluid properties editing tool.
 tags: [pyrus_suite, netbeans, dynamic_modelling, simulation, software, programming, simulation_deck, ide, pvt, eos, fluid_properties, oil, gas]
@@ -68,6 +68,45 @@ Alternatively, it is possible to tweak values already entered using the spinner 
 
 <div class="notice-warning">It is possible to enter values with more than three decimal places of precision. If this is done then the entered value is actually used in the definition of the composition, but it is not displayed with the full precision in the tool itself. This could potentially lead to confusion where the total is not adding up to 100% due to some components having additional, but hidden, precision. It is recommended to only use three decimal places of precision with the tool, and it is questionable whether more precision than this is really required.</div>
 
+#### Cut and Paste From Spreadsheet
+
+It is also possible to copy and paste compositions from a spreadsheet into the Pyrus PVT tool. To copy from a spreadsheet the composition data must be set up as two columns, with the first column containing the components and the second column containing the mol% fractions. The units for the fractions can be either percentage or fraction (v/v) as long as they are consistent. The main components (up to C11) are:
+
+| Component Code | Description |
+|:---:| --- |
+| CO2 | Carbon Dioxide |
+| N2 | Nitrogen |
+| H2S | Hydrogen Sulphide |
+| CH4 | Methane |
+| C2H6 | Ethane |
+| C3H8 | Propane |
+| IC4 | iso-Butane |
+| NC4 | n-Butane |
+| IC5 | iso-Propane |
+| NC5 | n-Propane |
+| C6 | Hexane Fraction |
+| C7+ | Heptanes Plus Fraction |
+| NC7 | n-Heptane |
+| NC8 | n-Octane |
+| NC9 | n-Nonane |
+| M-Cy-C6 | MethylCycloHexane | 
+| C7H8 | Toluene |
+| C8H10 | EthylBenzene |
+| O-X | Ortho-Xylene |
+| M-X | Meta-Xylene |
+| P-X | Para-Xylene |
+| TriM-B | TriMethylBenzene |
+| C10 | C10 Fraction |
+| C11 | C11 Fraction |
+
+Other component codes can be seen in the compositional list in the tool itself.
+
+<div style="width: 2000px; max-width: 100%; height: auto; margin: 20px auto 20px auto;">
+	<video width="100%" height="auto" controls>
+		<source src="https://www.dropbox.com/scl/fi/aj03oqqaywkn633p3yd69/Recording-2024-09-23-095820.mp4?rlkey=ft2kvrdvt0yu3djg6zffvg672&raw=1" type="video/mp4" />
+	</video>
+</div>
+
 ### Specifying C7+ Fraction
 
 The C7+ fraction can be specified either as a single pseudo-pure fluid component, or through entering a more detailed composition for the heavier components. The computation time increases as more components are included in the compositional description. However, unlike in a compositional simulation which is required to perform flash calculations for the EOS on potentially millions of cells, there are comparatively fewer flash calculations that take place when running the tool. Running a highly detailed compositional analysis should not be prohibitive.
@@ -81,6 +120,13 @@ A single pseudo-pure fluid component for the C7+ fraction can be defined in the 
 Typically laboratory reports will report the molecular weight and density (specific gravity) of the C7+ fraction. These two parameters are the minimum that need to be entered to change the properties of the C7+ fraction. The molecular weight, single carbon number, PNA distribution and critical properties are all calculated automatically as any of these input values are altered.
 
 It is important to note that the C7+ fraction contains many different compounds, and that the distribution of paraffinic, napthenic and aromatic compounds changes the relationship between the density and the molecular weight. Often, the reported molecular weight is based on an assumption that the heavier C7+ components have properties that align to the published Katz-Firoozabadi single carbon number compounds. Whilst there is nothing inherently wrong with such an approach, it should be remembered that this is an assumption. Thus, in comparison to the specific gravity (which is usually measured and thus reasonably well defined), the molecular weight and PNA distribution are more uncertain and can be adjusted as necessary to tune the EOS.
+
+When cutting and pasting a C7+ component into the Pyrus PVT tool, there are two special component codes that are used to indicate the molecular weight and density (specific gravity) of the C7+ fraction:
+
+| Component Code | Description |
+|:---:| --- |
+| C7+MW | Heptanes Plus Molecular Weight |
+| C7+GAMMA | Heptanes Plus Specific Gravity (relative to water = 1) |
 
 #### Entering a Detailed Composition for Heavy Components
 

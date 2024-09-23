@@ -29,6 +29,7 @@
 }
 .notice-warning {
 	@include notice($warning-color);
+	color: $black;
 }
 .notice-success {
 	@include notice($success-color);
