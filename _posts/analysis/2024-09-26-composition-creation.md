@@ -118,8 +118,8 @@ Field data were simulated using the EOS by passing the reservoir fluid through a
 | Field Data | Dry Gas | Wet Gas | Gas Condensate | Volatile Oil | Black Oil |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | Oil API Gravity | 310.3 | 55.3 | 55.7 | 49.7 | 47.6 |
-| Gas Relative Density (air = 1) | 0.591 | 0.705 | 0.772 | 0.853 | 1,046 |
-| Gas-Oil Ratio (scf/stb) | &infin; | 170,545 | 8,470 | 1,019 | 0.959 |
+| Gas Relative Density (air = 1) | 0.591 | 0.705 | 0.772 | 0.853 | 0.959 |
+| Gas-Oil Ratio (scf/stb) | &infin; | 170,545 | 8,470 | 1,019 | 1,046 |
 
 The genetic algorithm was able to generate compositions for all of these fluids, demonstrating its applicability to a wide range of fluid types. Because the solutions are non-unique, a Monte Carlo approach was adopted, with 100 different compositions predicted per fluid type. The range of each component, as well as the mean value are compared to the initial reference composition. The statistical cases shown are defined as P{X}, where P{X} is the composition for which X% of CH4 fractions are smaller that its value. In general, towards the P1 end of the range we have lighter compositions and towards the P99 end of the range we have heavier compositions. However, this is not a strict rule. In addition, the phase envelope for each composition was generated using the Peng-Robinson cubic EoS and compared against the range of predicted compositions.
 
@@ -168,7 +168,16 @@ The real test is to check the method stacks up against other published data as a
 
 Furthermore, knowledge of the composition allows PVT tables to be generated for reservoir simulation that are consistent. That is, the saturation point at reservoir temperature, the formation volume factor and viscosity are all derived from the same composition and using the same EoS (where applicable).
 
-For our comparison we have initially used compositions from Ahmed (2006) as the source of a small set of example reservoir fluids, for which field data measurements are available. A comparison of the bubble point pressure obtained using several correlations versus those calculated from different EoS together with the composition obtained from the genetic algorithm is shown. The EoS used are Peng-Robinson (PR), Enhanced Predictive Peng-Robinson (EPPR78) and EPPR78 with the &alpha; value for the C7+ fraction slightly tuned by multiplying by 1.03&times;. The tuning applied in the last EoS is done as the C7+ pseudo-components do not fully capture the effect on the phase envelope of very heavy components. A different approach would be to split to C7+ fraction into several components before running the EOS, but tweaking the &alpha; parameter is simpler. For the purposes of testing whether the compositions obtained from the genetic algorithm is comparable to results obtained from correlations, it is a reasonable starting point. The average relative error (bias) and average absolute relative error (accuracy) are shown for these six oils.
+For our comparison we have initially used compositions from Ahmed (2006) as the source of a small set of example reservoir fluids, for which field data measurements are available. 
+
+| Field Data | Oil&nbsp;#1 | Oil&nbsp;#2 | Oil&nbsp;#3 | Oil&nbsp;#4 | Oil&nbsp;#5 | Oil&nbsp;#6 |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| Reservoir Temperature (&deg;F) | 250 | 220 | 260 | 237 | 218 | 180 |
+| Oil API Gravity | 47.1 | 40.7 | 48.6 | 40.5 | 44.2 | 27.3 |
+| Gas Relative Density (air = 1) | 0.851 | 0.855 | 0.911 | 0.898 | 0.781 | 0.848 |
+| Gas-Oil Ratio (scf/stb) | 751 | 768 | 693 | 968 | 943 | 807 |
+
+A comparison of the bubble point pressure in psia obtained using several correlations versus those calculated from different EoS together with the composition obtained from the genetic algorithm is shown. The EoS used are Peng-Robinson (PR), Enhanced Predictive Peng-Robinson (EPPR78) and EPPR78 with the &alpha; value for the C7+ fraction slightly tuned by multiplying by 1.03&times;. The tuning applied in the last EoS is done as the C7+ pseudo-components do not fully capture the effect on the phase envelope of very heavy components. A different approach would be to split to C7+ fraction into several components before running the EOS, but tweaking the &alpha; parameter is simpler. For the purposes of testing whether the compositions obtained from the genetic algorithm is comparable to results obtained from correlations, it is a reasonable starting point. The average relative error (bias) and average absolute relative error (accuracy) are shown for these six oils.
 
 | Metric | Measured | Al Shammasi | Lasater | Vasquez-Beggs | Velarde | Valko-McCain | GA (PR) | GA (EPPR78) | GA (EPPR78 + &alpha; 1.03&times;) |
 |:---:|:---:|:---:|
