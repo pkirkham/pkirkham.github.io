@@ -43,22 +43,23 @@ Cementation exponent and pore body diameter can be obtained from special core an
 For sandstone, simply input the average grain size and the degree of sorting. These parameters tweak the pore body diameter and cementation exponent, giving you more accurate permeability and relative permeability curves.
 
  1. **Grain Size:** This is the average grain size of the sandstone, measured in millimeters. The grain size directly influences the pore geometry. Larger grains typically indicate higher permeability because of the larger pore spaces between the grains. Input the grain size value to define the characteristic dimensions of the pore spaces. Pyrus allows the input of grain sizes from very fine sand through to very fine pebbles. The grain sizes used by geologists are:
-     1. **Clay:** Less than 0.004 mm
-     2. **Silt:** 0.004 to 0.0625 mm
-     3. **Sand:** 
-         - **Very Fine Sand:** 0.0625 to 0.125 mm
-         - **Fine Sand:** 0.125 to 0.25 mm
-         - **Medium Sand:** 0.25 to 0.5 mm
-         - **Coarse Sand:** 0.5 to 1 mm
-         - **Very Coarse Sand:** 1 to 2 mm
-     4. **Granule:** 2 to 4 mm
-     5. **Pebble:** 
-         - **Very Fine Pebble:** 4 to 8 mm
-         - **Fine Pebble:** 8 to 16 mm
-         - **Medium Pebble:** 16 to 32 mm
-         - **Coarse Pebble:** 32 to 64 mm
-     6. **Cobble:** 64 to 256 mm
-     7. **Boulder:** Greater than 256 mm
+  1. **Clay:** Less than 0.004 mm
+  2. **Silt:** 0.004 to 0.0625 mm
+  3. **Sand:** 
+      - **Very Fine Sand:** 0.0625 to 0.125 mm
+      - **Fine Sand:** 0.125 to 0.25 mm
+      - **Medium Sand:** 0.25 to 0.5 mm
+      - **Coarse Sand:** 0.5 to 1 mm
+      - **Very Coarse Sand:** 1 to 2 mm
+  4. **Granule:** 2 to 4 mm
+  5. **Pebble:** 
+      - **Very Fine Pebble:** 4 to 8 mm
+      - **Fine Pebble:** 8 to 16 mm
+      - **Medium Pebble:** 16 to 32 mm
+      - **Coarse Pebble:** 32 to 64 mm
+  6. **Cobble:** 64 to 256 mm
+  7. **Boulder:** Greater than 256 mm
+
  2. **Degree of Sorting:** This parameter ranges from 0 to 2.5, where 0 indicates extremely well-sorted sandstone, and 2.5 represents very poorly sorted sandstone. Hovering over the slider should reveal a tooltip that helps to guide the value to be entered for different degrees of sorting. Sorting refers to the distribution of grain sizes within the rock. Well-sorted sandstones have uniform grain sizes, leading to more consistent and predictable pore geometries, whereas poorly sorted sandstones have a mix of grain sizes, resulting in more complex pore geometries. A common statistical method to describe sorting involves using the D25 and D75 grain sizes, where D25 is the grain size below which 25% of the sample's weight is finer, and D75 is the grain size below which 75% of the sample's weight is finer. The D75/D25 ratio provides a measure of the spread of grain sizes in the sample. A lower ratio indicates well-sorted sediment, while a higher ratio indicates poorly sorted sediment.
 
 ### Carbonate Lithologies
@@ -122,7 +123,7 @@ The keywords are generated using the following steps:
  1. **Select Keywords**: There are three primary keywords you can generate:
      - **SWOF** (Saturation-Water-Oil Functions)
      - **SGOF** (Saturation-Gas-Oil Functions)
-     - **SGWFN** (Saturation-Gas-Water Functions) 
+     - **SGWFN** (Saturation-Gas-Water Functions)
     Each of these keywords represents different fluid saturation functions and can be used to model the behavior of fluids in your reservoir.
  2. **Choose Units:** By default, the tool uses field units, but you can switch to metric or laboratory units based on your project requirements. This flexibility ensures that your data is accurately represented in the simulation environment.
  3. **Generate Curves:** Decide whether you want to generate a single set of curves or separate tables for drainage and imbibition. Typically, you generate a single set for initialization (drainage) and another for production (imbibition). Using two sets of curves allows for a more comprehensive and realistic modeling of fluid flow in the reservoir, particularly in transition zones where the initial gas saturation is less than that which would occur if the water saturation were are irreducible water saturation.
