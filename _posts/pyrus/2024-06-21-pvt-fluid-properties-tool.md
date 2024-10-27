@@ -4,7 +4,7 @@ title: PVT Fluid Properties Tool
 modified: 2024-09-23
 categories: pyrus
 excerpt: Features of the PVT fluid properties editing tool.
-tags: [pyrus_suite, netbeans, dynamic_modelling, simulation, software, programming, simulation_deck, ide, pvt, eos, fluid_properties, oil, gas]
+tags: [pyrus_suite, netbeans, dynamic_model, simulation, software, programming, simulation_deck, ide, pvt, eos, fluid_properties, oil, gas]
 image:
   feature: feature-pvt-fluid-properties-tool-1024x256.jpg
   teaser: teaser-pvt-fluid-properties-tool-400x250.jpg

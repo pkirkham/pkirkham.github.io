@@ -14,13 +14,13 @@ Incidentally, the name Pyrus is the [biological genus for the pear tree](https:/
 
 The Pyrus software can simply be downloaded, unzipped to any destination and run from the appropriate executable in the `/bin` folder of the unzipped folder. For the Linux and MacOS versions, it may be necessary to change the permissions on the shell file to be executable. The software will automatically update any installed modules as newer versions become available, and it is also possible to download and install new modular features.
 
-<a href="https://www.dropbox.com/scl/fi/hk64zetu4o0fyh81igc92/pyrus_suite-win_x64.zip?rlkey=bjqky5pm42sgji0nezeghnqig&dl=1" class="btn-inverse">Download `pyrus_suite-win_x64.zip` (version for Windows x64 architecture)</a>
+<a href="https://bit.ly/Pyrus_Suite-Win_x64" class="btn-inverse">Download `pyrus_suite-win_x64.zip` (version for Windows x64 architecture)</a>
 
-<a href="https://www.dropbox.com/scl/fi/g53xeuvhs1e251267qv3v/pyrus_suite-linux_x64.zip?rlkey=xtwoasrf9b0spoggufmqze6m2&dl=1" class="btn-inverse">Download `pyrus_suite-linux_x64.zip` (version for Linux x64 architecture)</a>
+<a href="https://bit.ly/Pyrus_Suite-Linux_x64" class="btn-inverse">Download `pyrus_suite-linux_x64.zip` (version for Linux x64 architecture)</a>
 
-<a href="https://www.dropbox.com/scl/fi/87r8r4p6om646s4zb8ghp/pyrus_suite-macos_x64.zip?rlkey=ipwnuxyxre0e3cc63iyjwefpl&dl=1" class="btn-inverse">Download `pyrus_suite-macos_x64.zip` (version for MacOS x64 architecture)</a>
+<a href="https://bit.ly/Pyrus_Suite-MacOS_x64" class="btn-inverse">Download `pyrus_suite-macos_x64.zip` (version for MacOS x64 architecture)</a>
 
-<a href="https://www.dropbox.com/scl/fi/9sovran608ukhi51ai3om/pyrus_suite-macos_aarch64.zip?rlkey=j2fs705x9nlvcj7epn7qa1e1f&dl=1" class="btn-inverse">Download `pyrus_suite-macos_aarch64.zip` (version for MacOS ARM architecture)</a>
+<a href="https://bit.ly/Pyrus_Suite-MacOS_aarch64" class="btn-inverse">Download `pyrus_suite-macos_aarch64.zip` (version for MacOS ARM architecture)</a>
 
 ## Features
 
