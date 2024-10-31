@@ -1,11 +1,16 @@
 ---
 layout: article
 title: About The Author
+tags: [oil_industry, career, employment, australia, singapore, united_states, united_kingdom, papua_new_guinea, novus, lodore, sunov, ipa, twinza]
 permalink: /about/
 share: false
 ---
 
 Active in the international upstream oil and gas industry since 1999 with involvement in commercial and technical roles for operators, non-operators and consulting firms, but my real involvement started before I was even born. Both my parents are geophysicists and were already being posted to places such as Libya before I was even born. Perhaps it was inevitable that I would grow up an expat-brat and end up following in their footsteps? As a young teenager my summer holidays were spent digitising well logs and listening to stories around the dinner table about the time when the Libyan police raided my parents house looking for illegal booze. The oil industry was in my blood.
+
+## The Story So Far
+
+### Starting Out
 
 It didn't seem that way in 1999 when I graduated as an engineer from Cambridge University. The oil price had plunged to $10/bbl lows and landing a job in the oil industry was near impossible. The perception was that the oil industry was a dinosaur. Getting a foot in the door was a game of patience as it seemed no-one was hiring when I graduated. Even BPAmocoArco, newly formed after a merger between three large oil companies, wouldn't take me on despite taking all the petroleum engineering students and geologists from Cambridge University on what was effectively an all-expenses paid weekend to their Wytch Farm field in Dorset. The catch was (of course), "please consider coming to work for us". So I applied, only to receive a rejection letter that the deadline for applications had closed... the closing date was a full week before the weekend they had wooed us. My first insights into large companies and the respective capabilities of their left and right hands!
 
@@ -13,7 +18,11 @@ When applying for a job at Novus Petroleum in 2000, I was asked by the then CEO,
 
 It was a hands-on MBA without the degree. Although I had wanted a technical engineering job, I ended up in a more generalist role supporting the CEO directly. I often explain that 'work', as an entity, has an uncanny ability to find those people most capable of doing it, and sadly it appeared I was in the capable camp. It kept me very busy. Bob and I used to describe my role as his "spare brain". As a springboard to start a career, it would be hard to imagine a better one.
 
+### The Consulting Years
+
 In the ensuring years I've experienced the highs and lows of the oil industry. I've promoted and drilled exploration prospects. Lodore's first well, Kami, was a discovery and but its second and third were duds, arriving just as the financial crisis of 2007-2008 hit. Later I moved into consulting with Independent Project Analysis, which exposed me to the world of large capital projects, where I analysed project delivery for NOCs, majors and E&Ps.
+
+### Papua New Guinea Beckons
 
 These days I'm pursuing the development of Papua New Guinea's first offshore field development. Finally I can get hands-on with the engineering. Outside my job, I'm sharing back to the industry by publishing engineering tools I've developed through the Pyrus Suite of software.
 

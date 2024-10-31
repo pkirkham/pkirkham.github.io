@@ -120,9 +120,10 @@ This tab is used to create reservoir simulator keywords (currently in ECLIPSE-co
 The keywords are generated using the following steps:
 
  1. **Select Keywords**: There are three primary keywords you can generate:
-     - **SWOF** (Saturation-Water-Oil Functions)
-     - **SGOF** (Saturation-Gas-Oil Functions)
-     - **SGWFN** (Saturation-Gas-Water Functions) 
+     - `SWOF` (Saturation-Water-Oil Functions)
+     - `SGOF` (Saturation-Gas-Oil Functions)
+     - `SGWFN` (Saturation-Gas-Water Functions)
+     
     Each of these keywords represents different fluid saturation functions and can be used to model the behavior of fluids in your reservoir.
  2. **Choose Units:** By default, the tool uses field units, but you can switch to metric or laboratory units based on your project requirements. This flexibility ensures that your data is accurately represented in the simulation environment.
  3. **Generate Curves:** Decide whether you want to generate a single set of curves or separate tables for drainage and imbibition. Typically, you generate a single set for initialization (drainage) and another for production (imbibition). Using two sets of curves allows for a more comprehensive and realistic modeling of fluid flow in the reservoir, particularly in transition zones where the initial gas saturation is less than that which would occur if the water saturation were are irreducible water saturation.
