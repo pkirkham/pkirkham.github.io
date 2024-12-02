@@ -297,7 +297,7 @@ It is important to remember that these fractions are not pure components and com
 
 The gas chromatograph separates compounds by their size using a capillary column. This column leads to separation of the mixture into different components, based on their weight. Lighter compounds such as methane travel through the column more quickly, and are the first compounds analysed by the mass spectrometer. Heavier compounds take longer to exit the capillary column (the retention time is higher) and are analysed later.
 
-Mass spectrometry is used to determine the mass of each compound as it is elutes (exits) the capillary column. The mass spectrometer captures the gas, ionises the particles and then accelerates the charged particles through a magnet. The differing mass and charge associated with each compound leads to a different amount of deflection as the particles pass through the magnetic field and can be captured using a detector.
+Mass spectrometry is used to determine the mass of each compound as it elutes (exits) the capillary column. The mass spectrometer captures the gas, ionises the particles and then accelerates the charged particles through a magnet. The differing mass and charge associated with each compound leads to a different amount of deflection as the particles pass through the magnetic field and can be captured using a detector.
 
 The combination of gas chromatography and mass spectrometry allows for a finer range of substances to be identified. The result is a breakdown into distinct single carbon number fractions, with the proportion of each fraction identified in terms of its mass (or weight percentage) in the mixture.
 
