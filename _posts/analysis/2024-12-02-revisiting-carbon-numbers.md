@@ -78,7 +78,7 @@ Figure 3 shows the datapoints for pure paraffins, naphthenes and aromatics plott
 	<figcaption><strong>Figure 3: Comparison of modelled number of carbon atoms versus boiling point for different hydrocarbon types.</strong></figcaption>
 </figure>
 
-Although it is very tempting to fit a least squares fit to these data points, this is not recommended for the simple reason that the result would be biased to a particular subtype of each hydrocarbon type. For example, above 800 &deg;R all the paraffins are normal paraffins and there is no representation from the non-normal paraffins. To ensure the influence of non-normal paraffins are captured, the model line appears to lie above the data points in this region. The model lines for naphthenes and aromatics are similarly chosen to reflect the average of all subtypes within a hydrocarbon type.
+Although it is very tempting to fit a least squares regression to these data points, this is not recommended for the simple reason that the result would be biased to a particular subtype of each hydrocarbon type. For example, above 800 &deg;R all the paraffins are normal paraffins and there is no representation from the non-normal paraffins. To ensure the influence of non-normal paraffins are captured, the model line appears to lie above the data points in this region. The model lines for naphthenes and aromatics are similarly chosen to reflect the average of all subtypes within a hydrocarbon type.
 
 The equations for predicting boiling point in &deg;C each are:
 
@@ -454,3 +454,4 @@ public class PseudoComponent {
 ## References
 
  - Riazi, M. R. and Al-Sahhaf, T. A. 1996. Physical Properties of Heavy Petroleum Fractions and Crude Oils. _Fluid Phase Equilibria_ **117** (1-2): 217-224. [https://doi.org/10.1016/0378-3812(95)02956-7](https://doi.org/10.1016/0378-3812\(95\)02956-7)
+ - Speight, J. G. 1998. _The Chemistry and Technology of Petroleum_, third edition. New York: Marcel Dekker.
