@@ -398,10 +398,13 @@ import org.apache.commons.math3.optim.nonlinear.scalar.noderiv.BOBYQAOptimizer;
 public class PseudoComponent {
 
     /**
-     * Follows method of Riazi and Daubert to estimate fractions of paraffins, naphthenes and aromatics based on the
-     * refractivity intercept and viscosity gravity constant (VGC) or function (VGF). Method assumes that main
-     * characterisation parameters such as molecular weight, normal boiling point and specific gravity have already been
-     * set.
+     * Optimises the PNA to fit a given molecular weight and specific gravity for a distillation cut. The method
+     * searches for the PNA fractions that match by first determining the carbon number for paraffin (PCN) that allows a
+     * match to the molecular weight. Naphthene carbon number and aromatic carbon number used for calculating the
+     * molecular weight are derived from the PCN via a consistent true boiling point. Once the PCN is determined the
+     * specific gravity can also be calculated. The objective function seeks to minimise the error between the target
+     * molecular weight and specific gravity. Method assumes that main characterisation parameters such as molecular
+     * weight, normal boiling point and specific gravity have already been set.
      *
      * @param mass the component mass in g/mole
      * @param gamma the component specific gravity
