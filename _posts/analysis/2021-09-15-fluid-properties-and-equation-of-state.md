@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Fluid Properties and Equation of State
-modified:
+modified: 2024-12-28
 categories: analysis
 excerpt: Properties required for reservoir simulation and the basis for the cubic equation of state applied to predict them.
 tags: [static_modelling, fluid_properties, density, formation_volume_factor, viscosity, equation_of_state, ppr78]
@@ -16,9 +16,9 @@ Hydrocarbon fluids are mixtures comprising a number of different components. Dep
 
 In a simulator we generally want to know three different properties:
 
--   **Density:** The mass of a fluid relative to its volume. Fluid density (ρ) governs the pressure profile within a reservoir, including capillary pressures which in turn control the fluid saturations.
--   **Formation Volume Factor:** Also known as FVF this is the relationship between the volume of a fluid at reservoir conditions in comparison to standard conditions (~14.65 psia and 60 °F). This translates the volume of fluid contained within a reservoir pore volume into those at surface conditions which are typically used for measurement of sales volumes.
--   **Viscosity:** This governs how easily a fluid will flow. Viscosity (μ) is an input variable to Darcy's Law.
+ - **Density:** The mass of a fluid relative to its volume. Fluid density (ρ) governs the pressure profile within a reservoir, including capillary pressures which in turn control the fluid saturations.
+ - **Formation Volume Factor:** Also known as FVF this is the relationship between the volume of a fluid at reservoir conditions in comparison to standard conditions (~14.65 psia and 60 °F). This translates the volume of fluid contained within a reservoir pore volume into those at surface conditions which are typically used for measurement of sales volumes.
+ - **Viscosity:** This governs how easily a fluid will flow. Viscosity (μ) is an input variable to Darcy's Law.
 
 It is possible to calculate each of these properties for a fluid at every time step and for each cell in a reservoir. Indeed this is how a fully compositional simulator operates, with the fluid properties for at each time-step and in each reservoir cell determined according to a 'flash' calculation. In a modified black-oil simulation approach, given that many cells will have similar pressure and temperature for a consistent composition, the variation in properties can be expected to be linear and smooth as pressure varies. This means that usually the fluid property values are pre-calculated and provided to the simulator in the form of PVT look-up tables (LUT) over the pressure range of interest at reservoir temperature. In addition, the gas density at standard conditions must be supplied in order to calculate the gas FVF at any pressure.
 
@@ -119,8 +119,8 @@ V<sub>m</sub> = Molar volume, the volume of one mole of gas or liquid = V / n
 
 The modifications to the ideal gas law are two-fold and address the neglect of molecular size and intermolecular forces in the ideal gas law:
 
-1.  It is conceptualised that molecules occupy a small volume and are not infinitessimal small points. Therefore there is an adjustment 'b' to the volume applied to subtract the space occupied by the molecules themselves. This parameter is often referred to as the co-volume and is included in a “repulsion” term since it reflects a physical reasoning that molecules will repulse each other if they are too close -- this is the behaviour of an incompressible liquid.
-2.  Unlike in an ideal gas, molecules within a real gas will exert an attractive force on each other. This phenomenon manifests itself as a reduction in the pressure on the outer surface of a gas volume. Thus the effective pressure applicable to the ideal gas law is is increased by adding an "attractive" term = a / V<sub>m</sub><sup>2</sup> where 'a' is referred to as the energetic parameter.
+ 1. It is conceptualised that molecules occupy a small volume and are not infinitessimal small points. Therefore there is an adjustment 'b' to the volume applied to subtract the space occupied by the molecules themselves. This parameter is often referred to as the co-volume and is included in a “repulsion” term since it reflects a physical reasoning that molecules will repulse each other if they are too close -- this is the behaviour of an incompressible liquid.
+ 2. Unlike in an ideal gas, molecules within a real gas will exert an attractive force on each other. This phenomenon manifests itself as a reduction in the pressure on the outer surface of a gas volume. Thus the effective pressure applicable to the ideal gas law is is increased by adding an "attractive" term = a / V<sub>m</sub><sup>2</sup> where 'a' is referred to as the energetic parameter.
 
 For both the repulsive and attractive modifications, at high temperature and low pressure, where molecules in the gas are further apart and thus the gas has a large molecular volume, we note that (V<sub>m</sub> - b) ≈ V<sub>m</sub> since V<sub>m</sub> >> b, and (a / V<sub>m</sub><sup>2</sup>) ≈ 0. Therefore the equation reduces to the ideal gas law.
 
@@ -206,20 +206,20 @@ For the Pyrus approach a modification to the Peng-Robinson (1976) approach has b
 
 The [binary interaction parameters between pure components are set using the group contribution method outlined by Jaubert and Mutelet (2004)](https://www.researchgate.net/publication/232396448_VLE_Predictions_With_the_Peng-Robinson_Equation_of_State_and_Temperature_Dependent_kij_Calculated_Through_a_Group_Contribution_Method#read). This approach assigns physical meaning to the interaction parameters depending on the types of molecular groups that are present in the component. The k<sub>ij</sub> binary interaction parameters are temperature dependent and are predicted using the decomposition of the mixture into different molecular groups that make up each component in the composition. The group components that are implemented in this EOS are:
 
--    **-CH<sub>3</sub>:** Single carbon and three hydrogen as part of a paraffinic chain.
--    **>CH<sub>2</sub>:** Single carbon and two hydrogen as part of a paraffinic chain.
--    **>CH-:** Single carbon and single hydrogen as part of a paraffinic chain.
--    **>C<:** Single carbon as part of a paraffinic chain.
--    **CH<sub>4</sub>:** Methane.
--    **C<sub>2</sub>H<sub>6</sub>:** Ethane.
--    **=CH<sub>aro</sub>:** Single carbon and single hydrogen as part of an aromatic ring.
--    **=C<sub>aro</sub>:** Single carbon as part of an aromatic ring.
--    **>CH<sub>2,cyclic</sub>:** Single carbon and two hydrogen as part of a cyclic ring.
--    **>CH<sub>cyclic</sub>-:** Single carbon and single hydrogen as part of a cyclic ring.
--    **>C<sub>cyclic</sub><:** Single carbon as part of a cyclic ring.
--    **CH<sub>2</sub>:** Carbon dioxide.
--    **N<sub>2</sub>:** Nitrogen.
--    **H<sub>2</sub>S:** Hydrogen sulphide.
+ - **-CH<sub>3</sub>:** Single carbon and three hydrogen as part of a paraffinic chain.
+ - **>CH<sub>2</sub>:** Single carbon and two hydrogen as part of a paraffinic chain.
+ - **>CH-:** Single carbon and single hydrogen as part of a paraffinic chain.
+ - **>C<:** Single carbon as part of a paraffinic chain.
+ - **CH<sub>4</sub>:** Methane.
+ - **C<sub>2</sub>H<sub>6</sub>:** Ethane.
+ - **=CH<sub>aro</sub>:** Single carbon and single hydrogen as part of an aromatic ring.
+ - **=C<sub>aro</sub>:** Single carbon as part of an aromatic ring.
+ - **>CH<sub>2,cyclic</sub>:** Single carbon and two hydrogen as part of a cyclic ring.
+ - **>CH<sub>cyclic</sub>-:** Single carbon and single hydrogen as part of a cyclic ring.
+ - **>C<sub>cyclic</sub><:** Single carbon as part of a cyclic ring.
+ - **CO<sub>2</sub>:** Carbon dioxide.
+ - **N<sub>2</sub>:** Nitrogen.
+ - **H<sub>2</sub>S:** Hydrogen sulphide.
 
 For defined compounds the breakdown of a component into its groups is straightforward. For example, the paraffin nC4 (n-butane) with the chemical composition C<sub>4</sub>H<sub>10</sub> is represented as:
 
