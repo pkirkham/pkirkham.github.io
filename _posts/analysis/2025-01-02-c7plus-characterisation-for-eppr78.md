@@ -4,7 +4,7 @@ title: Applying Group Contribution Methods to C7+ Fraction
 modified:
 categories: analysis
 excerpt: Application of the EPPR78 group contribution method to C7+ component characterisation.
-tags: [fluid_properties, plus_fraction, plus_fraction_characterisation, eos, pvt, pna, scn, eppr78, group_contribution, cubic_eos]
+tags: [fluid_properties, plus_fraction, plus_fraction_characterisation, eos, pvt, pna, scn, eppr78, group_contribution, cubic_eos, volve]
 image:
   feature: feature-group-contribution-c7plus-1024x256.jpg
   teaser: teaser-group-contribution-c7plus-400x250.jpg
@@ -233,7 +233,7 @@ A worked example based on the Katz-Firoozabadi C9 fraction is shown. This Katz-F
  - **MW:** 121.0 g/mole
  - **SG:** 0.768&times; relative to water
 
-Properties for other variables are derived from these values in accordance with the [approach used for C7+ characterisation]({{ site.url}}/analysis/c7plus-characterisation-with-pna/) but with [updated methodology for determining PNA fractions]({{ site.url}}/analysis/revisiting-carbon-numbers/). Boiling point is determined using the Soreide (1989) correlation. This allows Watson factor to be calculated from boiling point and API gravity (obtained from specific gravity). Critical temperature, pressure and volume can be determined from correlations such as Riazi-Adwani and Two. Acentric factor is determined from the Kesler-Lee correlation. We can determine PNA fractions based on these values, and then from the MW, SG and PNA, the average number of carbon atoms can be calculated. Note that the single carbon number (SCN) which is the normal paraffin associated with the true boiling point is different to the average number of carbon atoms, and can be determined from the boiling point.
+Properties for other variables are derived from these values in accordance with the [approach used for C7+ characterisation]({{ site.url}}/analysis/c7plus-characterisation-with-pna/) but with [updated methodology for determining PNA fractions]({{ site.url}}/analysis/revisiting-carbon-numbers/). Boiling point is determined using the Soreide (1989) correlation. This allows Watson factor to be calculated from boiling point and API gravity (obtained from specific gravity). Critical temperature, pressure and volume can be determined from correlations such as Riazi-Adwani and Twu. Acentric factor is determined from the Kesler-Lee correlation. We can determine PNA fractions based on these values, and then from the MW, SG and PNA, the average number of carbon atoms can be calculated. Note that the single carbon number (SCN) which is the normal paraffin associated with the true boiling point is different to the average number of carbon atoms, and can be determined from the boiling point.
 
 For the Katz-Firoozabadi C9 fraction the following parameters are obtained through use of the characterisation procedure:
 
