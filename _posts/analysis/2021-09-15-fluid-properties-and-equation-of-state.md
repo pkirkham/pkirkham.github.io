@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Fluid Properties and Equation of State
-modified: 2024-12-28
+modified: 2025-01-03
 categories: analysis
 excerpt: Properties required for reservoir simulation and the basis for the cubic equation of state applied to predict them.
 tags: [static_modelling, fluid_properties, density, formation_volume_factor, viscosity, equation_of_state, ppr78]
@@ -160,18 +160,18 @@ The EoS constants are given by:
 
 ![a=a_{c}\cdot{\alpha}](https://math.now.sh?from=a=a_{c}\cdot{\alpha} &color=black)
 
-![a_{c}=\Omega_{a}\cdot{\frac{R^2{T_{c}}^2}{P_{c}}}](https://math.now.sh?from=a=\Omega_{a}\cdot{\frac{R^2{T_{c}}^2}{P_{c}}}\alpha &color=black)
+![a_%7Bc%7D=%5COmega_%7Ba%7D%5Ccdot%7B%5Cfrac%7BR%5E2%7BT_%7Bc%7D%7D%5E2%7D%7BP_%7Bc%7D%7D%7D](https://latex.codecogs.com/svg.image?a_%7Bc%7D=%5COmega_%7Ba%7D%5Ccdot%7B%5Cfrac%7BR%5E2%7BT_%7Bc%7D%7D%5E2%7D%7BP_%7Bc%7D%7D%7D)
 
-![b=\Omega_{b}\cdot{\frac{RT_{c}}{P_{c}}}](https://math.now.sh?from=b=\Omega_{b}\cdot{\frac{RT_{c}}{P_{c}}} &color=black)
+![b=%5COmega_%7Bb%7D%5Ccdot%7B%5Cfrac%7BRT_%7Bc%7D%7D%7BP_%7Bc%7D%7D%7D](https://latex.codecogs.com/svg.image?b=%5COmega_%7Bb%7D%5Ccdot%7B%5Cfrac%7BRT_%7Bc%7D%7D%7BP_%7Bc%7D%7D%7D)
 
 Where:
 
-Ω<sub>a</sub> ≈ 0.457235528921382<br>
-Ω<sub>b</sub> ≈ 0.0777960739038884<br>
+&Omega;<sub>a</sub> ≈ 0.457235528921382<br>
+&Omega;<sub>b</sub> ≈ 0.0777960739038884<br>
 a<sub>c</sub> = Energetic parameter 'a' at critical temperature<br>
-α = Temperature dependent α-function.
+&alpha; = Temperature dependent α-function.
 
-![\alpha=\left[1+m\left(1-\sqrt{T_{r}}\right)\right]^2](https://math.now.sh?from=\alpha=\left[1+m\left(1-\sqrt{T_{r}}\right)\right]^2 &color=black)<br>
+![%5Calpha=%5Cleft%5B1&plus;m%5Cleft(1-%5Csqrt%7BT_%7Br%7D%7D%5Cright)%5Cright%5D%5E2](https://latex.codecogs.com/svg.image?%5Calpha=%5Cleft%5B1&plus;m%5Cleft(1-%5Csqrt%7BT_%7Br%7D%7D%5Cright)%5Cright%5D%5E2)<br>
 ![m=0.37464+1.54226\omega-0.26992\omega^2](https://math.now.sh?from=m%3D0.37464%2B1.54226%5Comega-0.26992%5Comega%5E2 &color=black)
 
 Or for heavier components with (ω > 0.49):
