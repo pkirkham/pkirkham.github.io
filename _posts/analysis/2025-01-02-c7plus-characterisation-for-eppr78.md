@@ -387,7 +387,7 @@ private void setPNAGroups(double[] pna, double normal) {
     a_caro[1] = a_charo[1] - (ac_branch / 10.0 + 4.0) / acn;
     a_cfused[1] = max(0.0, 1.0 - (a_ch3[1] + a_ch2[1] + a_ch[1] + a_c[1] + a_charo[1] + a_caro[1]));
     double a_grpsum = a_ch3[1] + a_ch2[1] + a_ch[1] + a_c[1] + a_charo[1] + a_caro[1] + a_cfused[1];
-    double monofrac = x_ma / (x_ma + x_pa);
+    double monofrac = (x_ma + x_pa) > 0.0 ? x_ma / (x_ma + x_pa) : 1.0;
 
     // Average fractions for each group contribution from aromatics
     a_ch3[2] = a_ch3[0] * monofrac + (a_ch3[1] / a_grpsum) * (1.0 - monofrac);
@@ -440,7 +440,7 @@ The composition of bottom hole sample #1 (BHS #1) is as follows:
 
 Here the C+MW and C+GAMMA are the molecular weight and specific gravity of the C7+ fraction respectively.
 
-The composition can be used with the Peng-Robinson cubic equation of state. The resultant phase envelope does not match the laboratory-measured bubble point. By switching to the EPPR78 equation of state, there is an improvement in the bubble point prediction. However, this is still not a good match. The distillation data from the Volve dataset shows that the aromatic content is actually higher than that implied by the MW and SG for the C7+ fraction. Given the the mass chromotograph is more likely to measure the weight% for the C7+ fraction more accurately than the density (which is inferred from a Katz-Firboozabadi calcuation/assumption), we can adjust the PNA to match the measured aromatic content of 35.2%. This inxreases the specific gravity to 0.8601, and leads to a closer match with the measured bubble point.
+The composition can be used with the Peng-Robinson cubic equation of state. The resultant phase envelope does not match the laboratory-measured bubble point. By switching to the EPPR78 equation of state, there is an improvement in the bubble point prediction. However, this is still not a good match. The distillation data from the Volve dataset shows that the aromatic content is actually higher than that implied by the MW and SG for the C7+ fraction. Given the the mass chromotograph is more likely to measure the weight% for the C7+ fraction more accurately than the density (which is inferred from a Katz-Firboozabadi calcuation/assumption), we can adjust the PNA to match the measured aromatic content of 35.2%. This increases the specific gravity to 0.8601, and leads to a closer match with the measured bubble point.
 
 Ideally, no tuning for an equation of state would be necessary with a perfect model. However, this is not yet reasonable, and many compositions require a small amount of tuning. By using the EPPR78 and adjusting the C7+ specific gravity to match the PNA fractions, the amount of tuning required in comparison to the vanilla Peng-Robinson equation of state is greatly reduced.
 
