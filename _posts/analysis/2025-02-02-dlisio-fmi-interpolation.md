@@ -80,12 +80,14 @@ for fn in filenames:
     print(os.path.exists(fn))
 ```
 
-    Pasca A4(AD-1) Schlumberger FMI (Main Pass 8,131'-8,577') DLIS.dlis
-    True
-    Pasca_A4(AD-1)_SLB_S2R8_FMI_MainPass_Static_Processed_Image_data.dlis
-    True
-    Pasca_A4(AD-1)_SLB_S2R8_FMI_MainPass_Dynamic_Processed_Image_data.dlis
-    True
+<pre>
+Pasca A4(AD-1) Schlumberger FMI (Main Pass 8,131'-8,577') DLIS.dlis
+True
+Pasca_A4(AD-1)_SLB_S2R8_FMI_MainPass_Static_Processed_Image_data.dlis
+True
+Pasca_A4(AD-1)_SLB_S2R8_FMI_MainPass_Dynamic_Processed_Image_data.dlis
+True
+</pre>
 
 The files are found in the working directory and can now be passed to `dislio` to load the data. First we will examine the structure of the files.
 
@@ -97,83 +99,85 @@ for fn in filenames:
             print(f.describe())
 ```
 
-    Data contained in file: " Pasca A4(AD-1) Schlumberger FMI (Main Pass 8,131'-8,577') DLIS.dlis "
-    
-    ------------
-    Logical File
-    ------------
-    Description : LogicalFile(ConCu_R09_L002Up_FBST_HNGC_HNGS_HGNS)
-    Frames      : 4
-    Channels    : 8
-    
-    Known objects
-    --
-    FRAME       : 4
-    CHANNEL     : 8
-    FILE-HEADER : 1
-    PARAMETER   : 339
-    ORIGIN      : 5
-    
-    
-    ------------
-    Logical File
-    ------------
-    Description : LogicalFile(EID)
-    Frames      : 1
-    Channels    : 7
-    
-    Known objects
-    --
-    FRAME       : 1
-    TOOL        : 1
-    CHANNEL     : 7
-    FILE-HEADER : 1
-    PROCESS     : 1
-    PARAMETER   : 366
-    ORIGIN      : 2
-    
-    
-    Data contained in file: " Pasca_A4(AD-1)_SLB_S2R8_FMI_MainPass_Static_Processed_Image_data.dlis "
-    
-    ------------
-    Logical File
-    ------------
-    Description : LogicalFile(EID)
-    Frames      : 1
-    Channels    : 21
-    
-    Known objects
-    --
-    FRAME       : 1
-    TOOL        : 1
-    CHANNEL     : 21
-    FILE-HEADER : 1
-    PROCESS     : 1
-    PARAMETER   : 366
-    AXIS        : 2
-    ORIGIN      : 2
-    
-    
-    Data contained in file: " Pasca_A4(AD-1)_SLB_S2R8_FMI_MainPass_Dynamic_Processed_Image_data.dlis "
-    
-    ------------
-    Logical File
-    ------------
-    Description : LogicalFile(EID)
-    Frames      : 1
-    Channels    : 21
-    
-    Known objects
-    --
-    FRAME       : 1
-    TOOL        : 1
-    CHANNEL     : 21
-    FILE-HEADER : 1
-    PROCESS     : 1
-    PARAMETER   : 366
-    AXIS        : 2
-    ORIGIN      : 2
-    
+<pre>
+Data contained in file: " Pasca A4(AD-1) Schlumberger FMI (Main Pass 8,131'-8,577') DLIS.dlis "
+
+------------
+Logical File
+------------
+Description : LogicalFile(ConCu_R09_L002Up_FBST_HNGC_HNGS_HGNS)
+Frames      : 4
+Channels    : 8
+
+Known objects
+--
+FRAME       : 4
+CHANNEL     : 8
+FILE-HEADER : 1
+PARAMETER   : 339
+ORIGIN      : 5
+
+
+------------
+Logical File
+------------
+Description : LogicalFile(EID)
+Frames      : 1
+Channels    : 7
+
+Known objects
+--
+FRAME       : 1
+TOOL        : 1
+CHANNEL     : 7
+FILE-HEADER : 1
+PROCESS     : 1
+PARAMETER   : 366
+ORIGIN      : 2
+
+
+Data contained in file: " Pasca_A4(AD-1)_SLB_S2R8_FMI_MainPass_Static_Processed_Image_data.dlis "
+
+------------
+Logical File
+------------
+Description : LogicalFile(EID)
+Frames      : 1
+Channels    : 21
+
+Known objects
+--
+FRAME       : 1
+TOOL        : 1
+CHANNEL     : 21
+FILE-HEADER : 1
+PROCESS     : 1
+PARAMETER   : 366
+AXIS        : 2
+ORIGIN      : 2
+
+
+Data contained in file: " Pasca_A4(AD-1)_SLB_S2R8_FMI_MainPass_Dynamic_Processed_Image_data.dlis "
+
+------------
+Logical File
+------------
+Description : LogicalFile(EID)
+Frames      : 1
+Channels    : 21
+
+Known objects
+--
+FRAME       : 1
+TOOL        : 1
+CHANNEL     : 21
+FILE-HEADER : 1
+PROCESS     : 1
+PARAMETER   : 366
+AXIS        : 2
+ORIGIN      : 2
+</pre>
+
 It can be seen that each DLIS file contains logical files, each of which in turn contain "frames" and "channels". The immediate question I had was, "so where is the data"? Is it in a frame or a channel? What are the parameters?
 
 More information on the DLIS format ([RP66 V1](https://energistics.org/sites/default/files/RP66/V1/Toc/main.html)) specification was originally proposed to the American Petroleum Institute (API) by Schlumberger and then passed to the Petrotechnical Open Software Corporation (POSC) in June 1998. In the Pyrus suite I've written code to read and write SEG-Y seismic data, LAS well log data, a lexer/parser fro the ECLIPSE reservoir simulation language, code to translate between different raster image formats such as TIFF, PNG, JPG, Vidar Binary (very obscure) etc. I look at the DLIS specification and my first thought is, "but why"?! Suffice to say it feels like a sledgehammer looking for a nail where a simple flathead screwdriver would have been fine.
@@ -189,48 +193,50 @@ with dlis.load(filenames[0]) as files:
             print(o.describe())
 ```
 
-    ------
-    Origin
-    ------
-    name   : WELL-PascaA4(AD-1)
-    origin : 98
-    copy   : 0
-    
-    Logical file ID          : ConCu_R09_L002Up_FBST_HNGC_HNGS_HGNS
-    File set name and number : CONCU_R09_L002UP_FBST_HNGC_HNGS_HGNS / 1
-    File number and type     : 0 / CUSTOMER
-    
-    Field                   : Pasca A
-    Well (id/name)          :  / PascaA4(AD-1)
-    Produced by (code/name) : 440 / Schlumberger
-    Produced for            : Twinza Oil PNG Ltd
-    Created                 : 2017-12-15 18:16:02
-    
-    Created by              : Techlog, (version: 2017.1 (rev: 210977))
-    Other programs/services : WELL-PascaA4(AD-1)
-    
-    
-    ------
-    Origin
-    ------
-    name   : DATASET-FMI_8_GF_2477-2614m_New_Img_Dynamic
-    origin : 99
-    copy   : 0
-    
-    Logical file ID          : ConCu_R09_L002Up_FBST_HNGC_HNGS_HGNS
-    File set name and number : CONCU_R09_L002UP_FBST_HNGC_HNGS_HGNS / 1
-    File number and type     : 0 / CUSTOMER
-    
-    Field                   : Pasca A
-    Well (id/name)          :  / PascaA4(AD-1)
-    Produced by (code/name) : 440 / Schlumberger
-    Produced for            : Twinza Oil PNG Ltd
-    Created                 : 2017-12-15 18:16:02
-    
-    Created by              : Techlog, (version: 2017.1 (rev: 210977))
-    Other programs/services : DATASET-FMI_8_GF_2477-2614m_New_Img_Dynamic
-    
-    === <snip> ===
+<pre>
+------
+Origin
+------
+name   : WELL-PascaA4(AD-1)
+origin : 98
+copy   : 0
+
+Logical file ID          : ConCu_R09_L002Up_FBST_HNGC_HNGS_HGNS
+File set name and number : CONCU_R09_L002UP_FBST_HNGC_HNGS_HGNS / 1
+File number and type     : 0 / CUSTOMER
+
+Field                   : Pasca A
+Well (id/name)          :  / PascaA4(AD-1)
+Produced by (code/name) : 440 / Schlumberger
+Produced for            : Twinza Oil PNG Ltd
+Created                 : 2017-12-15 18:16:02
+
+Created by              : Techlog, (version: 2017.1 (rev: 210977))
+Other programs/services : WELL-PascaA4(AD-1)
+
+
+------
+Origin
+------
+name   : DATASET-FMI_8_GF_2477-2614m_New_Img_Dynamic
+origin : 99
+copy   : 0
+
+Logical file ID          : ConCu_R09_L002Up_FBST_HNGC_HNGS_HGNS
+File set name and number : CONCU_R09_L002UP_FBST_HNGC_HNGS_HGNS / 1
+File number and type     : 0 / CUSTOMER
+
+Field                   : Pasca A
+Well (id/name)          :  / PascaA4(AD-1)
+Produced by (code/name) : 440 / Schlumberger
+Produced for            : Twinza Oil PNG Ltd
+Created                 : 2017-12-15 18:16:02
+
+Created by              : Techlog, (version: 2017.1 (rev: 210977))
+Other programs/services : DATASET-FMI_8_GF_2477-2614m_New_Img_Dynamic
+
+... etc. ...
+</pre>
 
 ### Load the processed FMI DLIS logs
 
@@ -246,11 +252,56 @@ lf, *tail = dlis.load(filenames[2])
 file.append(lf)
 ```
 
-Our next step is to find where the data resides within the DLIS file.
+Our next step is to find where the data resides within the DLIS file. To do this we need to look into the DLIS file and examine its structure and contents.
+
+## Examine the data
+
+Define a utility method that will simply assemble all variables associated with an object into a table and list them using a pandas DataFrame. This is useful to quickly see what data is in the file.
+
+
+```python
+def summarize(objs, **kwargs):
+    """
+    Create a pd.DataFrame that summarizes the content of 'objs', one object per row.
+    
+    Parameters
+    ----------
+    
+    objs : list()
+        list of metadata objects
+        
+    **kwargs
+        Keyword arguments 
+        Use kwargs to tell summarize() which fields (attributes) of the objects you want to include in the DataFrame. 
+        The parameter name must match an attribute on the object in 'objs', while the value of the parameters is used
+        as a column name. Any kwargs are excepted, but if the object does not have the requested attribute, 'KeyError' 
+        is used as the value.
+        
+    Returns
+    -------
+    
+    summary : pd.DataFrame
+    """
+    summary = []
+    for attr, label in kwargs.items():
+        column = []
+        for obj in objs:
+            try:
+                value = getattr(obj, attr)
+            except AttributeError:
+                value = 'KeyError'
+            except ValueError:
+                value = 'Array'
+            column.append(value)
+        summary.append(column)
+    summary = pd.DataFrame(summary).T
+    summary.columns = kwargs.values()
+    return summary
+```
 
 ### List out parameters
 
-There are 339 parameters for our static DLIS log are shown. Here the `summarize` method is a utility method that assembles all variables associated with an object into a table and lists them using a pandas DataFrame. Because there are so many parameters, we filter them to a selected few so that we can see their values.
+There are 339 parameters for our static DLIS log, and in the interests of brevity not all are shown in this post. Here the `summarize` method is a utility method that assembles all variables associated with an object into a table and lists them using a pandas DataFrame, as shown in the previous section. Because there are so many parameters, we filter them to a selected few so that we can see their values.
 
 ```python
 desc_parameters = ['CN', 'WN', 'FN',                                     # Well ID
@@ -305,23 +356,25 @@ for f in file:
         print('\n')
 ```
 
-    Frame Name: 		 B34276
-    Index Type: 		 BOREHOLE-DEPTH
-    Depth Interval: 	 8127.008333333333 - 8578.533333333327 ft
-    Depth Spacing: 		 -0.008333333333333226 ft
-    Direction: 		 DECREASING
-    Num of Channels: 	 21
-    Channel Names: 		 [Channel(TDEP), Channel(ASSOC_CAL), Channel(BS), Channel(C1), Channel(C2), Channel(DEVI), Channel(FLAP_1), Channel(FLAP_2), Channel(FLAP_3), Channel(FLAP_4), Channel(FMI_STA), Channel(GR), Channel(HAZI), Channel(P1AZ), Channel(P1NO), Channel(PAD_1), Channel(PAD_2), Channel(PAD_3), Channel(PAD_4), Channel(RB), Channel(SDEV)]
-    
-    
-    Frame Name: 		 B34276
-    Index Type: 		 BOREHOLE-DEPTH
-    Depth Interval: 	 8127.008333333333 - 8578.533333333327 ft
-    Depth Spacing: 		 -0.008333333333333226 ft
-    Direction: 		 DECREASING
-    Num of Channels: 	 21
-    Channel Names: 		 [Channel(TDEP), Channel(ASSOC_CAL), Channel(BS), Channel(C1), Channel(C2), Channel(DEVI), Channel(FLAP_1_DYN), Channel(FLAP_2_DYN), Channel(FLAP_3_DYN), Channel(FLAP_4_DYN), Channel(FMI_DYN), Channel(GR), Channel(HAZI), Channel(P1AZ), Channel(P1NO), Channel(PAD_1_DYN), Channel(PAD_2_DYN), Channel(PAD_3_DYN), Channel(PAD_4_DYN), Channel(RB), Channel(SDEV)]
-    
+<pre>
+Frame Name: 		 B34276
+Index Type: 		 BOREHOLE-DEPTH
+Depth Interval: 	 8127.008333333333 - 8578.533333333327 ft
+Depth Spacing: 		 -0.008333333333333226 ft
+Direction: 		 DECREASING
+Num of Channels: 	 21
+Channel Names: 		 [Channel(TDEP), Channel(ASSOC_CAL), Channel(BS), Channel(C1), Channel(C2), Channel(DEVI), Channel(FLAP_1), Channel(FLAP_2), Channel(FLAP_3), Channel(FLAP_4), Channel(FMI_STA), Channel(GR), Channel(HAZI), Channel(P1AZ), Channel(P1NO), Channel(PAD_1), Channel(PAD_2), Channel(PAD_3), Channel(PAD_4), Channel(RB), Channel(SDEV)]
+
+
+Frame Name: 		 B34276
+Index Type: 		 BOREHOLE-DEPTH
+Depth Interval: 	 8127.008333333333 - 8578.533333333327 ft
+Depth Spacing: 		 -0.008333333333333226 ft
+Direction: 		 DECREASING
+Num of Channels: 	 21
+Channel Names: 		 [Channel(TDEP), Channel(ASSOC_CAL), Channel(BS), Channel(C1), Channel(C2), Channel(DEVI), Channel(FLAP_1_DYN), Channel(FLAP_2_DYN), Channel(FLAP_3_DYN), Channel(FLAP_4_DYN), Channel(FMI_DYN), Channel(GR), Channel(HAZI), Channel(P1AZ), Channel(P1NO), Channel(PAD_1_DYN), Channel(PAD_2_DYN), Channel(PAD_3_DYN), Channel(PAD_4_DYN), Channel(RB), Channel(SDEV)]
+</pre>
+
 This reveals that there are 21 channels, and their names, each in frame B34276 for the static FMI and dynamic FMI files. Data is from 8,127.0083 ft to 8,578.5333 ft, in 0.0083 ft intervals. This is 120 intervals per foot, or 0.1 inch per depth interval. This is a much higher resolution than typical wireline logging data from a triple-combo tool.
 
 Of interest are the "FMI_STA" and "FMI_DYN" channels. Let's take a closer look at these channels:
@@ -358,7 +411,7 @@ channel_table.sort_values('Channel Name')
 
 This shows that the "FMI_STA" channel is an array containing 360 data values for each depth interval. A similar result is obtained when inspecting the dynamic FMI data file (not shown).
 
-### Assemble the data
+## Assemble the data
 
 We now know that we are looking for channel FMI_STA in frame 'B34276' in the static FMI DLIS file, and for channel FMI_DYN in frame 'B34276' in the dynamic FMI DLIS file. There are 360 data values per depth point, which corresponds to a 360&deg; borehole image, with one pixel per degree. Let's now access the data associated with those channels.
 
@@ -422,23 +475,25 @@ for i in range(2):
     print('\n')
 ```
 
-    Shape of depth index curve array: 	 (54184,)
-    Shape of FMI curve array:	 (54184, 360)
-    Name: 		FMI_STA
-    Long Name: 	FMI static processed image array (North orientated)
-    Units: 		
-    Properties: 	[]
-    Dimension: 	[360]
-    
-    
-    Shape of depth index curve array: 	 (54184,)
-    Shape of FMI curve array:	 (54184, 360)
-    Name: 		FMI_DYN
-    Long Name: 	FMI dynamic processed image array (North orientated)
-    Units: 		
-    Properties: 	[]
-    Dimension: 	[360]
-    
+<pre>
+Shape of depth index curve array: 	 (54184,)
+Shape of FMI curve array:	 (54184, 360)
+Name: 		FMI_STA
+Long Name: 	FMI static processed image array (North orientated)
+Units: 		
+Properties: 	[]
+Dimension: 	[360]
+
+
+Shape of depth index curve array: 	 (54184,)
+Shape of FMI curve array:	 (54184, 360)
+Name: 		FMI_DYN
+Long Name: 	FMI dynamic processed image array (North orientated)
+Units: 		
+Properties: 	[]
+Dimension: 	[360]
+</pre>
+
 We have successfully identified the data. Each static and dynamic curve contains 54,184 &times; 360 values. The next step is to try to plot the data so we can check that it has been read in correctly.
 
 ## Plot the data
@@ -549,7 +604,6 @@ A a number of test variations from our original cropped image are created:
 2. **fmi_interp**: This is a basic straight line interpolation between the pad data.
 3. **fmi_compress**: Omits the missing data and then resamples the remaining data so that it all has the same width. This contains data with the same frequencies, but because the length of the data is changed, the positional location of features would be altered.
 4. **fmi_fill**: An alternative technique which mirrors existing data into the gaps. This creates new data with (hopefully) similar or the same frequency content whilst preserving the length of the data.
-
 
 ```python
 # Set max depth for testing cropped image of delta_d == 0.4 ft
