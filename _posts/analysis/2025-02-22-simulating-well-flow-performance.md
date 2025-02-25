@@ -482,9 +482,16 @@ There are two main inputs that are needed:
  1. Accurate description of the wellbore geometry. This includes the trajectory, tubing and casing sizes and lengths. At a minimum, for every depth point, the casing diameter for the innermost casing string that is cemented and the pipe diameter in which flow is taking place (typically tubing) is required.
  2. Description of the reservoir fluids produced into the wellbore. We use a modified black-oil model where the reservoir gas can contain vaporised oil that condenses as pressure and temperature drops below dewpoint, and the reservoir oil can contain solution gas which effervesces as pressure and temperature drops below bubblepoint. Hydrocarbons must be described compositionally as a cubic equation of state is used to flash the produced hydrocarbons at the temperature and pressure in each pipe segment. If composition is not available, it can be estimated using the [genetic algorithm composition estimation tool]({{ site.url }}/analysis/composition-creation/) in Pyrus. The water properties are also needed.
 
-The algorithm used breaks the wellbore down into approximately 100 ft pipe segments. The first segment considered is at the perforations depth. The pressure is the FBHP needed to achieve the desired production rate, and the temperature is the reservoir temperature (gas may need to be adjusted for Joule-Thomson effect).
+<figure>
+	<a href="{{ site.url }}/images/Analysis/multiphase-pipe-flow/figure7.png" data-lightbox="image-7" data-title="Illustrated flowchart of calculation steps for pressure and temperature change in each pipe segement.">
+		<img src="{{ site.url }}/images/Analysis/multiphase-pipe-flow/figure7.png" alt="Illustrated flowchart of calculation steps for pressure and temperature change in each pipe segement."/>
+	</a>
+	<figcaption><strong>Figure 7: Illustrated flowchart of calculation steps for pressure and temperature change in each pipe segement.</strong></figcaption>
+</figure>
 
-Fluid properties are determined for the liquid and vapour phases. The vapour phase comprises the average properties determined for the flashed gas and solution gas, and the liquid phase comprises the average properties determined for the flashed oil and vaporised oil plus water.
+The algorithm used breaks the wellbore down into approximately 100 ft pipe segments. Figure 7 shows the calculation steps for each segment. The first segment considered is at the perforations depth. The pressure is the FBHP needed to achieve the desired production rate, and the temperature is the reservoir temperature (gas may need to be adjusted for Joule-Thomson effect).
+
+Fluid properties are determined for two combined liquid and vapour phases. The vapour phase comprises the average properties determined for the flashed gas and solution gas, and the liquid phase comprises the average properties determined for the flashed oil and vaporised oil plus water.
 
 Using the classical or fundamental approach, the hydrostatic, frictional and kinetic pressure gradients are determined. These are added up and multiplied by the pipe segment length to obtain the pressure differential (usually a loss in pressure), from which the outlet pressure is calculated.
 
