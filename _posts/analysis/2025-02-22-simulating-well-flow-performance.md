@@ -13,29 +13,37 @@ comments: false
 mathjax: true
 ---
 
-To analytically assess the production rate obtained from a well requires both and understanding of the inflow performance relationship (IPR) that governs from a reservoir into a wellbore for a given pressure drawdown, and the vertical lift performance (VLP) of fluids that can flow up the wellbore tubing for a given downhole and tubing head pressure differential. The combination of the two is known as "nodal analysis" as it seeks to identify the pressure at the bottom hole node where the IPR and VLP flow rates match.
+To analytically assess the production rate obtained from a well requires both an understanding of the inflow performance relationship (IPR) that governs from a reservoir into a wellbore for a given pressure drawdown, and the vertical lift performance (VLP) of fluids that can flow up the wellbore tubing for a given downhole and tubing head pressure differential. The combination of IPR and VLP is known as "nodal analysis" as it seeks to identify the pressure at the bottom hole node where the IPR and VLP flow rates match.
 
-Generating a VLP curve that describes the variation in bottom hole pressure required to achieve different flow rates in a well is non-trivial. It can be done by hand, or more conveniently in a simple spreadsheet, but this approach often relies on fluid property correlations and simplifying assumptions, which can add inaccuracies into the results obtained. From the very early days of computing, this was a problem that was perhaps better tackled via a dedicated progam. The [early days of PIPESIM](https://www.linkedin.com/pulse/pipesim-story-from-early-years-colin-watters-previous-heum-i6haf/) is a fascinating look into the origins of one commercial industry solution. Naturally, writing your own pipe flow program is a challenge that I couldn't resist.
+Generating a VLP curve that describes the variation in bottom hole pressure required to achieve different flow rates in a well is non-trivial. It can be done by hand, or more conveniently in a simple spreadsheet, but this approach often relies on fluid property correlations and simplifying assumptions, which can add inaccuracies into the results obtained. From the very early days of computing, this was a problem that was perhaps better tackled via a dedicated progam. The [early days of PIPESIM](https://www.linkedin.com/pulse/pipesim-story-from-early-years-colin-watters-previous-heum-i6haf/) is a fascinating look into the origins of one commercial industry solution to this problem. Naturally, writing your own pipe flow program is a challenge that I couldn't resist.
 
-How should one approach this problem? Flow of multiphase fluids in pipe is a problem encountered in many different fields, not just oil and gas. There is a wealth of research and literature on the subject. For better or worse, within the oil industry what I will describe as a "classical" approach has emerged. The classical approach is largely empirical in nature, and in fairness, if it works there shouldn't be a problem. The issue is that the oil industry appears to have ventured down a path of ever increasing complexity, where models have become more sophisticated, and the software costs have risen in tandem. In the process, the tools have become black boxes. A colleague related a story to me where an E&P contractor had run into an issue with "vapour lock" predicted by one of the commercial software tools, although there was no physical expectation of that occuring in the scenario being modelling. Apparently this caused huge issues because no-one was able to challenge the software result, and they needed to resolve the problem in a different way at higher cost.
+How should one approach this problem? Flow of multiphase fluids in pipe is a problem encountered in many different fields, not just oil and gas. There is a wealth of research and literature on the subject. For better or worse, within the oil industry what I will describe as a "classical" approach has emerged. The classical approach is largely empirical in nature, and in fairness, if it works there shouldn't be a problem. The issue is that the oil industry appears to have ventured down a path of ever increasing complexity, where models have become more sophisticated, and the software costs have risen in tandem. In the process, the tools have become black boxes. A colleague related a story to me where an E&P contractor had run into an issue with "vapour lock" predicted by one of the commercial software tools, although there was no physical expectation of that occuring in the scenario being modelled. Apparently this caused huge issues because no-one was able to challenge the software result, and their team had to resort to solving the problem in a different way, and at higher cost.
 
-Recently, I came across a [PhD dissertation by Dr. Anand Nagoo](http://hdl.handle.net/2152/65197) which flipped this whole approach on its head. Approaching the problem from a fundamental first principles approach, Nagoo proposes a simpler analytical method, which is then tested against a large database of published experimental and real-world data. It appears that in many cases this outperforms the available commercial solutions. Perhaps this shouldn't be too surprising: in reservoir simulation a simple material balance model can sometimes give better insight and results than a highly detailed multi-cell compositional model. Garbage-in garbage-out. As Dr. Nagoo notes in the conclusion to his dissertation:
+Recently, I came across a [PhD dissertation by Dr. Anand Nagoo](http://hdl.handle.net/2152/65197) which flipped this whole approach on its head. Approaching the problem from a "fundamental" first principles approach, Nagoo proposes a simpler analytical method, which is then tested against a large database of published experimental and real-world data. It appears that in many cases this outperforms the available commercial solutions. Perhaps this shouldn't be too surprising: in reservoir simulation a simple material balance model can sometimes give better insight and results than a highly detailed multi-cell compositional model. Garbage-in garbage-out. As Dr. Nagoo notes in the conclusion to his dissertation:
 
 > "simple, suitably-averaged analytical models can yield an improved understanding and significantly better accuracy than that obtained with extremely complex, tunable models." (Nagoo, 2013)
 
-Simpler. Faster. More accurate. The lure of this "fundamental" approach is undeniable. The question is, "how does it compare"?
+Simpler. Faster. More accurate. The lure of this fundamental approach is undeniable. The question is, "how does it compare"?
 
 This blog post sets out a comparison between the two different approaches that have been implemented in Pyrus.
 
 ## The Hydrocarbon Multiphase Pipe Flow Problem
 
-As if equation of state modelling wasn't hard enough already. What happens when we place our reservoir fluid into a well and produce it from the subsurface to the surface via tubing? There are a multitude of simultaneous phenomena that are continuously evolving and must be considered in any simulation/model of the flow of hydrocarbons in a pipe. It's all related to PVT (pressure, volume and temperature).
+As if equation of state modelling wasn't hard enough already! What happens when we place our reservoir fluid into a well and produce it from the subsurface to the surface via tubing? There are a multitude of simultaneous phenomena that are continuously evolving and must be considered in any simulation/model of hydrocarbon flow in a pipe. It's all related to heat and mass balance, whereby the mass and energy (kinetic, potential and thermal) must be conserved, whilst simultaneously affecting the PVT (pressure, volume and temperature) properties of the fluid flowing in the pipe.
 
-Initially the fluid is at reservoir pressure and temperature. The reservoir inflow performance relationship will determine the flow rate, and thus volume, of reservoir fluid that will flow for a given drawdown (pressure differential) between the reservoir pressure and the flowing bottom hole pressure (FBHP). At the inlet point of the tubing there exists a pressure which is the FBHP and an associated flowing bottom hole temperature (FBHT). The FBHP is less than the reservoir pressure. For an oil the FBHT should be similar to the reservoir temperature, but for a gas that has undergone significant expansion, this may be cooler due to the Joule-Thomson effect.
+Initially the fluid is found at the reservoir pressure and temperature. The reservoir inflow performance relationship will determine the flow rate, and thus volume, of reservoir fluid that will flow for a given drawdown (pressure differential) between the reservoir pressure and the flowing bottom hole pressure (FBHP). At the inlet point of the tubing there exists an inlet pressure (which will be close to the FBHP if the tubing is close to the perforations depth) and an associated flowing bottom hole temperature (FBHT). The FBHP is less than the reservoir pressure. For an oil the FBHT should be similar to the reservoir temperature, but for a gas that has undergone significant expansion, this may be cooler due to the Joule-Thomson effect.
 
-If the FBHP is sufficiently high to overcome the opposing forces that prevent or restrict flow of fluid in the pipe, then the hydrocarbons will begin to flow. In a steady state condition, there are three forces to consider: (1) hydrostatic force, being the action of gravity acting on the mass of the fluid itself, (2) frictional force, being the shear force exerted on the fluid by the stationary pipe wall, and (3) kinetic force, resulting from accelerative or decelerative conditions. In addition, the fluid stores heat. This heat is convected along the wellbore, but the presence of a geothermal gradient in the subsurface means that some of that heat is continuously conducted out of the well, as hotter fluid from deep in the subsurface reaches the cooler environs near to the surface.
+If the FBHP is sufficiently high to overcome the opposing forces that prevent or restrict flow of fluid in the pipe, then the hydrocarbons will begin to flow.
 
-If the fluid in question is largely incompressible and in single phase condition, then this can relatively straightforward. Hydrocarbons are "way too cool" to turn up at that party. The pressure and temperature will vary along the wellbore, meaning that the fluid may enter the two-phase region. Solution gas may evolve from an oil below bubble point, or vaporised oil may condense from a gas below the dew point. This gives rise to a multiphase flow environment in the wellbore, and depending on the relative volume of liquid and vapour phases. Because of buoyancy and other effects, each phase may have a different flowing velocity, such as the phenomenon of gas bubbles rising up through a dominant oil phase in vertical pipe, leading to faster gas velocity in comparison to liquid velocity. The difference between the phase velocities influences the hydrostatic, frictional and kinetic forces.
+In a steady state condition, there are three forces to consider:
+
+ 1. **Hydrostatic force:** being the action of gravity acting on the mass of the fluid itself.
+ 2. **Frictional force:** being the shear force exerted on the fluid by the stationary pipe wall.
+ 3. **Kinetic force:** resulting from accelerative or decelerative conditions.
+
+In addition, the fluid stores heat. This heat is convected along the wellbore, but the presence of a (generally cooler) geothermal gradient in the subsurface means that some of this heat is continuously conducted out of the well. The radial heat transfer out of the wellbore becomes more significant as hotter fluid from deep in the subsurface reaches a cooler environment near to the surface.
+
+If the fluid in question is largely incompressible and exists in a continuous single phase condition at all temperature and pressure conditions in the wellbore, then this can relatively straightforward. Hydrocarbons are "way too cool" to turn up at that party. The pressure and temperature will vary along the wellbore, meaning that the fluid may enter the two-phase region. Solution gas may evolve from an oil below bubble point, or vaporised oil may condense from a gas below the dew point. This gives rise to a multiphase flow environment in the wellbore, and depending on the relative volume of liquid and vapour phases. Because of buoyancy and other effects, each phase may have a different flowing velocity, such as the phenomenon of gas bubbles rising up through a dominant oil phase in vertical pipe, leading to faster gas velocity in comparison to liquid velocity. The difference between the phase velocities influences the hydrostatic, frictional and kinetic forces.
 
 At the wellhead, the outlet conditions from the wellbore are known. These are the flowing well head pressure (FWHP) and the flowing tubing head temperature (FTHT). If the simulation is sufficiently accurate, the downhole FBHP can be predicted by matching the FWHP predicted by the simulation to the actual measured value. In theory, if the multiphase pipe flow problem is sufficiently well solved, it is possible to infer downhole conditions from surface measurements alone.
 
@@ -46,7 +54,7 @@ At the wellhead, the outlet conditions from the wellbore are known. These are th
 	<figcaption><strong>Figure 1: Conservation considerations for multiphase hydrocarbon pipe flow.</strong></figcaption>
 </figure>
 
-The result is that there is an interplay between the multiphase energy conservation equations (heat and mass balances) that arise from the flow of fluid in the pipe, and the equation of state that governs the nature (quantity and properties) of each of the phases present in the pipe.
+The result is that there is an interplay between the multiphase energy conservation equations (heat and mass balances) that arise from the flow of fluid in the pipe, and the equation of state that governs the nature (phase, volume and properties) of each of the phases present in the pipe.
 
 All this for something as apparently simple as flow of a fluid in a stationary pipe!
 
@@ -60,7 +68,7 @@ There are two approaches that have been used to solve the multiphase pipe flow p
 
 The classical approach taken to solving multiphase flow is driven by empirical correlations to determine the volume fraction of a given segment of pipe that is occupied by each phase, and its respective velocity. Further complicating matters is that with two-phase flow it is possible that velocities of the vapour and liquid phases are different. A consequence of this is that the liquid and gas volume fractions at any given cross-sectional area of the pipe will not be the same as the ratio of phase volumetric flow rate to the total volumetric flow rate.
 
-Conventionally the determination of this difference is driven by first predicting the flow pattern map, and from the flow pattern map the slip velocity (difference between the vapour and liquid velocities) is calculated. In turn, the liquid volume fraction can be obtained from the slip velocity. Note that this approach relies on the assumption used for the unknown flow pattern, and whilst there are only a few different recognised flow patterns, the boundaries between each of these patterns is somewhat subjective and varies between researchers.
+Conventionally the determination of this difference is driven by first predicting the flow pattern map, and from the flow pattern map the slip velocity (difference between the vapour and liquid velocities) is calculated. In turn, the liquid volume fraction can be obtained from the slip velocity. Note that this approach relies on any assumptions used for the unknown flow pattern, and whilst there are only a few different recognised flow patterns, the boundaries between each of these patterns is somewhat subjective and varies between researchers.
 
 <figure>
 	<a href="{{ site.url }}/images/Analysis/multiphase-pipe-flow/figure2.png" data-lightbox="image-2" data-title="Different flow patterns and their relevance.">
@@ -75,7 +83,7 @@ $$H_{L} = \frac{V_{L}}{V}$$
 
 Where:
 
- - $$V_{j}$$ = volume of phase-j in pipe segment (j = liquid or gas)
+ - $$V_{j}$$ = volume of phase-j in pipe segment with j = liquid (L) or gas (g)
  - $$V$$ = volume of pipe segment
 
 #### Classical Hydrostatic Gradient
@@ -86,7 +94,7 @@ $$\rho_{mix} = \rho_{L} \cdot H_{L} + \rho_{g} \cdot (1 - H_{L})$$
 
 Where:
 
- - $$\rho_{j}$$ = phase-j density with j = liquid {L} or gas (g)
+ - $$\rho_{j}$$ = phase-j density with j = liquid (L) or gas (g)
 
 Once the fluid density is known the hydrostatic pressure gradient is calculated as:
 
@@ -98,11 +106,11 @@ Where:
  - $$g$$ = gravitational acceleration constant
  - $$\theta$$ = wellbore inclination to vertical (0&deg; = vertical, 90&deg; = horizontal)
 
-So all we need to do is find the unknown liquid holdup.
+This is deceptively simple. After all, there is only one unknown, the liquid holdup, that must be determined.
 
-There are many different empirical approaches that have been described in the literature to solve this problem, reaching back several decades. A common thread between these approaches is to consider the superficial velocities for vapour and liquid phases, and from this to determine a flow pattern. Depending on the flow pattern identified, a different relationship is used to calculate the liquid holdup.
+There are many different empirical approaches that have been described in the literature to solve this problem, reaching back several decades. A common thread between these approaches is the superficial velocities for vapour and liquid phases are first considered, and from the relationship between these two parameters, a flow pattern in the pipe can be determined. Depending on the type of flow pattern identified, a different relationship might then be used to calculate the liquid holdup.
 
-Here I describe the approach used in Pyrus, which is derived from an approach formulated by my former colleague [Paulina Svoboda](https://www.linkedin.com/in/paulinasvoboda/). I recall that I did once upon a time verify the basis for this approach in the literature, but I appear to have absent-mindedly omitted that from the comments in my source code. Thus, whilst this method is somewhat of a black box implementation (or perhaps a shade of grey), it does have similar techniques to those used in many other methods and should give and indication as to the degree of complexity involved (note that this is one of the simpler approaches). In any event, credit to Paulina for setting out the basis from which this classical approach was derived.
+Here I describe the approach used in Pyrus, which is derived from an approach formulated by my former colleague [Paulina Svoboda](https://www.linkedin.com/in/paulinasvoboda/). I recall that I did once upon a time verify the basis for this approach in the literature, but I appear to have absent-mindedly omitted that from the comments in my source code. Thus, whilst this method is somewhat of a black box implementation (or perhaps a shade of grey), it does have similar techniques to those used in many other methods and should give and indication as to the degree of complexity involved (note that this is one of the simpler approaches). In any event, credit to Paulina for setting out the basis from which this classical approach took inspiration.
 
 There are a few principle steps involved.
 
@@ -110,7 +118,7 @@ There are a few principle steps involved.
  2. Identify a flow pattern from the dimensionless critical gas velocity ratio.
  3. Use the identified flow pattern to calculate liquid holdup using the associated equation.
 
-We first calculate the Turner critical velocity. This is the gas velocity which is just fast enough to prevent a droplet of liquid falling in a vertical pipe. Below this velocity the liquid droplets will fall and pool at the bottom of the well, which can eventually create a sufficiently large enough hydrostatic head pressure to shut off flow completely. Hence, the "critical" nature of the velocity, as this is the minimum velocity necessary to ensure the well can unload liquids. The Turner critical velocity $$
+We first calculate the Turner (1969) critical velocity. This is the gas velocity which is just fast enough to prevent a droplet of liquid falling in a vertical pipe. Below this velocity the liquid droplets will fall and pool at the bottom of the well, which can eventually create a sufficiently large enough hydrostatic head pressure to shut off flow completely. Hence, the "critical" nature of the velocity, as this is the minimum velocity necessary to ensure the well can unload liquids. The Turner critical velocity $$v_
 {t}$$ is defined as:
 
 $$v_{t} = 1.593559917 \cdot c \cdot \frac{\sigma ^{1/4} \cdot (\rho_{L} - \rho_{g})^{1/4}}{\rho_{g}^{1/2}}$$
@@ -128,7 +136,7 @@ Where:
 
  - $$v_{sg}$$ = superficial gas velocity
 
-The superficial gas velocity is defined as the velocity that would result if the same volume flux of gas were to pass across the entire pipe area. It is not the actual in-situ gas velocity, which is higher.
+The superficial gas velocity is defined as the velocity that would result if the same volume flux of gas were to pass across the entire pipe area. It is not the same as the actual in-situ gas velocity, which is higher (unless there is only a single gas phase present).
 
 $$v_{sg} = \frac{q_{g}}{A}$$
 
@@ -137,9 +145,9 @@ Where:
  - $$q_{g}$$ = gas volumetric flow rate
  - A = cross-sectional area of the pipe
 
-The dimensionless critical velocity ratio is used to determine the flow pattern that is present, and from this the slip velocity is calculated. There is a certain logic to this. For $$v_{sg}$$ >> $$v_{t}$$, the velocity is high enough to lift droplets, and thus an annular film emerges with a mist of droplets carried in the dominant gas phase. Since the droplets are carried with the gas, the slip velocity is assumed to be zero.
+The dimensionless critical velocity ratio can then be used to first determine the flow pattern that is present, the secondly to calculate the slip velocity which is dependent upon the flow pattern that was previously identified. There is a certain logic to this. For $$v_{sg}$$ >> $$v_{t}$$, the velocity is high enough to lift droplets, and thus an annular film emerges with a mist of droplets carried in the dominant gas phase. Since the droplets are carried along with the gas, the slip velocity is assumed to be zero.
 
-Below the critical velocity, we have a liquid dominant phase, which contains some gas. At the other extreme, we have a dominant liquid phase with little to no gas. Here the gas bubbles rise up through the liquid phase due to buoyancy, and thus there is a small slip velocity. In the transition between bubble flow and mist flow, as the dimensionless critical gas ratio increases (and thus the volume of gas relative to liquid increases), we encounter slug flow at a $$v_{R}$$ of 0.35&times;, followed by churn flow at a $$v_{R}$$ of 0.85&times;. As the volume of gas increases, the slip velocity also increases as the amount of gas flowing relative to liquid increases, from 40 ft/min in bubble flow up to 140 ft/min at the transition from slug to churn flow.
+Below the critical velocity, we find conditions where there exists a liquid dominant phase, containing differing fractions of gas. At the other extreme, we have a dominant liquid phase with little to no gas. In this flow pattern the gas bubbles rise up through the liquid phase due to buoyancy, and thus there is a small slip velocity. This is referred to as bubble flow. Across the transition between bubble flow to mist flow, as the dimensionless critical gas ratio increases (and thus the volume of gas relative to liquid increases), we encounter slug flow at a $$v_{R}$$ of 0.35&times;, followed by churn flow at a $$v_{R}$$ of 0.85&times;. As the volume of gas increases, the slip velocity also increases as the volume (and thus velocity for a constant mass flux) of gas relative to liquid increases, from 40 ft/min in bubble flow up to 140 ft/min at the transition from slug to churn flow.
 
 <figure>
 	<a href="{{ site.url }}/images/Analysis/multiphase-pipe-flow/figure3.png" data-lightbox="image-3" data-title="Determination of slip velocity from dimensionless critical velocity ratio.">
@@ -182,9 +190,7 @@ Where:
  - $$\rho_{mix}$$ = mixture gas / liquid density at flowing pressure and temperature (lbm/ft<sup>3</sup>)
  - $$W$$ = total liquid + vapour rate (lbm/hr)
 
-Of these variables, the pipe inside diameter should be known, the mixture density was defined using the liquid holdup calculation from the hydrostatic pressure gradient step, and the mass flow rate should also be known. This only leaves the Moody friction factor.
-
-As a quick aside, there are actually two commonly used friction factors: the Fanning friction factor ($$f_{f}$$) and the Moody friction factor ($$f_{m}$$). The Moody friction factor and Fanning friction factor are to all extents and purposes identical, other than their relative quantum. The Moody friction factor is exactly 4&times; as large as the Fanning friction factor. In the oil and gas industry, the Moody friction factor tends to be used by petroleum engineers (hence its appearance in API RP14E), whereas chemical process engineers tend to use equations based around the Fanning friction factor. Quite why this discrepancy arose is a mystery, but it is suffice to note that care should always be taken to ensure the correct friction factor is being used.
+Of these variables, the pipe inside diameter should be known, the mixture density was previously defined using the liquid holdup calculation from the hydrostatic pressure gradient step, and the mass flow rate should also be known. This leaves the Moody friction factor as the only unknown.
 
 The Moody friction factor depends on the flow regime that is present in the pipe: laminar, turbulent or a transition between the two. Many measurements have been made to accurately determine the friction factor and Moody plotted these in a handy chart. The usefulness of the chart has led to the friction factor becoming known as the Moody friction factor, although technically it should just be the Darcy-Weisbach friction factor. Moody stated that the accuracy of this chart was &plusmn;5% for smooth pipes and &plusmn;10% for rough pipes.
 
@@ -205,17 +211,23 @@ Where:
 
 It is necessary at this point to digress slightly and note that [Reynolds was a fellow at Queens' College, Cambridge](https://en.wikipedia.org/wiki/Osborne_Reynolds), where I studied Engineering. This little known piece of trivia was drilled into all undergraduate engineers at Queens'. It is somewhat sobering to realise that over a century later we have not managed to significantly advance the state of fluid flow in pipes to an extent that the Reynolds number has faded into the history books. We are truely standing on the shoulders of giants.
 
-The transitional portion of the chart (2300 < Re < 2900) is calculated using:
+But enough already with my hero-worship of Reynolds. Let's get back to our friction factor... The critical zone portion of the chart between the laminar and transition to turbulent flow (2300 < Re < 4000) is calculated using:
 
 $$f_{f} = \frac{7.05 \times {10^{-8}}}{Re^{-1.5}}$$
 
 Note that this formula is for a Fanning friction factor, so to obtain a Moody friction factor it is necessary to multiply by 4&times;.
 
+As a quick aside, there are actually two commonly used friction factors: the Fanning friction factor ($$f_{f}$$) and the Moody friction factor ($$f_{m}$$). The Moody friction factor and Fanning friction factor are to all extents and purposes identical, other than their relative quantum. The Moody friction factor is exactly 4&times; as large as the Fanning friction factor. In the oil and gas industry, the Moody friction factor tends to be used by petroleum engineers (hence its appearance in API RP14E), whereas chemical process engineers tend to use equations based around the Fanning friction factor. Quite why this discrepancy arose is a mystery, but it is suffice to note that care should always be taken to ensure the correct friction factor is being used.
+
 For computational purposes the turbulent portion of the Moody chart was captured into an equation by Colebrook and White (1939):
 
 $$\frac{1}{\sqrt{f_{m}}} = -2\log{\frac{\varepsilon}{3.7D_{h}} + \frac{2.51}{Re\sqrt{f_{m}}}}$$
 
-But back to the Colebrook and White equation... this is implicit in $$f_{m}$$ which appears on both sides of the equation. It can be solved iteratively, or [solved exactly](https://en.wikipedia.org/wiki/Darcy_friction_factor_formulae#Colebrook%E2%80%93White_equation) using the [Lambert W formula](https://en.wikipedia.org/wiki/Lambert_W_function). In practice, a large number of explicit approximations to the Colebrook-White formula have been proposed. We use the Vatankhah (2014) implementation which was found to have the lowest error across the entire range of the Moody diagram when reviewed and tested by Zeghadnia et al (2018):
+Where:
+
+ - $$\varepsilon$$ = pipe roughness (typically 0.00156 inch for production tubing)
+
+The Colebrook and White equation is implicit in $$f_{m}$$ which appears on both sides of the equation. It can be solved iteratively, or [solved exactly](https://en.wikipedia.org/wiki/Darcy_friction_factor_formulae#Colebrook%E2%80%93White_equation) using the [Lambert W formula](https://en.wikipedia.org/wiki/Lambert_W_function). In practice, a large number of explicit approximations to the Colebrook-White formula have been proposed. We use the Vatankhah (2014) implementation which was found to have the lowest error across the entire range of the Moody diagram when reviewed and tested by Zeghadnia et al (2018):
 
 $$f_{m} = \left ( \frac{2.51 / Re + 1.1513\delta}{\delta - (\varepsilon / D_{h})/3.71 - 2.3026\delta log(\delta)} \right )^2$$
 
@@ -223,7 +235,9 @@ $$\delta = \frac{6.0173}{Re {\left (0.07(\varepsilon / D_{h}) +Re^{-0.885} \righ
 
 The combination of these three laminar, transitional and turbulent equations, allows the friction factor to be calculated for any dimensionless Reynolds number and any pipe roughness.
 
-A further complicating factor concerns multiphase flow. The Darcy-Weisbach equation is based on single-phase flow, but with two or more phases, it is not possible to calculate a single Reynolds number. Again, a number of different two-phase Reynolds numbers have been proposed. We use that of Ortiz-Vidal et al (2014). In this approach, the mixture Reynolds number defined by Shannak is modified by introducing two-phase flow phenomenology through the inclusion of void-fraction parameters. This approach avoids the need for adopting the no-slip homogeneous assumption of the original method. Their results indicate that the inclusion of void-fraction information in the mixture Reynolds number improves the predictions of friction factor when used directly with correlations obtained from single phase flow hydraulics. Note that the paper uses the void fraction &alpha; which is equal to $$(1 - H_{L})$$. Equations have been re-expressed here to use consistent terminology.
+A further complicating factor concerns multiphase flow. The Darcy-Weisbach equation is based on single-phase flow, but with two or more phases, it is not possible to calculate a single Reynolds number. Again, a number of different two-phase Reynolds numbers have been proposed.
+
+We use the formulation proposed by Ortiz-Vidal et al (2014). In this approach, the mixture Reynolds number defined by Shannak is modified by introducing two-phase flow phenomenology through the inclusion of void-fraction parameters. This approach avoids the need for adopting the no-slip homogeneous assumption of the original method. Their results indicate that the inclusion of void-fraction information in the mixture Reynolds number improves the predictions of friction factor when used directly with correlations obtained from single phase flow hydraulics. Note that the paper uses the void fraction &alpha; which is equal to $$(1 - H_{L})$$. Equations have been re-expressed here to use consistent terminology.
 
 $$Re_{mix} = \frac{\rho_{L}{v_{L}}^2{D_{L}}^2 + \rho_{g}{v_{g}}^2{D_{g}}^2}{\mu_{L}v_{L}D_{L} + \mu_{g}v_{g}D_{g}}$$
 
@@ -261,15 +275,15 @@ Where:
 
 It should be clear that the classical approach is depends on an accurate determination of the liquid holdup. This affects both the hydrostatic pressure gradient and the frictional pressure gradient (via the two-phase Reynolds number).
 
-However, the calculation of liquid holdup is based on the slip velocity, which is itself derived from knowledge of the flow pattern. In the implementation of the classical approach used by Pyrus, it is the dimensionless critical gas velocity that is used to determine the slip velocity and liquid holdup. This is a very crude estimation of the slip velocity. In other classical approaches, the superficial velocities of liquid and vapour phases or dimensionless groups are used to identify the flow pattern from a map generated from multiple experimental points. Once the flow pattern is identified, this drives the choice of equation to correlate to the liquid holdup.
+However, the calculation of liquid holdup is based on the slip velocity, which is itself derived from knowledge of the flow pattern. In the implementation of the classical approach used by Pyrus, it is the dimensionless critical gas velocity that is used to determine the slip velocity and liquid holdup. This is only a crude estimation of the slip velocity. In other classical approaches, the superficial velocities of liquid and vapour phases or dimensionless groups are used to identify the flow pattern from a map generated from multiple experimental points. Once the flow pattern is identified, this drives the choice of equation to correlate to the liquid holdup.
 
-The logic for the approach is that the liquid holdup is related to the flow pattern. Therefore, identification of the flow pattern is an important step in the classical approach.
+The logic behind the classical approach is that the liquid holdup is related to the flow pattern. Therefore, identification of the flow pattern is an important first step in the classical approach.
 
 The pipe fractional flow theory proposed by Nagoo (2013) takes a different approach. For a multiphase pipe flow there is conservation of mass, momentum and energy that must be honoured. The principle insight of pipe fractional flow theory is that the in-situ velocities and the volume fractions for each phase are what govern these transport processes in multiphase flow. The flow patterns are simply a manifestation of these parameters. Personally I’ve never liked the approach of first identifying flow patterns. It seems so backwards and overly complicated. With the fundamental approach we can put the flow pattern to the side, and instead focus on how mass, momentum and energy relate to velocity, volume, pressure and temperature. Of course, in Pyrus the equation of state is at the heart of how these parameters relate to each other.
 
 As explained by Nagoo (2013) in his dissertation:
 
-> "What is shown in this work is that ++the real power of the fractional flow graph lies in its ability to generate single-path or multiple-path traverses connecting different flow patterns (thus capturing the connections between different flow phenomena)++, regardless of whether those paths correlates data on a straight line or not." (Nagoo, 2013)
+> "What is shown in this work is that <u>the real power of the fractional flow graph lies in its ability to generate single-path or multiple-path traverses connecting different flow patterns (thus capturing the connections between different flow phenomena)</u>, regardless of whether those paths correlates data on a straight line or not." (Nagoo, 2013)
 
 Through analytical methods, it can be shown that there exists a smooth and continuous fractional flow curve that extends across all different flow patterns. In Figure 5 below an analytical fractional flow curve from the fundamental approach is shown against the no-slip assumption (vapour and liquid move at the same velocity), and the implied equivalent flow curve using the classical approach.
 
@@ -280,11 +294,13 @@ Through analytical methods, it can be shown that there exists a smooth and conti
 	<figcaption><strong>Figure 5: Fractional flow versus gas void fraction for fundamental versus classical approaches.</strong></figcaption>
 </figure>
 
-The difference between the fundamental and classical approaches can clearly be seen. The fractional flow curves have been tested against 80,000+ datasets and exhibit good predictive qualities. Clearly this is not the case for the implied classical fractional flow curve that emerges as the shape of the curve is fundamentally different to that created by the fundamental approach.
+The difference between the fundamental and classical approaches can clearly be seen. Nagoo notes that the fractional flow curves have been tested against 80,000+ datasets and exhibit good predictive qualities. Clearly this is not the case for the implied classical fractional flow curve that emerges as the shape of the curve (left-hand chart in Figure 5) is fundamentally different to that created by the fundamental approach, and which is similar to Nagoo's comparison of a fraction flow curve against experimental data (right-hand chart in Figure 5).
+
+**NOTE:** Dr. Nagoo has continued to improve the pipe fractional flow theory, and a [much improved version is available in his own software solution](https://www.nagoo-associates.com/). If multiphase fluid flow in pipes is a critical issue for you, then this would be worth investigating further. The version I've implemented in Pyrus is an 'older' incarnation of the theory (even so I think it is still more logical, versatile and applicable than the classical approach).
 
 #### Fundamental Hydrostatic Gradient
 
-The fundamental hydrostatic gradient is calculated in the same manner as the classical approach. The difference lies in how the liquid holdup is calculated.
+The fundamental hydrostatic gradient is calculated in the same manner as used in the classical approach. The difference lies in how the liquid holdup is calculated.
 
 The first step involves the definition of a dimensionless relative velocity $$\Omega$$. This dimensionless number incorporates all of the average in-situ phase velocities:
 
@@ -299,7 +315,7 @@ Where:
  - $$\left < \left < v_{1} \right > \right >$$ = averaged in-situ phase 1 (liquid) velocity at any cross-sectional plane, A. This is equivalent to $$v_{L}$$.
  - $$\left < u_{mix} \right >$$ = averaged mixture volume flux at any cross-sectional plane, A. This is equivalent to $$v_{mix}$$ = $$v_{sg} + v_{sL}$$.
 
-By expressing velocity for phase-j ($$\left < \left < v_{j} \right > \right >$$) as the superficial velocity:
+By expressing velocity for phase-j, $$\left < \left < v_{j} \right > \right >$$, as the superficial velocity:
 
 $$\left < u_{j} \right > = \left < \left < v_{j} \right > \right > \left < S_{j} \right > = \frac{q_{j}}{A}$$
 
@@ -315,7 +331,7 @@ Where:
 
  - $$\left < S_{2} \right >$$ = phase 2 (vapour) volume fraction. This is equivalent to the gas void fraction $$H_{g} = 1 - H_{L}$$.
 
-Nagoo (2013) shows that many averaged volume fraction correlations can be represented using this fractional flow framework. Furthermore, a wholly analytical closure model that describes the averaged volume fractions is derived. This relationship does not rely on any correlations and is implicit in its flow pattern (e.g., no *a priori* knowledge of the flow pattern is required). This is referred to as the "ANSLIP" model (analytical slip model).
+Nagoo (2013) shows that many averaged volume fraction correlations can be represented using this fractional flow framework. Furthermore, a wholly analytical closure model that describes the averaged volume fractions is derived. This relationship does not rely on any correlations and is implicit in its flow pattern (e.g., no *a priori* knowledge of the flow pattern is required). This is referred to as the "ANSLIP" model (analytical slip model). ANSLIP is only recommended for vapour-liquid flows in horizontal, up-inclined and vertical pipe. For vapour-liquid down-inclined flow, or liquid-liquid and fluid-solid flows, other slip models are recommended.
 
 The premise is that the dimensionless relative velocity of the dispersed gas phase ($$\Omega_{2, 1}$$) is equal to the gas phase flowing fraction ($$f_{2}$$).
 
@@ -323,7 +339,9 @@ Thus:
 
 $$f_{2} = \frac{\left < S_{2} \right >}{1 - \left < S_{2} \right > \left ( 1 - \left < S_{2} \right > \right )}$$
 
-The ANSLIP model was found to be "*very accurate over an enormous range of different concurrent flow applications and flow patterns*". The ANSLIP model can be re-arranged to directly calculate the gas void fraction or liquid holdup:
+The ANSLIP model was found to be "*very accurate over an enormous range of different concurrent flow applications and flow patterns*".
+
+Furthermore, the ANSLIP model can be re-arranged to directly calculate the gas void fraction or liquid holdup:
 
 $$\left < S_{2} \right > = \frac{f_{2} + 1 - \sqrt{ {\left ( f_{2} + 1 \right )}^2 - 4 \cdot {\left ( f_{2} \right )}^2} }{2 \cdot \left ( f_{2} \right )}$$
 
@@ -399,7 +417,7 @@ Where:
  - $$C_{pm}$$ = specific heat of mixture (Btu/lbm-&deg;F)
  - $$F_c$$ = combination of Joule-Thomson and kinetic energy terms into a single correlation factor
 
-In Sagar, Doty and Schmidt (1991), a correlation is used to estimate the combined Joule-Thomson effect and kinetic energy contribution to the temperature profile. In Pyrus we can determine these values exactly as we can obtain the necessary variables from an equation of State. We calculate the correlation factor as:
+In Sagar, Doty and Schmidt (1991), a correlation is used to estimate the combined Joule-Thomson effect and kinetic energy contribution to the temperature profile. In Pyrus we can dispense with the correlation (which has a limited range of applicability) and determine these values exactly after obtaining the necessary variables from an equation of State. We calculate the correlation factor as:
 
 $$F_C = \mu\frac{dP}{dL} - \frac{v \cdot dv}{J \cdot g_c \cdot C_{pm}}$$
 
@@ -419,7 +437,7 @@ Where:
  - $$k_e$$ = thermal conductivity of earth (Btu/D-ft-&deg;F). Ramey suggests that, for most geographical areas, this this ~1.4 Btu/D-ft-&deg;F.
  - $$f(t)$$ = dimensionless transient heat conduction time function for earth
 
-Determination of the overall heat transfer coefficient depends on the configuration of the wellbore tubulars, and it is noted by Sagar et al. that this can be a difficult and critical step in finding an accurate solution. Detailed theoretical equations to calculate the overall heat-transfer in terms of natural convection, conduction and radiation have been proposed by Willhite (1967) and Bird et al. (2002). By neglecting the radiation and convection terms, and assuming that the thermal conductivity of the steel tubing and casing is effectively infinite (negligible thermal resistance in comparison to annulus fluids, cement and earth), the Whillhite equation can be expressed as:
+Determination of the overall heat transfer coefficient depends on the configuration of the wellbore tubulars, and it is noted by Sagar et al. that this can be a difficult and critical step in finding an accurate solution. Detailed theoretical equations to calculate the overall heat-transfer in terms of natural convection, conduction and radiation have been proposed by Willhite (1967) and Bird et al. (2002). By neglecting the radiation and convection terms, and assuming that the thermal conductivity of the steel tubing and casing is effectively infinite (negligible thermal resistance in comparison to annulus fluids, cement and earth), the Willhite equation can be expressed as:
 
 $$U = {\left [ r_{ti}\frac{\log_{e}(r_{ci}/r_{to})}{k_{an}} + r_{ti}\frac{\log_{e}(r_{wb}/r_{co})}{k_{cem}} \right ]}^{-1}$$
 
