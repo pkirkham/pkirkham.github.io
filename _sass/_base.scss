@@ -190,8 +190,8 @@ thead {
 	}
 }
 th {
-	padding: (0px + $doc-line-height) / 2;
-	padding: (0rem + ($doc-line-height / $doc-font-size)) / 2;
+	padding: ((0px + $doc-line-height) / 2);
+	padding: ((0rem + ($doc-line-height / $doc-font-size)) / 2);
 	font-family: $alt-font;
 	font-weight: bold;
 	text-align: left;
@@ -200,8 +200,8 @@ th {
 }
 td {
 	border-bottom: 1px solid $border-color;
-	padding: (0px + $doc-line-height) / 2;
-	padding: (0rem + ($doc-line-height / $doc-font-size)) / 2;
+	padding: ((0px + $doc-line-height) / 2);
+	padding: ((0rem + ($doc-line-height / $doc-font-size)) / 2);
 }
 tr, td, th {
 	vertical-align: middle;
@@ -310,8 +310,8 @@ select {
 label {
 	font-weight: bold;
 	font-family: $alt-font;
-	margin-bottom: (0px + $doc-line-height) / 4;
-	margin-bottom: (0rem + ($doc-line-height / $doc-font-size)) / 4;
+	margin-bottom: ((0px + $doc-line-height) / 4);
+	margin-bottom: ((0rem + ($doc-line-height / $doc-font-size)) / 4);
 	&.required:after {
 		content: "*";
 	}
@@ -332,8 +332,8 @@ select[multiple=multiple] {
 	box-shadow: $form-box-shadow;
 	font-family: $form-font-family;
 	font-size: $form-font-size;
-	margin-bottom: (0px + $doc-line-height) / 2;
-	margin-bottom: (0rem + ($doc-line-height / $doc-font-size)) / 2;
+	margin-bottom: ((0px + $doc-line-height) / 2);
+	margin-bottom: ((0rem + ($doc-line-height / $doc-font-size)) / 2);
 	padding: ((0px + $doc-line-height) / 3) ((0px + $doc-line-height) / 3);
 	padding: ((0rem + ($doc-line-height / $doc-font-size)) / 3) ((0rem + ($doc-line-height / $doc-font-size)) / 3);
 	width: 100%;
@@ -357,8 +357,8 @@ input[type="search"] {
 
 input[type="checkbox"], input[type="radio"] {
 	display: inline;
-	margin-right: (0px + $doc-line-height) / 4;
-	margin-right: (0rem + ($doc-line-height / $doc-font-size)) / 4;
+	margin-right: ((0px + $doc-line-height) / 4);
+	margin-right: ((0rem + ($doc-line-height / $doc-font-size)) / 4);
 }
 
 input[type="file"] {
