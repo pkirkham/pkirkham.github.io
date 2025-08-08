@@ -11,7 +11,7 @@ A goal for Pyrus is that it must be able to run on almost any computer. Most mod
 
 Perhaps it is bad memories of trying to write early cross-browser code for Netscape Navigator and Internet Explorer back in 1999 when dial-up modem speeds of 55.6 kbps were blazing fast. In those days I actually wrote my own modest graphic user interface for a simple image comparison tool. At the time there were no JavaScript libraries available, and this was very much cutting edge stuff. The downside was the bandwidth available at the time. It just made the whole user experience awful. These days things have improved, but as bandwidth increases, the cynic in me notes that websites just seem to cram more in so that the overall experience remains lacklustre.
 
-I quite like the desktop. The data sits closer to the user. There is less latency. The challenge is how to make your software run on any computer? If you look closely at the year I was losing interest in writing web-based applications you'll note that this co-incides with the advent of Java and it's "write once, run anyway" mantra. I was an early adopter of Java and haven't looked back since.
+I quite like the desktop. The data sits closer to the user. There is less latency. The challenge is how to make your software run on any computer? If you look closely at the year I was losing interest in writing web-based applications you'll note that this co-incides with the advent of Java and it's "write once, run anywhere" mantra. I was an early adopter of Java and haven't looked back since.
 
 ## Download
 

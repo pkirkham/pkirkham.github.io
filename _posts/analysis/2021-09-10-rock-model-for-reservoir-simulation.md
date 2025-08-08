@@ -10,6 +10,7 @@ image:
   teaser: teaser-rock-model-400x250.jpg
   thumb:
 comments: true
+mathjax: true
 ---
 
 Conventionally, rock that is of interest to reservoir engineers is a porous medium. This means that there is pore space that exists within the rock matrix, and that those pore spaces are connected to each other and can contain fluids including hydrocarbons and water.
@@ -34,9 +35,9 @@ This is a different approach to conventional petrophysics where logs, which are 
 
 Conventionally resistivity logs are used to determine water saturation (and hence hydrocarbon saturation) within a reservoir. Fundamentally, this assumes that the reservoir contains hydrocarbons at close to initial saturation conditions.
 
-Consider [Archie’s equation](https://wiki.aapg.org/Archie_equation) ([Archie, 1942](https://doi.org/10.2118/942054-G)):
+Consider [Archie’s equation](https://wiki.aapg.org/Archie_equation) (Archie, 1942):
 
-![\frac{R_t}{R_w}=\frac{a}{\phi^{m}\cdot{S_{w}}^{n}}](https://math.now.sh?from=\frac{R_t}{R_w}=\frac{a}{\phi^{m}\cdot{S_{w}}^{n}} &color=black)
+$$\frac{R_t}{R_w}=\frac{a}{\phi^{m}\cdot{S_{w}}^{n}}$$
 
 Where:
 
@@ -67,11 +68,11 @@ Our simplified rock model comprises three components. These are the rock matrix 
 
 In a water-wet rock, the irreducible water is bound to the surface of the rock matrix. As water is more conductive than hydrocarbon or rock, the electrical flow path follows the water around the matrix particles, crossing between rock particles at the pore throats. This is very similar to the fluid flow path which must also navigate around the rock particles via the pore throats. The electrical flow path is related to the cementation exponent ‘m’, which in turn is similar to the actual fluid flow path of length (L<sub>a</sub>) for a rock of size L. This allows tortuosity to be defined as:
 
-![\tau=\left(\frac{L_{a}}{L}\right)^{2}](https://math.now.sh?from=\tau=\left(\frac{L_{a}}{L}\right)^{2} &color=black)
+$$\tau=\left(\frac{L_{a}}{L}\right)^{2}$$
 
 Longer flow paths correspond to an increase in cementation exponent, along with an increase in the ratio between r<sub>b</sub> and r<sub>t</sub>. This means that there is a relationship between the cementation exponent and the pore geometry, and therefore it is only necessary to define one of r<sub>b</sub> and r<sub>t</sub> if the tortuosity is defined, since the ratio r<sub>b</sub>/r<sub>t</sub> will depend on the tortuosity.
 
-To mathematically relate cementation exponent to the pore geometry a theoretical pore channel model was constructed by ([Müller-Huber, Schön, & Börner, 2015](http://dx.doi.org/10.1016/j.jappgeo.2015.03.011)) which includes a variable pore radius. This is a modification to the simple capillary tube model. The pore throat radius is defined as r<sub>t</sub> at the narrow end of the channel and this radius increases to a radius of r<sub>b</sub> at the pore body.
+To mathematically relate cementation exponent to the pore geometry a theoretical pore channel model was constructed by (Müller-Huber, Schön, & Börner, 2015) which includes a variable pore radius. This is a modification to the simple capillary tube model. The pore throat radius is defined as r<sub>t</sub> at the narrow end of the channel and this radius increases to a radius of r<sub>b</sub> at the pore body.
 
 <figure>
 	<a href="{{ site.url }}/images/Analysis/Rock Model/modified-pore-channel-model.png" data-lightbox="image-2" data-title="Mathematical basis for modified pore channel model relating pore throat and body radii to the cementation exponent.">
@@ -86,11 +87,11 @@ The modified pore channel model is compared to a simple capillary tube model. It
 
 Where both the porosity and cementation exponent are known it is possible to calculate the r<sub>b</sub>/r<sub>t</sub> ratio and thus start to conceptualise the nature of the porosity in the reservoir. The initial step to establish the _f(r<sub>b</sub>/r<sub>t</sub>)_ value is straightforward:
 
-![f\left(r_{b}/r_{t}\right)=e^{\left(1-m\right)\cdot\ln\phi}](https://math.now.sh?from=f\left(r_{b}/r_{t}\right)=e^{\left(1-m\right)\cdot\ln\phi} &color=black)
+$$f\left(r_{b}/r_{t}\right)=e^{\left(1-m\right)\cdot\ln\phi}$$
 
 Rather than solve for r<sub>b</sub>/r<sub>t</sub> directly a polynomial correlation between r<sub>b</sub>/r<sub>t</sub> and _f(r<sub>b</sub>/r<sub>t</sub>)_ is determined and used to mathematically relate the two values.
 
-![r_{b}/r_{t}=-1.924\times10^{-12}x^{6}+2.05752\times10^{-9}x^{5}-8.58132\times10^{-7}x^{4}+1.78122\times10^{-4}x^{3}-2.01093\times10^{-2}x^{2}+1.77691x+1.8573](https://math.now.sh?from=r_%7Bb%7D%2Fr_%7Bt%7D%3D-1.924%5Ctimes10%5E%7B-12%7Dx%5E%7B6%7D%2B2.05752%5Ctimes10%5E%7B-9%7Dx%5E%7B5%7D-8.58132%5Ctimes10%5E%7B-7%7Dx%5E%7B4%7D%2B1.78122%5Ctimes10%5E%7B-4%7Dx%5E%7B3%7D-2.01093%5Ctimes10%5E%7B-2%7Dx%5E%7B2%7D%2B1.77691x%2B1.8573 &color=black)
+$$r_{b}/r_{t}=-1.924\times10^{-12}x^{6}+2.05752\times10^{-9}x^{5}-8.58132\times10^{-7}x^{4}+1.78122\times10^{-4}x^{3}-2.01093\times10^{-2}x^{2}+1.77691x+1.8573$$
 
 Where:
 
@@ -114,3 +115,7 @@ As a guideline the values of m and r<sub>b</sub> are the only inputs that are ne
 The key point is that to describe the pore geometry it is necessary to capture the tortuosity (average path length taken across a unit length of rock) and the average pore throat size. The cementation exponent, being a reasonably well understood parameter, is simple to implement and captures the nature of the tortuosity and pore geometry in the rock. By relating the pore geometry r<sub>b</sub>/r<sub>t</sub> to the cementation exponent, it is possible to determine the pore throat radius from the average pore body radius alone. This is also a simpler approach as it is easier to visually guesstimate the average size of pore bodies from core photos than it is to measure the average pore throat size.
 
 Generally, both the cementation exponent and average pore body radius should be adjusted until the characteristic rock parameters determined from them either match or are consistent with the available data or expectations.
+
+## References
+ - Archie, G. E. 1942. The Electrical Resistivity Log as an Aid in Determining Some Reservoir Characteristics. _J Pet Technol_ **146** (01): 54-62. SPE-942054-G. [https://doi.org/10.2118/942054-G](https://doi.org/10.2118/942054-G)
+ - Müller-Huber, E., Schön, J., and Börner, F. 2015. The Effect of a Variable Pore Radius on Formation Resistivity Factor. _Journal of Applied Geophysics_ **116**: 173-179. [https://doi.org/10.1016/j.jappgeo.2015.03.011](https://doi.org/10.1016/j.jappgeo.2015.03.011)

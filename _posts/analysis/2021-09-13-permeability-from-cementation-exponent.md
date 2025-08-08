@@ -10,6 +10,7 @@ image:
   teaser: teaser-perm-model-400x250.jpg
   thumb:
 comments: true
+mathjax: true
 ---
 
 Where porosity is the major parameter that influences static volumes, permeability is the main parameter with respect to dynamic performance. [Permeability can be measured at different scales](https://petrowiki.spe.org/Permeability_determination), ranging from well tests to core plug measurements. Because of the different scales, the results can sometimes disagree and obtaining a sufficiently large dataset to confidently understand the relationship between porosity and permeability is usually an expensive undertaking.
@@ -18,7 +19,7 @@ Where porosity is the major parameter that influences static volumes, permeabili
 
 In the absence of extensive porosity-permeability measurements, an alternative approach to predict permeability from the rock character and porosity is required. Many models have been proposed to model permeability, both empirical and theoretical. One of the well-known fundamental correlations is the Kozeny equation which is derived by combining [Poiseuille’s equation](https://en.wikipedia.org/wiki/Hagen%E2%80%93Poiseuille_equation) with [Darcy’s law](https://en.wikipedia.org/wiki/Darcy%27s_law) and solving for permeability.
 
-![k=\frac{\phi}{8\tau}r^{2}](https://math.now.sh?from=k=\frac{\phi}{8\tau}r^{2} &color=black)
+$$k=\frac{\phi}{8\tau}r^{2}$$
 
 Where:
 
@@ -37,9 +38,9 @@ The relationship reveals that permeability is a function of the rock porosity, t
 
 The cementation exponent, being an electrically determined parameter, can be related to the flow path of electrical current through the more conductive water in the formation pore space. In this respect there is a physically similar basis between the cementation exponent and tortuosity. Since tortuosity is related to permeability through the theoretically derived Kozeny equation, it is reasonable to expect that there should also exist a relationship between the cementation exponent and permeability.
 
-[Nooruddin and Hossain (2011)](http://dx.doi.org/10.2118/149047-MS) proposed a modification to improve the handling of the tortuosity term based on the relationship between tortuosity, formation resistivity factor and cementation exponent that was derived from theoretical approaches by Wyllie and Rose (1950). The new tortuosity term was validated using the dataset and substitution of the term into the permeability model proposed by Hagiwara (1986). This model can be shown to have a similar form to Kozeny’s equation. By regressing the revised model against Hagiwara’s dataset, Nooruddin and Hossain obtained the following equation:
+Nooruddin and Hossain (2011) proposed a modification to improve the handling of the tortuosity term based on the relationship between tortuosity, formation resistivity factor and cementation exponent that was derived from theoretical approaches by Wyllie and Rose (1950). The new tortuosity term was validated using the dataset and substitution of the term into the permeability model proposed by Hagiwara (1986). This model can be shown to have a similar form to Kozeny’s equation. By regressing the revised model against Hagiwara’s dataset, Nooruddin and Hossain obtained the following equation:
 
-![k=78.7\left(\phi^{2m-1}r_{t}^{2}\right)](https://math.now.sh?from=k=78.7\left(\phi^{2m-1}r_{t}^{2}\right) &color=black)
+$$k=78.7\left(\phi^{2m-1}r_{t}^{2}\right)$$
 
 Where:
 
@@ -106,3 +107,7 @@ The benefit of this porosity-permeability methodology is that it has a theoretic
 Another benefit of this approach is that it allows static models to better capture the heterogeneity inherent in permeability measurements. Usually, static models will have a variable porosity, and the associated permeability is derived from a porosity-permeability relationship that is a function of porosity alone. Hence a crossplot of the porosity versus permeability for each cell in a static model will produce a curved line that matches the equation used.
 
 The approach outlined here allows a distribution to be applied to static model cells for not just porosity, but also the cementation exponent and pore body radius. Because permeability is a function of these three parameters, a crossplot of porosity versus permeability using this approach will produce a cloud of points that is a better reflection of the heterogeneity inherent in any reservoir.
+
+## References
+ - Hagiwara, T. 1986. Archie's "m" for Permeability. _The Log Analyst_ **27** (1): 39-42.
+ - Nooruddin, H. A. and Hossain, M. E. 2011. Modified Kozeny-Carmen Correlation for Enhanced Hydraulic Flow Unit Characterization. _Journal of Pet. Sci. Eng._ **80** (1): 107-115. [https://doi.org/10.1016/j.petrol.2011.11.003](https://doi.org/10.1016/j.petrol.2011.11.003)

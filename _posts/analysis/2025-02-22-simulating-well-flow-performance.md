@@ -4,7 +4,7 @@ title: Simulating Well Flow Performance
 modified:
 categories: analysis
 excerpt: Leveraging equation of state models in multiphase pipe flow modelling.
-tags: [pipe_flow, analysis, pvt, eos, tubing, vlp, reservoir_engineering, production, nagoo, flow_pattern, holdup, slip]
+tags: [pipe_flow, analysis, pvt, eos, tubing, vlp, reservoir_engineering, production, nagoo, flow_pattern, holdup, slip, equation_of_state]
 image:
   feature: feature-multiphase-pipe-flow-1024x256.jpg
   teaser: teaser-multiphase-pipe-flow-400x250.jpg
