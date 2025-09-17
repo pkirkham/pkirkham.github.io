@@ -399,7 +399,7 @@ There are two very simple assumptions that could be used:
 
 What is really needed is an approach that falls somewhere in between these two assumptions.
 
-Pyrus implements the approach described by Ramey, Doty and Schmidt (1991) which is based on a model derived from the steady-state energy equation, taking into consideration all the heat transfer mechanisms that are encountered in a wellbore. These mechanisms include: (1) radial heat conduction through the tubing, annulus, casing and cement into the surrounding earth environment, (2) Joule-Thomson heating or cooling effects caused by pressure changes as the fluid flows up the well, and (3) kinetic energy term.
+Pyrus implements the approach described by Sagar, Doty and Schmidt (1991) which is based on a model derived from the steady-state energy equation, taking into consideration all the heat transfer mechanisms that are encountered in a wellbore. These mechanisms include: (1) radial heat conduction through the tubing, annulus, casing and cement into the surrounding earth environment, (2) Joule-Thomson heating or cooling effects caused by pressure changes as the fluid flows up the well, and (3) kinetic energy term.
 
 The ordinary differential equation that describes the change in fluid temperature for a change in length along the wellbore is:
 
@@ -434,7 +434,7 @@ $$A = \frac{2\pi}{C_{pm}w_t} \left [ \frac{r_{ti}Uk_e}{k_e + f(t)r_{ti}U} \right
 Where:
 
  - $$U$$ = overall heat transfer coefficient (Btu/D-ft<sup>2</sup>-&deg;F)
- - $$k_e$$ = thermal conductivity of earth (Btu/D-ft-&deg;F). Ramey suggests that, for most geographical areas, this this ~1.4 Btu/D-ft-&deg;F.
+ - $$k_e$$ = thermal conductivity of earth (Btu/D-ft-&deg;F). Sagar et al. suggest that, for most geographical areas, this this ~1.4 Btu/D-ft-&deg;F.
  - $$f(t)$$ = dimensionless transient heat conduction time function for earth
 
 Determination of the overall heat transfer coefficient depends on the configuration of the wellbore tubulars, and it is noted by Sagar et al. that this can be a difficult and critical step in finding an accurate solution. Detailed theoretical equations to calculate the overall heat-transfer in terms of natural convection, conduction and radiation have been proposed by Willhite (1967) and Bird et al. (2002). By neglecting the radiation and convection terms, and assuming that the thermal conductivity of the steel tubing and casing is effectively infinite (negligible thermal resistance in comparison to annulus fluids, cement and earth), the Willhite equation can be expressed as:
@@ -486,7 +486,7 @@ There are two main inputs that are needed:
 	<a href="{{ site.url }}/images/Analysis/multiphase-pipe-flow/figure7.png" data-lightbox="image-7" data-title="Illustrated flowchart of calculation steps for pressure and temperature change in each pipe segement.">
 		<img src="{{ site.url }}/images/Analysis/multiphase-pipe-flow/figure7.png" alt="Illustrated flowchart of calculation steps for pressure and temperature change in each pipe segement."/>
 	</a>
-	<figcaption><strong>Figure 7: Illustrated flowchart of calculation steps for pressure and temperature change in each pipe segement.</strong></figcaption>
+	<figcaption><strong>Figure 7: Illustrated flowchart of calculation steps for pressure and temperature change in each pipe segment.</strong></figcaption>
 </figure>
 
 The algorithm used breaks the wellbore down into approximately 100 ft pipe segments. Figure 7 shows the calculation steps for each segment. The first segment considered is at the perforations depth. The pressure is the FBHP needed to achieve the desired production rate, and the temperature is the reservoir temperature (gas may need to be adjusted for Joule-Thomson effect).
