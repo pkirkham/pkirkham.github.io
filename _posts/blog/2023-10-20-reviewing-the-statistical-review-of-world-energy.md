@@ -82,7 +82,7 @@ What this means is that we can’t look at the energy transition with reference 
 	<a href="{{ site.url }}/images/Analysis/2023-10 SPE Think Tank/Slide5.png" data-lightbox="image-5" data-title="">
 		<img src="{{ site.url }}/images/Analysis/2023-10 SPE Think Tank/Slide5.png" alt=""/>
 	</a>
-	<figcaption><strong>Figure 5: Highlights from the Statistical Review of World Energy.</strong><br/> Source: Peter Kirkham, World Bank</figcaption>
+	<figcaption><strong>Figure 5: Population growth projections for developing and high-income countries in context of historical energy consumption.</strong><br/> Source: Peter Kirkham, World Bank</figcaption>
 </figure>
 
 We must also recognise that energy consumption is not equal all around the globe. For convenience, I’ve illustrated this by splitting the world into two: high-income countries (as defined by the World Bank – you can see these on the map) and the less developed countries.
@@ -96,7 +96,7 @@ Of course the populations of many other less developed countries would also like
 	<a href="{{ site.url }}/images/Analysis/2023-10 SPE Think Tank/Slide6.png" data-lightbox="image-6" data-title="">
 		<img src="{{ site.url }}/images/Analysis/2023-10 SPE Think Tank/Slide6.png" alt=""/>
 	</a>
-	<figcaption><strong>Figure 6: Highlights from the Statistical Review of World Energy.</strong><br/> Source: Peter Kirkham</figcaption>
+	<figcaption><strong>Figure 6: Possible energy Transition Scenarios.</strong><br/> Source: Peter Kirkham</figcaption>
 </figure>
 
 In this last slide I present some possible outcomes. I should stress that at this point I’m moving away from the data, and extrapolating, and that these are my personal projections. They are not intended to be definitive, nor accurate. The intent is to provide an informed framework for further discussion.

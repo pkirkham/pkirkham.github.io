@@ -209,7 +209,7 @@ Where:
  - $$D_{h}$$ = hydraulic radius = $$4A / P$$ or $$d_{i}$$ for cylindrical pipe
  - $$\mu$$ = fluid viscosity
 
-It is necessary at this point to digress slightly and note that [Reynolds was a fellow at Queens' College, Cambridge](https://en.wikipedia.org/wiki/Osborne_Reynolds), where I studied Engineering. This little known piece of trivia was drilled into all undergraduate engineers at Queens'. It is somewhat sobering to realise that over a century later we have not managed to significantly advance the state of fluid flow in pipes to an extent that the Reynolds number has faded into the history books. We are truely standing on the shoulders of giants.
+It is necessary at this point to digress slightly and note that [Reynolds studied at Queens' College, Cambridge](https://en.wikipedia.org/wiki/Osborne_Reynolds), where I studied Engineering. This little known piece of trivia was drilled into all undergraduate engineers at Queens'. It is somewhat sobering to realise that over a century later we have not managed to significantly advance the state of fluid flow in pipes to an extent that the Reynolds number has faded into the history books. We are truely standing on the shoulders of giants.
 
 But enough already with my hero-worship of Reynolds. Let's get back to our friction factor... The critical zone portion of the chart between the laminar and transition to turbulent flow (2300 < Re < 4000) is calculated using:
 
