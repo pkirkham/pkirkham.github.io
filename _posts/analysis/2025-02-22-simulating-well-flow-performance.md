@@ -513,7 +513,7 @@ This is an interesting challenge as it is essentially doing a blind test on the 
 edition. 1991. Washington, DC: API.
  - Bird, R. B., Stewart, W. E., and Lightfoot, E. N. 2002. _Transport Phenomena_, second edition. New York City: John Wiley and Sons Inc.
  - Colebrook, C.F. 1939. Turbulent Flow in Pipes, with Particular Reference to the Transition Region Between the Smooth and Rough Pipe Laws. _J Inst Civ Eng_ **11** (04): 133-156. [https://doi.org/10.1680/ijoti.1939.13150](https://doi.org/10.1680/ijoti.1939.13150).
- - [Moody, L. F. 1944. Friction Factors for Pipe Flow. In _Transactions of the ASME_ **66** (08): 671–684.](http://www.ipt.ntnu.no/~asheim/TPG4135/Moody.pdf).
+ - [Moody, L. F. 1944. Friction Factors for Pipe Flow. In _Transactions of the ASME_ **66** (08): 671–684.](http://www.ipt.ntnu.no/~asheim/TPG4135/Moody.pdf)
  - [Nagoo, A. 2013. _Pipe Fractional Flow Theory: Principles and Applications_. PhD dissertation, The University of Texas at Austin, Texas (December 2013).](http://hdl.handle.net/2152/65197)
  - Ortiz-Vidal, L. E., Mureithi, N. and Rodriguez, O. M. H. 2014. Two-Phase Friction Factor in Gas-Liquid Pipe Flow. _Revista De Engenharia Térmica_ **13** (02): 81-88. [https://doi.org/10.5380/reterm.v13i2.62101](https://doi.org/10.5380/reterm.v13i2.62101).
  - Sagar, R., Doty, D. and Schmidt Z. 1991. Predicting Temperature Profiles in a Flowing Well. _SPE Prod Eng_ **6** (04): 441-448. SPE-19702-PA. [https://doi.org/10.2118/19702-PA](https://doi.org/10.2118/19702-PA).

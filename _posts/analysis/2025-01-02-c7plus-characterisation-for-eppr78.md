@@ -192,7 +192,7 @@ _EthylBenzene_
 <iframe style="width: 800px; height: 1200px; position: relative; top: -450px" frameborder="0" src="https://embed.molview.org/v1/?mode=balls&cid=7500&bg=white"></iframe>
 </div>
 
-| Molecule | ACN | -CH3 | -CH2- | >CH- | >C< | CH<( (R) | -C<( (R) | )>C<( (R) |
+| Molecule | ACN | -CH3 | -CH2- | >CH- | >C< | )>CH (R) | )>C- (R) | )>C<( (R) |
 | --- | --- | ---| --- | --- | ---| --- | ---| --- |
 | [Benzene](https://molview.org/?cid=241) | 6 | - | - | - | - | 6 | - | - |
 | [MethylBenzene](https://molview.org/?cid=1140) | 7 | 1 | - | - | - | 5 | 1 | - |
@@ -216,8 +216,8 @@ Again we use a similar approach to that used with the branched paraffins. Equati
 | -CH2- | (ACN > 7) ? ACN - 7 / ACN : 0 | MAX(0, ACN - ((`n_aro` - 1) * 4 + 6)) |
 | >CH- | - | MAX(0, ((ACN - 1) - ((`n_aro` - 1) * 4 + 6)) / 5.5) / ACN |
 | >C< | - | MAX(0, ((ACN - 1) - ((`n_aro` - 1) * 4 + 6)) / 12) / ACN |
-| CH<( (R) | (ACN > 6) ? 5 / ACN : 1 | ((`n_aro` - 1) * 2 + 5) / ACN |
-| -C<( (R) | (1 - (`-CH2-` + `CH<( (R)`)) / 2 | `CH<( (R)` - (`ac_branch` / 10 + 4) / ACN |
+| )>CH (R) | (ACN > 6) ? 5 / ACN : 1 | ((`n_aro` - 1) * 2 + 5) / ACN |
+| )>C- (R) | (1 - (`-CH2-` + `CH<( (R)`)) / 2 | `CH<( (R)` - (`ac_branch` / 10 + 4) / ACN |
 | )>C<( (R) | - | MAX(0, 1 &minus; (`-CH3` + `-CH2-` + `>CH-` + `>C<` + `CH<( (R)` + `-C<( (R)`)) |
 
 Note: Table uses [ternary conditional operator](https://en.wikipedia.org/wiki/Ternary_conditional_operator) to express logic. The equations for all group components may not add to unity, so fractions must be normalised to 1.0 after calculation.
@@ -254,14 +254,14 @@ Using the formulae described above, we obtain the following group components for
 |     -CH2- | 0.7798 | 0.3486 | 0.6175 | 0.1580 | 0.0585 | 0.1206 | 0.0953 | 0.0353 | 0.0945 |  0.4281 |
 |      >CH- | - | 0.1620 | 0.0610 | - | 0.0287 | 0.0108 | - | 0.0173 | 0.0002 |  0.0399 |
 |       >C< | - | 0.0357 | 0.0134 | - | 0.0132 | 0.0050 | - | 0.0079 | 0.0001 |  0.0092 |
-|  CH<( (R) | - | - | - | - | - | - | 0.6462 | 0.6462 | 0.6462 |  0.1545 |
-|  -C<( (R) | - | - | - | - | - | - | 0.1292 | 0.1068 | 0.1289 |  0.0308 |
+|  )>CH (R) | - | - | - | - | - | - | 0.6462 | 0.6462 | 0.6462 |  0.1545 |
+|  )>C- (R) | - | - | - | - | - | - | 0.1292 | 0.1068 | 0.1289 |  0.0308 |
 | )>C<( (R) | - | - | - | - | - | - | - | 0.0413 | 0.0006 |  0.0001 |
 | -CH2- (R) | - | - | - | - | - | 0.6014 | - | - | - |  0.0779 |
 |  >CH- (R) | - | - | - | - | - | 0.1098 | - | - | - |  0.0142 |
 |   >C< (R) | - | - | - | - | - | 0.0198 | - | - | - |  0.0026 |
 
-It can be seen that `-CH2-`, `CH<( (R)` and `-CH2- (R)` groups are the main groups for the paraffins, naphthenes and aromatics, but `-CH3` is also predominant. Other groups are very minor contributions only.
+It can be seen that `-CH2-`, `)>CH (R)` and `-CH2- (R)` groups are the main groups for the paraffins, naphthenes and aromatics, but `-CH3` is also predominant. Other groups are very minor contributions only.
 
 A code snippet from Pyrus used to implement the described equations is as follows:
 

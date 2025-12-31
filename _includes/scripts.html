@@ -1,5 +1,10 @@
 {% if page.mathjax %}
-<script type="text/javascript" async
-	src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+<script>
+window.MathJax = {
+  tex: {
+    tags: 'all' // should be 'ams', 'none', or 'all'
+  }
+};
 </script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 {% endif %}
