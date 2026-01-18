@@ -139,6 +139,139 @@ Else if LIQUID fluid:
 
 Lohrenz, Bray and Clark note that because the calculation procedure is a sequence of steps, it is possible to update or change any step. They note that since they devised the procedure, new techniques had emerged which could both simplify the calculations and/or improve the accuracy. It is also noted that it should be possible to make gas viscosity predictions using an identical procedure to that applied for liquid viscosities, but the lack of a reliable gas density prediction method (at the time the LBC paper was written) prevented them from pursuing this route.
 
+## Implementation in Java
+
+The Pyrus implementation of the Lohrenz-Bray-Clark method is shown below. Note that Pyrus uses javax.measure units and measurements with custom oilfield units. The use of these methods should be self-explanatory for anyone trying to follow the code.
+
+```java
+/**
+ * Implements the Lohrenz-Bray-Clark viscosity procedure in accordance with the outline proposed in their 1964
+ * paper.
+ * 
+ * @param p mixture pressure
+ * @param t mixture temperature
+ * @return viscosity of the mixture
+ */
+public Amount<DynamicViscosity> getViscosityLBC(Amount<Pressure> p, Amount<Temperature> t) {
+
+    // Generate dilute gas viscosities for the mixture.
+    FastMap<FluidComponent, Amount<DynamicViscosity>> xi_mui = new FastMap<>(eos_composition.size());
+    StringBuilder sb = null;
+    for (FluidComponent fc : eos_composition.keySet()) {
+        Condition critical_pt = fc.criticalPoint();
+        final Double zi = eos_composition.get(fc);
+        final double mplus = fc.mass();
+        final double tc_degk = critical_pt.getTemperature().doubleValue(KELVIN);
+        final double tri = t.doubleValue(KELVIN) / tc_degk;
+        final double pc_atm = critical_pt.getPressure().doubleValue(ATMOSPHERE);
+        final double xi = PVT.viscosityReducingParameter(tc_degk, pc_atm, mplus);
+        final double mui_cp = PVT.gasViscosityLowPressureStielThodos(tri, xi);
+        xi_mui.put(fc, Amount.valueOf(mui_cp, CENTIPOISE));
+    }
+
+    // Apply Herning and Zipperer (1936) mixing rule to get mixture dilute gas viscosity.
+    Amount<DynamicViscosity> mu_star = mixingRuleHerningZipperer(xi_mui, eos_composition);
+
+    // Calculate density
+    double rho = getDensity(p, t).doubleValue(POUND_PER_CUBIC_FOOT);
+
+    // Calculate reduced density
+    double vcrit = 0.0;
+    for (FluidComponent fc : eos_composition.keySet()) {
+        final double vci = eos_composition.get(fc) * fc.criticalPoint().getVolume().doubleValue(CUBIC_FOOT);
+        vcrit += vci;
+    }
+    double molw = getMolecularMass();
+    double rho_c = molw / vcrit; // lbm/ft^3
+    double rho_r = rho / rho_c;
+
+    // Jossi et al polynomial
+    double tc_degk = criticalTemperatureEstimate().doubleValue(KELVIN);
+    double pc_atm = criticalPressureEstimate().doubleValue(ATMOSPHERE);
+    double xi = PVT.viscosityReducingParameter(tc_degk, pc_atm, molw);
+    double mu = PVT.viscosityJossiStielThodos(rho_r, xi, mu_star.doubleValue(CENTIPOISE));
+    return Amount.valueOf(mu, CENTIPOISE);
+}
+
+/**
+ * In a simplification of the kinetic theory approach, ignoring second order effects, Herning and Zipperer (1936)
+ * proposed a viscosity mixing rule based on molecular weights.
+ *
+ * @param xi_mui map of fluid components to pure component viscosity (allows different pure component viscosities)
+ * @param comp map of fluid components to pure component mixture fraction
+ * @return viscosity of the mixture
+ */
+public static Amount<DynamicViscosity> mixingRuleHerningZipperer(
+        FastMap<FluidComponent, Amount<DynamicViscosity>> xi_mui, FastMap<FluidComponent, Double> comp) {
+    double mui_zi_sqrtmi = 0.0;
+    for (FluidComponent fc_i : comp.keySet()) {
+        final Double zi = comp.get(fc_i);
+        final double m_i = fc_i.mass();
+        double zj_phi_ij = 0.0;
+        for (FluidComponent fc_j : comp.keySet()) {
+            final Double zj = comp.get(fc_j);
+            final double m_j = fc_j.mass();
+            zj_phi_ij += zj * sqrt(m_j / m_i);
+        }
+        mui_zi_sqrtmi += (xi_mui.get(fc_i).doubleValue(CENTIPOISE) * zi) / zj_phi_ij;
+    }
+    return Amount.valueOf(mui_zi_sqrtmi, CENTIPOISE);
+}
+```
+
+The `criticalTemperatureEstimate()` and `criticalPressureEstimate()` estimate a pseudo-critical point based on mixture rules such as those proposed by Kay. The `PVT.gasViscosityLowPressureStielThodos`, `PVT.viscosityReducingParameter` and `PVT.viscosityJossiStielThodos` methods are implemented as follows:
+
+```java
+/**
+ * Calculates the dilute gas viscosity (typically at low pressure 1 to 5 atm) for a component.
+ *
+ * @param tr reduced temperature
+ * @param xi viscosity reducing parameter (1/cP)
+ * @return dilute gas viscosity (cP)
+ */
+public static final double gasViscosityLowPressureStielThodos(double tr, double xi) {
+    double mu_star;
+    if (tr < 1.5) {
+        mu_star = (34.0e-05 * pow(tr, 0.94)) / xi;
+    } else {
+        mu_star = (17.78e-05 * pow(4.58 * tr - 1.67, 5.0 / 8.0)) / xi;
+    }
+    return mu_star;
+}
+
+/**
+ * Component viscosity-reducing parameter ≈ 1 / μci (cP-1).
+ *
+ * @param tc critical temperature, K
+ * @param pc critical pressure, atm
+ * @param mw molecular weight, g/mol
+ * @return viscosity-reducing parameter ≈ 1 / μci (1/cP)
+ */
+public static final double viscosityReducingParameter(double tc, double pc, double mw) {
+    double xi = pow(tc, 1.0 / 6.0) / (sqrt(mw) * pow(pc, 2.0 / 3.0));
+    return xi;
+}
+
+/**
+ * Based on method of Jossi, this correlates the residual viscosity to the reduced density.
+ *
+ * @param rho_r reduced density
+ * @param xi viscosity reducing parameter (1/cP)
+ * @param mu_star dilute gas viscosity at target temperature (cP)
+ * @return liquid viscosity at target pressure and temperature
+ */
+public static final double viscosityJossiStielThodos(double rho_r, double xi, double mu_star) {
+    double rho_r_sqr = rho_r * rho_r;
+    double mu = 0.1023 + 0.023364 * rho_r + 0.058533 * rho_r_sqr - 0.040758 * rho_r_sqr * rho_r
+            + 0.0093324 * rho_r_sqr * rho_r_sqr;
+    mu = pow(mu, 4.0);
+    mu -= 1.0e-04;
+    mu /= xi;
+    mu += mu_star;
+    return mu;
+}
+```
+
 ## LBC Considerations
 
 ### Predictive Quality
