@@ -245,7 +245,7 @@ public Amount<DynamicViscosity> getViscosityPedersen(Amount<Pressure> p, Amount<
             "P", Amount.valueOf(pdash_o_atm, ATMOSPHERE).doubleValue(PASCAL),
             ref_fluid.getCoolPropName()); // kg/m^3
 
-    // Reduced density of methane.
+    // Reduced density of reference fluid.
     double rho_c_ref = CoolProp.Props1SI("RHOCRIT", ref_fluid.getCoolPropName()); // kg/m^3
     double rho_r = rho_ref / rho_c_ref;
 
@@ -299,6 +299,7 @@ Due to these issues, which are probably related to my implementation of the meth
 ## References
 
  - Hanley, H. J. M., McCarty, R. D., and Haynes, W. M. 1975. Equations for the Viscosity and Thermal Conductivity Coefficients of Methane. _Cryogenics_ **15** (7): 413-417. [https://doi.org/10.1016/0011-2275(75)90010-7](https://doi.org/10.1016/0011-2275(75)90010-7).
+ - Lindeloff, N., Pedersen, K. S., Rønningsen, H.P., and Milter, J. 2003. The Corresponding States Viscosity Model Applied to Heavy Oil Systems. Paper presented at the Canadian International Petroleum Conference, Calgary, Alberta, Canada, 10-12 June. PETSOC-2003-150. [https://doi.org/10.2118/2003-150](https://doi.org/10.2118/2003-150).
  - McCarty, R. D. 1974. A modified Benedict-Webb-Rubin Equation of State for Methane Using Recent Experimental Data. _Cryogenics_ **14** (5): 276-280. [https://doi.org/10.1016/0011-2275(74)90228-8](https://doi.org/10.1016/0011-2275(74)90228-8).
  - Pedersen, K. S., Christensen, P. L., and Shaikh, J. A. 2024. _Phase Behavior of Petroleum Reservoir Fluids_, third edition. Boca Raton: CRC Press.
  - Pedersen, K. S., Fredenslund, A., Christensen, P. L., and Thomassen, P. 1984. Viscosity of Crude Oils. _Chem. Eng. Sci._ **39** (6): 1011-1016. [https://doi.org/10.1016/0009-2509(84)87009-8](https://doi.org/10.1016/0009-2509(84)87009-8).

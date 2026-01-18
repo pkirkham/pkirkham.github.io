@@ -44,9 +44,9 @@ Generally there are several types of viscosity model.
 
  1. **Correlation**: Correlations have been devised from large datasets to predict viscosity for gases and liquids against common field measurements. These approaches require that high level fluid parameters such as the gravity and saturation pressures are known. For well behaved typical oil and gas fluids, these approaches can be considered robust.
  2. **Theoretical**: Theoretical models combine effects of kinetic theory and intermolecular forces. Most approaches are based on the equations derived by Chapman and Enskog. Since this approach is based on the behaviour of interactions between colliding molecules, and the attractions (or repulsions) that exist between them, it is only applicable to modelling of gas viscosity.
- 3. **Corresponding States**: Based on the principle that fluids will exhibit similar thermodynamic behaviour at the same reduced temperature and reduced pressure, it is possible to create a model for viscosity based on a known fluid and extend this to other components or mixtures. It is the [theory of corresponding states](https://en.wikipedia.org/wiki/Theorem_of_corresponding_states) that underpins the well-known Standing and Katz z-factor chart which uses the reduced pressure and reduced temperature to determine the z-factor. In other words, for any gas at the same conditions relative to its critical point, will exhibit similar deviation from ideal gas behaviour.
+ 3. **Corresponding States**: Based on the principle that fluids will exhibit similar thermodynamic behaviour at the same reduced temperature and reduced pressure, it is possible to create a model for viscosity based on a known fluid and extend this to other components or mixtures. This is essentially similar to the [theory of corresponding states](https://en.wikipedia.org/wiki/Theorem_of_corresponding_states) that underpins the well-known Standing and Katz z-factor chart which uses the reduced pressure and reduced temperature to determine the z-factor. In other words, for any gas at the same conditions relative to its critical point, will exhibit similar deviation from ideal gas behaviour.
  4. **Residual Viscosity**: A relationship between the density of a fluid and its viscosity exists. The difference between the viscosity and the viscosity of the fluid at atmospheric conditions is referred to as the residual viscosity. It can be shown that values of residual viscosity plotted against density fall onto a curve, and that this appeears to be independent of temperature.
- 5. **Group Contribution Method**: Models based on group contribution methods can support predictive viscosity modelling if the composition of the fluid is known. These are typically used for low-temperature liquid viscosity approaches where corresponding states methods are less accurate. In contrast, group contribution methods take into consideration the effects of the chemical structure on viscosity.
+ 5. **Group Contribution Techniques**: Models based on group contribution methods can support predictive viscosity modelling if the composition of the fluid is known. These are typically used for low-temperature liquid viscosity approaches where corresponding states methods are less accurate. In contrast, group contribution methods take into consideration the effects of the chemical structure on viscosity.
 
 In the oil and gas industry, both simple correlations and the Lohrenz-Bray-Clark (LBC) method are the most widely used viscosity models. This is intruiging given the importance of viscosity to Darcy's equation that governs dynamic flow. Would a more fundamental approach not be better?
 
@@ -229,7 +229,15 @@ Where:
 
 ### Corresponding States Models
 
-The correlation models above calculate viscosity at a given temperature and pressure. An alternative approach is to first determine the gas viscosity at a known reference condition such as atmospheric conditions, and to then adjust the reference viscosity to the target temperature and pressure. By using reduced temperature and pressure the corresponding states principle (CSP), that gas will behave similarly under the same reduced conditions, can be exploited. Comings et al (1944) expressed the viscosity ratio as a function of the reduced pressure and reduced temperature.
+The correlation models above calculate viscosity at a given temperature and pressure. An alternative approach is to first determine the gas viscosity at a known reference condition such as atmospheric conditions, and to then adjust the reference viscosity to the target temperature and pressure. By using reduced temperature and pressure the corresponding states principle (CSP), that gas will behave similarly under the same reduced conditions, can be exploited. 
+
+Methods that are based on corresponding states include:
+
+ 1. **Comings et al (1944)**: This graphical method was an early industry standard.
+ 2. **Pedersen et al (1984, 1987)**:
+ 3. **Lucas (1974)**:
+
+Comings et al (1944) expressed the viscosity ratio as a function of the reduced pressure and reduced temperature.
 
 $$\frac{\mu}{\mu_{1atm}}=f(p_r, T_r)$$
 
@@ -252,11 +260,22 @@ Where:
 
 Until the advent of the Lee, Gonzalez and Eakin correlation, this method was often used for calculating gas viscosity by laboratories.
 
-Another approach is that devised by Pedersen et al (1984, 1987). Lindeloff et al (2003) showed how this approach could be combined with a heavy oil viscosity correlation to extend to CSP method from application of gas through to heavy oil.
+Another approach is that devised by Pedersen et al (1984, 1987). Lindeloff et al (2003) showed how this approach could be combined with a heavy oil viscosity correlation to extend to CSP method from application of gas through to heavy oil. The Lindeloff-Pedersen CSP approach can be applied across the full range of hydrocarbons from light gases through to heavy oils.
+
+[Lucas]
+
+Need references...
 
 ### Residual Viscosity Models
 
-Jossi, Stiel and Thodos (1962) introduced an alternative approach based on the residual viscosity. Residual viscosity is defined as the difference between viscosity at a target temperature and pressure and the viscosity of the dilute gas phase (usually at 1 atm pressure and the same target temperature) = _&mu; &minus; &mu;<sup>*</sup>_ for pure fluids. It was determined should be a function of the density and dimensional constants specific to each fluid. Through application of dimensional analysis and computer-aided polynomial regression (a novelty at that time), an analytical relationship was found:
+Residual viscosity is defined as the difference between viscosity at a target temperature and pressure and the viscosity of the dilute gas phase (usually at 1 atm pressure and the same target temperature) = _&mu; &minus; &mu;<sup>*</sup>_ for pure fluids.
+
+Methods that are based on residual viscosity include:
+
+ 1. **Jossi et al (1962)**: This method is often encountered in the Lohrenz-Bray-Clark viscosity approach.
+ 2. **TRAPP**: 
+
+Jossi, Stiel and Thodos (1962) introduced an alternative approach based on the residual viscosity. It was determined that the resdiaul viscosity should be a function of the density and dimensional constants specific to each fluid. Through application of dimensional analysis and computer-aided polynomial regression (a novelty at that time), an analytical relationship was found:
 
 $$\left[\left({\mu-\mu^{*}}\right)\xi+10^{-4}\right]^{1/4}=a_1+a_2\rho_r+a_3\rho_r^2+a_4\rho_r^3+a_5\rho_r^4$$
 
@@ -286,11 +305,30 @@ It is noted that this relationship holds for most fluids where critical compress
 | _a<sub>4</sub>_ | -0.040758 | -0.12295 | -0.032153 | -0.0054430 |
 | _a<sub>5</sub>_ | 0.0093324 | 0.028149 | 0.0089998 | 0.0017979 |
 
+<div class="notice-warning">The Jossi et al residual viscosity could also be described as a corresponding states approach since it is based on a reduced increase in viscosity above the dilute gas viscosity in terms of the reduced density, and this is similar for many fluids. Here we distinguish between methods that model the viscosity ratio, &mu; / &mu;<sup>*</sup> = <i>f</i>(T<sub>r</sub> , p<sub>r</sub>), as corresponding states models, and those that model the additional viscosity, &mu; = &mu;<sup>*</sup> + <i>f</i>(T<sub>r</sub> , p<sub>r</sub>), as residual viscosity models.</div>
+
 The [Lohrenz-Bray-Clark (LBC) correlation](https://wiki.whitson.com/bopvt/visc_correlations/#lohrenz-bray-clark-correlation) is often used in the oil and gas industry. It is incorporated into almost all software packages that deal with fluid properties, not because it is necessarily the best approach, but because it is expected that the method should be available. As such it is almost universally applied. Furthermore, it is intended to calculate the viscosity of both gases and liquids, at high and low temperature and pressure. The procedure used depends on whether the fluid is a gas or a liquid. For gases, previously published correlations were used. For liquids, it was believed that this was a novel procedure at the time for calculation of viscosity from compositions up to heptanes-plus fraction.
 
-### Group Contribution Method Models
+<div class="notice-info">The LBC approach actually describes a methodology for combining existing methods to determine low-pressure viscosity, combining component viscosities to create a low-pressure mixture viscosity, and finally how to determine the viscosity at the actual pressure depending on whether the fluid is a gas or a liquid. The equation that is commonly referred to as the Lohrenz-Bray-Clark viscosity equation is actually the Jossi, Stiel and Thodos (1962) equation.</div>
 
-Although there are myriad equations and methods that have been developed to predict fluid viscosity, there is no universally accepted solution that accurately predicts viscosity across all fluid types.
+[TRAPP]
+
+Need references...
+
+### Group Contribution Method Techniques
+
+Although there are myriad equations and methods that have been developed to predict fluid viscosity, there is no universally accepted solution that accurately predicts viscosity across all fluid types. Many methods can be shown to be reasonably accurate if the pure component viscosities, or low-pressure mixture viscosity can be accurately measured. In other words, in the presence of a datapoint anchor, the principles that govern variation in viscosity with temperature and pressure are understood and viscosity at other temperatures and pressures can be reliably predicted.
+
+But what if there is no laboratory measurement from which to 'tune' the viscosity model?
+
+Group contribution methods have been successfully applied to modelling of various chemical properties, and viscosity is no exception. By breaking the molecule into smaller constituent groups, each of which contributes a certain amount to the final property through its molecular size and shape, the component viscosity can be predicted in the absence of measured data.
+
+Techniques that are based on group contribution methods include:
+
+ 1. **Orrick and Erbar (1973)**: Method for determining pure component dynamic viscosity for a saturated liquid.
+ 2. **Grunberg and Nissan (1949)**: Method to determine mixture viscosity where group contributions based on an approach described by Isdale (1979) can be used.
+ 3. **Reichenberg (1974, 1977, 1979)**:
+ 4. **Sastri-Rao (1992)**: Alternative approach to Orrick and Erbar for liquids.
 
 Early research into fluid viscosity by De Guzman (1913) and later by Andrade (1930) revealed that fluid viscosity _&mu;_ is related to temperature _T_ according to the following formula.
 
@@ -329,7 +367,7 @@ Group co-efficients for hydrocarbon components are:
 | 5 | Aromatic Ring | 0.0 | 20.0 |
 | 6 | Cyclic Ring | -0.45 | 250.0 |
 
-The Orrick and Erbar viscosity applies to pure components only, and cannot be applied to mixtures. Furthermore it is not recommended for use at high temperatures or pressure above atmospheric.
+The Orrick and Erbar viscosity applies to pure components only, and cannot be applied to mixtures. Furthermore it is not recommended for use at high temperatures or pressures above atmospheric.
 
 [Other GCM method? Reichenberg (1974, 1977, 1979) for gas. Sastri-Rao (1992) for liquid.]
 
@@ -342,36 +380,37 @@ Fu (2014) outlines an approach to calculating mixture viscosity where the GCM me
 ## Comparison Against Published Datasets
 
  - Comings (carbon dioxide, ethylene, methane, propane)
- - Poling (multiple pure compounds gas + liquid)
- - Pedersen (numerous examples in book)
- - Lindeloff (8x oils)
 
 ## References
 
  - Alani, G. H. and Kennedy, H. T. 1960. Volumes of Liquid Hydrocarbons at High Temperatures and Pressures. _Trans._ **219** (01): 288-292. SPE-1399-G. [https://doi.org/10.2118/1399-G](https://doi.org/10.2118/1399-G).
- - Ali, J. K. 1991. Evaluation of Correlations for Estimating the Viscosities of Hydrocarbon Fluids. _J. Pet. Sci. Eng._ **5**: 351-369. [https://doi.org/10.1016/0920-4105(91)90053-P](https://doi.org/10.1016/0920-4105(91)90053-P).
+ - Ali, J. K. 1991. Evaluation of Correlations for Estimating the Viscosities of Hydrocarbon Fluids. _J Pet Sci Eng_ **5**: 351-369. [https://doi.org/10.1016/0920-4105(91)90053-P](https://doi.org/10.1016/0920-4105(91)90053-P).
  - Andrade, E. N. da C. 1930. The Viscosity of Liquids. _Nature_ **125**: 309-310. [https://doi.org/10.1038/125309b0](https://doi.org/10.1038/125309b0).
  - Bergman, D. F. and Sutton, R. P., 2006. Undersaturated Oil Viscosity Correlation for Adverse Conditions. Paper presented at the SPE Annual Technical Conference and Exhibition, San Antonio, Texas, USA, 24-27 September 2006. SPE-103144-MS. [https://doi.org/10.2118/103144-MS](https://doi.org/10.2118/103144-MS).
  - Bergman, D. F. and Sutton, R. P., 2007. A Consistent and Accurate Dead-Oil-Viscosity Method. Paper presented at the SPE Annual Technical Conference and Exhibition, Anaheim, California, USA, 11-14 November 2007. SPE-110194-MS. [https://doi.org/10.2118/110194-MS](https://doi.org/10.2118/110194-MS).
  - Bergman, D. F. and Sutton, R. P., 2007. An Update to Viscosity Correlations for Gas-Saturated Crude Oils. Paper presented at the SPE Annual Technical Conference and Exhibition, Anaheim, California, USA, 11-14 November 2007. SPE-110195-MS. [https://doi.org/10.2118/110195-MS](https://doi.org/10.2118/110195-MS).
- - Born, M. and Green, H. S. 1947. A General Kinetic Theory of Liquids III: Dynamical Properties. _Proc._, Royal Society, London, England, 1 September, **190** (1023): 455–474. [https://doi.org/10.1098/rspa.1947.0088](https://doi.org/10.1098/rspa.1947.0088).
- - Carr, N.L., Kobayashi, R., and Burrows, D.B. 1954. Viscosity of Hydrocarbon Gases Under Pressure. _J Pet Technol_ **6** (10): 47-55. SPE-297-G. [https://doi.org/10.2118/297-G](https://doi.org/10.2118/297-G).
+ - Born, M. and Green, H. S. 1947. A General Kinetic Theory of Liquids III: Dynamical Properties. _Proc_, Royal Society, London, England, 1 September, **190** (1023): 455–474. [https://doi.org/10.1098/rspa.1947.0088](https://doi.org/10.1098/rspa.1947.0088).
+ - Carr, N. L., Kobayashi, R., and Burrows, D. B. 1954. Viscosity of Hydrocarbon Gases Under Pressure. _J Pet Technol_ **6** (10): 47-55. SPE-297-G. [https://doi.org/10.2118/297-G](https://doi.org/10.2118/297-G).
  - [Comings, E. W., Mayland, B. J., and Egly, R. S. 1944. The Viscosity of Gases at High Pressures. _University of Illinois Engineering Experiment Station Bulletin No. 354_.](http://hdl.handle.net/2142/4478)
  - [Chapman, S. and Cowling, T. G. 1970. _The Mathematical Theory of Non-Uniform Gases_, third edition. Cambridge: Cambridge University Press.](https://www.cambridge.org/us/universitypress/subjects/mathematics/fluid-dynamics-and-solid-mechanics/mathematical-theory-non-uniform-gases-account-kinetic-theory-viscosity-thermal-conduction-and-diffusion-gases)
- - De Guzman, J. 1913. Relation Between Fluidity and Heat of Fusion. _Anales Soc. Espan. Fis. Y. Quim_ **11**: 353-362.
+ - Chung, T. H., Ajlan, M., Lee, L. L., and Starling, K. E. 1988. Generalized Multiparameter Correlation for Nonpolar and Polar Fluid Transport Properties. _Ind Eng Chem Res_ **27**: 671-679. [https://doi.org/10.1021/ie00076a024](https://doi.org/10.1021/ie00076a024).
+ - De Guzman, J. 1913. Relation Between Fluidity and Heat of Fusion. _Anales Soc Espan Fis Y Quim_ **11**: 353-362.
  - Fu, Z. 2014. _Group Contribution Modeling of Physical Properties During Urethane Reaction_. MS thesis, University of Missouri-Columbia (May, 2014).
  - Grunberg, L. and Nissan, A. H. 1949. A Mixture Law for Viscosity. _Nature_ **164**: 799-800. [https://doi.org/10.1038/164799b0](https://doi.org/10.1038/164799b0).
- - Herning, F. and Zipperer, L. (1936). Beitrag zur Berechnung der Zähigkeit Technischer Gasgemische aus den Zähigkeitswerten der Einzelbestandteile (Calculation of the Viscosity of Technical Gas Mixtures from Viscosity of the individual Gases), _Gas und Wasserfach_ **79**: 49–54, 69-73.
+ - Huber, M. L. and Hanley H. J. M. 1996. The Corresponding-States Principle: Dense Fluids. In _Transport Properties of Fluids, Their Correlation, Prediction and Estimation_, ed. J. Millat, J. H. Dymond, and  C. A. Nieto de Castro, Chap. 12, 283-295. Cambridge: Cambridge University Press. [https://doi.org/10.1017/CBO9780511529603](https://doi.org/10.1017/CBO9780511529603)
  - Isdale, J. D. 1979. In _Symposium on Transport Properties of Fluids and Fluid Mixtures, Their Measurement, Estimation, Correlation, and Use_. East Kilbride, Glasgow, Scotland: Nat. Engineering Laboratory.
  - Jossi, J. A., Stiel, L. I., and Thodos, G. 1962. The Viscosity of Pure Substances in the Dense Gaseous and Liquid Phases. _AIChE Journal_ **8**: 59-63. [https://doi.org/10.1002/aic.690080116](https://doi.org/10.1002/aic.690080116).
  - Lee, A. L., Gonzalez, M. H., and Eakin, B. E. 1966. The Viscosity of Natural Gas. _J Pet Technol_ **18** (8): 997-1000. SPE-1340-PA. [https://doi.org/10.2118/1340-PA](https://doi.org/10.2118/1340-PA).
  - Lindeloff, N., Pedersen, K. S., Rønningsen, H.P., and Milter, J. 2003. The Corresponding States Viscosity Model Applied to Heavy Oil Systems. Paper presented at the Canadian International Petroleum Conference, Calgary, Alberta, Canada, 10-12 June. PETSOC-2003-150. [https://doi.org/10.2118/2003-150](https://doi.org/10.2118/2003-150).
- - Lohrenz, J., Bray, B.G., and Clark, C.R. 1964. Calculating Viscosities of Reservoir Fluids From Their Compositions. _J Pet Technol_ **16** (10): 1171–1176. SPE-915-PA. [https://doi.org/10.2118/915-PA](https://doi.org/10.2118/915-PA).
+ - Lohrenz, J., Bray, B. G., and Clark, C. R. 1964. Calculating Viscosities of Reservoir Fluids From Their Compositions. _J Pet Technol_ **16** (10): 1171–1176. SPE-915-PA. [https://doi.org/10.2118/915-PA](https://doi.org/10.2118/915-PA).
  - Londono, F. E., Archer, R. A., and Blasingame, T. A. 2002. Simplified Correlations for Hydrocarbon Gas Viscosity and Gas Density — Validation and Correlation of Behavior Using a Large-Scale Database. Paper presented at the SPE Gas Technology Symposium, Calgary, Alberta, Canada, April 2002. SPE-75721-MS. [https://doi.org/10.2118/75721-MS](https://doi.org/10.2118/75721-MS).
+ - Lucas, K. 1974. Ein einfaches Verfahren zur Berechnung der Viskositat von Gasen und Gasgemischen (A Simple Method for Calculating the Viscosity of Gases and Gas Mixtures). _Chem Ing Tech_ **46** (4): 157. [https://doi.org/10.1002/cite.330460413](https://doi.org/10.1002/cite.330460413).
+ - Lucas, K. 1981. Die Druckabhängigkeit der Viskosität von Flüssigkeiten – eine einfache Abschätzung (The Pressure Dependence of the Viscosity of Liquids - a Simple Estimation). _Chem Ing Tech_ **53** (12): 959-960. [https://doi.org/10.1002/cite.330531209](https://doi.org/10.1002/cite.330531209).
  - Orrick, C. and Erbar, J. H. 1973. _Estimation of Viscosity for Organic Liquids_. Proposition Report, Oklahoma State University, Stillwater, Oklahoma (July, 1973).
  - Pedersen, K. S., Christensen, P. L., and Shaikh, J. A. 2024. _Phase Behavior of Petroleum Reservoir Fluids_, third edition. Boca Raton: CRC Press.
- - Pedersen, K. S., Fredenslund, A., Christensen, P. L., and Thomassen, P. 1984. Viscosity of Crude Oils. _Chem. Eng. Sci._ **39** (6): 1011-1016. [https://doi.org/10.1016/0009-2509(84)87009-8](https://doi.org/10.1016/0009-2509(84)87009-8).
- - Pedersen, K. S. and Fredenslund, A. 1987. An Improved Corresponding States Model for the Prediction of Oil and Gas Viscosities and Thermal Conductivities. _Chem. Eng. Sci._ **42** (1): 182–186. [https://doi.org/10.1016/0009-2509(87)80225-7](https://doi.org/10.1016/0009-2509(87)80225-7).
- - Poling, B. E., Prausnitz, J. M., and O’Connell, J. P. 2004. _The Properties of Gases and Liquids_, fifth edition. New York City: McGraw-Hill Book Co.
+ - Pedersen, K. S., Fredenslund, A., Christensen, P. L., and Thomassen, P. 1984. Viscosity of Crude Oils. _Chem Eng Sci_ **39** (6): 1011-1016. [https://doi.org/10.1016/0009-2509(84)87009-8](https://doi.org/10.1016/0009-2509(84)87009-8).
+ - Pedersen, K. S. and Fredenslund, A. 1987. An Improved Corresponding States Model for the Prediction of Oil and Gas Viscosities and Thermal Conductivities. _Chem Eng Sci_ **42** (1): 182–186. [https://doi.org/10.1016/0009-2509(87)80225-7](https://doi.org/10.1016/0009-2509(87)80225-7).
+ - Poling, B. E., Prausnitz, J. M., and O’Connell, J. P. 2004. _The Properties of Gases and Liquids_, fifth edition. New York: McGraw-Hill Book Co.
  - Starling, K. E. and Ellington, R. T. 1964. Viscosity Correlations for Nonpolar Dense Fluids. _AIChE Journal_ **10**: 11-15. [https://doi.org/10.1002/aic.690100112](https://doi.org/10.1002/aic.690100112).
+ - Stephen K. and Lucas K. 1979. _Viscosity of Dense Fluids_. New York: Springer. [https://doi.org/10.1007/978-1-4757-6931-9](https://doi.org/10.1007/978-1-4757-6931-9).
  - Sutton, R. P. 2007. Fundamental PVT Calculations for Associated and Gas/Condensate Natural Gas Systems. Paper presented at the SPE Annual Technical Conference and Exhibition, Dallas, Texas, USA, October 2005. SPE-97099-MS. [https://doi.org/10.2118/97099-MS](https://doi.org/10.2118/97099-MS).

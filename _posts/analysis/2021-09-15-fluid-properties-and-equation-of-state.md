@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Fluid Properties and Equation of State
-modified: 2025-08-06
+modified: 2026-01-08
 categories: analysis
 excerpt: Properties required for reservoir simulation and the basis for the cubic equation of state applied to predict them.
 tags: [static_modelling, fluid_properties, density, formation_volume_factor, viscosity, equation_of_state, ppr78, pvt, eos]
@@ -208,20 +208,21 @@ For the Pyrus approach a modification to the Peng-Robinson (1976) approach has b
 
 The [binary interaction parameters between pure components are set using the group contribution method outlined by Jaubert and Mutelet (2004)](https://www.researchgate.net/publication/232396448_VLE_Predictions_With_the_Peng-Robinson_Equation_of_State_and_Temperature_Dependent_kij_Calculated_Through_a_Group_Contribution_Method#read). This approach assigns physical meaning to the interaction parameters depending on the types of molecular groups that are present in the component. The k<sub>ij</sub> binary interaction parameters are temperature dependent and are predicted using the decomposition of the mixture into different molecular groups that make up each component in the composition. The group components that are implemented in this EOS are:
 
- - **-CH<sub>3</sub>:** Single carbon and three hydrogen as part of a paraffinic chain.
- - **>CH<sub>2</sub>:** Single carbon and two hydrogen as part of a paraffinic chain.
- - **>CH-:** Single carbon and single hydrogen as part of a paraffinic chain.
- - **>C<:** Single carbon as part of a paraffinic chain.
- - **CH<sub>4</sub>:** Methane.
- - **C<sub>2</sub>H<sub>6</sub>:** Ethane.
- - **=CH<sub>aro</sub>:** Single carbon and single hydrogen as part of an aromatic ring.
- - **=C<sub>aro</sub>:** Single carbon as part of an aromatic ring.
- - **>CH<sub>2,cyclic</sub>:** Single carbon and two hydrogen as part of a cyclic ring.
- - **>CH<sub>cyclic</sub>-:** Single carbon and single hydrogen as part of a cyclic ring.
- - **>C<sub>cyclic</sub><:** Single carbon as part of a cyclic ring.
- - **CO<sub>2</sub>:** Carbon dioxide.
- - **N<sub>2</sub>:** Nitrogen.
- - **H<sub>2</sub>S:** Hydrogen sulphide.
+ - **-CH<sub>3</sub>:** Methyl group comprising one carbon atom bonded to three hydrogen atoms as part of a paraffinic chain.
+ - **-CH<sub>2</sub>-:** Methylene group comprising one carbon atom bonded to two hydrogen atoms plus two single bonds as part of a paraffinic chain.
+ - **>CH-:** Carbon-hydrogen group comprising one carbon atom bonded to one hydrogen atom plus three single bonds as part of a paraffinic chain.
+ - **>C<:** Single carbon atom group with four single bonds as part of a paraffinic chain.
+ - **CH<sub>4</sub>:** Methane group comprising one carbon atom bonded to four hydrogen atoms.
+ - **C<sub>2</sub>H<sub>6</sub>:** Ethane group comprising two methyl groups bonded together.
+ - **)>CH (R<sub>aro</sub>):** Carbon-hydrogen group comprising one carbon atom bonded to one hydrogen atom as part of an aromatic ring.
+ - **)>C- (R<sub>aro</sub>):** Single carbon atom group as part of an aromatic ring plus a single bond.
+ - **)>C<( (R<sub>fused</sub>):** Fused carbon atom group as part of fused aromatic (polyaromatic) rings.
+ - **>CH<sub>2</sub> (R<sub>cyc</sub>):** Methylene group comprising one carbon atom bonded to two hydrogen atoms as part of a cyclic ring plus two single bonds.
+ - **>CH- (R<sub>cyc</sub>):** Carbon-hydrogen group comprising one carbon atom bonded to one hydrogen atom as part of a cyclic ring plus a single bond.
+ - **>C< (R<sub>cyc</sub>):** Single carbon atom group as part of a cyclic ring plus two single bonds.
+ - **CO<sub>2</sub>:** Carbon dioxide group comprising a single carbon atom bonded to two oxygen atoms.
+ - **N<sub>2</sub>:** Nitrogen group comprising two nitrogen atoms bonded together.
+ - **H<sub>2</sub>S:** Hydrogen sulphide group comprising a single hydrogen atom bonded to two sulphur atoms.
 
 For defined compounds the breakdown of a component into its groups is straightforward. For example, the paraffin nC4 (n-butane) with the chemical composition C<sub>4</sub>H<sub>10</sub> is represented as:
 
@@ -270,7 +271,7 @@ $$L=0.129\omega^2+0.6039\omega+0.0877$$
 
 $$M=0.176\omega^2+0.26\omega+0.8884$$
 
-Alternatively a generalised update to the Soave &alpha;-function in the Peng-Robinson EoS is proposed by [Pina-Martinez, Privat, Jaubert and Peng (2018)](https://doi.org/10.1016/j.fluid.2018.12.007) as follows:
+Alternatively a generalised update to the Soave &alpha;-function in the Peng-Robinson EoS is proposed by [Pina-Martinez, Privat, Jaubert and Peng (2019)](https://doi.org/10.1016/j.fluid.2018.12.007) as follows:
 
 $$m=0.3919+1.4996\omega-0.2721\omega^2+0.1063\omega^3$$
 
@@ -300,7 +301,7 @@ Guennec et al. also propose a generalised correlation for the volume shift based
 
 The accuracy of any cubic EoS is affected by both a combination of the choice of Soave &alpha;-function and the choice of mixing rules.
 
-The PPR78 binary interaction parameters were determined using the &alpha;-function of the classical Peng-Robinson EoS. Therefore, as noted by [Pina-Martinez, Privat, Jaubert and Peng (2018)](https://doi.org/10.1016/j.fluid.2018.12.007) use of translated-consistent values requires that the BIPs are adjusted to correspond to the consistent &alpha;-function that is used. This is because the value of k<sub>ij</sub> is specific to the the choice of &alpha;-function.
+The PPR78 binary interaction parameters were determined using the &alpha;-function of the classical Peng-Robinson EoS. Therefore, as noted by [Pina-Martinez, Privat, Jaubert and Peng (2019)](https://doi.org/10.1016/j.fluid.2018.12.007) use of translated-consistent values requires that the BIPs are adjusted to correspond to the consistent &alpha;-function that is used. This is because the value of k<sub>ij</sub> is specific to the the choice of &alpha;-function.
 
 $$k_{ij}^{updated}=\frac{2k_{ij}^{original}\delta_{i}^{original}\delta_{j}^{original}+(\delta_{i}^{original}-\delta_{j}^{original})^2-(\delta_{i}^{updated}-\delta_{j}^{updated})^2}{2\delta_{i}^{updated}\delta_{j}^{updated}}$$
 
@@ -311,3 +312,20 @@ $$\delta_{i}^{original}=\frac{\sqrt{a_{c,i}\cdot\alpha_{i}^{original}}}{b_i}$$
 $$\delta_{i}^{updated}=\frac{\sqrt{a_{c,i}\cdot\alpha_{i}^{updated}}}{b_i}$$
 
 Pina-Martinez et al. note that when they tested the effect on k<sub>ij</sub> for several binary systems, the change in value was small between the original and updated correlation. Thus the use of existing k<sub>ij</sub> values associated with the classical &alpha;-function for Peng-Robinson EoS could continue to be used although the authors note that updating the values is advised.
+
+## References
+
+ - Jaubert, J. N. and Mutelet, F. 2004. VLE Predictions with the Peng–Robinson Equation of State and Temperature Dependent kij Calculated through a Group Contribution Method. _Fluid Phase Equilibria_ **224** (2004): 285-304. [https://doi.org/10.1016/j.fluid.2004.06.059](https://doi.org/10.1016/j.fluid.2004.06.059).
+ - Jaubert, J. N., Privat, R., and Mutelet, F. 2010. Predicting the Phase Equilibria of Synthetic Petroleum Fluids with the PPR78 Approach. _AIChE Journal_ **56** (12): 3225-3235. [https://doi.org/10.1002/aic.12232](https://doi.org/10.1002/aic.12232).
+ - Jaubert, J. N., Qian, J. W., Lasala, S., and Privat, R. 2022. The Impressive Impact of Including Enthalpy and Heat Capacity of Mixing Data when Parameterising Equations of State. Application to the Development of the E-PPR78 (Enhanced-Predictive-Peng-Robinson-78) Model. _Fluid Phase Equilibria_ **560** (2022): 113456. [https://doi.org/10.1016/j.fluid.2022.113456](https://doi.org/10.1016/j.fluid.2022.113456).
+ - Jaubert, J. N., Vitu, S., Mutelet, F., Corriou, J. P. 2005. Extension of the PPR78 Model (Predictive 1978, Peng–Robinson EOS with Temperature Dependent kij Calculated through a Group Contribution Method) to Systems Containing Aromatic Compounds. _Fluid Phase Equilibria_ **237** (2005): 193-211. [https://doi.org/10.1016/j.fluid.2005.09.003](https://doi.org/10.1016/j.fluid.2005.09.003).
+ - Le Guennec, Y., Privat, R., Jaubert, J. N. 2016. Development of the Translated-consistent tc-PR and tc-RK Cubic Equations of State for a Safe and Accurate Prediction of Volumetric, Energetic and Saturation Properties of Pure Compounds in the Sub- and Super-critical Domains. _Fluid Phase Equilibria_ **428** (2016): 301-312. [https://doi.org/10.1016/j.fluid.2016.09.003](https://doi.org/10.1016/j.fluid.2016.09.003).
+ - Lopez-Echeverry, J. S., Reif-Acherman, S., and Araujo-Lopez, E. 2017. Peng-Robinson Equation of State: 40 Years Through Cubics. _Fluid Phase Equilibria_ **447** (2017): 39-71. [https://doi.org/10.1016/j.fluid.2017.05.007](https://doi.org/10.1016/j.fluid.2017.05.007).
+ - Peng, D. Y. and Robinson, D. B. 1976. A New Two-Constant Equation of State. _Ind Eng Chem Fundamen_ **15** (1): 59-64. [https://doi.org/10.1021/i160057a011](https://doi.org/10.1021/i160057a011).
+ - Pina-Martinez, A., Le Guennec, Y., Privat, R., Jaubert, J. N., and Mathias, P. M. 2018. Analysis of the Combinations of Property Data That Are Suitable for a Safe Estimation of Consistent Twu &alpha;-Function Parameters: Updated Parameter Values for the Translated-Consistent tc-PR and tc-RK Cubic Equations of State. _J Chem Eng Data_ **63** (10): 3980-3988. [https://doi.org/10.1021/acs.jced.8b00640](https://doi.org/10.1021/acs.jced.8b00640).
+ - Pina-Martinez, A., Privat, R., Jaubert, J. N., Peng, D. Y. 2019. Updated Versions of the Generalized Soave &alpha;-function Suitable for the Redlich-Kwong and Peng-Robinson Equations of State. _Fluid Phase Equilibria_ **485** (2019): 264-269. [https://doi.org/10.1016/j.fluid.2018.12.007](https://doi.org/10.1016/j.fluid.2018.12.007).
+ - Privat, R. and Jaubert, J. N. 2011. PPR78, a Thermodynamic Model for the Prediction of Petroleum Fluid-phase Behaviour. Paper presented at the JEEP 37<sup>th</sup> Conference on Phase Equilibria, Saint-Avold, France, 30 March-1 April. [https://doi.org/10.1051/jeep/201100011](https://doi.org/10.1051/jeep/201100011).
+ - Qian, J. W., Jaubert, J. N., and Privat, R. 2013. Prediction of the Phase Behavior of Alkene-containing Binary Systems with the PPR78 Model. _Fluid Phase Equilibria_ **354** (2013): 212-235. [https://doi.org/10.1016/j.fluid.2013.06.040](https://doi.org/10.1016/j.fluid.2013.06.040).
+ - Qian, J. W., Privat, R., and Jaubert, J. N. 2013. Predicting the Phase Equilibria, Critical Phenomena, and Mixing Enthalpies of Binary Aqueous Systems Containing Alkanes, Cycloalkanes, Aromatics, Alkenes, and Gases (N<sub>2</sub>, CO<sub>2</sub>, H<sub>2</sub>S, H<sub>2</sub>) with the PPR78 Equation of State. _Ind Eng Chem Res_ **52** (46): 16457-16490. [https://doi.org/10.1021/ie402541h](https://doi.org/10.1021/ie402541h).
+ - Vitu, S., Privat, R., Jaubert, J. N., Mutelet, F. 2008. Predicting the Phase Equilibria of CO<sub>2</sub> + Hydrocarbon Systems with the PPR78 model (PR EOS and kij Calculated through a Group Contribution Method). _J Supercritical Fluids_ **45** (2008): 1-26. [https://doi.org/10.1016/j.supflu.2007.11.015](https://doi.org/10.1016/j.supflu.2007.11.015).
+ - Xu, X., Lasala, S., Privat, R., Jaubert, J. N. 2017. E-PPR78: A Proper Cubic EoS for Modelling Fluids Involved in the Design and Operation of Carbon Dioxide Capture and Storage (CCS) Processes. _Int J Greenhouse Gas Control_ **56** (2017): 126-154. [https://doi.org/10.1016/j.ijggc.2016.11.015](https://doi.org/10.1016/j.ijggc.2016.11.015).
