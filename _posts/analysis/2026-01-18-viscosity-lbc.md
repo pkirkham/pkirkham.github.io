@@ -219,7 +219,7 @@ public static Amount<DynamicViscosity> mixingRuleHerningZipperer(
 }
 ```
 
-The `criticalTemperatureEstimate()` and `criticalPressureEstimate()` estimate a pseudo-critical point based on mixture rules such as those proposed by Kay. The `PVT.gasViscosityLowPressureStielThodos`, `PVT.viscosityReducingParameter` and `PVT.viscosityJossiStielThodos` methods are implemented as follows:
+The `PVT.gasViscosityLowPressureStielThodos`, `PVT.viscosityReducingParameter` and `PVT.viscosityJossiStielThodos` methods are implemented as follows:
 
 ```java
 /**
