@@ -8,6 +8,7 @@ tags: [pyrus_suite, dynamic_model, simulation, software, programming, fluid_prop
 image:
   feature: feature-viscosity-lbc-1024x256.jpg
   teaser: teaser-viscosity-lbc-400x250.jpg
+  linkedin: Analysis/viscosity-modelling/viscosity-figure5.png
   thumb:
 comments: false
 mathjax: true
