@@ -4,7 +4,7 @@ title: Pedersen Corresponding States Principle Viscosity
 modified:
 categories: analysis
 excerpt: Detailed implementation for the Pedersen corresponding states principle (CSP) viscosity model, including Java code snippets.
-tags: [pyrus_suite, dynamic_model, simulation, software, programming, fluid_properties, oil, gas, reservoir_engineering, viscosity, corresponding_states]
+tags: [dynamic_model, simulation, fluid_properties, oil, gas, reservoir_engineering, viscosity, corresponding_states, transport_properties, code_snippet]
 image:
   feature: feature-viscosity-pedersen-1024x256.jpg
   teaser: teaser-viscosity-pedersen-400x250.jpg

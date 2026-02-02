@@ -4,7 +4,7 @@ title: Lohrenz-Bray-Clark Viscosity
 modified:
 categories: analysis
 excerpt: The oil industry's most commonly applied viscosity model and details of its implementation.
-tags: [pyrus_suite, dynamic_model, simulation, software, programming, fluid_properties, oil, gas, reservoir_engineering, viscosity, residual_viscosity]
+tags: [dynamic_model, simulation, fluid_properties, oil, gas, reservoir_engineering, viscosity, residual_viscosity, transport_properties, code_snippet]
 image:
   feature: feature-viscosity-lbc-1024x256.jpg
   teaser: teaser-viscosity-lbc-400x250.jpg
@@ -328,7 +328,7 @@ It can be seen that all of the recommended approaches capture the non-monotonic 
 ## References
 
  - [Comings, E. W., Mayland, B. J., and Egly, R. S. 1944. The Viscosity of Gases at High Pressures. _University of Illinois Engineering Experiment Station Bulletin No. 354_.](http://hdl.handle.net/2142/4478)
- - Herning, F. and Zipperer, L. (1936). Beitrag zur Berechnung der Zähigkeit Technischer Gasgemische aus den Zähigkeitswerten der Einzelbestandteile (Calculation of the Viscosity of Technical Gas Mixtures from Viscosity of the individual Gases), _Gas und Wasserfach_ **79**: 49–54, 69-73.
+ - Herning, F. and Zipperer, L. 1936. Beitrag zur Berechnung der Zähigkeit Technischer Gasgemische aus den Zähigkeitswerten der Einzelbestandteile (Calculation of the Viscosity of Technical Gas Mixtures from Viscosity of the individual Gases), _Gas und Wasserfach_ **79**: 49–54, 69-73.
  - Jossi, J. A., Stiel, L. I., and Thodos, G. 1962. The Viscosity of Pure Substances in the Dense Gaseous and Liquid Phases. _AIChE Journal_ **8**: 59-63. [https://doi.org/10.1002/aic.690080116](https://doi.org/10.1002/aic.690080116).
  - Lee, A. L., Gonzalez, M. H., and Eakin, B. E. 1966. The Viscosity of Natural Gas. _J Pet Technol_ **18** (8): 997-1000. SPE-1340-PA. [https://doi.org/10.2118/1340-PA](https://doi.org/10.2118/1340-PA).
  - Lohrenz, J., Bray, B.G., and Clark, C.R. 1964. Calculating Viscosities of Reservoir Fluids From Their Compositions. _J Pet Technol_ **16** (10): 1171–1176. SPE-915-PA. [https://doi.org/10.2118/915-PA](https://doi.org/10.2118/915-PA).
