@@ -241,8 +241,7 @@ The Pyrus implementation of the Chung method is shown below. Note that Pyrus use
  * @param t mixture temperature
  * @return viscosity of the mixture
  */
-protected Amount<DynamicViscosity> getViscosityChapmanEnskog(Amount<Pressure> p, Amount<Temperature> t, 
-        int method) {
+protected Amount<DynamicViscosity> getViscosityChapmanEnskog(Amount<Pressure> p, Amount<Temperature> t) {
     double sigma_mix_cubed = 0.0, epsilon_over_k_mix = 0.0, mw_mix = 0.0, w_mix = 0.0, dipole = 0.0, k_mix = 0.0;
     for (FluidComponent fc_i : eos_composition.keySet()) {
         final double sigma_i = 0.809 * pow(Amount.valueOf(fc_i.v_crit() / MOLE_PER_LBMMOL, CUBIC_FOOT)
