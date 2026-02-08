@@ -91,7 +91,7 @@ First we must define the relationship between _&epsilon;/k_ and _&sigma;_:
 
 $$\frac{\varepsilon}{k}=\frac{T_c}{1.2593}$$
 
-$$\sigma=0.809V_c^{1/3}$$
+$$\sigma=0.809V_c^{1/3} \label{eq:chung_hard_sphere_definition}$$
 
 Where:
 
@@ -118,7 +118,11 @@ Where:
  - _&mu;<sub>r</sub>_ = dipole moment (dimensionless)
  - _&kappa;_ = polar association factor (dimensionless)
 
-The dipole moment and polar association factor are required for polar compounds, and are related to the irregular distibution of positive and negative charge that cause a molecular structure to act something like a mini-magnet (although the field generated is electic, not magnetic). Generally hydrocarbons are non-polar, but for mixtures containing water, it will be necessary to use the appropriate values for water. The dipole moment is related to the dielectric constant and the polarizability, and the dielectric constant is in turn related to the refractive index (Altschuller, 1953). A more in depth examination of the subject is beyond the scope of this blog post. It is sufficient to note that for common hydrocarbon compounds (C7 and smaller) experiementally measured dipole moments are available. The polar association factor is usually set to zero for hydrocarbons.
+The dipole moment and polar association factor are required for polar compounds, and are related to the irregular distibution of positive and negative charge that cause a molecular structure to act something like a mini-magnet (although the field generated is electic, not magnetic). Generally hydrocarbons are non-polar, but for mixtures containing water, it will be necessary to use the appropriate values for water. The dipole moment is related to the dielectric constant and the polarizability, and the dielectric constant is in turn related to the refractive index (Altschuller, 1953). A more in depth examination of the subject is beyond the scope of this blog post. It is sufficient to note that for common hydrocarbon compounds (C7 and smaller) experimentally measured dipole moments are available. The polar association factor is usually set to zero for hydrocarbons.
+
+The reduced dipole moment can be calculated using:
+
+$$\mu_r=131.3\frac{\mu}{(V_cT_c)^{1/2}} \label{eq:chung_reduced_dipole}$$
 
 For high pressure gases a different equation must be used. The low-pressure gas equation is modified through empirical correction factors to account for the higher density as pressure increases:
 

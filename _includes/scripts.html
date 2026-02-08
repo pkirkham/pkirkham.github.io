@@ -1,8 +1,15 @@
 {% if page.mathjax %}
 <script>
 window.MathJax = {
+  loader: {load: ['[tex]/cases', '[tex]/empheq']},
   tex: {
-    tags: 'all' // should be 'ams', 'none', or 'all'
+    packages: {
+	  '[+]': ['cases', 'empheq']
+	},
+    tags: 'all', // should be 'ams', 'none', or 'all'
+	autoload: {
+	  cases: [[], ['numcases', 'subnamecases']]
+	}
   }
 };
 </script>
