@@ -122,7 +122,7 @@ $$
 
 $$F_Q^o=1.22Q^{0.15}\left\{1+0.00385\left[(T_r-12)^2\right]^{1/M}sign(T_r-12)\right\}$$
 
-$$\mu_r=52.46\frac{\mu^2p_c}{T_c^2}$$
+$$\mu_r=52.46\frac{\mu^2p_c}{T_c^2} \label{eq:lucas_reduced_dipole}$$
 
 Where:
 
@@ -421,11 +421,11 @@ It can be seen that the predictive quality is good within the pressure range mod
 
 ### Binary Mixtures
 
-Binary mixtures can exhibit unexpected behaviours. In moving from 100% mole fraction of one component in a binary mixture to the other, the viscosity does not always follow a monotonic trend. That is to say, the viscosity can increase and then decrease, and vice versa. Various binary mixture measured viscosity data is compared against the implemented Chung method using data taken from Poling et al (2004) as shown in Figure 3 below. All data is measured at atmospheric pressure.
+Binary mixtures can exhibit unexpected behaviours. In moving from 100% mole fraction of one component in a binary mixture to the other, the viscosity does not always follow a monotonic trend. That is to say, the viscosity can increase and then decrease, and vice versa. Various binary mixture measured viscosity data is compared against the implemented Lucas method using data taken from Poling et al (2004) as shown in Figure 3 below. All data is measured at atmospheric pressure.
 
 The Lucas method is able to capture the non-monotonic behaviour of the Ammonia-Hydrogen binary mixture, and has good predictive capability for Methane-Propane at different temperatures. However, it is noted that the prediction of the methane-propane binary mixtures is inferior to that of the Chung et al method.
 
-As a comparison the Jossi, Stiel and Thodos (JST) method (as used in Lohrenz-Bray-Clark) is also shown on these charts. For binary mixtures that do not contain nitrogen, the Chung method outperforms the JST method. With binaries that contain nitrogen, this relative performance is reversed, and JST is the more accurate method (although both methods are actually quite close for Nitrogen-Carbon Dioxide).
+As a comparison the Jossi, Stiel and Thodos (JST) method (as used in Lohrenz-Bray-Clark) is also shown on these charts. The JST method is generally similar in performance to the Lucas method, with the exception of the Ammonia-Hydrogen binary where JST does not capture the change in viscosity vs composition accurately.
 
 <figure>
 	<a href="{{ site.url }}/images/Analysis/viscosity-modelling/viscosity-figure13.png" data-lightbox="image-3" data-title="Binary mixture viscosity prediction performance of Lucas (1980) against binary mixture measured data from Poling et al (2004).">
@@ -436,7 +436,7 @@ As a comparison the Jossi, Stiel and Thodos (JST) method (as used in Lohrenz-Bra
 
 ### Hydrocarbon mixtures
 
-Good performance with pure components and binary mixtures means nothing if the technique does not work on real-world fluids. Four different hydrocarbon gas mixtures and measurements of viscosity were published by Lee, Gonzalez and Eakin (1966). Whilst there are some apparent discontinuities in the measured data, this dataset is sufficient to assess the predictive performance of the implemented Chung method as shown in Figure 5 below.
+Good performance with pure components and binary mixtures means nothing if the technique does not work on real-world fluids. Four different hydrocarbon gas mixtures and measurements of viscosity were published by Lee, Gonzalez and Eakin (1966). Whilst there are some apparent discontinuities in the measured data, this dataset is sufficient to assess the predictive performance of the implemented Lucas method as shown in Figure 5 below.
 
 It can be seen that the Lucas method is able to model the correct trends in terms of the viscosity variation with temperature and pressure, and the absolute viscosity predicted is close to the measured values. The accuracy in all cases is superior to that observed with the Chung et al method.
 
