@@ -1,250 +1,250 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <!DOCTYPE module_updates PUBLIC "-//NetBeans//DTD Autoupdate Catalog 2.8//EN" "https://netbeans.apache.org/dtds/autoupdate-catalog-2_8.dtd">
-<module_updates timestamp="41/25/01/20/06/2025">
+<module_updates timestamp="42/47/13/08/03/2026">
 
 
 
-<module autoload="true" codenamebase="javax.help" distribution="javax-help.nbm" downloadsize="516053" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2025/06/20">
+<module autoload="true" codenamebase="javax.help" distribution="javax-help.nbm" downloadsize="516056" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2026/03/08">
         
     <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="javax.help" OpenIDE-Module-Implementation-Version="250620" OpenIDE-Module-Java-Dependencies="Java &gt; 17" OpenIDE-Module-Long-Description="JavaHelp is both an application and a format for online help files that can be displayed by the JavaHelp browser. It is written in Java, and is mainly used in Java applications. It can be used for any application and it does require the overhead of the JRE to load.&#10;&#10;The file format is XML. The GUI uses a tri-pane layout, with a toolbar and menu at the top, navigation pane on the left, and content viewer on the right. The navigation pane includes searching, indexing, and a table of contents." OpenIDE-Module-Name="JavaHelp" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="The JavaHelp API provides a platform-independent help framework." OpenIDE-Module-Specification-Version="2.0.5"/>
         
 
-    <message_digest algorithm="SHA-512" value="fa6c7cc459843e58d3d8096acabcf2745e4301c17920633d7448ec7c437c1f690d13cddf9b892ecc2e0a33c12dcf9fcb6517657a8f6b776e52b404d77acdec24"/>
+    <message_digest algorithm="SHA-512" value="7f434a68f22ea8f9599800b61a54eb00b3b5dafe5702f6b1063d1d0fb9979bae8c98bc5dacde6bdf11ab93ead3cecf5b30d5fb455bd88fd582fd85fd12dc5938"/>
 </module>
 
-<module codenamebase="org.jdom" distribution="org-jdom.nbm" downloadsize="148985" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2025/06/20">
+<module codenamebase="org.jdom" distribution="org-jdom.nbm" downloadsize="148986" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2026/03/08">
         
     <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="org.jdom" OpenIDE-Module-Implementation-Version="250620" OpenIDE-Module-Java-Dependencies="Java &gt; 17" OpenIDE-Module-Long-Description="To provide a complete, Java-based solution for accessing, manipulating, and outputting XML data from Java code." OpenIDE-Module-Name="JDOM" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="XML library for Java" OpenIDE-Module-Specification-Version="1.1.1"/>
         
 
-    <message_digest algorithm="SHA-512" value="b758dbaa2104f380d37411b27930099321ae240572c96bc94f151663a9e88b4a181d16102acdb7a9416b623c3b772c792808d9ec8d3363a9465f97b80b6c8dda"/>
+    <message_digest algorithm="SHA-512" value="e04976e85e4e3ff22d66c934d2af0149a977f4fc3f635d2b5cf4a1ed5efd7225b4df4e38666ca5836f0b110242ac1781f0ff242dfe020bb2f2df6b0444f76e25"/>
 </module>
 
 <module_group name="Libraries">
 
-<module autoload="true" codenamebase="org.apache.commons" distribution="org-apache-commons.nbm" downloadsize="5859522" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2025/06/20">
+<module autoload="true" codenamebase="org.apache.commons" distribution="org-apache-commons.nbm" downloadsize="5859523" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2026/03/08">
         
     <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="org.apache.commons" OpenIDE-Module-Display-Category="Libraries" OpenIDE-Module-Implementation-Version="250620" OpenIDE-Module-Java-Dependencies="Java &gt; 17" OpenIDE-Module-Long-Description="Third-party required external libraries, mostly from Apache Commons:&#10; - Commons-Codec version 1.15. General encoding/decoding algorithms (for example phonetic, base64, URL).&#10; - Commons-Collections version 4.4. Large number of classes to aid day to day programming.&#10; - Commons-Math version 2.2. Lightweight, self-contained mathematics and statistics components.&#10; - Commons-Math3 version 3.6.1. Lightweight, self-contained mathematics and statistics components.&#10; - Commons-Lang version 2.6. Provides extra functionality for classes in java.lang.&#10; - Commons-Lang3 version 3.12.0. Provides extra functionality for classes in java.lang.&#10; - Commons-Pool version 2.9.0. Generic object pooling component.&#10; - Commons-Text version 1.9 Library focused on algorithms working on strings.&#10; - Sanselan version 0.97. Useful java image library that supports several formats." OpenIDE-Module-Name="Apache Commons" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="General purpose libraries" OpenIDE-Module-Specification-Version="1.1.8"/>
         
 
-    <message_digest algorithm="SHA-512" value="b614685536bc4c097ad561c1174a8275aedefcc08c993becb439a8376610e2f3343acd36483c9b35ce8cd7d30089c1cd4783107906267568f90a734201171a60"/>
+    <message_digest algorithm="SHA-512" value="4295f581b5c6c4c1cd31413049f1dcc536f25fe0a166a792af3b883f0333019fb2389ec2292043cef58b6cd54dd9caf7a401c375416e4eacb8ac7799edb6a0e4"/>
 </module>
 
-<module autoload="true" codenamebase="org.bouncycastle" distribution="org-bouncycastle.nbm" downloadsize="7356963" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2025/06/20">
+<module autoload="true" codenamebase="org.bouncycastle" distribution="org-bouncycastle.nbm" downloadsize="7356964" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2026/03/08">
         
     <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="org.bouncycastle" OpenIDE-Module-Display-Category="Libraries" OpenIDE-Module-Implementation-Version="250620" OpenIDE-Module-Java-Dependencies="Java &gt; 17" OpenIDE-Module-Long-Description="The Bouncy Castle Crypto package is a Java implementation of cryptographic algorithms, it was developed by the Legion of the Bouncy Castle - with a little help!" OpenIDE-Module-Name="Bouncy Castle" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="Java implementation of cryptographic algorithms" OpenIDE-Module-Specification-Version="1.77"/>
         
 
-    <message_digest algorithm="SHA-512" value="b0e7409de2a17a7ffc7015870adf5b2d333f705d7a266e6f01f6be6978ad6f85cbaef80fe6300cb0aaad74e9b140fef367e136304b4c29e91ba225786620a88f"/>
+    <message_digest algorithm="SHA-512" value="d2e7b19d6cd585663c84ef073400a19591dfcccbecb7f1c71e494212762d4dedf453a98c5b99e1fcd69284585e96aea4211d7c9816f24ede4df9a411d526dbbf"/>
 </module>
 
-<module codenamebase="org.coolprop" distribution="org-coolprop.nbm" downloadsize="8837801" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2025/06/20">
+<module codenamebase="org.coolprop" distribution="org-coolprop.nbm" downloadsize="8837828" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2026/03/08">
         
-    <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="org.coolprop" OpenIDE-Module-Display-Category="Libraries" OpenIDE-Module-Implementation-Version="250620" OpenIDE-Module-Java-Dependencies="Java &gt; 17" OpenIDE-Module-Long-Description="CoolProp is a C++ library that implements:&#10; - Pure and pseudo-pure fluid equations of state and transport properties for 122 components&#10; - Mixture properties using high-accuracy Helmholtz energy formulations&#10; - Correlations of properties of incompressible fluids and brines&#10; - Computationally efficient tabular interpolation&#10; - Highest accuracy psychrometric routines&#10; - User-friendly interface around the full capabilities of NIST REFPROP&#10; - Fast IAPWS-IF97 (Industrial Formulation) for Water/Steam&#10; - Cubic equations of state (SRK, PR)&#10; - PC-SAFT equation of state&#10;&#10;Nearly all the fluids modeling in CoolProp are based on Helmholtz energy formulations. This is a convenient construction of the equation of state because all the thermodynamic properties of interest can be obtained directly from partial derivatives of the Helmholtz energy.&#10;&#10;It should be noted that the EOS are typically valid over the entire range of the fluid, from subcooled liquid to superheated vapor, to supercritical fluid." OpenIDE-Module-Module-Dependencies="org.jscience &gt; 4.3.1, org.openide.modules &gt; 7.62, org.openide.util.ui &gt; 9.22" OpenIDE-Module-Name="CoolProp" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="Fluid Equations of State" OpenIDE-Module-Specification-Version="6.6.1"/>
+    <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="org.coolprop" OpenIDE-Module-Display-Category="Libraries" OpenIDE-Module-Implementation-Version="260308" OpenIDE-Module-Java-Dependencies="Java &gt; 17" OpenIDE-Module-Long-Description="CoolProp is a C++ library that implements:&#10; - Pure and pseudo-pure fluid equations of state and transport properties for 122 components&#10; - Mixture properties using high-accuracy Helmholtz energy formulations&#10; - Correlations of properties of incompressible fluids and brines&#10; - Computationally efficient tabular interpolation&#10; - Highest accuracy psychrometric routines&#10; - User-friendly interface around the full capabilities of NIST REFPROP&#10; - Fast IAPWS-IF97 (Industrial Formulation) for Water/Steam&#10; - Cubic equations of state (SRK, PR)&#10; - PC-SAFT equation of state&#10;&#10;Nearly all the fluids modeling in CoolProp are based on Helmholtz energy formulations. This is a convenient construction of the equation of state because all the thermodynamic properties of interest can be obtained directly from partial derivatives of the Helmholtz energy.&#10;&#10;It should be noted that the EOS are typically valid over the entire range of the fluid, from subcooled liquid to superheated vapor, to supercritical fluid." OpenIDE-Module-Module-Dependencies="org.jscience &gt; 4.3.1, org.openide.modules &gt; 7.62, org.openide.util.ui &gt; 9.22" OpenIDE-Module-Name="CoolProp" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="Fluid Equations of State" OpenIDE-Module-Specification-Version="6.6.1"/>
         
 
-    <message_digest algorithm="SHA-512" value="ca27bba64cde891d1e8fffaf3dbf51d4ab35b0895b880cf2f03c020ca6837efdfe2fca89ed9a99bae6b3dc98db7cd1d7f458032254266b741d12f2243064accc"/>
+    <message_digest algorithm="SHA-512" value="49a8325843df05821bbbb2090a1cba051cf59c6708d49f743576a3537f4a1ea9766ca5b8eeeccb18d28c7493503fe13499829ec09753a5c730ee2e43b712be47"/>
 </module>
 
-<module autoload="true" codenamebase="com.formdev" distribution="com-formdev.nbm" downloadsize="670183" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2025/06/20">
+<module autoload="true" codenamebase="com.formdev" distribution="com-formdev.nbm" downloadsize="670191" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2026/03/08">
         
-    <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="com.formdev" OpenIDE-Module-Display-Category="Libraries" OpenIDE-Module-Implementation-Version="250620" OpenIDE-Module-Java-Dependencies="Java &gt; 17" OpenIDE-Module-Long-Description="This sub-project provides some additional components and classes:&#10;&#10; - FlatSVGIcon: An icon that displays SVG using JSVG.&#10; - FlatTriStateCheckBox: A tri-state check box." OpenIDE-Module-Module-Dependencies="org.netbeans.libs.flatlaf/1 &gt; 1.16" OpenIDE-Module-Name="Flatlaf Extras" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="Flat Look and Feel Extras" OpenIDE-Module-Specification-Version="3.5.1"/>
+    <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="com.formdev" OpenIDE-Module-Display-Category="Libraries" OpenIDE-Module-Implementation-Version="260308" OpenIDE-Module-Java-Dependencies="Java &gt; 17" OpenIDE-Module-Long-Description="This sub-project provides some additional components and classes:&#10;&#10; - FlatSVGIcon: An icon that displays SVG using JSVG.&#10; - FlatTriStateCheckBox: A tri-state check box." OpenIDE-Module-Module-Dependencies="org.netbeans.libs.flatlaf/1 &gt; 1.16" OpenIDE-Module-Name="Flatlaf Extras" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="Flat Look and Feel Extras" OpenIDE-Module-Specification-Version="3.5.1"/>
         
 
-    <message_digest algorithm="SHA-512" value="382b7281b44bb715bab4efaf87da0f2e89d6198bc0534a7d6dccbe3901128fbea89e38153149f403f0cf2d3cf2b6a3bf66500b1aa5a66dff46c0f2cb08bdd21b"/>
+    <message_digest algorithm="SHA-512" value="56f68b51ea8057e1d9faac9ec00169634991b3cd498ac102e39c113ab55f2493df85119067a75743120cef6dc44f6af0163fab483c9660990b8b83fd14b5cae8"/>
 </module>
 
-<module autoload="true" codenamebase="ca.odell.glazedlists" distribution="ca-odell-glazedlists.nbm" downloadsize="785734" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2025/06/20">
+<module autoload="true" codenamebase="ca.odell.glazedlists" distribution="ca-odell-glazedlists.nbm" downloadsize="785735" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2026/03/08">
         
     <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="ca.odell.glazedlists" OpenIDE-Module-Display-Category="Libraries" OpenIDE-Module-Implementation-Version="250620" OpenIDE-Module-Java-Dependencies="Java &gt; 17" OpenIDE-Module-Long-Description="Glazed Lists is a clever Java API for list filtering." OpenIDE-Module-Name="Glazed Lists" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="List transformations in Java" OpenIDE-Module-Specification-Version="1.11.0"/>
         
 
-    <message_digest algorithm="SHA-512" value="2742a95e073d986f12b75822168c812c274f08c80eb451dfedb2b4dc5a4e4d555b869a0fd6437d17f610f56b886d4967d3a1a27a255155496cbca9edef7096ae"/>
+    <message_digest algorithm="SHA-512" value="7d128498e10a9b5f7082ffb39deefd73385c7d3ff4f0843a60c347db4cce686e8de468eebc5524e86b8bc38355f6a538211fb25a6ceba0b7bccfcc7efe854bc4"/>
 </module>
 
-<module codenamebase="com.google.common" distribution="com-google-common.nbm" downloadsize="453736" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2025/06/20">
+<module codenamebase="com.google.common" distribution="com-google-common.nbm" downloadsize="453737" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2026/03/08">
         
     <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="com.google.common" OpenIDE-Module-Display-Category="Libraries" OpenIDE-Module-Implementation-Version="250620" OpenIDE-Module-Java-Dependencies="Java &gt; 17" OpenIDE-Module-Long-Description="We have created a project called Guava to house a plethora of important core libraries for Java. That project now includes the Google Collections Library, and the project you're looking at now will cease to exist as its own independent entity. We apologize in advance for confusion this will certainly cause.&#10;What's in here?&#10; - New Collection types: Multimap, Multiset, BiMap and others&#10; - High-performance immutable implementations of the standard collection types, for example ImmutableSet&#10;MapMaker, a builder for concurrent hash maps with many advanced features&#10; - Ordering, which can only be described as a &quot;Comparator on steroids&quot;&#10; - Iterators and Iterables utility classes: element-based equality, cycle, concat, partition, filter with predicate, transform with function, and much more&#10; - Lists, Sets and Maps utility classes: a plethora of convenient factory methods and much more&#10; - Forwarding collections, such as ForwardingSet, allowing you to customize collection behavior without subclassing&#10; - Implementation helpers like AbstractIterator&#10; - and still more&#10;We hope you find this library half as useful as we have ourselves!" OpenIDE-Module-Module-Dependencies="javax.annotation &gt; 1.0" OpenIDE-Module-Name="Google Guava" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="Google Guava Library" OpenIDE-Module-Specification-Version="1.0.1"/>
         
 
-    <message_digest algorithm="SHA-512" value="b3111756929192a47f260ec1bdf3c3d27c834851b350475bcfe16f0e0dd7a908996a74d1b3b11d4b68c2ab2d409307544acb79cffe3a1f003c92e5a8f7c0c5d0"/>
+    <message_digest algorithm="SHA-512" value="e2a0252a645aa18425121dbeac06ea015ad515c771efe985c2bb9bbd1c1b5df98c3cd268281039ba3fe6dd74fc40d0d88d91d52b5a711bdc79bea31ec3ca30f7"/>
 </module>
 
-<module autoload="true" codenamebase="com.google.protobuf" distribution="com-google-protobuf.nbm" downloadsize="3499924" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2025/06/20">
+<module autoload="true" codenamebase="com.google.protobuf" distribution="com-google-protobuf.nbm" downloadsize="3499925" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2026/03/08">
         
     <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="com.google.protobuf" OpenIDE-Module-Display-Category="Libraries" OpenIDE-Module-Implementation-Version="250620" OpenIDE-Module-Java-Dependencies="Java &gt; 17" OpenIDE-Module-Long-Description="Contains classes needed to read and write from Google protocol buffer encoded files. Protocol buffer files are defined using a .proto file." OpenIDE-Module-Name="Google Protocol Buffer" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="Implementation of Google protocol buffers in Java" OpenIDE-Module-Specification-Version="4.30.2"/>
         
 
-    <message_digest algorithm="SHA-512" value="4b830897f6acf79efd99dfd6d45976e19a8cb37635380cd3191b5ae6d7dc13cad6d6c78028c717871b16bceb5ae56b6e2fc08de0e9e2956bb837d20f60d9965c"/>
+    <message_digest algorithm="SHA-512" value="3237b5dc05f24c37e350e905af0bbd490c891dad60d7cfb22e1fbc065ac0a84154387c709d4fa514389e20c51bdfd5c1719070c4f86a9cc85109d08b2328ed7e"/>
 </module>
 
-<module codenamebase="org.graalvm.polyglot" distribution="org-graalvm-polyglot.nbm" downloadsize="108971312" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2025/06/20">
+<module codenamebase="org.graalvm.polyglot" distribution="org-graalvm-polyglot.nbm" downloadsize="108971313" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2026/03/08">
         
     <manifest AutoUpdate-Show-In-Client="true" OpenIDE-Module="org.graalvm.polyglot" OpenIDE-Module-Display-Category="Libraries" OpenIDE-Module-Implementation-Version="250620" OpenIDE-Module-Java-Dependencies="Java &gt; 21" OpenIDE-Module-Long-Description="The GraalVM Polyglot API lets you embed and run code from Python in Java host applications." OpenIDE-Module-Module-Dependencies="org.assertj &gt; 3.17.1" OpenIDE-Module-Name="GraalPy" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="Python 3.11 compliant runtime" OpenIDE-Module-Specification-Version="24.1.2"/>
         
 
-    <message_digest algorithm="SHA-512" value="db829a4d4f9d9c0ed0f2cd9017dc42eb60be1c64b44f462ee3b40e5ed3285a40800b68121853df7ba46ac70e7085ac5e079bc8b38890a6f2ee345180c802f016"/>
+    <message_digest algorithm="SHA-512" value="c043d6125914ed78d76a035f3cb77b4337963beaf60f30b8b43f8644543504209351045b76a18668281d0d5fbd0ca84eb3ea477cbf9ca4cc2f05e9356e7dba29"/>
 </module>
 
-<module codenamebase="hdf.hdf5lib" distribution="hdf-hdf5lib.nbm" downloadsize="10943783" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2025/06/20">
+<module codenamebase="hdf.hdf5lib" distribution="hdf-hdf5lib.nbm" downloadsize="10943807" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2026/03/08">
         
-    <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="hdf.hdf5lib" OpenIDE-Module-Display-Category="Libraries" OpenIDE-Module-Implementation-Version="250620" OpenIDE-Module-Java-Dependencies="Java &gt; 17" OpenIDE-Module-Long-Description="HDF5 is a unique high-performance technology suite that consists of an abstract data model, library, and file format for storing and managing extremely large and/or complex data collections. The technology is used worldwide by government, industry, and academia in a wide range of science, engineering, and business disciplines.&#10;&#10;HDF has a versatile data model that can represent complex, heterogeneous data objsects with n-dimensional datasets. Each element in the dataset may itself be a complex object. It is ready for high-speed raw data acquisition and is portable, with no vendor lock-in, and is a self-describing file format, meaning everything all data and metadata can be passed along in one file. &#10;&#10;The HDF software library runs on a range of computational platforms, from laptops to massively parallel systems, and implements a high-level API with C, C++, Fortran 90, and Java interfaces. The implementation of this module contains the official Java native libraries for Windows, MacOS and Linux, plus a pure Java implementation for reading HDF files." OpenIDE-Module-Module-Dependencies="org.apache.commons &gt; 1.1.7, org.openide.modules &gt; 7.58, org.openide.util.ui &gt; 9.18" OpenIDE-Module-Name="HDF5" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="Hierarchical Data Format" OpenIDE-Module-Specification-Version="1.12.3"/>
+    <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="hdf.hdf5lib" OpenIDE-Module-Display-Category="Libraries" OpenIDE-Module-Implementation-Version="260308" OpenIDE-Module-Java-Dependencies="Java &gt; 17" OpenIDE-Module-Long-Description="HDF5 is a unique high-performance technology suite that consists of an abstract data model, library, and file format for storing and managing extremely large and/or complex data collections. The technology is used worldwide by government, industry, and academia in a wide range of science, engineering, and business disciplines.&#10;&#10;HDF has a versatile data model that can represent complex, heterogeneous data objsects with n-dimensional datasets. Each element in the dataset may itself be a complex object. It is ready for high-speed raw data acquisition and is portable, with no vendor lock-in, and is a self-describing file format, meaning everything all data and metadata can be passed along in one file. &#10;&#10;The HDF software library runs on a range of computational platforms, from laptops to massively parallel systems, and implements a high-level API with C, C++, Fortran 90, and Java interfaces. The implementation of this module contains the official Java native libraries for Windows, MacOS and Linux, plus a pure Java implementation for reading HDF files." OpenIDE-Module-Module-Dependencies="org.apache.commons &gt; 1.1.7, org.openide.modules &gt; 7.58, org.openide.util.ui &gt; 9.18" OpenIDE-Module-Name="HDF5" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="Hierarchical Data Format" OpenIDE-Module-Specification-Version="1.12.3"/>
         
 
-    <message_digest algorithm="SHA-512" value="6181a935781138243c9d1bf50b6f5ac43b724187cf4c6dbaaa9a16a0a5b29e63f295f05069569fee2660253051015548e0444b038cfab7b4b46d70a88ddffdac"/>
+    <message_digest algorithm="SHA-512" value="cf53649f2ad09ac75d19e472e4d553247f8f1da6075447b5e333faeef013d30b0c91ae32a0b98221481f058db428b46fd03c4160804cd4ac968f99875ccfe1c2"/>
 </module>
 
-<module autoload="true" codenamebase="com.jhlabs.image" distribution="com-jhlabs-image.nbm" downloadsize="255206" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2025/06/20">
+<module autoload="true" codenamebase="com.jhlabs.image" distribution="com-jhlabs-image.nbm" downloadsize="255207" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2026/03/08">
         
     <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="com.jhlabs.image" OpenIDE-Module-Display-Category="Libraries" OpenIDE-Module-Implementation-Version="250620" OpenIDE-Module-Java-Dependencies="Java &gt; 17" OpenIDE-Module-Long-Description="Contains JHLabs image filters for various image manipulation tasks. The filters are all standard Java BufferedImageOps." OpenIDE-Module-Name="Image Filter Library" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="Image filters for BufferImages" OpenIDE-Module-Specification-Version="1.0.0"/>
         
 
-    <message_digest algorithm="SHA-512" value="93ac99cdbfed6afed301bb9d368f7aa2e3534b9fa43311eacb0feecf8289e719a593e8b6227e717b4d73cbba4c6abedf44eac9cdf9d1021984631599d014febf"/>
+    <message_digest algorithm="SHA-512" value="60971ed2917e1c6df547802efdf9a7f4b2f4e8af5d02ff824e7dfea2eeb3e25eb6e01dab9b5c37ef0bd5a55a7ef88860d296bbecf6dbaf6a66558a1bc76068d1"/>
 </module>
 
-<module codenamebase="com.sun.media.imageioimpl.common" distribution="com-sun-media-imageioimpl-common.nbm" downloadsize="1500815" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2025/06/20">
+<module codenamebase="com.sun.media.imageioimpl.common" distribution="com-sun-media-imageioimpl-common.nbm" downloadsize="1500840" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2026/03/08">
         
-    <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="com.sun.media.imageioimpl.common" OpenIDE-Module-Display-Category="Libraries" OpenIDE-Module-Implementation-Version="250620" OpenIDE-Module-Java-Dependencies="Java &gt; 17" OpenIDE-Module-Long-Description="Includes implementation of Java Image I/O that is not dependent on Java Advanced Imaging. As such this is a pure Java implementation that is able to read and write the following formats: BMP, GIP, JPEG, JPEG 2000, PNG, PNM, Raw, TIFF, WBMP. Module has been created from original sources downloaded from Sun and then modified to remove all native dependencies.&#10;&#10;Also includes jcgm from SwissAS that provides a library for reading of CGM files as an ImageIO plugin." OpenIDE-Module-Module-Dependencies="au.com.newwavegeo.jai &gt; 1.1.3.2, org.apache.commons &gt; 1.1.8, org.openide.modules &gt; 7.17.1, org.openide.util &gt; 8.6.1, org.openide.util.lookup &gt; 8.3.1, org.openide.util.ui &gt; 9.13, org.openide.windows &gt; 6.70.1" OpenIDE-Module-Name="Image IO Tools" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="Additional image format reading and writing support" OpenIDE-Module-Specification-Version="1.1.6"/>
+    <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="com.sun.media.imageioimpl.common" OpenIDE-Module-Display-Category="Libraries" OpenIDE-Module-Implementation-Version="260308" OpenIDE-Module-Java-Dependencies="Java &gt; 17" OpenIDE-Module-Long-Description="Includes implementation of Java Image I/O that is not dependent on Java Advanced Imaging. As such this is a pure Java implementation that is able to read and write the following formats: BMP, GIP, JPEG, JPEG 2000, PNG, PNM, Raw, TIFF, WBMP. Module has been created from original sources downloaded from Sun and then modified to remove all native dependencies.&#10;&#10;Also includes jcgm from SwissAS that provides a library for reading of CGM files as an ImageIO plugin." OpenIDE-Module-Module-Dependencies="au.com.newwavegeo.jai &gt; 1.1.3.2, org.apache.commons &gt; 1.1.8, org.openide.modules &gt; 7.17.1, org.openide.util &gt; 8.6.1, org.openide.util.lookup &gt; 8.3.1, org.openide.util.ui &gt; 9.13, org.openide.windows &gt; 6.70.1" OpenIDE-Module-Name="Image IO Tools" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="Additional image format reading and writing support" OpenIDE-Module-Specification-Version="1.1.6"/>
         
 
-    <message_digest algorithm="SHA-512" value="58ffcb0279170919b988ac83bf542e55050ae309b155b46cc450d03ce794af0abbe261f824ae7ead7b01b5a6b4852b189ade7c3eb78038702a8c6f8a78ea98b8"/>
+    <message_digest algorithm="SHA-512" value="97975bae0d30e982576004efe96ec7706f835474c0be0eadd74a280c7b678585200ceed003e5f58ec8dbc4d830717818c73087321f58e118f638b516470c3867"/>
 </module>
 
-<module codenamebase="com.fasterxml" distribution="com-fasterxml.nbm" downloadsize="2061077" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2025/06/20">
+<module codenamebase="com.fasterxml" distribution="com-fasterxml.nbm" downloadsize="2061074" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2026/03/08">
         
     <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="com.fasterxml" OpenIDE-Module-Display-Category="Libraries" OpenIDE-Module-Implementation-Version="250620" OpenIDE-Module-Java-Dependencies="Java &gt; 17" OpenIDE-Module-Long-Description="Jackson is a suite of data-processing tools for Java (and the JVM platform), including the flagship streaming JSON parser / generator library, matching data-binding library (POJOs to and from JSON) and additional data format modules to process data encoded in Avro, BSON, CBOR, CSV, Smile, (Java) Properties, Protobuf, TOML, XML or YAML; and even the large set of data format modules to support data types of widely used libraries such as Guava, Joda, PCollections and many more." OpenIDE-Module-Name="Jackson" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="JSON Parser for Java" OpenIDE-Module-Specification-Version="2.15.2"/>
         
 
-    <message_digest algorithm="SHA-512" value="d1630c50db8297c092b176a3b3e8062c75e94007e232d793e7de86d9f1ee162626907f7423ae29a0464ab8b7d22a97b082c4e11dd2fdd1a2ce0420ae3d32c5d3"/>
+    <message_digest algorithm="SHA-512" value="041578d9f18b596915589a7cfb84bef2c1bbbe2c5a9ae400de1393164a6ef476cff51aa211a2f3a151c6bc37e1b62167e2023205fbe60517be42d051a2c48568"/>
 </module>
 
-<module codenamebase="au.com.newwavegeo.jai" distribution="au-com-newwavegeo-jai.nbm" downloadsize="2166310" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2025/06/20">
+<module codenamebase="au.com.newwavegeo.jai" distribution="au-com-newwavegeo-jai.nbm" downloadsize="2166347" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2026/03/08">
         
-    <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="au.com.newwavegeo.jai" OpenIDE-Module-Display-Category="Libraries" OpenIDE-Module-Implementation-Version="250620" OpenIDE-Module-Java-Dependencies="Java &gt; 17" OpenIDE-Module-Long-Description="Java Advanced Imaging introduces some more advanced image manuipulation algorithms and strategies. For most purposes Java2D is adequate, but some tasks can be achieved more easily with this higher level API." OpenIDE-Module-Module-Dependencies="org.openide.modules &gt; 7.17.1, org.openide.util &gt; 8.6.1, org.openide.util.lookup &gt; 8.3.1, org.openide.util.ui &gt; 9.13" OpenIDE-Module-Name="Java Advanced Imaging" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="Pure Java implementation of JAI" OpenIDE-Module-Specification-Version="1.1.3.4"/>
+    <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="au.com.newwavegeo.jai" OpenIDE-Module-Display-Category="Libraries" OpenIDE-Module-Implementation-Version="260308" OpenIDE-Module-Java-Dependencies="Java &gt; 17" OpenIDE-Module-Long-Description="Java Advanced Imaging introduces some more advanced image manuipulation algorithms and strategies. For most purposes Java2D is adequate, but some tasks can be achieved more easily with this higher level API." OpenIDE-Module-Module-Dependencies="org.openide.modules &gt; 7.17.1, org.openide.util &gt; 8.6.1, org.openide.util.lookup &gt; 8.3.1, org.openide.util.ui &gt; 9.13" OpenIDE-Module-Name="Java Advanced Imaging" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="Pure Java implementation of JAI" OpenIDE-Module-Specification-Version="1.1.3.4"/>
         
 
-    <message_digest algorithm="SHA-512" value="b409080accbcda882521744847f47e55c13a887b9621c61f5d57371a455e616ca3735e6ff27aadc967956e208e29ac77b00accd55b2eac4d648e222154a05c2e"/>
+    <message_digest algorithm="SHA-512" value="322baf387159ac88214eda3cb9583c0438ebb89376da8d1a3229a30db84661475e74357d626e755fa855e4dfcbee34e8fe8a7c3f6207164c2a81df6e63dda255"/>
 </module>
 
-<module autoload="true" codenamebase="javolution" distribution="javolution.nbm" downloadsize="1081693" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2025/06/20">
+<module autoload="true" codenamebase="javolution" distribution="javolution.nbm" downloadsize="1081696" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2026/03/08">
         
     <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="javolution" OpenIDE-Module-Display-Category="Libraries" OpenIDE-Module-Implementation-Version="250620" OpenIDE-Module-Java-Dependencies="Java &gt; 17" OpenIDE-Module-Long-Description="Javolution real-time goals are simple: To make your application faster and more time predictable!&#10;That being accomplished through: &#10; - High performance and time-deterministic (real-time) util / lang / text / io / xml base classes.&#10; - Context programming in order to achieve true separation of concerns (logging, performance, etc).&#10; - A testing framework addressing not only unit tests but also performance and regression tests as well.&#10; - Straightforward and low-level parallel computing capabilities with ConcurrentContext.&#10; - Struct and Union base classes for direct interfacing with native applications (e.g. C/C++).&#10; - World's fastest and first hard real-time XML marshalling/unmarshalling facility.&#10; - Simple yet flexible configuration management of your application." OpenIDE-Module-Name="Javolution Library" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="Library for faster and more time predictable Java operations." OpenIDE-Module-Specification-Version="5.5.1"/>
         
 
-    <message_digest algorithm="SHA-512" value="8c459b2e73b90a4dc6a6d3da0593f8ce39e9ec99531572f31e67031284901ad6f4f79e6b97fbda07655136eac347e5bb6490c59b8308c338a495a6136006c413"/>
+    <message_digest algorithm="SHA-512" value="fd80c41dd3d5e62a7de5d7c21c3ae22e56ba2868ad3b481caa7fd8577c2199e9f250c48d40e9a0efcfe4c617b10b608048f250b8cd06e7ac3d4100fe58ef2fee"/>
 </module>
 
-<module codenamebase="org.jfree.chart" distribution="org-jfree-chart.nbm" downloadsize="1560654" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2025/06/20">
+<module codenamebase="org.jfree.chart" distribution="org-jfree-chart.nbm" downloadsize="1560657" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2026/03/08">
         
     <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="org.jfree.chart" OpenIDE-Module-Display-Category="Libraries" OpenIDE-Module-Implementation-Version="250620" OpenIDE-Module-Java-Dependencies="Java &gt; 17" OpenIDE-Module-Long-Description="A free Java chart library. JFreeChart supports pie charts (2D and 3D), bar charts (horizontal and vertical, regular and stacked), line charts, scatter plots, time series charts, high-low-open-close charts, candlestick plots, Gantt charts, combined plots, thermometers, dials and more. JFreeChart can be used in applications, applets, servlets and JSP." OpenIDE-Module-Name="JFreeChart Library" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="JFreeChart" OpenIDE-Module-Specification-Version="1.5.4"/>
         
 
-    <message_digest algorithm="SHA-512" value="8d7db320ecae41426e2e6fe2e332677f86a2d4f7d3fd8ac78d9a11b180c5c3f9dacb2624a013d1cff5647c76ee99baa35769500bb431c6b357cfa42fe8e3c816"/>
+    <message_digest algorithm="SHA-512" value="b0c5d5a286a17166cab9eccec9b63925024d5277b243dea60a56e600ab9f68cd5b6bfd2f592988744081b891a5f271c5be3013a5ee0c076a9b1d1c185350d286"/>
 </module>
 
-<module codenamebase="com.github.jnr" distribution="com-github-jnr.nbm" downloadsize="640630" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2025/06/20">
+<module codenamebase="com.github.jnr" distribution="com-github-jnr.nbm" downloadsize="640631" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2026/03/08">
         
     <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="com.github.jnr" OpenIDE-Module-Display-Category="Libraries" OpenIDE-Module-Implementation-Version="250620" OpenIDE-Module-Java-Dependencies="Java &gt; 17" OpenIDE-Module-Long-Description="JNR-FFI is a Java library for loading native libraries without writing JNI code by hand, or using tools such as SWIG." OpenIDE-Module-Name="JNR-FFI" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="Java Native Runtime via Foreign Function Interface" OpenIDE-Module-Specification-Version="2.2.14"/>
         
 
-    <message_digest algorithm="SHA-512" value="974953cd3ab265aafc06f90bc870dc39be6a46d1e6f23499a5361bced3b18aafa85df59a2ab0f7e8c30a03a8174a3197bce16e2b115ce899f9bcc59eb5a687d6"/>
+    <message_digest algorithm="SHA-512" value="ea5759c65b236f6df143bf650a57df3996c727244dd916526f1d17711912a1a5356efce3b56f863c28c7fa8f967037fa19489317b77329ed82342555d2e02636"/>
 </module>
 
-<module codenamebase="org.joda.time" distribution="org-joda-time.nbm" downloadsize="485302" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2025/06/20">
+<module codenamebase="org.joda.time" distribution="org-joda-time.nbm" downloadsize="485303" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2026/03/08">
         
     <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="org.joda.time" OpenIDE-Module-Display-Category="Libraries" OpenIDE-Module-Implementation-Version="250620" OpenIDE-Module-Java-Dependencies="Java &gt; 17" OpenIDE-Module-Long-Description="Joda-Time provides a quality replacement for the Java date and time classes.&#10;&#10;Joda-Time is the de facto standard date and time library for Java prior to Java SE 8. Users are now asked to migrate to java.time (JSR-310) - a core part of the JDK which replaces this project." OpenIDE-Module-Name="Joda Time" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="Joda Time" OpenIDE-Module-Specification-Version="2.0"/>
         
 
-    <message_digest algorithm="SHA-512" value="61d6722ccd0f75d36c6cabc8209acc8594cf965426cf1542dfaf5f240bb871cd963d3a77089a0aeac24144da3b3c50fb31631a4b708abf0383c8038174de4305"/>
+    <message_digest algorithm="SHA-512" value="a01419dba8c2a90a422fc32e63d371efd17240e41912b99e4dde6eff95c063368af3f0eedcb9595c6136f57f15903bf3f28575fdb0175a4ed8daced55f6f16d1"/>
 </module>
 
-<module codenamebase="jogamp" distribution="jogamp.nbm" downloadsize="9537434" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2025/06/20">
+<module codenamebase="jogamp" distribution="jogamp.nbm" downloadsize="9537433" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2026/03/08">
         
     <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="jogamp" OpenIDE-Module-Display-Category="Libraries" OpenIDE-Module-Implementation-Version="250620" OpenIDE-Module-Java-Dependencies="Java &gt; 17" OpenIDE-Module-Long-Description="The JOAL Project hosts a reference implementation of the Java bindings for OpenAL API, and is designed to provide hardware-supported 3D spatialized audio for games written in Java.&#10;&#10;This project also hosts the Sound3D Toolkit, a high level API for spatialized audio built on top of the OpenAL bindings. This toolkit is designed to provide access to all the features of OpenAL through an intuitive, easy to use, object-oriented interface.&#10;&#10;Project JOCL provides an easy to use Java binding for the OpenCL API. JOCL exposes the OpenCL API in two levels: A automatically generated low level JNI based binding and a hand written high level binding on top of the generated interfaces. The high level bindings provide a convenient interface and reduce verbosity to a minimum.&#10;&#10;The JOGL project hosts the development version of the Java Binding for the OpenGL® API, and is designed to provide hardware-supported 3D graphics to applications written in Java. JOGL integrates with the AWT, Swing and SWT widget sets, as well as with custom windowing toolkits using the NativeWindow API." OpenIDE-Module-Name="JogAmp" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="High performance Java libraries for 3D Graphics, Multimedia and Processing" OpenIDE-Module-Specification-Version="2.4.0"/>
         
 
-    <message_digest algorithm="SHA-512" value="542f71f6280e15feb00b3371408d51f4322e6c8689e115f21c0a0c003ef8e3e340efffa26739f80858920538efeb1497580dabe4bc205c55f95d49a22477568f"/>
+    <message_digest algorithm="SHA-512" value="b9090f69ee45e0f7e082da8ba6ba53a98dce37a29b2c31e83f68b82d8dbc3905520cf41e9b9dcea22ed26ea5614ff86b4edc67e1306b1abb4336020330721b0a"/>
 </module>
 
-<module codenamebase="org.jscience" distribution="org-jscience.nbm" downloadsize="672244" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2025/06/20">
+<module codenamebase="org.jscience" distribution="org-jscience.nbm" downloadsize="672245" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2026/03/08">
         
     <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="org.jscience" OpenIDE-Module-Display-Category="Libraries" OpenIDE-Module-Implementation-Version="250620" OpenIDE-Module-Java-Dependencies="Java &gt; 17" OpenIDE-Module-Long-Description="- To provide the most comprehensive Java library for the scientific community.&#10; - To create synergy between all sciences (e.g. math, physics, sociology, biology, astronomy, economics, etc.) by integrating them into a single architecture.&#10; - To provide the best on-line services (webstart) for scientific calculations and visualizations." OpenIDE-Module-Module-Dependencies="javax.measure &gt; 0.9.4, javolution &gt; 5.5.1" OpenIDE-Module-Name="JScience Library" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="JScience" OpenIDE-Module-Specification-Version="4.3.1"/>
         
 
-    <message_digest algorithm="SHA-512" value="032ccfd2e984916d1d3871dcc12cd376a171bb50f796ce546819c6657105339d15154ab7e3de7b03868bfdb9940a81afd4471d48a5cd9ecb717e499c5b4c0bd1"/>
+    <message_digest algorithm="SHA-512" value="49f2198061332e8eb5dde4e2b204a25e05f410f052738cf1e247c660b4226d00bf4f45c4c3fd2065de959433dc2e04a4aab4f1713acf6e3bb474e7b065281377"/>
 </module>
 
-<module codenamebase="javax.measure" distribution="javax-measure.nbm" downloadsize="175644" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2025/06/20">
+<module codenamebase="javax.measure" distribution="javax-measure.nbm" downloadsize="175647" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2026/03/08">
         
     <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="javax.measure" OpenIDE-Module-Display-Category="Libraries" OpenIDE-Module-Implementation-Version="250620" OpenIDE-Module-Java-Dependencies="Java &gt; 17" OpenIDE-Module-Long-Description="Units of Measure Framework specifies one or more Java packages for the programmatic handling of physical quantities and their expression as numbers of units. The specification includes:&#10; - Interfaces and abstract classes with methods for unit operations:&#10;   * Checking of unit compatibility&#10;   * Expression of a quantity in various units&#10;   * Arithmetic operations on units&#10;   * Concrete classes implementing the standard types of units (such as base, supplementary, and derived) and unit conversions.&#10; - Classes for parsing unit specifications in string form and for formatting string representations of quantities.&#10; - A database of predefined units." OpenIDE-Module-Name="JSR-275" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="JSR 275: Measures and Units Specification" OpenIDE-Module-Specification-Version="0.9.4"/>
         
 
-    <message_digest algorithm="SHA-512" value="8a0cdec891c844e99d94591e9b45c893914d629a37525fd7504edaa2f972e6402afed3da5bd66bcfae68c33117d4a5dfaad26eff6a97648937b513793cfdcc72"/>
+    <message_digest algorithm="SHA-512" value="10226dbecb0f79bb21b6171e956efb929a2c09f15efb1bb1a75475e006fbe4c6db79b7be90eb1f8246ba3a93638a0605b6bd19753ca73b5d3b2217e0714c66e0"/>
 </module>
 
-<module codenamebase="javax.annotation" distribution="javax-annotation.nbm" downloadsize="8993" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2025/06/20">
+<module codenamebase="javax.annotation" distribution="javax-annotation.nbm" downloadsize="8996" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2026/03/08">
         
     <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="javax.annotation" OpenIDE-Module-Display-Category="Libraries" OpenIDE-Module-Implementation-Version="250620" OpenIDE-Module-Java-Dependencies="Java &gt; 17" OpenIDE-Module-Long-Description="This JSR would attempt to develop a standard set of annotations that can assist defect detection tools. Such annotations have been found to be useful in tools such as FindBugs and IntelliJ, but developers are hesitant to invest time in providing annotations if they don't know that their annotations will be portable across tools.&#10;These annotations will be applied using the existing annotations capabilities introduced in Java 5, and may also utilize any additional annotation capabilities introduced in Java SE 7." OpenIDE-Module-Name="JSR-305" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="JSR 305: Annotations for Software Defect Detection" OpenIDE-Module-Specification-Version="1.0.0"/>
         
 
-    <message_digest algorithm="SHA-512" value="a7930044e6974f5e53f2f32c57238ddd3825f033f2ca47536f06751466ca0d50668950d9ad7d2cc87b6101ce8a4555c55f0393dec8552d90294f8b32256174f9"/>
+    <message_digest algorithm="SHA-512" value="6fc517c989e0490d605a2a7c81f958f25865721cb4a2ed8d8b283f48f7d418ca3086f61541e3a4ec1b821a86d6d6b44f97e1d89423c8d7db05a14f5bae319bec"/>
 </module>
 
-<module autoload="true" codenamebase="net.sf.kdgcommons" distribution="net-sf-kdgcommons.nbm" downloadsize="159216" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2025/06/20">
+<module autoload="true" codenamebase="net.sf.kdgcommons" distribution="net-sf-kdgcommons.nbm" downloadsize="159219" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2026/03/08">
         
     <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="net.sf.kdgcommons" OpenIDE-Module-Display-Category="Libraries" OpenIDE-Module-Implementation-Version="250620" OpenIDE-Module-Java-Dependencies="Java &gt; 17" OpenIDE-Module-Long-Description="A collection of utility classes for Java, supplementing and in some cases replacing Jakarta Commons and Google Guava, developed by Keith D Gregory to carry from project to project without encumbrance. Others may find them useful." OpenIDE-Module-Name="KDG Commons" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="Utility classes for Java" OpenIDE-Module-Specification-Version="1.0.17"/>
         
 
-    <message_digest algorithm="SHA-512" value="886b197a20c3a46bcaa8d4f3017f19b40c47b23e60a3130f3abbb89270510948b623a5b39300431a145332f2a6ed73fa2bf5673c64cd3737d9ad7ab3cdda972a"/>
+    <message_digest algorithm="SHA-512" value="20905cde1a91ecc90830f61069d43dd257d4062f48aa1ae9df56f96ffb3bd03a64131632a4dff2d80168f97d93ee75d07764e2b0b23f27ff226d75952443afdc"/>
 </module>
 
-<module codenamebase="org.jdesktop" distribution="org-jdesktop.nbm" downloadsize="50247" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2025/06/20">
+<module codenamebase="org.jdesktop" distribution="org-jdesktop.nbm" downloadsize="50248" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2026/03/08">
         
     <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="org.jdesktop" OpenIDE-Module-Display-Category="Libraries" OpenIDE-Module-Implementation-Version="250620" OpenIDE-Module-Java-Dependencies="Java &gt; 17" OpenIDE-Module-Long-Description="SwingX contains a collection of powerful, useful, and just plain fun Swing components. Each of the Swing components have been extended, providing data-aware functionality out of the box. New useful components have been created like the JXDatePicker, JXTaskPane, and JXImagePanel.&#10;&#10;This is based on a fork by homebeaver of the original SwingLabs code." OpenIDE-Module-Name="Swing Extensions" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="SwingLabs and JDesktop Extensions" OpenIDE-Module-Specification-Version="3.0.4"/>
         
 
-    <message_digest algorithm="SHA-512" value="a861abc0313afa01436259fed7f3de0c2d0efacccee305464ceb71b3b36e6eb16565d629d24742881bd18b41dbb2f9e5129f8655ecdecc2c6ce7caeb29e83041"/>
+    <message_digest algorithm="SHA-512" value="1f764cb700c92d25ef1002969e8ed796b683bd01809dd85f1f759ef8dd2299af0c9104b3f72f327c2f53917a4987c651b0db72b00cdfbf6f839dfc83823db9f5"/>
 </module>
 
-<module codenamebase="net.java.dev.truelicense" distribution="net-java-dev-truelicense.nbm" downloadsize="55102" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2025/06/20">
+<module codenamebase="net.java.dev.truelicense" distribution="net-java-dev-truelicense.nbm" downloadsize="55105" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2026/03/08">
         
     <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="net.java.dev.truelicense" OpenIDE-Module-Display-Category="Libraries" OpenIDE-Module-Implementation-Version="250620" OpenIDE-Module-Java-Dependencies="Java &gt; 17" OpenIDE-Module-Long-Description="The TrueLicense library is a collection of Java packages used to securely create, install and verify application licenses for closed source applications. It aims at managing licensing aspects for closed source Java applications in a secure, reliable, flexible and yet easy way." OpenIDE-Module-Module-Dependencies="org.apache.commons &gt; 1.1.1" OpenIDE-Module-Name="TrueLicense Library" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="TrueLicense Library Collection" OpenIDE-Module-Specification-Version="1.29.0"/>
         
 
-    <message_digest algorithm="SHA-512" value="0c811c74de05a137f407dc276b76b2743de902a7db26c51e95353ccb7caffa09e8af6b430cf99544e2c405adedf8cff83b9862bb4a3ebc4e7128a78477d34371"/>
+    <message_digest algorithm="SHA-512" value="74dadc9c6480ed25de16249fb8e790bf5ce95403aa90c95abf50c07de706bc8f8c96b2e95a2119f8f11369fc1ec0d5759969837e3c262be3e3830e5e94c5e7a2"/>
 </module>
 
 </module_group>
 
 <module_group name="Swing">
 
-<module autoload="true" codenamebase="org.jdesktop.beansbinding" distribution="org-jdesktop-beansbinding.nbm" downloadsize="179966" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2025/06/20">
+<module autoload="true" codenamebase="org.jdesktop.beansbinding" distribution="org-jdesktop-beansbinding.nbm" downloadsize="179967" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2026/03/08">
         
     <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="org.jdesktop.beansbinding" OpenIDE-Module-Display-Category="Swing" OpenIDE-Module-Implementation-Version="250620" OpenIDE-Module-Java-Dependencies="Java &gt; 17" OpenIDE-Module-Name="Beans Binding" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="Beans Binding" OpenIDE-Module-Specification-Version="1.2.1"/>
         
 
-    <message_digest algorithm="SHA-512" value="e04404992fd64db0b87df3ecdb379328b72e067fae20499de0ce65a320f12a14e08d96f5965e0355ac44ece8806212588dc3482eccbf671d9847a1cdff405f71"/>
+    <message_digest algorithm="SHA-512" value="48d62c45568507d78a80c03d58ef60cb97efe96a973a64300b380b594a3e02be86270e5659a6491cfb2fa8b8cf87d7690c3c886c2be82627c6d4316046614190"/>
 </module>
 
-<module codenamebase="javafx" distribution="javafx.nbm" downloadsize="4738" eager="true" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2025/06/20">
+<module codenamebase="javafx" distribution="javafx.nbm" downloadsize="4750" eager="true" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2026/03/08">
         
-    <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="javafx" OpenIDE-Module-Display-Category="Swing" OpenIDE-Module-Implementation-Version="250620" OpenIDE-Module-Java-Dependencies="Java &gt; 21" OpenIDE-Module-Long-Description="JavaFX is an open source, next generation client application platform for desktop, mobile and embedded systems built on Java. It is a collaborative effort by many individuals and companies with the goal of producing a modern, efficient, and fully featured toolkit for developing rich client applications." OpenIDE-Module-Module-Dependencies="org.openide.modules &gt; 7.62, org.openide.util.ui &gt; 9.22" OpenIDE-Module-Name="JavaFX" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="Modern, hardware-accelerated user interface that is highly portable" OpenIDE-Module-Specification-Version="21.0.4"/>
+    <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="javafx" OpenIDE-Module-Display-Category="Swing" OpenIDE-Module-Implementation-Version="260308" OpenIDE-Module-Java-Dependencies="Java &gt; 21" OpenIDE-Module-Long-Description="JavaFX is an open source, next generation client application platform for desktop, mobile and embedded systems built on Java. It is a collaborative effort by many individuals and companies with the goal of producing a modern, efficient, and fully featured toolkit for developing rich client applications." OpenIDE-Module-Module-Dependencies="org.openide.modules &gt; 7.62, org.openide.util.ui &gt; 9.22" OpenIDE-Module-Name="JavaFX" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="Modern, hardware-accelerated user interface that is highly portable" OpenIDE-Module-Specification-Version="21.0.4"/>
         
 
-    <message_digest algorithm="SHA-512" value="6703788abadf58571e9a383c764ec49e5ed2dc0ae4ac62cf2a637a890eddd9a6aab28dc63b482883a4e1bb21e9970bb8f3baf33e83dd8b69c21b1150548ae69d"/>
+    <message_digest algorithm="SHA-512" value="d4cc9c823b9a93bb659544261c79da9b90a062d5eef12a25f06a9cbf56b2866641003f68534c5dfa3918d12bf971eab52714dbed4da8ed0e4da0dd3cd920e2e5"/>
 </module>
 
 </module_group>
 
 <module_group name="Testing Tools">
 
-<module codenamebase="org.assertj" distribution="org-assertj.nbm" downloadsize="2073266" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2025/06/20">
+<module codenamebase="org.assertj" distribution="org-assertj.nbm" downloadsize="2073267" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2026/03/08">
         
     <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="org.assertj" OpenIDE-Module-Display-Category="Testing Tools" OpenIDE-Module-Implementation-Version="250620" OpenIDE-Module-Java-Dependencies="Java &gt; 17" OpenIDE-Module-Long-Description="This project provides a simple and intuitive API for functional testing of Swing user interfaces, resulting in tests that are compact, easy to write, and read like a specification. Tests written using AssertJ Swing are also robust.&#10;&#10;AssertJ Swing simulates actual user gestures at the operating system level, ensuring that the application will behave correctly in front of the user. It also provides a reliable mechanism for GUI component lookup that ensures that changes in the GUI's layout or look-and-feel will not break your tests." OpenIDE-Module-Name="AssertJ Swing" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="Swing GUI Testing" OpenIDE-Module-Specification-Version="3.17.1"/>
         
 
-    <message_digest algorithm="SHA-512" value="19269b92e8999f3a54d9a4541b46970021099e4569074d7c8ed43061d0ad264586127a0e9d589a6cc25f33b5c3969b356fc41951024e7cc9f0e40494920d177d"/>
+    <message_digest algorithm="SHA-512" value="ee8e0570e58ca1246ead17c5cb568938e3cd9aa8aae49f6133dfa873b5f31c51abd4868105c44dec4af0acdf90bc882a4128417705c8f168d8414825338c020b"/>
 </module>
 
 </module_group>
