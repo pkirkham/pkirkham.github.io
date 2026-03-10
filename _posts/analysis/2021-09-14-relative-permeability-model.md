@@ -193,7 +193,7 @@ First let’s consider the saturation endpoints.
 Now we can also consider the relative permeability endpoints:
 
 -   **k<sub>rocw</sub>:** Based on k<sub>row</sub> LET equation for oil-water drainage system at irreducible water saturation. This is equation [A4] in in Lomeland, Ebeltoft and Thomas (2005).<br>
-    {% raw %}![k_{rocw}=\frac{\left(1-S_{wirr}\right)^{L_{o}^{w}}}{\left(1-S_{wirr}\right)^{L_{o}^{w}}+E_{o}^{w}\cdot{{S_{wirr}}^{T_{o}^{w}}}}](https://math.now.sh?from=k_%7Brocw%7D%3D%5Cfrac%7B%5Cleft%281-S_%7Bwirr%7D%5Cright%29%5E%7BL_%7Bo%7D%5E%7Bw%7D%7D%7D%7B%5Cleft%281-S_%7Bwirr%7D%5Cright%29%5E%7BL_%7Bo%7D%5E%7Bw%7D%7D%2BE_%7Bo%7D%5E%7Bw%7D%5Ccdot%7B%7BS_%7Bwirr%7D%7D%5E%7BT_%7Bo%7D%5E%7Bw%7D%7D%7D%7D &color=black){% endraw %}
+    $$k_{rocw}=\frac{\left(1-S_{wirr}\right)^{L_{o}^{w}}}{\left(1-S_{wirr}\right)^{L_{o}^{w}}+E_{o}^{w}\cdot{{S_{wirr}}^{T_{o}^{w}}}}$$
 -   **k<sub>rwt</sub>:** Equal to k<sub>rwro</sub> for an oil-wet system or 1.0 otherwise.
 -   **k<sub>rwro</sub>:** Based on k<sub>rwo</sub> (water-wet) LET equation for oil-water drainage system at effective saturation = 1.0 − S<sub>orw</sub> or zero if this is a negative result.<br>
     $$k_{rwro}=\frac{\left(1-\frac{S_{orw}}{1-S_{wirr}}\right)^{L_{w}^{o}}}{\left(1-\frac{S_{orw}}{1-S_{wirr}}\right)^{L_{w}^{o}}+E_{w}^{o}\cdot{\left({\frac{S_{orw}}{1-S_{wirr}}}\right)^{T_{w}^{o}}}}$$
