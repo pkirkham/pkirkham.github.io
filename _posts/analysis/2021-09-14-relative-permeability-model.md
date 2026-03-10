@@ -67,7 +67,7 @@ There are several relative permeability curves in total to account for both drai
 
 **Drainage Oil-Water System**
 
-$$k_{row}=\frac{k_{rocw}\left(1-S_{e}\right)^{L_{o}^{w}}}{\left(1-S_{e}\right)^{L_{o}^{w}}+E_{o}^{w}\cdot{{S_{e}}^{T_{o}^{w}}}}$$
+$$k_{row}=\frac{k_{rocw}\left(1-S_{e}\right)^{L_{o}^{w}}}{\left(1-S_{e}\right)^{L_{o}^{w}}+E_{o}^{w}\cdot{{S_{e}}^{T_{o}^{w}}}$$
 
 $$k_{rwo}\textrm{(water-wet)}=\frac{k_{rwt}{S_{e}}^{L_{w}^{o}}}{{S_{e}}^{L_{w}^{o}}+E_{w}^{o}\cdot{\left(1-S_{e}\right)^{T_{w}^{o}}}}$$
 
