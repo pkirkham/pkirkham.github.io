@@ -67,11 +67,11 @@ There are several relative permeability curves in total to account for both drai
 
 **Drainage Oil-Water System**
 
-$$k_{row}=\frac{k_{rocw}\left(1-S_{e}\right)^{L_{o}^{w}}}{\left(1-S_{e}\right)^{L_{o}^{w}}+E_{o}^{w}\cdot{{S_{e}}^{T_{o}^{w}}}} $$
+$$k_{row}=\frac{k_{rocw}\left(1-S_{e}\right)^{L_{o}^{w}}}{\left(1-S_{e}\right)^{L_{o}^{w}}+E_{o}^{w}\cdot{S_{e}^{T_{w}^{o}}}}$$
 
-$$k_{rwo}\textrm{(water-wet)}=\frac{k_{rwt}{S_{e}}^{L_{w}^{o}}}{{S_{e}}^{L_{w}^{o}}+E_{w}^{o}\cdot{\left(1-S_{e}\right)^{T_{w}^{o}}}}$$
+$$k_{rwo}\textrm{(water-wet)}=\frac{k_{rwt}{S_{e}}^{L_{w}^{o}}}{S_{e}^{L_{w}^{o}}+E_{w}^{o}\cdot{\left(1-S_{e}\right)^{T_{w}^{o}}}}$$
 
-$$k_{rwo}\textrm{(oil-wet)}=\frac{k_{rwt}{S_{wn}}^{L_{w}^{o}}}{{S_{wn}}^{L_{w}^{o}}+E_{w}^{o}\cdot{\left(1-S_{wn}\right)^{T_{w}^{o}}}}$$
+$$k_{rwo}\textrm{(oil-wet)}=\frac{k_{rwt}{S_{wn}}^{L_{w}^{o}}}{S_{wn}^{L_{w}^{o}}+E_{w}^{o}\cdot{\left(1-S_{wn}\right)^{T_{w}^{o}}}}$$
 
 Where:
 
@@ -90,11 +90,11 @@ T<sub>w</sub><sup>o</sup> = Top empirical parameter for water phase with associa
 
 **Imbibition Oil-Water System**
 
-$$k_{row}=\frac{k_{rocw}\left(1-S_{wn}\right)^{L_{o}^{w}}}{\left(1-S_{wn}\right)^{L_{o}^{w}}+E_{o}^{w}\cdot{{S_{wn}}^{T_{o}^{w}}}}$$
+$$k_{row}=\frac{k_{rocw}\left(1-S_{wn}\right)^{L_{o}^{w}}}{\left(1-S_{wn}\right)^{L_{o}^{w}}+E_{o}^{w}\cdot{S_{wn}^{T_{o}^{w}}}}$$
 
-$$k_{rwo}\textrm{(water-wet)}=\frac{k_{rwro}{S_{wn}}^{L_{w}^{o}}}{{S_{wn}}^{L_{w}^{o}}+E_{w}^{o}\cdot{\left(1-S_{wn}\right)^{T_{w}^{o}}}}$$
+$$k_{rwo}\textrm{(water-wet)}=\frac{k_{rwro}{S_{wn}}^{L_{w}^{o}}}{S_{wn}^{L_{w}^{o}}+E_{w}^{o}\cdot{\left(1-S_{wn}\right)^{T_{w}^{o}}}}$$
 
-$$k_{rwo}\textrm{(oil-wet)}=\frac{k_{rwro}{S_{wn}}^{0.9L_{w}^{o}}}{{S_{wn}}^{0.9L_{w}^{o}}+E_{w}^{o}\cdot{\left(1-S_{wn}\right)^{1.1T_{w}^{o}}}}$$
+$$k_{rwo}\textrm{(oil-wet)}=\frac{k_{rwro}{S_{wn}}^{0.9L_{w}^{o}}}{S_{wn}^{0.9L_{w}^{o}}+E_{w}^{o}\cdot{\left(1-S_{wn}\right)^{1.1T_{w}^{o}}}}$$
 
 Where:
 
@@ -114,9 +114,9 @@ For a water-wet system where S<sub>wn</sub> = 1, then set k<sub>rwo</sub> (imbib
 
 **Drainage Gas-Oil System**
 
-$$k_{rgo}=\frac{k_{rgcw}\left(1-S_{e}\right)^{L_{g}^{o}}}{\left(1-S_{e}\right)^{L_{g}^{o}}+E_{g}^{o}\cdot{{S_{e}}^{T_{g}^{o}}}}$$
+$$k_{rgo}=\frac{k_{rgcw}\left(1-S_{e}\right)^{L_{g}^{o}}}{\left(1-S_{e}\right)^{L_{g}^{o}}+E_{g}^{o}\cdot{S_{e}^{T_{g}^{o}}}}$$
 
-$$k_{rog}=\frac{k_{rocw}{S_{ln}}^{L_{o}^{g}}}{{S_{ln}}^{L_{o}^{g}}+E_{o}^{g}\cdot{\left(1-S_{ln}\right)^{T_{o}^{g}}}}$$
+$$k_{rog}=\frac{k_{rocw}{S_{ln}}^{L_{o}^{g}}}{S_{ln}^{L_{o}^{g}}+E_{o}^{g}\cdot{\left(1-S_{ln}\right)^{T_{o}^{g}}}}$$
 
 Where:
 
@@ -135,9 +135,9 @@ T<sub>o</sub><sup>g</sup> = Top empirical parameter for oil phase with associate
 
 **Imbibition Gas-Oil System**
 
-$$k_{rgo}=\frac{k_{rgrl}\left(1-S_{ln'}\right)^{L_{g}^{o}}}{\left(1-S_{ln'}\right)^{L_{g}^{o}}+E_{g}^{o}\cdot{{S_{ln'}}^{T_{g}^{o}}}}$$
+$$k_{rgo}=\frac{k_{rgrl}\left(1-S_{ln'}\right)^{L_g^o}}{\left(1-S_{ln'}\right)^{L_g^o}+E_g^o\cdot{S_{ln'}^{T_g^o}}}$$
 
-$$k_{rog}=\frac{k_{rorg}{S_{ln'}}^{L_{o}^{g}}}{{S_{ln'}}^{L_{o}^{g}}+E_{o}^{g}\cdot{\left(1-S_{ln'}\right)}}$$
+$$k_{rog}=\frac{k_{rorg}S_{ln'}^{L_{o}^{g}}}{S_{ln'}^{L_{o}^{g}}+E_{o}^{g}\cdot{\left(1-S_{ln'}\right)}}$$
 
 Where:
 
@@ -193,12 +193,12 @@ First let’s consider the saturation endpoints.
 Now we can also consider the relative permeability endpoints:
 
 -   **k<sub>rocw</sub>:** Based on k<sub>row</sub> LET equation for oil-water drainage system at irreducible water saturation. This is equation [A4] in in Lomeland, Ebeltoft and Thomas (2005).<br>
-    $$k_{rocw}=\frac{\left(1-S_{wirr}\right)^{L_{o}^{w}}}{\left(1-S_{wirr}\right)^{L_{o}^{w}}+E_{o}^{w}\cdot{{S_{wirr}}^{T_{o}^{w}}}}$$
+    $$k_{rocw}=\frac{\left(1-S_{wirr}\right)^{L_{o}^{w}}}{\left(1-S_{wirr}\right)^{L_{o}^{w}}+E_{o}^{w}\cdot{S_{wirr}^{T_{o}^{w}}}}$$
 -   **k<sub>rwt</sub>:** Equal to k<sub>rwro</sub> for an oil-wet system or 1.0 otherwise.
 -   **k<sub>rwro</sub>:** Based on k<sub>rwo</sub> (water-wet) LET equation for oil-water drainage system at effective saturation = 1.0 − S<sub>orw</sub> or zero if this is a negative result.<br>
     $$k_{rwro}=\frac{\left(1-\frac{S_{orw}}{1-S_{wirr}}\right)^{L_{w}^{o}}}{\left(1-\frac{S_{orw}}{1-S_{wirr}}\right)^{L_{w}^{o}}+E_{w}^{o}\cdot{\left({\frac{S_{orw}}{1-S_{wirr}}}\right)^{T_{w}^{o}}}}$$
 -   **k<sub>rgcw</sub>:** Based on k<sub>rgo</sub> LET equation for gas-oil drainage system at irreducible water saturation. This is equation [C4] in in Lomeland, Ebeltoft and Thomas (2005).<br>
-    $$k_{rgcw}=\frac{\left(1-S_{wirr}\right)^{L_{g}^{o}}}{\left(1-S_{wirr}\right)^{L_{g}^{o}}+E_{g}^{o}\cdot{{S_{wirr}}^{T_{g}^{o}}}}$$
+    $$k_{rgcw}=\frac{\left(1-S_{wirr}\right)^{L_{g}^{o}}}{\left(1-S_{wirr}\right)^{L_{g}^{o}}+E_{g}^{o}\cdot{S_{wirr}^{T_{g}^{o}}}}$$
 -   **k<sub>rgrl</sub>:** Based on k<sub>rgo</sub> LET equation for gas-oil drainage system at effective saturation = 1.0 – S<sub>org</sub>.<br>
     $$k_{rgrl}=\frac{k_{rgcw}\left(1-\frac{S_{org}}{1-S_{wirr}}\right)^{L_{g}^{o}}}{\left(1-\frac{S_{org}}{1-S_{wirr}}\right)^{L_{g}^{o}}+E_{g}^{o}\cdot{\left({\frac{S_{org}}{1-S_{wirr}}}\right)^{T_{g}^{o}}}}$$
 -   **k<sub>rorg</sub>:** Based on k<sub>rgo</sub> LET equation for gas-oil drainage system at normalised saturation = 1.0 − S<sub>grw</sub> or zero if S<sub>org</sub> + S<sub>grw</sub> + S<sub>wirr</sub> > 1.0.<br>
