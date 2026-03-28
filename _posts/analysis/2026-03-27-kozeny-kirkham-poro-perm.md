@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Kozeny-Kirkham Permeability Model
-modified:
+modified: 2026-03-28
 categories: analysis
 excerpt: Extension of the Müller-Huber, Schön and Börner Modified Pore Throat Model to incorporate tortuosity and pore geometry into a Kozeny permeability equation.
 tags: [static_modelling, rock_characterisation, rock_properties, cementation_exponent, pore_throat_size, tortuosity, porosity, permeability, rock, capillary_tube, kozeny, pore_geometry]
