@@ -96,7 +96,7 @@ So how do we actually use these parameters? First we need a solid theoretical fo
 
 The capillary tubes model is deceptively simple and it is important to understand how it is derived. I have a suspicion that whilst many are aware that the Kozeny permeability model is derived from the capillary tubes model, the majority using the Kozeny equation have never actually checked by deriving it themselves.
 
-Figure 4 shows the basis for the model. A unit cube of rock matrix is penetrated by n thin tubes of constant diameter.
+Figure 4 shows the basis for the model. A unit cube of rock matrix is penetrated by _n_ thin tubes of constant diameter.
 
 Let’s look at this a little closer:
 
@@ -131,8 +131,8 @@ I walk through the steps introducing the subsitutions one at a time in the Part 
 
  1. First we substitute the pressure differential from Hagan-Poiseuille into the Darcy equation.
  2. Next we substitute in known values for the previously defined block cross-sectional area and total flow.
- 3. q appears on both sides and can be cancelled. Then we substitute the tube cross-sectional area, _a_, which is based on the pore throat radius.
- 4. Next we must rearrange the equation to determine permeability k. Note there is a clever trick to multiply the right-hand side by $$\frac{L_aL}{L_aL}$$, which is unity.
+ 3. _q_ appears on both sides and can be cancelled. Then we substitute the tube cross-sectional area, _a_, which is based on the pore throat radius.
+ 4. Next we must rearrange the equation to determine permeability _k_. Note there is a clever trick to multiply the right-hand side by $$\frac{L_aL}{L_aL}$$, which is unity.
  5. The benefit of this can now be seen as the form of the equation holds two more parameters: our old friends porosity and tortuosity which can be substituted in.
 
 This leaves us with a much simpler form which is the well-known Kozeny permeability equation:
@@ -158,7 +158,7 @@ $$k=\frac{\phi{r_t^2}}{8\tau}$$
 
 The Kozeny equation doesn’t get used much. This is perhaps because the parameters such as pore throat radius and tortuosity are much harder to estimate than the porosity. The capillary tube model is also simplification of reality.
 
-Let's look at a refinement to the capillary tube model instead. By making small changes to the capillary tube model we can address the simplifications, at the expense of more complex mathematical gymnastics. The model that Pyrus uses for its rock model is based on a modified pore throat model that was published by Müller-Huber, Schön and Börner (2015).
+In Part III we consider a refinement to the capillary tube model instead. By making small changes to the capillary tube model we can address the simplifications, at the expense of more complex mathematical gymnastics. The model that Pyrus uses for its rock model is based on a modified pore throat model that was published by Müller-Huber, Schön and Börner (2015).
 
 ### Part III Slides - Müller-Huber, Schön and Börner Modified Pore Throat Model
 
@@ -168,7 +168,7 @@ Let’s throw that model away and instead, let’s just make one very easy but p
 
 Instead of constant diameter capillary tubes, we now have variable diameter tubes. These have a notional pore body radius at one end, and a thinner pore throat radius at the other. By connecting these together, it essentially creates a model where larger pore bodies are connected via thinner and longer pore throats. This is a more realistic basis for a model.
 
-Our parameters are almost all identical except for the tube radius. Since this is variable, it is necessary to define this using an equation _r_ of _x_ and then integrate along the length of a tube to get volume and hence porosity.
+Our parameters are almost all identical except for the tube radius. Since this is variable, it is necessary to define this using a function _r_(_x_) and then integrate along the length of a tube to get volume and hence porosity.
 
 <figure>
 	<a href="{{ site.url }}/images/Analysis/Permeability/Pore Network Illustration/Slide10.png" data-lightbox="image-6" data-title="Modified capillary tubes model based on variable tube radius that mimics pore bodies and pore throats.">
@@ -187,7 +187,7 @@ This shows the formation factor can be expressed as 1 over the porosity multipli
 
 $$F=\frac{1}{\phi}R_{BT} \label{eq:ff_poregeom}$$
 
-What their paper shows is that there is clearly a theoretical basis for a relationship between formation factor F and the pore geometry being the ratio of _r<sub>b</sub>_ and _r<sub>t</sub>_. Of interest to our model development for permeability that will be used for Pyrus, it is noted that tortuosity was not included. And because they were looking at the effect of this model on electrical resistivity measurements, they didn’t consider permeability either. However, since flow of electrical current through pore-filling fluid along a tortuous path has a similar flow path to the actual flow of that fluid in the porous medium, there is an analogy between the two that will be demonstrated.
+What their paper shows is that there is clearly a theoretical basis for a relationship between formation factor _F_ and the pore geometry being the ratio of _r<sub>b</sub>_ and _r<sub>t</sub>_. Of interest to our model development for permeability that will be used for Pyrus, it is noted that tortuosity was not included. And because they were looking at the effect of this model on electrical resistivity measurements, they didn’t consider permeability either. However, since flow of electrical current through pore-filling fluid along a tortuous path has a similar flow path to the actual flow of that fluid in the porous medium, there is an analogy between the two that will be demonstrated.
 
 <figure>
 	<a href="{{ site.url }}/images/Analysis/Permeability/Pore Network Illustration/Slide11.png" data-lightbox="image-7" data-title="Müller-Huber, Schön and Börner variable pore throat function and relationship to formation factor.">
@@ -208,21 +208,21 @@ What their paper shows is that there is clearly a theoretical basis for a relati
 
 Electrical conductivity and fluid flow through a porous media are analogous. With a better model to understand formation factor, it should be possible to model cementation exponent and then apply this to permeability equations that use cementation exponent as an input variable.
 
-Let's examine some permeability relationships based on cementation exponent. The modified pore throat model allows the formation factor to be expressed in terms of the rock pore geometry. We can leverage this knowledge to get the cementation exponent and from that indirectly use the rock’s pore geometry to predict permeability.
+In Part IV we examine some permeability relationships based on cementation exponent. The modified pore throat model allows the formation factor to be expressed in terms of the rock pore geometry. We can leverage this knowledge to get the cementation exponent and from that indirectly use the rock’s pore geometry to predict permeability.
 
 ### Part IV Slides - Predicting Permeability with Cementation Exponent
 
-Consider a cartoon representation of our rock model as shohwn in Figure 8. Note that the grains shown here have variable pore throat geometry which increase towards the pore bodies and narrow in the pore throats.
+Consider a cartoon representation of our rock model as shown in Figure 8. Note that the grains shown here have variable pore throat geometry which increase towards the pore bodies and narrow in the pore throats.
 
 For electrical current to flow through the rock matrix, a circuitous route must be followed around the rock grains. This path is almost identical to the path taken by fluid flowing through the rock. In a 100% water zone with no hydrocarbons the formation factor measures the ratio of water-filled rock resistivity to the pore-filling water resistivity. Because the rock grains are non-conductive and occupy space in the volume being considered, the cross-sectional area that can conduct electricity is reduced, and the length along which current must flow is longer.
 
-We can compare theh form of the Müller-Huber, Schön and Börner model alongside the classical Archie’s equation. If we set a and Sw both to 1, we get the simplified form of Archie’s for water wet rock where the formation factor can be expressed as:
+We can compare the form of the Müller-Huber, Schön and Börner model alongside the classical Archie’s equation. If we set _a_ and _S<sub>w</sub>_ both to 1, we get the simplified form of Archie’s for water wet rock where the formation factor can be expressed as:
 
 $$F=\frac{1}{\phi^m}$$
 
 We have equivalently previously used the Müller-Huber, Schön and Börner formation factor model to get the formation factor as equation \ref{eq:ff_poregeom}. Combining the two allows the cementation exponent to be expressed in terms of the rock porosity and pore geometry:
 
-$$m=1-\frac{\ln(R_{BT})}{\ln(\phi)}$$
+$$m=1-\frac{\ln(R_{BT})}{\ln(\phi)} \label{eq:m_rbtandphi}$$
 
 The cementation exponent is a measure of the flow path complexity in the rock fabric.
 
@@ -291,11 +291,12 @@ Can we do better? It is noted that these equations do not appear to take into co
 		<source src="https://www.dropbox.com/scl/fi/doff4z7ea5jv8z5c0iaac/Pore-Network-Illustration-Part-IV.mp4?rlkey=3lrp0sm52nigignmati4q10vd&raw=1" type="video/mp4" />
 	</video>
 </div>
+
 ## Derive Kozeny Permeability Using Modified Pore Throat Model
 
 To develop a more general permeability solution, let’s revisit Kozeny and attempt to re-derive the equation, but this time using a modified pore throat model which also includes the effect of tortuosity.
 
-The Müller-Huber, Schön and Börner modified pore throat model allows a relationship between pore geometry and cementation exponent to be created. From here, the cementation exponent can be applied to various permeability equations that incorporate cementation exponent. It should also be possible to re-derive the Kozeny equation using a modified pore throat model instead of the conventional capillary tubes. The logic for pursuing this approach is that it might reveal a superior form of the Kozeny equation.
+The Müller-Huber, Schön and Börner modified pore throat model allows a relationship between pore geometry and cementation exponent to be created. From here, the cementation exponent can be applied to various permeability equations that incorporate cementation exponent. It should also be possible to re-derive the Kozeny equation using a modified pore throat model instead of the conventional capillary tubes. The logic for pursuing this approach in Part V is that it reveals a superior form of the Kozeny equation.
 
 ### Part V Slides - Derive Kozeny Permeability Using Modified Pore Throat Model
 
@@ -310,7 +311,7 @@ Having set up the initial equations, a similar workflow to that used by Müller-
 	<figcaption><strong>Figure 11: Outline to modify the Müller-Huber, Schön and Börner model based on a variable pore throat radius.</strong></figcaption>
 </figure>
 
-As shown in Figure 12, our modified pore throat model is simply a longer tube of length L a.
+As shown in Figure 12, our modified pore throat model is simply a longer tube of length _L<sub>a</sub>_.
 
 Note that the unit volume for the rock model is still _L_ by _L_ by _L_. The illustration here only relates to the path along the tube itself. Other than the use of the actual length, this is otherwise identical to Müller-Huber, Schön and Börner. However, it is the introduction of actual length that allows us to capture tortuosity in the Kozeny equation, as distinct from the variable pore body to pore throat sizes, so this is a crucial nuance.
 
@@ -333,7 +334,7 @@ Substitution into the equation reveals a modified Kozeny equation. As will be sh
 
 What we have defined is a more general form of the Kozeny equation for variable pore body sizes:
 
-$$k=\frac{\phi{r_t^2}}{\tau}\left\{\frac{\left[\ln\left(\frac{r_b}{r_t}\right)\right]^2}{\left[1-\left(\frac{r_t}{r_b}\right)^4\right]\left[\left(\frac{r_b}{r_t}\right)^2-1\right]}\right\}$$
+$$k=\frac{\phi{r_t^2}}{\tau}\left\{\frac{\left[\ln\left(\frac{r_b}{r_t}\right)\right]^2}{\left[1-\left(\frac{r_t}{r_b}\right)^4\right]\left[\left(\frac{r_b}{r_t}\right)^2-1\right]}\right\}  \label{eq:kozeny_general}$$
 
 <figure>
 	<a href="{{ site.url }}/images/Analysis/Permeability/Pore Network Illustration/Slide19.png" data-lightbox="image-13" data-title="Derive porosity via integration including tortuosity and substitute into permeability.">
@@ -344,7 +345,7 @@ $$k=\frac{\phi{r_t^2}}{\tau}\left\{\frac{\left[\ln\left(\frac{r_b}{r_t}\right)\r
 
 As a final check, we ensure that the addition of tortuosity has not ruined the original expression for the formation factor derived by Müller-Huber, Schön and Börner. We won’t walk through the derivations again and instead skip straight to the answer which is shown in Figure 14.
 
-Tortuosity appears as a single additional term to the formation factor equation. The effect of this addition is to increase the formation factor if tortuosity increases. This is as expected. Furthermore, if we set &tau; to 1, then the equation reduces to the same form as that proposed by Müller-Huber, Schön and Börner.
+Tortuosity appears as a single additional term to the formation factor equation. The effect of this addition is to increase the formation factor if tortuosity increases. This is as expected. Furthermore, if we set _&tau;_ to 1, then the equation reduces to the same form as that proposed by Müller-Huber, Schön and Börner.
 
 This suggests that the incorporation of tortuosity into the equation has been treated correctly.
 
@@ -365,7 +366,7 @@ This suggests that the incorporation of tortuosity into the equation has been tr
 
 ## The Kozeny-Kirkham Permeability Equation
 
-All the pieces are now in place. With the modified pore throat model we can derive a more general form of the Kozeny permeability model which I’ll refer to as the Kozeny-Kirkham model.
+All the pieces are now in place and in Part VI we can now finally assemble our permeability equation. With the modified pore throat model we can derive a more general form of the Kozeny permeability model which I’ll refer to as the Kozeny-Kirkham model.
 
 It is possible that someone has previously derived this form of the Kozeny equation. After all, it is not particularly obscure or complex. That said, I’ve never seen this mentioned anywhere else in the literature. To be best of my knowledge it is novel.
 
@@ -375,15 +376,23 @@ The Pyrus rock model is built around several relationships that allow prediction
 
 Let’s derive the general form of the Kozeny-Kirkham permeability equation as shown in Figure 15.
 
-First we need to express our modified Kozeny equation a little more simply. We’ll introduce a variable _C<sub>PG</sub>_ which we’ll refer to as the pore geometry coefficient. It is given by this expression involving the pore body to throat ratio.
+First we need to express the modified Kozeny equation \ref{eq:kozeny_general} a little more simply. We’ll introduce a variable _C<sub>PG</sub>_ which we’ll refer to as the pore geometry coefficient. It is given by this expression involving the pore body to throat ratio.
 
-Now we follow a similar approach to Nooruddin and Hossain. We combine the equation for tortuosity by Wyllie and Rose with the simplified Archie equation. The tortuosity exponent _a_ is given by Wyllie and Rose (1950) as 2, but other authors have such as Winsauer, Shearin, Masson and Williams (1952) have found that this value applies to unconsolidated sands but can decrease below 2 as tortuosity increases. They found that a value of 1.67 was a good match to core plug measurements.
+Now we follow a similar approach to Nooruddin and Hossain. We combine the equation for tortuosity by Wyllie and Rose (1950) with the simplified Archie equation. The tortuosity exponent _a_ is given by Wyllie and Rose as 2, but other authors have such as Winsauer, Shearin, Masson and Williams (1952) have found that this value applies to unconsolidated sands but can decrease below 2 as tortuosity increases. They found that a value of 1.67 was a good match to core plug measurements.
 
 Substitution of the Archie formation factor into the tortuosity equation gives an expression for tortuosity in terms of porosity and cementation exponent. Now we can substitute this new tortuosity term back into our permeability equation. This has the advantage that the permeability expression is now expressed in terms of cementation exponent rather than tortuosity. This is arguably a more familiar parameter.
 
 Finally we have to convert to oilfield units. Our pore throat radius is typically given in units of micrometres. To convert to millidarcy we must multiply by 1013.25. This gives the final form of the Kozeny-Kirkham permeability equation:
 
-$$k=\frac{1013.25}{C_{PG}}\phi^{am+(1-a)}r_t^2$$
+$$k=\frac{1013.25}{C_{PG}}\phi^{am+(1-a)}r_t^2 \label{eq:kozeny_kirkham}$$
+
+Where:
+
+ - _k_ = permeability (mD)
+ - _&phi;_ = porosity (fraction)
+ - _m_ = cementation exponent (dimensionless)
+ - _r<sub>t</sub>_ = pore throat radius (&micro;m)
+ - _C<sub>PG</sub>_ = pore geometry co-efficient (dimensionless)
 
 <figure>
 	<a href="{{ site.url }}/images/Analysis/Permeability/Pore Network Illustration/Slide22.png" data-lightbox="image-15" data-title="Derivation of general Kozeny-Kirkham permeability equation from first principles.">
@@ -436,7 +445,7 @@ In summary, the pore geometry coefficient replaces constants used in several oth
 
 ## Predicting Permeability for Different Reservoir Rock Types
 
-The Pyrus rock model based on the Kozeny-Kirkham permeability equation shows promise for being a generalised equation that can predict properties for several different rock types. Testing the versatility of the equation and its applicability to different reservoir rock types will be looked at in this last part of this post.
+The Pyrus rock model based on the Kozeny-Kirkham permeability equation shows promise for being a generalised equation that can predict properties for several different rock types. Testing the versatility of the equation and its applicability to different reservoir rock types will be looked at in Part VII of this post.
 
 The new Kozeny-Kirkham permeability equation that is being proposed has a sound theoretical foundation. This is irrelevant if it cannot be usefully applied to real world reservoir rock types. To examine the relevance of this equation, the use of this equation in the context of a range of sandstones and carbonates is shown.
 
@@ -484,7 +493,7 @@ The Müller-Huber, Schön and Börner paper that introduced the modified pore th
 
 We have a starting point of cementation exponent and pore body radius. From these values we need to get pore throat radius and the pore geometry coefficient. We assume that porosity is known!
 
-The first step, shown in Figure 20, is to calculate the body to throat relationship. This is a rearrangement of an earlier derived equation. The trick now is to invert this to get the pore body to throat ratio. As you can see the equation is reasonably involved.
+The first step, shown in Figure 20, is to calculate the body to throat relationship. This is a rearrangement of an earlier derived equation \ref{eq:m_rbtandphi}. The trick now is to invert this to get the pore body to throat ratio. As you can see the equation is reasonably involved.
 
 To simplify we assume tortuosity is one and then use a regression through pre-computed values for $$\frac{r_b}{r_t}$$ against _R<sub>BT</sub>_. We need to use a second linear regression at large values of _R<sub>BT</sub>_ as the polynomial regression is not well behaved at extreme values.
 
@@ -518,7 +527,7 @@ It can be seen that this equation allows prediction of permeability across sever
 
 ## Next Steps
 
-This long blog post introduces the theory behind the Kozeny-Kirkham equation that is applied in the Pyrus rock model. What is not shown is how to estimate the cementation exponent and pore throat radius for different rock types, such as sandstone and carbonate. A method to estimate these parameters from grain size and sorting (in the case of sandstones), and rock fabric number and dolomitisation (in the case of carbonates) has been devised in Pyrus and will form the topic of another blog post(s).
+This long blog post introduces the theory behind the Kozeny-Kirkham equation that is applied in the Pyrus rock model. What is not shown in detail is how to estimate the cementation exponent and pore throat radius for different rock types, such as sandstone and carbonate. This was introduced briefly in Part VII. A method to estimate these parameters from grain size and sorting (in the case of sandstones), and rock fabric number and dolomitisation (in the case of carbonates) has been devised in Pyrus and will form the topic of another blog post(s).
 
 Another post will cover comparison of the Kozeny-Kirkham permeability equation versus other popular equations, with testing against published porosity-permeability datasets.
 
@@ -530,6 +539,7 @@ Another post will cover comparison of the Kozeny-Kirkham permeability equation v
  - Jennings, J. W. Jr. and Lucia, F. J. 2003. Predicting Permeability From Well Logs in Carbonates With a Link to Geology for Interwell Permeability Mapping. _SPE Res Eval & Eng_ **6** (4): 215-225. SPE-84942-PA. [https://doi.org/10.2118/84942-PA](https://doi.org/10.2118/84942-PA).
  - Müller-Huber, E., Schön, J., and Börner, F. 2015. The Effect of a Variable Pore Radius on Formation Resistivity Factor. _Journal of Applied Geophysics_ **116** (2015): 173-179. [https://doi.org/10.1016/j.jappgeo.2015.03.011](https://doi.org/10.1016/j.jappgeo.2015.03.011).
  - Nooruddin, H. A. and Hossain, M. E. 2011. Modified Kozeny-Carmen Correlation for Enhanced Hydraulic Flow Unit Characterization. _Journal of Pet. Sci. Eng._ **80** (1): 107-115. [https://doi.org/10.1016/j.petrol.2011.11.003](https://doi.org/10.1016/j.petrol.2011.11.003)
+ - Pittman, E. D. 1992. Relationship of Porosity and Permeability to Various Parameters Derived from Mercury Injection-Capillary Pressure Curves for Sandstone. _AAPG Bulletin_ **76** (2): 191-198. [https://doi.org/10.1306/BDFF87A4-1718-11D7-8645000102C1865D](https://doi.org/10.1306/BDFF87A4-1718-11D7-8645000102C1865D).
  - Van Baaren, J. P. 1979. Quick-Look Permeability Estimates Using Sidewall Samples and Porosity Logs. In _Transactions of the 6th Annual European Logging Symposium_. Society of Professional Well Log Analysts.
  - Winsauer, W. O., Shearin, H. M. Jr., Masson, P. H., and Williams, M. 1952. Resistivity of Brine-Saturated Sands in Relation to Pore Geometry. _AAPG Bulletin_ **36** (2): 253-277. [https://doi.org/10.1306/3D9343F4-16B1-11D7-8645000102C1865D](https://doi.org/10.1306/3D9343F4-16B1-11D7-8645000102C1865D).
  - Wyllie, M. R. J. and Rose, W. D. 1950. Some Theoretical Considerations Related to the Quantitative Evaluation of the Physical Characteristics of Reservoir Rock from Electrical Log Data. _J Pet Technol_ **2** (4): 105-118. SPE-950105-G. [https://doi.org/10.2118/950105-G](https://doi.org/10.2118/950105-G).
