@@ -4,7 +4,7 @@ title: Applying Group Contribution Methods to C7+ Fraction
 modified:
 categories: analysis
 excerpt: Application of the EPPR78 group contribution method to C7+ component characterisation.
-tags: [fluid_properties, plus_fraction, plus_fraction_characterisation, eos, pvt, pna, scn, eppr78, group_contribution, cubic_eos, volve]
+tags: [fluid_properties, plus_fraction, plus_fraction_characterisation, eos, pvt, pna, scn, eppr78, group_contribution, cubic_eos, volve, single_carbon_number]
 image:
   feature: feature-group-contribution-c7plus-1024x256.jpg
   teaser: teaser-group-contribution-c7plus-400x250.jpg

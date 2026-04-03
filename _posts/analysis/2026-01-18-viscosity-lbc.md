@@ -16,7 +16,9 @@ mathjax: true
 
 Lohrenz, Bray and Clark (1964) outlined an approach to calculating visocity of any hydrocarbon, whether gas or oil. The method first calculates a low-pressure pure component gas viscosity for all components which incorporates any effects from temperature. The component viscosities are combined into a low-pressure mixture gas viscosity using a mixing rule. Depending on whether the fluid density is gaseous or liquid, either a corresponding states approach is used for gas, or a residual viscosity approach is used for liquid.
 
-It is interesting to note that the oil and gas industry uses the Lohrenz-Bray-Clark (LBC) method extensively, even when other more accurate methods have been developed. To add to the confusion, the LBC approach describes a workflow to determine viscosity for any hydrocarbon fluid. It builds on and incorporates existing equations, and does not introduce any new equations of its own. In particular, the residual viscosity approach to determine viscosity of liquids uses the approach of Jossi, Stiel and Thodos (1962). It was noted that this could be applied to gases as well as liquids, but the absence of a suitably accurate gas density prediction method led to their recommendation to use the older graphical corresponding states method (albeit with computer assisted lookup table interpolation).
+The [Lohrenz-Bray-Clark (LBC) correlation](https://wiki.whitson.com/bopvt/visc_correlations/#lohrenz-bray-clark-correlation) is often used in the oil and gas industry. It is incorporated into almost all software packages that deal with fluid properties, not because it is necessarily the best approach, but because it is expected that the method should be available. As such it is almost universally applied. Furthermore, it is intended to calculate the viscosity of both gases and liquids, at high and low temperature and pressure.
+
+To add to the confusion, the LBC approach describes a workflow to determine viscosity for any hydrocarbon fluid. It builds on and incorporates existing equations, and does not introduce any new equations of its own. In particular, the residual viscosity approach to determine viscosity of liquids uses the approach of Jossi, Stiel and Thodos (1962). It was noted that this could be applied to gases as well as liquids, but the absence of a suitably accurate gas density prediction method led to their recommendation to use the older graphical corresponding states method (albeit with computer assisted lookup table interpolation).
 
 When it is stated that the LBC co-efficients need to be tuned to match a viscosity model, what is really being stated is that the Jossi, Stiel and Thodos co-efficients need to be tuned. This is expected, as the original paper provided different co-efficients for different types of fluid.
 
@@ -124,9 +126,9 @@ Else if LIQUID fluid:
 
  3. **Calculate viscosity of the liquid mixture.**
 
-    The relationship developed by Jossi et al (1962) is used to determine the liquid mixture viscosity _&mu;_.
+    The relationship developed by Jossi et al (1962) is used to determine the liquid mixture viscosity _&mu;_. Jossi, Stiel and Thodos (1962) introduced an alternative approach based on the residual viscosity. It was determined that the residual viscosity should be a function of the density and dimensional constants specific to each fluid. Through application of dimensional analysis and computer-aided polynomial regression (a novelty at that time), an analytical relationship was found:
 
-    $$\left[\left({\mu-\mu^{*}}\right)\xi+10^{-4}\right]^{1/4}=0.1023+0.023364\rho_r+0.058533\rho_r^2-0.40758\rho_r^3+0.0093324\rho_r^4$$
+	$$\left[\left({\mu-\mu^{*}}\right)\xi+10^{-4}\right]^{1/4}=a_1+a_2\rho_r+a_3\rho_r^2+a_4\rho_r^3+a_5\rho_r^4$$
 
     With:
 
@@ -135,7 +137,21 @@ Else if LIQUID fluid:
     Where:
 
      - _&mu;<sup>*</sup>_ = low-pressure mixture gas viscosity (cP)
+     - (_&mu;_ &minus; _&mu;<sup>*</sup>_) = residual viscosity (cP)
      - _&xi;_ = mixture viscosity-reducing parameter &#8776; 1 / _&mu;<sub>c</sub>_ (cP<sup>-1</sup>)
+
+    It is noted that this relationship holds for most fluids where critical compressibility was between 0.269 to 0.294. These fluids include argon, nitrogen, oxygen, carbon dioxide, sulphur dioxide, methane, ethane, propane, i-butane, n-butane, and n-pentane. Fluids with critical compressibilities outside of this range (hydrogen, water and ammonia) exhibited similar trends, but with deviation from the principal trend in the lower density region (_P_<sub>r</sub> < 1.0). The coefficients for the different fluids are:
+
+    | Parameter | Normal Fluids | Hydrogen | Ammonia | Water |
+    | --- | --- | --- | --- | --- |
+    | _z<sub>c</sub>_ | 0.269 to 0.294 | 0.305 | 0.242 | 0.231 |
+    | _a<sub>1</sub>_ | 0.10230 | 0.10616 | 0.10670 | 0.10721 |
+    | _a<sub>2</sub>_ | 0.023364 | -0.042426 | 0.022655 | 0.040646 |
+    | _a<sub>3</sub>_ | 0.058533 | 0.17553 | 0.035749 | 0.0026282 |
+    | _a<sub>4</sub>_ | -0.040758 | -0.12295 | -0.032153 | -0.0054430 |
+    | _a<sub>5</sub>_ | 0.0093324 | 0.028149 | 0.0089998 | 0.0017979 |
+
+    <div class="notice-warning">The Jossi et al residual viscosity could also be described as a corresponding states approach since it is based on a reduced increase in viscosity above the dilute gas viscosity in terms of the reduced density, and this is similar for many fluids. Here we distinguish between methods that model the viscosity ratio, &mu; / &mu;<sup>*</sup> = <i>f</i>(T<sub>r</sub> , p<sub>r</sub>), as corresponding states models, and those that model the additional viscosity, &mu; = &mu;<sup>*</sup> + <i>f</i>(T<sub>r</sub> , p<sub>r</sub>), as residual viscosity models.</div>
 
 Lohrenz, Bray and Clark note that because the calculation procedure is a sequence of steps, it is possible to update or change any step. They note that since they devised the procedure, new techniques had emerged which could both simplify the calculations and/or improve the accuracy. It is also noted that it should be possible to make gas viscosity predictions using an identical procedure to that applied for liquid viscosities, but the lack of a reliable gas density prediction method (at the time the LBC paper was written) prevented them from pursuing this route.
 

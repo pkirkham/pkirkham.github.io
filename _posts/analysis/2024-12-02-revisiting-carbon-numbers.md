@@ -4,7 +4,7 @@ title: Revisiting Carbon Numbers
 modified:
 categories: analysis
 excerpt: Insights into the single carbon number and its relationship to paraffins, napthenes and aromatics.
-tags: [fluid_properties, plus_fraction, plus_fraction_characterisation, eos, pvt, katz_firoozabadi, tbp_distillation, molecular_weight, specific_gravity, pna, scn]
+tags: [fluid_properties, plus_fraction, plus_fraction_characterisation, eos, pvt, katz_firoozabadi, tbp_distillation, molecular_weight, specific_gravity, pna, scn, single_carbon_number]
 image:
   feature: feature-single-carbon-number-1024x256.jpg
   teaser: teaser-single-carbon-number-400x250.jpg

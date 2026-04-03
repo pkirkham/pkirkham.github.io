@@ -4,7 +4,7 @@ title: Characterizing the C7+ Fraction
 modified:
 categories: analysis
 excerpt: Approach to characterising the C7+ fraction in a hydrocarbon composition, including molecular weight, specific gravity, single carbon number, and paraffins, napthenes and aromatics.
-tags: [dynamic_model, fluid_properties, plus_fraction, plus_fraction_characterisation, eos, pvt]
+tags: [dynamic_model, fluid_properties, plus_fraction, plus_fraction_characterisation, eos, pvt, single_carbon_number, katz_firoozabadi, pna, riazi_daubert]
 image:
   feature: feature-c7plus-characterisation-1024x256.jpg
   teaser: teaser-c7plus-characterisation-400x250.jpg

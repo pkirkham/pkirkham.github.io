@@ -117,7 +117,7 @@ To solve for the methane density, a minimisation algorithm to determine a match 
 | Function | Equation | Constant | Value |
 | --- | --- | --- | --- |
 | _a<sub>1</sub>_ | $$RT$$ | _N<sub>1</sub>_ | -0.018439486666 |
-| _a<sub>2</sub>_ | $$N_1T+N_2T^{1/2}+N_3+N_4T+N_5/T^2$$ | _N<sub>2</sub>_ | 1.0510162064 |
+| _a<sub>2</sub>_ | $$N_1T+N_2T^{1/2}+N_3+N_4/T+N_5/T^2$$ | _N<sub>2</sub>_ | 1.0510162064 |
 | _a<sub>3</sub>_ | $$N_6T+N_7+N_8/T+N_9/T^2$$ | _N<sub>3</sub>_ | -16.057820303  |
 | _a<sub>4</sub>_ | $$N_{10}T+N_{11}+N_{12}/T$$ | _N<sub>4</sub>_ | 848.44027562 |
 | _a<sub>5</sub>_ | $$N_{13}$$ | _N<sub>5</sub>_ | -4.2738409106&times;10<sup>4</sup> |
@@ -156,9 +156,9 @@ $$\mu_{mix}(p, T)=\left(\frac{T_{c,mix}}{T_{co}}\right)^{-1/6}\left(\frac{p_{c,m
 
 With:
 
-$$T_{c,mix}=\frac{\sum_{i=1}^{N}\sum_{j=1}^{N}z_iz_j\left[\left(\frac{T_{ci}}{p_{ci}}\right)^{1/3}+\left(\frac{T_{cj}}{p_{cj}}\right)^{1/3}\right]^3\sqrt{T_{ci}T_{cj}}}{\sum_{i=1}^{N}\sum_{j=1}^{N}z_iz_j\left[\left(\frac{T_{ci}}{p_{ci}}\right)^{1/3}\left(\frac{T_{cj}}{p_{cj}}\right)^{1/3}\right]^3} \label{eq:tcmix}$$
+$$T_{c,mix}=\frac{\sum_{i=1}^{N}\sum_{j=1}^{N}z_iz_j\left[\left(\frac{T_{ci}}{p_{ci}}\right)^{1/3}+\left(\frac{T_{cj}}{p_{cj}}\right)^{1/3}\right]^3\sqrt{T_{ci}T_{cj}}}{\sum_{i=1}^{N}\sum_{j=1}^{N}z_iz_j\left[\left(\frac{T_{ci}}{p_{ci}}\right)^{1/3}+\left(\frac{T_{cj}}{p_{cj}}\right)^{1/3}\right]^3} \label{eq:tcmix}$$
 
-$$p_{c,mix}=\frac{8\sum_{i=1}^{N}\sum_{j=1}^{N}z_iz_j\left[\left(\frac{T_{ci}}{p_{ci}}\right)^{1/3}+\left(\frac{T_{cj}}{p_{cj}}\right)^{1/3}\right]^3\sqrt{T_{ci}T_{cj}}}{\left(\sum_{i=1}^{N}\sum_{j=1}^{N}z_iz_j\left[\left(\frac{T_{ci}}{p_{ci}}\right)^{1/3}\left(\frac{T_{cj}}{p_{cj}}\right)^{1/3}\right]^3\right)^2} \label{eq:pcmix}$$
+$$p_{c,mix}=\frac{8\sum_{i=1}^{N}\sum_{j=1}^{N}z_iz_j\left[\left(\frac{T_{ci}}{p_{ci}}\right)^{1/3}+\left(\frac{T_{cj}}{p_{cj}}\right)^{1/3}\right]^3\sqrt{T_{ci}T_{cj}}}{\left(\sum_{i=1}^{N}\sum_{j=1}^{N}z_iz_j\left[\left(\frac{T_{ci}}{p_{ci}}\right)^{1/3}+\left(\frac{T_{cj}}{p_{cj}}\right)^{1/3}\right]^3\right)^2} \label{eq:pcmix}$$
 
 $$M_{w,mix}=1.304\times10^{-4}\left(\overline{M}_w^{2.303}-\overline{M}_n^{2.303}\right)+\overline{M}_n \label{eq:mwmix}$$
 
@@ -187,7 +187,7 @@ Where:
 
 ## Implementation in Java
 
-The description of the CSP approach by Pedersen uses methane as a reference fluid. Since Pyrus has a Java wrapper to [incorporate the CoolProp library]({{site.url}}/pyrus/coolprop-versus-ppr78-eos/) we can use a different reference fluid and obtain the reference fluid density and viscosity directly from CoolProp. This greatly simplifies the equations as we are simply leveraging a library function instead.
+The description of the CSP approach by Pedersen uses methane as a reference fluid. Since Pyrus has a Java wrapper to [incorporate the CoolProp library]({{site.url}}/pyrus/coolprop-versus-ppr78-eos/) we can use a different reference fluid and obtain the reference fluid density and viscosity directly from CoolProp. This greatly simplifies the equations as we are simply leveraging a library function instead. Note that in the actual Pyrus implementation, if the CoolProp library fails to find a value (happens with heavier components where corresponding methane conditions are solid), a fallback to Pedersen and Fredenslund's (1987) adjusted models is used. These adjustments are not described below.
 
 The Pyrus implementation of the Pedersen CSP method is shown below. Note that Pyrus uses javax.measure units and measurements with custom oilfield units. The use of these methods should be self-explanatory for anyone trying to follow the code.
 
@@ -208,27 +208,28 @@ public Amount<DynamicViscosity> getViscosityPedersen(Amount<Pressure> p, Amount<
 
     // T_c,mix using Pedersen's mixing rules.
     double cmix_numerator = 0.0;
-    double tcmix_denominator = 0.0;
-    double pcmix_denominator = 0.0;
+    double cmix_denominator = 0.0;
     for (FluidComponent fc_i : eos_composition.keySet()) {
         Condition crit_pt_i = fc_i.criticalPoint();
         double t_ci = crit_pt_i.getTemperature().doubleValue(KELVIN);
         double p_ci = crit_pt_i.getPressure().doubleValue(ATMOSPHERE);
         for (FluidComponent fc_j : eos_composition.keySet()) {
             Condition crit_pt_j = fc_j.criticalPoint();
-            double t_cj = crit_pt_j.getTemperature().doubleValue(KELVIN);
-            double p_cj = crit_pt_j.getPressure().doubleValue(ATMOSPHERE);
-            double zi_dot_zj = eos_composition.get(fc_i) * eos_composition.get(fc_j);
-            cmix_numerator += zi_dot_zj * pow(pow(t_ci / p_ci, THIRD) + pow(t_cj / p_cj, THIRD), 3.0)
-                    * sqrt(t_ci * t_cj);
-            tcmix_denominator += zi_dot_zj * pow(pow(t_ci / p_ci, THIRD) * pow(t_cj / p_cj, THIRD), 3.0);
-            pcmix_denominator += zi_dot_zj * pow(pow(t_ci / p_ci, THIRD) * pow(t_cj / p_cj, THIRD), 3.0);
+            final double zi_dot_zj = eos_composition.get(fc_i) * eos_composition.get(fc_j);
+            final double t_cj = crit_pt_j.getTemperature().doubleValue(KELVIN);
+            final double p_cj = crit_pt_j.getPressure().doubleValue(ATMOSPHERE);
+            final double t_ci_over_p_ci = t_ci / p_ci;
+            final double t_cj_over_p_cj = t_cj / p_cj;
+            final double weighting_ij = zi_dot_zj 
+                    * pow(pow(t_ci_over_p_ci, THIRD) + pow(t_cj_over_p_cj, THIRD), 3.0);
+            cmix_numerator += weighting_ij * sqrt(t_ci * t_cj);
+            cmix_denominator += weighting_ij;
         }
     }
-    double t_cmix = cmix_numerator / tcmix_denominator;
+    double t_cmix = cmix_numerator / cmix_denominator;
 
     // p_c,mix using Pedersen's mixing rules.
-    double p_cmix = (8.0 * cmix_numerator) / pow(pcmix_denominator, 2.0);
+    double p_cmix = (8.0 * cmix_numerator) / pow(cmix_denominator, 2.0);
 
     // Equivalent pressure pdash_o for reference fluid.
     final double p_co_atm = Amount.valueOf(ref_fluid.p_crit(), POUND_PER_SQUARE_INCH).doubleValue(ATMOSPHERE);
@@ -262,7 +263,7 @@ public Amount<DynamicViscosity> getViscosityPedersen(Amount<Pressure> p, Amount<
     // Correction factors alpha_mix and alpha_o.
     double m_wo = ref_fluid.mass();
     double alpha_mix = 1.0 + 7.378e-03 * pow(rho_r, 1.847) * pow(m_wmix, 0.5173);
-    double alpha_o = 1.0 + 7.378e-03 * pow(rho_r, 1.847) * pow(m_wo, 0.5173);
+    double alpha_o = 1.0 + 0.031 * pow(rho_r, 1.847);
 
     // Reference fluid pressure and temperature.
     Condition crit_pt_o = ref_fluid.criticalPoint();
