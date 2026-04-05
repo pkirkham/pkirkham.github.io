@@ -6,8 +6,8 @@ categories: analysis
 excerpt: An explicit approach for rapid and accurate determination of Z-factor and viscosity for hydrocarbon gases.
 tags: [dynamic_model, simulation, fluid_properties, oil, gas, reservoir_engineering, viscosity, residual_viscosity, transport_properties, code_snippet, peng_robinson, eos, cubic_eos]
 image:
-  feature: feature-viscosity-bns-1024x256.jpg
-  teaser: teaser-viscosity-bns-400x250.jpg
+  feature: feature-viscosity-burgoyne-1024x256.jpg
+  teaser: teaser-viscosity-burgoyne-400x250.jpg
   linkedin: Analysis/viscosity-modelling/viscosity-figure27.png
   thumb:
 comments: false
