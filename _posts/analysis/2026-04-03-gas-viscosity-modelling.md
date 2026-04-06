@@ -154,8 +154,8 @@ The correlation models above calculate viscosity at a given temperature and pres
 Methods that are based on corresponding states include:
 
  1. **Comings et al (1944)**: This graphical method was an early industry standard.
- 2. [**Pedersen et al (1984, 1987)**]({{ site.url }}/analysis/viscosity-pedersen/): Uses a modified Benedict-Webb-Rubin virial equation of state for methane reference fluid together with custom mixing rules.
- 3. [**Lucas (1974)**]({{ site.url }}/analysis/viscosity-lucas/): Uses propane as the reference fluid together with a modification to kinetic theory to derive an equation for dimensionless viscosity as a function of reduced temperature and reduced pressure.
+ 2. [**Lucas (1974)**]({{ site.url }}/analysis/viscosity-lucas/): Uses propane as the reference fluid together with a modification to kinetic theory to derive an equation for dimensionless viscosity as a function of reduced temperature and reduced pressure.
+ 3. [**Pedersen et al (1984, 1987)**]({{ site.url }}/analysis/viscosity-pedersen/): Uses a modified Benedict-Webb-Rubin virial equation of state for methane reference fluid together with custom mixing rules.
 
 ##### Comings Corresponding States Approach
 
@@ -206,6 +206,7 @@ Methods that are based on residual viscosity include:
 
  1. **Jossi, Stiel and Thodos (1962)**: This method is often encountered in the [Lohrenz-Bray-Clark viscosity approach]({{ site.url }}/analysis/viscosity-lbc/).
  2. [**TRAPP**]({{ site.url }}/analysis/viscosity-trapp/): The **TRA**nsport **P**roperties **P**rediction method uses a combination of corresponding states and residual viscosity with propane as the reference fluid. 
+ 3. [**Burgoyne, Nielsen and Stanko (2025)**]({{ site.url }}/analysis/viscosity-bns/): Update to Jossi, Stiel and Thodos based on a five-component mixture model for pseudo-hydrocarbon plus carbon dioxide, hydrogen sulphide, nitrogen and hydrogen components. Reduced density derived from Peng-Robinson cubic equation of state.
 
 Note that the [Lohrenz-Bray-Clark (LBC) correlation](https://wiki.whitson.com/bopvt/visc_correlations/#lohrenz-bray-clark-correlation) is often used in the oil and gas industry. Although it is not listed above, it adopts the Jossi, Stiel and Thodos (JST) method which is thus often (incorrectly) referred to as LBC. It is incorporated into almost all software packages that deal with fluid properties, not because it is necessarily the best approach, but because it is expected that the method should be available. As such it is almost universally applied. Furthermore, it is intended to calculate the viscosity of both gases and liquids, at high and low temperature and pressure. A [separate article investigating the shortcomings of the Lohrenz-Bray-Clark method]({{ site.url }}/analysis/viscosity-lbc/) goes into more detail on this method. Interestingly the original procedure proposed by Lohrenz, Bray and Clark applied a different viscosity technique depending on whether the fluid is a gas or a liquid. For gases, the graphical corresponding states method of Carr et al for mixtures was applied, but with a digitised graphical chart that facilitated computerised interpolation.
 
@@ -276,6 +277,7 @@ Implementations of the Chapman-Enskog model in Pyrus include:
 
  - Ali, J. K. 1991. Evaluation of Correlations for Estimating the Viscosities of Hydrocarbon Fluids. _J Pet Sci Eng_ **5**: 351-369. [https://doi.org/10.1016/0920-4105(91)90053-P](https://doi.org/10.1016/0920-4105(91)90053-P).
  - Born, M. and Green, H. S. 1947. A General Kinetic Theory of Liquids III: Dynamical Properties. _Proc_, Royal Society, London, England, 1 September, **190** (1023): 455–474. [https://doi.org/10.1098/rspa.1947.0088](https://doi.org/10.1098/rspa.1947.0088).
+ - Burgoyne, M. W., Nielsen, M. H., and Stanko, M. 2025. A Universal, EOS-Based Correlation for Z-Factor, Viscosity and Enthalpy for Hydrocarbon and H<sub>2</sub>, N<sub>2</sub>, CO<sub>2</sub>, H<sub>2</sub>S Gas Mixtures. Paper presented at the ADIPEC, Abu Dhabi, UAE, 3-6 November. SPE-229932-MS. [https://doi.org/10.2118/229932-MS](https://doi.org/10.2118/229932-MS).
  - Carr, N. L., Kobayashi, R., and Burrows, D. B. 1954. Viscosity of Hydrocarbon Gases Under Pressure. _J Pet Technol_ **6** (10): 47-55. SPE-297-G. [https://doi.org/10.2118/297-G](https://doi.org/10.2118/297-G).
  - [Comings, E. W., Mayland, B. J., and Egly, R. S. 1944. The Viscosity of Gases at High Pressures. _University of Illinois Engineering Experiment Station Bulletin No. 354_.](http://hdl.handle.net/2142/4478)
  - [Chapman, S. and Cowling, T. G. 1970. _The Mathematical Theory of Non-Uniform Gases_, third edition. Cambridge: Cambridge University Press.](https://www.cambridge.org/us/universitypress/subjects/mathematics/fluid-dynamics-and-solid-mechanics/mathematical-theory-non-uniform-gases-account-kinetic-theory-viscosity-thermal-conduction-and-diffusion-gases)

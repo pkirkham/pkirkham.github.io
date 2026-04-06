@@ -24,7 +24,7 @@ The LBC viscosity method is based on the observation that the residual viscosity
 
 <figure>
 	<a href="{{ site.url }}/images/Analysis/viscosity-modelling/viscosity-figure3.png" data-lightbox="image-1" data-title="Jossi, Stiel and Thodos data for residual viscosity versus reduced density exhibits a consistent trend for normal fluids, with some variation for water, ammonia and hydrogen.">
-		<img src="{{ site.url }}/images/Analysis/viscosity-modelling/viscosity-figure3.png" alt="Comparison of retuned Jossi, Stiel and Thodos parameters from LBC (1964) and BNS (2025)."/>
+		<img src="{{ site.url }}/images/Analysis/viscosity-modelling/viscosity-figure3.png" alt="Jossi, Stiel and Thodos data for residual viscosity versus reduced density exhibits a consistent trend for normal fluids, with some variation for water, ammonia and hydrogen."/>
 	</a>
 	<figcaption><strong>Figure 1: Jossi, Stiel and Thodos data for residual viscosity versus reduced density exhibits a consistent trend for normal fluids, with some variation for water, ammonia and hydrogen.</strong></figcaption>
 </figure>
@@ -191,10 +191,10 @@ The re-regressed JST relationship versus the original is shown in Figure 2. This
 	<a href="{{ site.url }}/images/Analysis/viscosity-modelling/viscosity-figure28.png" data-lightbox="image-2" data-title="Comparison of retuned Jossi, Stiel and Thodos parameters from LBC (1964) and BNS (2025).">
 		<img src="{{ site.url }}/images/Analysis/viscosity-modelling/viscosity-figure28.png" alt="Comparison of retuned Jossi, Stiel and Thodos parameters from LBC (1964) and BNS (2025)."/>
 	</a>
-	<figcaption><strong>Figure 2: Lohrenz, Bray and Clark (1964) work flow to determine gas and liquid viscosities.</strong></figcaption>
+	<figcaption><strong>Figure 2: Comparison of retuned Jossi, Stiel and Thodos parameters from LBC (1964) and BNS (2025).</strong></figcaption>
 </figure>
 
-<div class="notice-info">It is interesting to note that neither the original JST equation, nor the retuned BNS equation actually match the published equation shown in Figure 2. By examination of Figure 1 it can be seen that the actual equations are more in line with the methane datapoints.</div>
+<div class="notice-info">It is interesting to note that neither the original JST equation, nor the retuned BNS equation actually match the published trendline published in the paper as shown in Figure 2. The comparison graph shown on the right hand side in Figure 2 shows the original JST equation with experimental datapoints overlaid. It can be seen that the equations used appear to lie along the same trends as observed with methane experimental datapoints.</div>
 
 ## Implementation in Java
 
@@ -783,16 +783,131 @@ A dataset comprising 1,156 data points was compiled from published data in the l
 
 <figure>
 	<a href="{{ site.url }}/images/Analysis/viscosity-modelling/viscosity-figure27.png" data-lightbox="image-3" data-title="Predicted versus measured viscosities for pure fluids, binary mixtures and hydrocarbon mixtures using BNS (2025).">
-		<img src="{{ site.url }}/images/Analysis/viscosity-modelling/viscosity-figure27.png" alt="Comparison of retuned Jossi, Stiel and Thodos parameters from LBC (1964) and BNS (2025)."/>
+		<img src="{{ site.url }}/images/Analysis/viscosity-modelling/viscosity-figure27.png" alt="Predicted versus measured viscosities for pure fluids, binary mixtures and hydrocarbon mixtures using BNS (2025)."/>
 	</a>
 	<figcaption><strong>Figure 3: Predicted versus measured viscosities for pure fluids, binary mixtures and hydrocarbon mixtures using BNS (2025).</strong></figcaption>
 </figure>
 
 ### Python versus Java Performance
 
-The open source code for the BNS method is implemented in Python and [Visual Basic]. As of the date of this blog post (early April 2026) it is understood that Mark Burgoyne is implementing various methods for PyResToolbox in the Rust language which should be much faster.
+The open source code for the BNS method is implemented in Python, Visual Basic, Fortran and Rust. As of the date of this blog post (early April 2026) it is understood that Mark Burgoyne testing the speedups achieved by re-writing some methods of PyResToolbox in the Rust language which should be much faster.
 
-A comparison between the Python implementation in PyResToolbox and the Java implementation in Pyrus will be included in this blog post once completed.
+A comparison between the Java implementation and the implementation included in PyResToolbox was tested using simple benchmark programs. These tested both the number of calculations per second achieved for single randomised compositions, and the number of calculations per second when executing in batch mode for a single composition at multiple pressures (feature included in the Python implementation). In batch mode, the Python implementation is able to take advantage of Numpy which is optimised for mathematical matrix operations, and can therefore be much faster. As an equivalent for Java, the logical approach is to implement a parallel processing optimisation, which it can be seen is rather trival to implement using Java streams. The benchmark programs that were used are:
+
+```java
+public void testGasViscosityBNS() {
+    StopWatch sw = new StopWatch();
+    sw.start();
+    int count = 0;
+    int n_samples = 1; \\ 1 for single mode and 1000 for pressure batch mode
+    while (sw.getTime(TimeUnit.SECONDS) < 5) {
+        double[] p_psia = new double[n_samples];
+        double[] mu = new double[n_samples];
+        for (int i = 0; i < n_samples; i++) {
+            p_psia[i] = AdvMath.random(FlashVLE.P_SC.doubleValue(POUND_PER_SQUARE_INCH), 15000.0);
+        }
+        double t_degf = AdvMath.random(FlashVLE.T_SC.doubleValue(FAHRENHEIT), 300.0);
+        double sg = AdvMath.random(0.65, 0.9);
+        boolean has_inerts = Math.random() < 0.3;
+        double co2 = 0.0, h2s = 0.0, n2 = 0.0, h2 = 0.0;
+        if (has_inerts) {
+            double inert_frac = Math.random();
+            co2 = AdvMath.random(0.0, inert_frac);
+            h2s = AdvMath.random(0.0, 1.0 - co2);
+            n2 = AdvMath.random(0.0, 1.0 - co2 - h2s);
+            h2 = AdvMath.random(0.0, 1.0 - co2 - h2s - n2);
+        }
+        gasViscosityBnsBatch(p_psia, t_degf, sg, co2, h2s, n2, h2, mu);
+
+        // Basic output check
+        for (double u : mu) {
+            assertThat(Double.isFinite(u));
+            assertThat(u).isGreaterThan(0.0);
+        }
+        count += n_samples;
+    }
+    sw.stop();
+    LOG.log(Level.INFO, "Java achieved {0} BNS viscosity calculations per second", new Object[]{
+        String.format("%.1f", count / (sw.getTime() / 1000.0))
+    });
+}
+
+private static void gasViscosityBnsBatch(double[] psias, double degf, double sg, double co2, double h2s, double n2,
+        double h2, double[] mu_out) {
+    final int N = psias.length;
+    IntStream.range(0, N).parallel().forEach(i -> {
+        mu_out[i] = PVT.gasViscosityBNS(psias[i], degf, sg, co2, h2s, n2, h2);
+    });
+}
+```
+
+And for Python:
+
+```python
+import time
+import random
+import math
+import numpy as np
+from pyrestoolbox import gas
+
+# Constants matching the Java test
+P_SC = 14.7 # psia
+T_SC = 60.0 # degF
+
+def random_between(a, b):
+    return a + (b - a) * random.random()
+
+def run_benchmark(duration_sec=5.0, n_samples=1000):
+    count = 0
+    rng = np.random.default_rng()
+    start = time.time()
+    while time.time() - start < duration_sec:
+        p_psia = rng.uniform(P_SC, 15000.0, size=n_samples)
+        t_degf = random_between(T_SC, 300.0)
+        sg = random_between(0.65, 0.9)
+        has_inerts = random.random() < 0.3
+        if has_inerts:
+            inert_frac = random.random()
+            co2 = random_between(0.0, inert_frac)
+            h2s = random_between(0.0, 1.0 - co2)
+            n2  = random_between(0.0, 1.0 - co2 - h2s)
+            h2  = random_between(0.0, 1.0 - co2 - h2s - n2)
+        else:
+            co2 = h2s = n2 = h2 = 0.0
+
+        # Call PyResToolbox BNS viscosity
+        mu = gas.gas_ug(
+            p=p_psia,
+            sg=sg,
+            degf=t_degf,
+            zmethod='BNS',
+            cmethod='BUR',
+            co2=co2,
+            h2s=h2s,
+            n2=n2,
+            h2=h2
+        )
+
+        # Basic output checks
+        if not np.all(np.isfinite(mu)) or np.any(mu <= 0.0):
+            raise ValueError("Non-physical viscosities in vectorized run")
+        count += n_samples
+
+    elapsed = time.time() - start
+    rate = count / elapsed
+    print(f"Python achieved {rate:,.1f} BNS viscosity calculations per second")
+```
+
+<div class="notice-info">In preparation for sharing the Java code, much of unit conversion logic was stripped out to speed up execution in Java. This removes a lot of the overhead of JScience `Amount` class. Benchmark results with the code as shown in this blog post are about 2&times; to 3&times; slower.</div>
+
+The speed up obtained is shown graphically below in Figure 4. Note the use of the logarithmic scale. This was necessary as otherwise the number of calculations per second for the single mode Python implementation was not a visible bar on the chart.
+
+<figure>
+	<a href="{{ site.url }}/images/Analysis/viscosity-modelling/viscosity-figure29.png" data-lightbox="image-4" data-title="Comparison calculation speeds for BNS viscosity method in Python versus Java implementations.">
+		<img src="{{ site.url }}/images/Analysis/viscosity-modelling/viscosity-figure29.png" alt="Comparison calculation speeds for BNS viscosity method in Python versus Java implementations."/>
+	</a>
+	<figcaption><strong>Figure 4: Comparison calculation speeds for BNS viscosity method in Python versus Java implementations.</strong></figcaption>
+</figure>
 
 ## References
 
