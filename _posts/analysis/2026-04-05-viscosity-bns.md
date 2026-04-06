@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Burgoyne-Nielsen-Stanko Viscosity
-modified:
+modified: 2026-04-07
 categories: analysis
 excerpt: An explicit approach for rapid and accurate determination of Z-factor and viscosity for hydrocarbon gases.
 tags: [dynamic_model, simulation, fluid_properties, oil, gas, reservoir_engineering, viscosity, residual_viscosity, transport_properties, code_snippet, peng_robinson, eos, cubic_eos]
@@ -331,7 +331,7 @@ public static double zFactorBNS(double pressure, double temperature, double sg, 
 
     /*
      * Workflow from SPE-229932 for z-factor property calculation is:
-     * 
+     *
      *  1. Define mole fraction composition.
      *  2. Override pseudo-hydrocarbon Tc, Pc using BNS correlations into arrays of tuned critical temperatures and
      *     pressures.
@@ -792,7 +792,11 @@ A dataset comprising 1,156 data points was compiled from published data in the l
 
 The open source code for the BNS method is implemented in Python, Visual Basic, Fortran and Rust. As of the date of this blog post (early April 2026) it is understood that Mark Burgoyne testing the speedups achieved by re-writing some methods of PyResToolbox in the Rust language which should be much faster.
 
-A comparison between the Java implementation and the implementation included in PyResToolbox was tested using simple benchmark programs. These tested both the number of calculations per second achieved for single randomised compositions, and the number of calculations per second when executing in batch mode for a single composition at multiple pressures (feature included in the Python implementation). In batch mode, the Python implementation is able to take advantage of Numpy which is optimised for mathematical matrix operations, and can therefore be much faster. As an equivalent for Java, the logical approach is to implement a parallel processing optimisation, which it can be seen is rather trival to implement using Java streams. The benchmark programs that were used are:
+A comparison between the Java implementation and the implementation included in PyResToolbox was tested using simple benchmark programs. These tested both the number of calculations per second achieved for single randomised compositions, and the number of calculations per second when executing in batch mode for a single composition at multiple pressures (feature included in the Python implementation). A total of 1,000 calculations are used in batch mode. Admittedly this is more than would ever typically be run (usually a user might use an array with 10s to a hundred pressure points). Use of 1,000 is deliberate as it gives the algorithm the optimal chance to show what it can do in an optimised condition -- after all, this is a benchmark.
+
+In batch mode, the Python implementation is able to take advantage of Numpy which is optimised for mathematical matrix operations, and can therefore be much faster. As an equivalent for Java, the logical approach is to implement a parallel processing optimisation, which it can be seen is rather trival to implement using Java streams. Shortly after this post was first updated with the benchmarks, Mark released the Rust implementation for these routines. Rust is enabled by default when configuring the Python environment, or it can be turned off. The code used to run the benchmarks is identical. It is the configuration of the environment that determines whether Rust is used or not.
+
+The benchmark programs that were used are:
 
 ```java
 public void testGasViscosityBNS() {
@@ -900,7 +904,7 @@ def run_benchmark(duration_sec=5.0, n_samples=1000):
 
 <div class="notice-info">In preparation for sharing the Java code, much of unit conversion logic was stripped out to speed up execution in Java. This removes a lot of the overhead of JScience `Amount` class. Benchmark results with the code as shown in this blog post are about 2&times; to 3&times; slower.</div>
 
-The speed up obtained is shown graphically below in Figure 4. Note the use of the logarithmic scale. This was necessary as otherwise the number of calculations per second for the single mode Python implementation was not a visible bar on the chart.
+The speed up obtained is shown graphically below in Figure 4. Note the use of the logarithmic scale. This was necessary as otherwise the number of calculations per second for the single mode Python implementation was not a visible bar on the chart. The Rust implementation introduced helps to speed up the single mode methods, but has little effect on the batch mode. This is likely because in batch mode the code is able to take advantage of Numpy acceleration which uses C during loops instead of interpreted Python.
 
 <figure>
 	<a href="{{ site.url }}/images/Analysis/viscosity-modelling/viscosity-figure29.png" data-lightbox="image-4" data-title="Comparison calculation speeds for BNS viscosity method in Python versus Java implementations.">
@@ -912,6 +916,7 @@ The speed up obtained is shown graphically below in Figure 4. Note the use of th
 ## References
 
  - Burgoyne, M. W., Nielsen, M. H., and Stanko, M. 2025. A Universal, EOS-Based Correlation for Z-Factor, Viscosity and Enthalpy for Hydrocarbon and H<sub>2</sub>, N<sub>2</sub>, CO<sub>2</sub>, H<sub>2</sub>S Gas Mixtures. Paper presented at the ADIPEC, Abu Dhabi, UAE, 3-6 November. SPE-229932-MS. [https://doi.org/10.2118/229932-MS](https://doi.org/10.2118/229932-MS).
+ - Burgoyne, M. W. 2025. A Collection of Reservoir Engineering Utilities (pyResToolbox), https://github.com/mwburgoyne/pyResToolbox	(accessed 7 April 2026).
  - Herning, F. and Zipperer, L. 1936. Beitrag zur Berechnung der Zähigkeit Technischer Gasgemische aus den Zähigkeitswerten der Einzelbestandteile (Calculation of the Viscosity of Technical Gas Mixtures from Viscosity of the individual Gases), _Gas und Wasserfach_ **79**: 49–54, 69-73.
  - Jossi, J. A., Stiel, L. I., and Thodos, G. 1962. The Viscosity of Pure Substances in the Dense Gaseous and Liquid Phases. _AIChE Journal_ **8**: 59-63. [https://doi.org/10.1002/aic.690080116](https://doi.org/10.1002/aic.690080116).
  - Lee, A. L., Gonzalez, M. H., and Eakin, B. E. 1966. The Viscosity of Natural Gas. _J Pet Technol_ **18** (8): 997-1000. SPE-1340-PA. [https://doi.org/10.2118/1340-PA](https://doi.org/10.2118/1340-PA).
