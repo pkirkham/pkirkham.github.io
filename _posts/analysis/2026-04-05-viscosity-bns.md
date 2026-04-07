@@ -916,7 +916,7 @@ The speed up obtained is shown graphically below in Figure 4. Note the use of th
 ## References
 
  - Burgoyne, M. W., Nielsen, M. H., and Stanko, M. 2025. A Universal, EOS-Based Correlation for Z-Factor, Viscosity and Enthalpy for Hydrocarbon and H<sub>2</sub>, N<sub>2</sub>, CO<sub>2</sub>, H<sub>2</sub>S Gas Mixtures. Paper presented at the ADIPEC, Abu Dhabi, UAE, 3-6 November. SPE-229932-MS. [https://doi.org/10.2118/229932-MS](https://doi.org/10.2118/229932-MS).
- - Burgoyne, M. W. 2025. A Collection of Reservoir Engineering Utilities (pyResToolbox), https://github.com/mwburgoyne/pyResToolbox	(accessed 7 April 2026).
+ - Burgoyne, M. W. 2025. A Collection of Reservoir Engineering Utilities (pyResToolbox), [https://github.com/mwburgoyne/pyResToolbox](https://github.com/mwburgoyne/pyResToolbox) (accessed 7 April 2026).
  - Herning, F. and Zipperer, L. 1936. Beitrag zur Berechnung der Zähigkeit Technischer Gasgemische aus den Zähigkeitswerten der Einzelbestandteile (Calculation of the Viscosity of Technical Gas Mixtures from Viscosity of the individual Gases), _Gas und Wasserfach_ **79**: 49–54, 69-73.
  - Jossi, J. A., Stiel, L. I., and Thodos, G. 1962. The Viscosity of Pure Substances in the Dense Gaseous and Liquid Phases. _AIChE Journal_ **8**: 59-63. [https://doi.org/10.1002/aic.690080116](https://doi.org/10.1002/aic.690080116).
  - Lee, A. L., Gonzalez, M. H., and Eakin, B. E. 1966. The Viscosity of Natural Gas. _J Pet Technol_ **18** (8): 997-1000. SPE-1340-PA. [https://doi.org/10.2118/1340-PA](https://doi.org/10.2118/1340-PA).
