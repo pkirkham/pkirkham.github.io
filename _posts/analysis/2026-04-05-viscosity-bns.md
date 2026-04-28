@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Burgoyne-Nielsen-Stanko Viscosity
-modified: 2026-04-07
+modified: 2026-04-27
 categories: analysis
 excerpt: An explicit approach for rapid and accurate determination of Z-factor and viscosity for hydrocarbon gases.
 tags: [dynamic_model, simulation, fluid_properties, oil, gas, reservoir_engineering, viscosity, residual_viscosity, transport_properties, code_snippet, peng_robinson, eos, cubic_eos]
@@ -912,6 +912,95 @@ The speed up obtained is shown graphically below in Figure 4. Note the use of th
 	</a>
 	<figcaption><strong>Figure 4: Comparison calculation speeds for BNS viscosity method in Python versus Java implementations.</strong></figcaption>
 </figure>
+
+#### Benchmarking Addendum
+
+When this was first published, I received several comments that Rust should be faster than Java. I'd agree. Rust is compiled ahead of time and can optimise the compiled code for the target CPU. Java is compiled using a [just-in-time compiler](https://en.wikipedia.org/wiki/Just-in-time_compilation) from bytecode that is generated to be run on any CPU.
+
+I decided to undertake a more comprehensive comparison. Mark Burgoyne has supplied a [variety of code examples](https://github.com/mwburgoyne/5_Component_PengRobinson_Z-Factor/tree/main/Code%20Examples) for the BNS viscosity method, including a pure Rust implementation and VBA for Excel.
+
+The results for this more comprehensive comparison are shown in Figure 5:
+
+<figure>
+	<a href="{{ site.url }}/images/Analysis/viscosity-modelling/viscosity-figure30.png" data-lightbox="image-5" data-title="Speed comparison of BNS implementations shows five orders of magnitude difference from slowest (VBA for Excel) to fastest (Rust with parallel threads).">
+		<img src="{{ site.url }}/images/Analysis/viscosity-modelling/viscosity-figure30.png" alt="Speed comparison of BNS implementations shows five orders of magnitude difference from slowest (VBA for Excel) to fastest (Rust with parallel threads)."/>
+	</a>
+	<figcaption><strong>Figure 5: Speed comparison of BNS implementations shows five orders of magnitude difference from slowest (VBA for Excel) to fastest (Rust with parallel threads).</strong></figcaption>
+</figure>
+
+This shows that Rust with parallel threaded execution for the multiple pressure point solutions is by far the fastest implementation, reaching ~ 61 million calculations per second. In comparison VBA for Excel manages a paltry 772 calculations per second. Rust is about 80,000 times faster, or nearly 5 orders of magnitude. As a long time advocate that most speed comes from the algorithm design itself, it is still remarkable to see just what a difference the language and environment makes. Remember, these are benchmarks for an **identical** algorithm. The difference is purely the language implementation.
+
+This dramatically illustrates the difference between speed and convenience.
+
+As an aside, this benchmark was the first code I've ever written in Rust. With Copilot assistance I was able to implement a similar methodology to the Java and Python benchmarks for a single pressure, multiple pressures and multiple pressures in threaded parallel mode. This allows the best comparison against the Java implementation. The parallel multiple pressure implementation in Rust is shown below as a comparison:
+
+```rust
+#![allow(non_snake_case, dead_code, unused_variables, unused_mut)]
+
+use std::f64::consts::SQRT_2;
+use std::time::{Instant, Duration};
+use rand::{random_bool, random_range};
+use rayon::prelude::*;
+
+fn main() {
+    let duration = Duration::from_secs(5);
+    let start = Instant::now();
+    const SINGLE: usize = 1;
+    const BATCH: usize = 1000;
+    let mut n_samples = BATCH;
+    let n_threads = rayon::current_num_threads();
+    let mut total_count = 0usize;
+    while start.elapsed() < duration {
+
+        // Run one batch per thread in parallel
+        let batch_counts: usize = (0..n_threads)
+            .into_par_iter()
+            .map(|_| {
+                let mut p_psia = vec![0.0f64; n_samples];
+                let mut mu_out = vec![0.0f64; n_samples];
+                for p in &mut p_psia {
+                    *p = random_range(14.7..15000.0);
+                }
+                let t_degf = random_range(60.0..300.0);
+                let sg = random_range(0.65..0.9);
+                let mut co2 = 0.0;
+                let mut h2s = 0.0;
+                let mut n2  = 0.0;
+                let mut h2  = 0.0;
+                if random_bool(0.3) {
+                    let inert_frac = random_range(0.0..1.0);
+                    co2 = random_range(0.0..inert_frac);
+                    h2s = random_range(0.0..(1.0 - co2));
+                    n2  = random_range(0.0..(1.0 - co2 - h2s));
+                    h2  = random_range(0.0..(1.0 - co2 - h2s - n2));
+                }
+
+                // Sequential batch loop (same as single-thread)
+                for i in 0..n_samples {
+                    let out = pr_properties(
+                        t_degf,
+                        p_psia[i],
+                        sg,
+                        co2, h2s, n2, h2,
+                        false,
+                        true, false, false,
+                        false,
+                        false
+                    ).expect("pr_properties failed");
+                    let mu = out.viscosity.unwrap();
+                    assert!(mu > 0.0 && mu.is_finite());
+                    mu_out[i] = mu;
+                }
+                n_samples
+            })
+            .sum();
+        total_count += batch_counts;
+    }
+    let elapsed = start.elapsed().as_secs_f64();
+    let rate = total_count as f64 / elapsed;
+    println!("Rust achieved {:.1} BNS viscosity calcs/sec (parallel batches)", rate);
+}
+```
 
 ## References
 
