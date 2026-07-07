@@ -1,7 +1,7 @@
 ---
 layout: article
 title: CoolProp HEOS Versus Pyrus Implementation of PPR78 Equation of State
-modified:
+modified: 2026-06-29
 categories: pyrus
 excerpt: Incorporating the CoolProp equation of state library into Pyrus and comparison against the Enhanced Predictive Peng-Robinson equation of state.
 tags: [pyrus_suite, netbeans, simulation, software, programming, fluid_properties, density, formation_volume_factor, viscosity, equation_of_state, ppr78, coolprop]
@@ -54,19 +54,19 @@ Before we can get CoolProp integrated with NetBeans as a module, we need to get 
 	 * **[C++ compiler](https://isocpp.org/get-started)**: Compiles the source code into a native binary library whose methods can then be accessed by the Java Native Iterface.
 	 * **[SWIG](https://swig.org)**: This isn't mentioned as a pre-requisite on the CoolProp website, but it is needed to generate the wrappers.
 
-    Note that these instructions presume that a Java Development Kit is already installed on the system being used to build CoolProp; logically why would you be compiling the Java wrappers for CoolProp if you weren't already developing for Java? That said, when I was compiling these native libraries I had to ask a colleague to use his Macbook Air to compile the MacOS native library for me. This meant I had to get the JDK installed on his system. At the time of writing, the simplest way I've found to achieve this is to use the [Azul Zulu builds of OpenJDK](https://www.azul.com/downloads/) which conveniently provide installers for a range of operating systems and architectures in one place. You should be able to confirm that Java is installed by running `java --version` from the command line.
+    <div class="notice-info">Note that these instructions presume that a Java Development Kit is already installed on the system being used to build CoolProp; logically why would you be compiling the Java wrappers for CoolProp if you weren't already developing for Java? That said, when I was compiling these native libraries I had to ask a colleague to use his Macbook Air to compile the MacOS native library for me. This meant I had to get the JDK installed on his system. At the time of writing, the simplest way I've found to achieve this is to use the [Azul Zulu builds of OpenJDK](https://www.azul.com/downloads/) which conveniently provide installers for a range of operating systems and architectures in one place. You should be able to confirm that Java is installed by running `java --version` from the command line.</div>
 
 	<u>Windows</u><br>
     The CoolProp website explains the [prerequisites that must be installed for Windows](http://www.coolprop.org/coolprop/wrappers/index.html#windows). Installing [CMake](https://cmake.org/download/), [Git](https://gitforwindows.org/) and [7-Zip](https://7-zip.org/) are straightforward as there are installers available which simplify the process. From a Command Prompt or PowerShell terminal, the installation can be checked using `cmake --version`, `git --version` and `7z`.
 
-	The command line version of Python is also installed via an installer using [Miniconda](https://docs.conda.io/projects/miniconda/en/latest/index.html), For Conda it will be necessary to install the `pip` and `six` packages using `conda install pip six` from a Command Prompt or PowerShell terminal. The list of installed packages can then be checked using `conda list` and the installed version can be checked with `conda --version`.
+	The command line version of Python is also installed via an installer using [Miniconda](https://docs.conda.io/projects/miniconda/en/latest/index.html), For Conda it will be necessary to install the `pip` and `six` packages using `conda install pip six` from a Command Prompt or PowerShell terminal. The list of installed packages can then be checked using `conda list` and the installed version can be checked with `conda --version`. If you have multiple Python environments installed, it may be necessary to set the correct choice of environment that is used. In VS Code this can be set with  <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>P</kbd> and choosing `Python: Select Interpreter`.
 
 	For the C++ compiler I tested out both the MinGW and Microsoft Visual Studio options. I ended up using the [C++ compiler included with the latest Visual Studio Community Edition](https://visualstudio.microsoft.com/vs/community/) as this supports 64-bit extensions. If you are building Python wrappers it is apparently quite important to use the same Visual Studio version as that used to compile the Python version. This does not appear to be a constraint when generating Java wrappers, and I can confirm that I used the 2022 Community Edition and have not run into any problems (yet!).
 
-	To install SWIG download the latest ZIP https://swig.org/download.html and extract the contents to a directory. Note that this won't use an installation program, so you won't be able to place it into 'C:\Program Files'. I use the directory 'C:\Tools' on my system for zip distributable applications and tools like this. You'll then need to add the folder location to your user path. Fastest way to do this is to open the Advanced System Properties control panel by using keyboard shortcut <kbd><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 87.3 87.6" style="width: 11px;"><polyline points="0 12.5 35.7 7.6 35.7 42.1 0 42.1"/><polyline points="40 6.9 87.3 0 87.3 41.8 40 41.8"/><polyline points="0 45.74 35.7 45.74 35.7 80.34 0 75.34"/><polyline points="40 46.2 87.3 46.2 87.3 87.6 40 80.9"/></svg></kbd> + <kbd>R</kbd> and running `sysdm.cpl`. Then select the 'Environment Variables...' under the 'Advanced' tab. Select the Path variable in the user variables, and add the path to your SWIG installation e.g., 'C:\Tools\swigwin-4.2.0'. To test whether it has been installed correctly, open a Command Prompt or PowerShell terminal and run `swig -version` which should show what version of SWIG was found on the system.
+	To install SWIG download the latest ZIP [https://swig.org/download.html](https://swig.org/download.html) and extract the contents to a directory. Note that this won't use an installation program, so you won't be able to place it into 'C:\Program Files'. I use the directory 'C:\Tools' on my system for zip distributable applications and tools like this. You'll then need to add the folder location to your user path. Fastest way to do this is to open the Advanced System Properties control panel by using keyboard shortcut <kbd><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 87.3 87.6" style="width: 11px;"><polyline points="0 12.5 35.7 7.6 35.7 42.1 0 42.1"/><polyline points="40 6.9 87.3 0 87.3 41.8 40 41.8"/><polyline points="0 45.74 35.7 45.74 35.7 80.34 0 75.34"/><polyline points="40 46.2 87.3 46.2 87.3 87.6 40 80.9"/></svg></kbd> + <kbd>R</kbd> and running `sysdm.cpl`. Then select the 'Environment Variables...' under the 'Advanced' tab. Select the Path variable in the user variables, and add the path to your SWIG installation e.g., 'C:\Tools\swigwin-4.4.1'. To test whether it has been installed correctly, open a Command Prompt or PowerShell terminal and run `swig -version` which should show what version of SWIG was found on the system.
 
 	<u>Linux</u><br>
-    The CoolProp website explains the [prerequisites that must be installed for Linux](http://www.coolprop.org/coolprop/wrappers/index.html#linux). A single command should suffice: `sudo apt-get install cmake git p7zip g++ python3 swig`. It may be necessary to additionally run `pip install six` to install the `six` package for Python. The installations can be checked using `cmake --version`, `git --version`, `7z`, `g++ --version`,  `python3 --version` and `swig -version`.
+    The CoolProp website explains the [prerequisites that must be installed for Linux](http://www.coolprop.org/coolprop/wrappers/index.html#linux). A single command should suffice: `sudo apt-get install cmake git p7zip g++ libpython3-dev swig`. It may be necessary to additionally run `pip install six` to install the `six` package for Python. The installations can be checked using `cmake --version`, `git --version`, `7z`, `g++ --version`,  `python3 --version` and `swig -version`.
 
 	<u>MacOS</u><br>
     The CoolProp website explains the [prerequisites that must be installed for MacOS](http://www.coolprop.org/coolprop/wrappers/index.html#osx). Installation of Git, CMake, 7-Zip and SWIG is recommended [via Homebrew](https://brew.sh/). This requires the presence of the bourne again shell (bash) on the system, and if bash is available, then Homebrew can be installed with the one line command `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`. Once Homebrew is installed the command `brew install cmake git p7zip swig` should install CMake, Git, 7-Zip and SWIG. A C++ compiler `clang` should already be built into MacOS. From a Command Prompt or PowerShell terminal, these installations can be checked using `cmake --version`, `git --version`,  `7z`, `swig -version`, and `clang --version`.
@@ -80,7 +80,7 @@ Before we can get CoolProp integrated with NetBeans as a module, we need to get 
 	</pre>
 
     This should make a new folder 'CoolProp' in the directory from which the command was run.
- 
+
  3. Make a build subfolder in the 'CoolProp' directory using your file explorer of choice. I've managed to build from the same files on Windows and Linux using Windows Subsystem for Linux, so I made two folders: 'build-win' and 'build-linux'. For MacOS you could make a directory 'build-macos' instead. Alternatively you can do this from the command line.
 
 	<pre>
@@ -88,7 +88,7 @@ Before we can get CoolProp integrated with NetBeans as a module, we need to get 
 	mkdir build-linux
 	mkdir build-win
 	</pre>
- 
+
 	<figure>
 		<a href="{{ site.url }}/images/Pyrus/coolprop-vs-ppr78_1.png" data-lightbox="image-2" data-title="Folder structure after cloning respository from GitHub and creating two build directories for Windows and Linux.">
 			<img src="{{ site.url }}/images/Pyrus/coolprop-vs-ppr78_1.png" alt="Folder structure after cloning respository from GitHub and creating two build directories for Windows and Linux."/>
@@ -107,7 +107,7 @@ Before we can get CoolProp integrated with NetBeans as a module, we need to get 
 	cmake .. -DCOOLPROP_JAVA_MODULE=ON -DBUILD_TESTING=ON -DCOOLPROP_SWIG_OPTIONS="-package org.coolprop"
 	cmake --build . --config Release
 	</pre>
-	
+
 	Assuming the build runs without issues (keep your fingers crossed) the two generated items that you will need can be found at:
 
 	 * The native library is located in the ''./build-win/Release directory' as 'CoolProp.dll'.
