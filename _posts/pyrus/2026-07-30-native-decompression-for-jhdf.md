@@ -12,7 +12,7 @@ image:
 comments: false
 ---
 
-In creating the storage solution for large datasets in Pyrus, I had independently rediscovered chunking which allows for massively faster data access in comparison to the legacy SEG-Y format that is conventionally used to store post-stack seismic data. The [Heirarchical Data Format 5] (HDF5) which is maintained by the [HDF Group](https://www.hdfgroup.org/solutions/hdf5/) provides native library code for storing and accessing large scientific datasets using chunking. Why re-invent the wheel when you can simply use a battle-tested and proven solution? The HDF Group also provide wrappers for a variety of different programming languages, including Java.
+In creating the storage solution for large datasets in Pyrus, I had independently rediscovered chunking which allows for massively faster data access in comparison to the legacy SEG-Y format that is conventionally used to store post-stack seismic data. The Heirarchical Data Format 5 (HDF5) which is maintained by the [HDF Group](https://www.hdfgroup.org/solutions/hdf5/) provides native library code for storing and accessing large scientific datasets using chunking. Why re-invent the wheel when you can simply use a battle-tested and proven solution? The HDF Group also provide wrappers for a variety of different programming languages, including Java.
 
 In addition to chunking, one of the advantages of the HDF5 format is that it allows **per chunk** compression. Rather than compressing the entire file, each chunk that is stored can be individually compressed. This reduces the file size whilst still allowing fast random access through the chunks. It's perhaps the best of both worlds. These days there are some exceptional compression algorithms out there, both offering lossless compression for floating point data, or near-lossless with huge compression ratios. The [ZFP compression algorithm for multi-dimensional floating point data arrays](https://computing.llnl.gov/projects/zfp/zfp-compression-ratio-and-quality) is an example of such an algorithm, and I was keen to examine whether this would help reduce file access time even further in Pyrus. After all, if there are fewer bytes to read, then in theory reading data should be faster; assuming of course that the decompression computational overhead does not outweigh the read time advantages!
 
@@ -30,13 +30,13 @@ To cut a long story short, I managed to get it working. This post documents the 
 
 ## The Challenge of Reading Compressed Datasets
 
-I'm a fan of jHDF. I'm possibly a little biased because the [developer gave my profiling of jHDF against other HDF libraries in Java a shout out](https://github.com/jamesmudd/jhdf) on the GitHub page. The truth is that jHDF is pure Java, which is a preference of mine where possible, and it permits multi-threaded reading. On a modern SSD this does allow great improvement in random access to files and it is thus **essential** for an effective HDF5 reader (in my opinion). The downside of the pure Java implementation is that not every single feature in HDF5 has been implemented. Most notably the weak spot that becomespainfully obvious the moment you start working with real datasets is that it cannot decompress most datasets that rely on external HDF5 filter plugins. An LZ4 decompression capability was recently added as jHDF was able to leverage a Java LZ4 library, but several other compression codecs have no Java library equivalents.
+I'm a fan of jHDF. I'm possibly a little biased because the [developer gave my profiling of jHDF against other HDF libraries in Java a shout out](https://github.com/jamesmudd/jhdf) on the GitHub page. The truth is that jHDF is pure Java, which is a preference of mine where possible, and it permits multi-threaded reading. On a modern SSD this does allow great improvement in random access to files and it is thus **essential** for an effective HDF5 reader (in my opinion). The downside of the pure Java implementation is that not every single feature in HDF5 has been implemented. Most notably the weak spot that becomes painfully obvious the moment you start working with real datasets is that it cannot decompress most datasets that rely on external HDF5 filter plugins. An LZ4 decompression capability was recently added as jHDF was able to leverage a Java LZ4 library, but several other compression codecs have no Java library equivalents.
 
 The breakthrough came from noticing that jHDF does have a few fundamentally useful components.
 
  1. It exposes the compressed chunk bytes exactly as they appear in the file. You can get the compressed chunk as-is.
  2. It tells you which filter was used, and provides the `cd_values` array that describes the compression parameters.
- 3. It has a [[FilterManager class](https://github.com/jamesmudd/jhdf/blob/master/jhdf/src/main/java/io/jhdf/filter/FilterManager.java) that allows for dynamic registration of filters at runtime without the need to fork and recompile the jHDF source.
+ 3. It has a [FilterManager class](https://github.com/jamesmudd/jhdf/blob/master/jhdf/src/main/java/io/jhdf/filter/FilterManager.java) that allows for dynamic registration of filters at runtime without the need to fork and recompile the jHDF source.
 
 Assuming you had an implementation of your filter of choice in Java, this means that you could in theory just write a filter class that takes the compressed bytes, applies decompression using your implementation and the parameters embedded in the HDF5 for that filter, and obtain the uncompressed original data. In other words, jHDF hands you everything you need to perform decompression with the notable exception that it can't load the native HDF5 filter plugins required for decompression and it does not provide a large number of pure Java alternatives.
 
@@ -118,38 +118,82 @@ This avoids modifying jHDF and ensures filters have the metadata they need.
 
 ### 2. Native HDF5 Access Using Java FFM
 
-The heavy lifting happens inside a small utility class that binds directly to the HDF5 C API using Java’s Foreign Function & Memory API. This gives Java the ability to call functions like H5Dread, H5DOwrite_chunk, H5Pset_filter, and H5Screate_simple exactly as a C program would. Once those bindings exist, Java can create datasets, write chunks, and read them back — all using the real HDF5 library.
+The heavy lifting happens inside a small utility class that binds directly to the HDF5 C API using Java’s Foreign Function & Memory API. This gives Java the ability to call functions like `H5Dread`, `H5DOwrite_chunk`, `H5Pset_filter`, and `H5Screate_simple` exactly as a C program would. Once those bindings exist, Java can create datasets, write chunks, and read them back — all using the real HDF5 library.
 
-This is the heart of the solution. Instead of trying to replicate HDF5’s behaviour, Pyrus simply asks HDF5 to decompress the chunk itself. The class `Hdf5Native` binds directly to the HDF5 C API using Java’s Foreign Function & Memory API. For example:
+This is the heart of the solution. Instead of trying to replicate HDF5’s behaviour, Pyrus simply asks HDF5 to decompress the chunk itself. The class `Hdf5Native` binds directly to the HDF5 C API using Java’s Foreign Function & Memory API. For example we create a low-level native binding class that includes method signatures for each of the C API methods we want to use (only `H5DOwrite_chunk` is shown in this snippet):
 
 ```java
-H5D_WRITE_CHUNK = LINKER.downcallHandle(
-        HDF5_HL.find("H5DOwrite_chunk").orElseThrow(),
-        FunctionDescriptor.of(
-                ValueLayout.JAVA_INT, // herr_t (returns status)
-                ValueLayout.JAVA_LONG, // hid_t dset_id
-                ValueLayout.JAVA_LONG, // hid_t dxpl_id
-                ValueLayout.JAVA_INT, // uint32_t filters
-                ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG), // const hsize_t *offset
-                ValueLayout.JAVA_LONG, // size_t data_size
-                ValueLayout.ADDRESS // const void *buf
-        )
-);
+/**
+ * A small utility class to load HDF5 native library plugin and create a MethodHandle for various routines. This allows
+ * us to access the compression and decompression algorithms embedded in various native libraries via plugins.
+ *
+ * @author Peter Kirkham
+ */
+@SuppressWarnings("restricted")
+public final class Hdf5Native {
+
+    /* == DEFINE CONSTANTS == */
+    public static final Hdf5Native INSTANCE = new Hdf5Native();
+    private static final Linker LINKER = Linker.nativeLinker();
+    private static final MethodHandle H5D_WRITE_CHUNK;
+    private static final Object HDF5_LOCK = new Object();
+
+    @FunctionalInterface
+    public interface Hdf5Callable<T> {
+        T call() throws Throwable;
+    }
+
+    public static <T> T call(Hdf5Callable<T> fn) {
+        synchronized (HDF5_LOCK) {
+            try {
+                return fn.call();
+            } catch (Throwable t) {
+                throw new RuntimeException(t);
+            }
+        }
+    }
+
+    static {
+
+        // Create full path to the native library. We can leverage our Installer class which knows the native library
+        // path location which was identified during module startup when the JNI modules were loaded.
+        Path hdf5_hl_lib = Paths.get(Installer.native_dir.concat(System.mapLibraryName("hdf5_hl")));
+        HDF5_HL = SymbolLookup.libraryLookup(hdf5_hl_lib.toAbsolutePath().toString(), Arena.global()); // high-level lib
+
+        H5D_WRITE_CHUNK = LINKER.downcallHandle(
+                HDF5_HL.find("H5DOwrite_chunk").orElseThrow(),
+                FunctionDescriptor.of(
+                        ValueLayout.JAVA_INT, // herr_t (returns status)
+                        ValueLayout.JAVA_LONG, // hid_t dset_id
+                        ValueLayout.JAVA_LONG, // hid_t dxpl_id
+                        ValueLayout.JAVA_INT, // uint32_t filters
+                        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG), // const hsize_t *offset
+                        ValueLayout.JAVA_LONG, // size_t data_size
+                        ValueLayout.ADDRESS // const void *buf
+                )
+        );
+    }
+
+    public static MethodHandle h5dWriteChunk() {
+        return H5D_WRITE_CHUNK;
+    }
 ```
 
 This gives Java full access to HDF5 native methods without JNI including:
 
- - H5Dread
- - H5DOwrite_chunk
- - H5Pset_filter
- - H5Pset_chunk
- - H5Screate_simple
- - H5Dcreate2
- - H5Fcreate
+ - `H5Dread`
+ - `H5DOwrite_chunk`
+ - `H5Pset_filter`
+ - `H5Pset_chunk`
+ - `H5Screate_simple`
+ - `H5Dcreate2`
+ - `H5Fcreate`
 
-These bindings are the backbone of native decompression. We can then also wrap these native bindings in a more friendly method that is easier to call from within Java. For our `H5DOwrite_chunk` method we create a `writeSingleChunk` method:
+These bindings are the backbone of native decompression. We can then also wrap these native bindings in a more friendly method that is easier to call from within Java. For our `H5DOwrite_chunk` method we can create a `writeSingleChunk` helper method:
 
 ```java
+private final Hdf5Native native_api;
+
 /**
  * Write a chunk with raw bytes (no compression is applied).
  *
@@ -200,7 +244,7 @@ This bypasses HDF5’s compression pipeline and stores the raw compressed chunk.
 
 ### 4. Decompressing a Chunk Using a Native Plugin
 
-Once we have our compressed chunk bytes sitting in an in-memory HDF5 file, all we need to do is call a native read method on that file. HDF5 will use the plugins available to it to to decompress the chunk using native code. This gives jHDF access to a wide range of native decompression plugins, including ZStandard, ZFP, LZ4 etc.
+Once we have our compressed chunk bytes sitting in an in-memory HDF5 file, all we need to do is call our helper method that binds to the native read method on that file. HDF5 will use the plugins available to it to to decompress the chunk using native code. This gives jHDF access to a wide range of native decompression plugins, including ZStandard, ZFP, LZ4 etc.
 
 ```java
 byte[] decompressed = hdf5.readDatasetToBytes(arena, dset_id, type_id, element_count);
@@ -286,7 +330,7 @@ public static byte[] decompressWithHdf5(byte[] compressed, int filter_id, int[] 
 
 ## Building a Native Filter for jHDF
 
-Behind the scenes, the framework is now in place to leverage native filter plugins. Notice how the `ThreadLocal` context is accessed in a similar fashion to a static class, but in reality it is static only to that chunk's thread.
+Behind the scenes, the framework is now in place to leverage native filter plugins. `Filter` classes can be registered with the jHDF library, and only require two methods to be over-ridden. We create an abstract base class for our native filters that handles all the heavy lifting to identify the filter by name, and to transform the encoded data into decoded bytes. Notice how the `ThreadLocal` context is accessed in a similar fashion to a static class, but in reality it is static only to that chunk's thread.
 
 ```java
 /**
@@ -341,7 +385,9 @@ public abstract class Hdf5NativeFilter implements Filter {
 }
 ```
 
-It turns out that for each specific implementation of a native filter, providing the native plugin is available, then registering it with the jHDF filter manager is only a few lines. For example to register a Zstandard filter:
+It turns out that for each specific implementation of a native filter, providing the native plugin is available, then registering it with the jHDF filter manager is only a few lines.
+
+For example to register a Zstandard filter:
 
 ```java
 @ServiceProvider(service = Filter.class)
@@ -364,6 +410,15 @@ public class ZfpFilter extends Hdf5NativeFilter {
     }
 }
 ```
+
+Our pipeline has become:
+
+ - {compression filter for specific compression algorithm} -> 
+ - {extends abstract jHDF filter for native plugins} -> 
+ - {calls decompression method with sequence of steps required expected by native API} -> 
+ - {uses helper method for each step that translates Java types and data into native format and memory addresses} -> 
+ - {native FFM bindings for each native API method needed}
+
 In Pyrus I have not implemented filters for each and every compression algorithm that is out there in the wild. This is principally because I currently don't have a need for that. As can be seen, adding new filters is embarrasingly simple.
 
 ## Performance
