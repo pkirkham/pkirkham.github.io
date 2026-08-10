@@ -140,7 +140,14 @@ Because seismic QC is inherently visual, Pyrus does not attempt automated QC. In
  1. **Does the textual header look correct?** Look at the textual header and check both EBCDIC and ASCII encodings. If the text does not appear garbled, high chances are that it is correct.
  2. **Does the binary header contain sensible values?** For post-stack data, the number of traces per ensemble should be zero, the number of samples, and samples per trace should be have been set.
  3. **Are byte locations for NS, DT, ILINE, XLINE, CDPX, CDPY correct?** The only real way to check this is iterate over the various trace headers in the file, and to check that values such as 'ns' and 'dt' are invariate for fixed length traces, but vary predictably for line numbers etc.
- 4. **Is the data format code valid (1–8)?** Crucial that the data format code is known. The format code (byte offset 24) should be set to (1) or possible (5). Other values are possible, but IBM floating point format or IEEE floating point format are the two most common data formats encountered.
+ 4. **Is the data format code valid (1–8)?** Crucial that the data format code is known. The format code (byte offset 24) should be set to (1) or possible (5). Other values are possible, but IBM floating point format or IEEE floating point format are the two most common data formats encountered. If the wrong floating point format is used, the data might look mostly correct, but will subtly different. It is easy to spot this error by examing a histogram of values for each traces as shown in Figure 6. Incorrect floating point format will have multiple concentrations of values, but the correct data format should have a single peak around zero. Similar data format issues can be uncovered by looking at the data endianess.
+
+<figure>
+<a href="{{ site.url }}/images/Pyrus/segy-inspector-tool/segy-inspector-data-qc.png" data-lightbox="image-6" data-title="Erroneous data import using assumed IEEE floating point format instead of IBM floating point format.">
+<img src="{{ site.url }}/images/Pyrus/segy-inspector-tool/segy-inspector-data-qc.png" alt="Erroneous data import using assumed IEEE floating point format instead of IBM floating point format."/>
+</a>
+<figcaption><strong>Figure 6: Erroneous data import using assumed IEEE floating point format instead of IBM floating point format.</strong></figcaption>
+</figure>
 
 ### Geometry Checks
 
@@ -154,13 +161,6 @@ Because seismic QC is inherently visual, Pyrus does not attempt automated QC. In
  2. **Is polarity consistent?** Positive peaks should be consistent across the entire data sample. The line preview may prove useful to quickly see if there are polarity reversals.
  3. **Are amplitudes reasonable?** This is a key consideration. For seismic data, most values will be centered around zero, with +/&minus; a fixed amplitude value. If the data format has been incorrectly applied, then the histogram of trace values will show multiple peaks (see Figure 6). Note that this multi-peaked histogram should not occur with seismic data when the correct data format it applied.
  4. **Does the data appear continuous across lines?** By checking on a few inlines and crosslines, it should be possible to determine, via inspection, whether there is a continuous trend for the data across sections.
-
-<figure>
-<a href="{{ site.url }}/images/Pyrus/segy-inspector-tool/segy-inspector-data-qc.png" data-lightbox="image-6" data-title="Erroneous data import using assumed IEEE floating point format instead of IBM floating point format.">
-<img src="{{ site.url }}/images/Pyrus/segy-inspector-tool/segy-inspector-data-qc.png" alt="Erroneous data import using assumed IEEE floating point format instead of IBM floating point format."/>
-</a>
-<figcaption><strong>Figure 6: Erroneous data import using assumed IEEE floating point format instead of IBM floating point format.</strong></figcaption>
-</figure>
 
 ## Summary
 
