@@ -18,7 +18,7 @@ The general principle behind the Expanded Fluid (EF) model correlation is very s
 
 The viscosity limits are chosen as the dilute gas viscosity, the theoretical viscosity of the fluid. The form of the model is chosen deliberately so that as the density approaches zero, the viscosity approaches the gas low-pressure viscosity. Conversely, as the density approaches the compressed state density, the viscosity tends towards infinity. By comparing the density of the fluid, which effectively governs how close together its molecules are, and comparing the density to these two density endpoints, it is possible to predict viscosity.
 
-This is a pseudo-single fluid equation, so mixing rules must be used to determine the various fitting parameters. The calculation is very sensitive to density. Any implementations using the EF model must determine an accurate liquid density to use for the calculation. based on the specific gravity which is, by definition, an exact density at a standard conditions.
+This is a pseudo-single fluid equation, so mixing rules must be used to determine the various fitting parameters. The calculation is very sensitive to density. Any implementations using the EF model must determine an accurate liquid density to use for the calculation based on the specific gravity which is, by definition, an exact density at a standard conditions.
 
 ## Theory
 
@@ -111,7 +111,7 @@ This correlation approximates the original corelation and also converges to a fi
 
 The EF model equations are based on an assumption of a single component. For hydrocarbon mixtures it is necessary to determine what the equivalent single component properties would be for a representative pseudo-component, to which the EF model can then be applied.
 
-It is also noted by Yarranton and Satyro that for heavy crudes the plus fraction must be extrapolated to multiple heavier hypothetical components, even in the case where assay data to C30+ is available. They propose an approach using an exponential distribution to split C30+ into heavier hypothetical components. Pyrus has implemented the gamm distribution
+It is also noted by Yarranton and Satyro that for heavy crudes the plus fraction must be extrapolated to multiple heavier hypothetical components, even in the case where assay data to C30+ is available. They propose an approach using an exponential distribution to split C30+ into heavier hypothetical components. Pyrus has implemented the gamma distribution following the method outlined by Whitson.
 
 The method to get the EF model viscosity for a known compositional mixture is:
 
@@ -598,9 +598,9 @@ It can be seen that the prediction of viscosity using the experimental densities
 ## References
 
  - Alani, G, H. and Kennedy, H. T. 1960. Volumes of Liquid Hydrocarbons at High Temperatures and Pressures. _Pet Trans_ **219** (1): 288–292. [https://doi.org/10.2118/1399-G](https://doi.org/10.2118/1399-G).
- - Loria, H., Motahhari, H., Satyro, M. A., and Yarranton, H. W. 2014. Process Simulation Using the Expanded Fluid Model for Viscosity Calculations. _Chem Eng Res Des_ **92** (2014): 3083-3095. [https://doi.org/10.1016/j.cherd.2014.06.019]([https://doi.org/10.1016/j.cherd.2014.06.019).
+ - Loria, H., Motahhari, H., Satyro, M. A., and Yarranton, H. W. 2014. Process Simulation Using the Expanded Fluid Model for Viscosity Calculations. _Chem Eng Res Des_ **92** (2014): 3083-3095. [https://doi.org/10.1016/j.cherd.2014.06.019](https://doi.org/10.1016/j.cherd.2014.06.019).
  - Motahhari, H., Satyro, M. A., Taylor, S. D., and Yarranton, H. W. 2013. Extension of the Expanded Fluid Viscosity Model to Characterized Oils. _Energy Fuels_ **27** (4): 1881-1898. [https://doi.org/10.1021/ef301575n](https://doi.org/10.1021/ef301575n).
  - Ramos-Pallares, F., Schoeggl, F. F., Taylor, S. D., Satyro, M. A., and Yarranton, H. W. 2015. Predicting the Viscosity of Hydrocarbon Mixtures and Diluted Heavy Oils Using the Expanded Fluid Model. _Energy Fuels_ **30** (5): 3575-3595.  [https://doi.org/10.1021/acs.energyfuels.5b01951](https://doi.org/10.1021/acs.energyfuels.5b01951).
  - Regueira, V. B., Pereira, V. J., Costa, G. M. N.,, and Vieira de Melo, S, A. B. 2018. Improvement of the Expanded Fluid Viscosity Model for Crude Oils: Effects of the Plus Fraction Characterization Methods and Density. _Energy Fuels_ **32** (2): 1624–1633. [https://doi.org/10.1021/acs.energyfuels.7b03735](https://doi.org/10.1021/acs.energyfuels.7b03735).
- - Satyro, M. A. and Yarranton, H. W. 2010. Expanded Fluid-Based Viscosity Correlation for Hydrocarbons Using an Equation of State. _Fluid Phase Equilib_ **298** (2010): 1-11. [https://doi.org/10.1016/j.fluid.2010.06.023]([https://doi.org/10.1016/j.fluid.2010.06.023).
+ - Satyro, M. A. and Yarranton, H. W. 2010. Expanded Fluid-Based Viscosity Correlation for Hydrocarbons Using an Equation of State. _Fluid Phase Equilib_ **298** (2010): 1-11. [https://doi.org/10.1016/j.fluid.2010.06.023](https://doi.org/10.1016/j.fluid.2010.06.023).
  - Yarranton, H. W. and Satyro, M. A. 2009. Expanded Fluid-Based Viscosity Correlation for Hydrocarbons. _Ind Eng Chem Res_ **48** (7): 3640-3648. [https://doi.org/10.1021/ie801698h](https://doi.org/10.1021/ie801698h).
