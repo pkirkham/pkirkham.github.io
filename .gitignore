@@ -7,4 +7,14 @@ node_modules
 _asset_bundler_cache
 .sass-cache
 Gemfile.lock
+downloads/pyrus/external/org-coolprop.nbm
+downloads/pyrus/external/org-gdal.nbm
+downloads/pyrus/external/hdf-hdf5lib.nbm
+downloads/pyrus/external/jogamp.nbm
 downloads/pyrus/external/org-graalvm-polyglot.nbm
+downloads/pyrus/external/vtk.nbm
+AGENTS.md
+CLAUDE.md
+/jan-blog
+/_javahelp
+/_linkedin

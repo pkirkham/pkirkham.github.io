@@ -15,6 +15,7 @@ url: https://pkirkham.github.io
 sass:
     sass_dir: _sass
     style: compressed
+    quiet_deps: true
 permalink: /:categories/:title/
 markdown: kramdown
 kramdown:
@@ -37,5 +38,5 @@ owner:
     avatar: 96x96avatar.jpg # image for author byline
 disqus-shortname: pkirkham
 
-exclude: ["lib", "config.rb", ".sass-cache", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "*.sublime-project", "*.sublime-workspace", "Gemfile", "Gemfile.lock", "README.md", "LICENSE", "node_modules", "Gruntfile.js", "package.json"]
+exclude: ["lib", "config.rb", ".sass-cache", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "*.sublime-project", "*.sublime-workspace", "Gemfile", "Gemfile.lock", "README.md", "LICENSE", "node_modules", "Gruntfile.js", "package.json", "jan-blog", "AGENTS.md", "CLAUDE.md"]
 include: ["__*.py"]
